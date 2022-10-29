@@ -1,0 +1,2 @@
+# Minda
+E-learning platform
