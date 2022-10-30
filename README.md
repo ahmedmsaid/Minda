@@ -3,7 +3,7 @@ First you will need to save this [udemy](udemy.com) email's creditials to have a
 
 Email
 > udemycourses80@gmail.com
--Pass 
+> Pass 
 > udemy12345
 
 - if you have not subscribe already to Pluralsight, please make sure to get the [one free year subscibtio](https://www.pluralsightone.org/product/education/code-org-redemption-3m?fbclid=IwAR1oskG-AHFWQZI2Q_5CVywK6WCSNsWEbcRZ43na9nQZszDj7X1GNFigbTI)
