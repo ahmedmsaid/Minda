@@ -1,9 +1,9 @@
 # Resources
 First you will need to save this [udemy](udemy.com) email's creditials to have access to specific courses that were free at some point of time but now it is not
-Email
-> udemycourses80@gmail.com
-Pass
-> udemy12345
+
+Email > udemycourses80@gmail.com
+Pass > udemy12345
+
 - if you have not subscribe already to Pluralsight, please make sure to get the [one free year subscibtio](https://www.pluralsightone.org/product/education/code-org-redemption-3m?fbclid=IwAR1oskG-AHFWQZI2Q_5CVywK6WCSNsWEbcRZ43na9nQZszDj7X1GNFigbTI)
 
 - Learn what is APIs and how they work [API Crash Course: How to Create, Test, & Document your APIs
