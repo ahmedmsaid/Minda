@@ -14,7 +14,8 @@ Email
 - Write code first then preview [Markdown Live Preview](https://markdownlivepreview.com/)
 - Make the design then code will be generated [readme.so](https://readme.so/)
 
-## Learn what is APIs and how they work [API Crash Course: How to Create, Test, & Document your APIs](https://www.udemy.com/course/api-course/learn/lecture/26889642#overview)
+## Learn what is APIs and how they work 
+[API Crash Course: How to Create, Test, & Document your APIs](https://www.udemy.com/course/api-course/learn/lecture/26889642#overview)
 
 ## What is git
 - **If you have already used git commands and want to know what happens under the hood, see [MIT lecture](https://www.youtube.com/watch?v=2sjqTHE0zok) and their [notes and cheatsheet](https://missing.csail.mit.edu/2020/version-control/).**
