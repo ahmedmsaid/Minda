@@ -31,6 +31,6 @@ Email
 ## Clean Coding
 - Mahara Tech [The principles of writing clean code](https://maharatech.gov.eg/course/view.php?id=1600).
 
-## SOLID Priciples
+## SOLID Principles
 - For first time: [SOLID Principles](https://www.youtube.com/playlist?list=PLnqAlQ9hFYdflFSS4NigVB7aSoYPNwHTL).
 - For revision: [Design Principles](https://www.youtube.com/playlist?list=PL4n1Qos4Tb6ThSyydEJTm7xJ3qEwE8Oyu).
