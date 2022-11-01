@@ -28,9 +28,9 @@ Email
 - For Arabic [Learn Adobe XD for UI UX Design](https://www.udemy.com/share/105Rbs3@e7rJ0ZfALxpOJYavaxXNHN1kXZ4gan3XAnvKobw91KObcgppOkpUQFqkgAZgqKDwow==/)
 - For English [Adobe XD Ultimate Guide 2022](https://www.udemy.com/share/1036kc3@t6zV9o0NKu-LZA9mAA66CuxYuLIeJOvaGLj4eShH776uwRLRKCbXbPMlqMWS2PA0SA==/)
 
-##Clean Coding
+## Clean Coding
 - Mahara Tech [The principles of writing clean code](https://maharatech.gov.eg/course/view.php?id=1600).
 
-##Soild Priciples
+## Soild Priciples
 - For first time: [SOLID Principles](https://www.youtube.com/playlist?list=PLnqAlQ9hFYdflFSS4NigVB7aSoYPNwHTL).
 - For revision: [Design Principles](https://www.youtube.com/playlist?list=PL4n1Qos4Tb6ThSyydEJTm7xJ3qEwE8Oyu).
