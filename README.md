@@ -30,6 +30,7 @@ Email
 
 ## Clean Coding
 - Mahara Tech [The principles of writing clean code](https://maharatech.gov.eg/course/view.php?id=1600).
+- Omar Ahmed [Clean Code Book](https://www.youtube.com/playlist?list=PLwWuxCLlF_ufTMlXoJlQvImqz9wIfcWsX).
 
 ## SOLID Principles
 - For first time: [SOLID Principles](https://www.youtube.com/playlist?list=PLnqAlQ9hFYdflFSS4NigVB7aSoYPNwHTL).
