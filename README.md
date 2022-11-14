@@ -36,3 +36,6 @@ Email
 ## SOLID Principles
 - For first time: [SOLID Principles](https://www.youtube.com/playlist?list=PLnqAlQ9hFYdflFSS4NigVB7aSoYPNwHTL).
 - For revision: [Design Principles](https://www.youtube.com/playlist?list=PL4n1Qos4Tb6ThSyydEJTm7xJ3qEwE8Oyu).
+
+## Mobile Development (bit by bit)
+- Kotlin Programming Language: [KOTLIN NEWBIE TO PRO](https://youtube.com/playlist?list=PLQkwcJG4YTCRSQikwhtoApYs9ij_Hc5Z9).
