@@ -21,6 +21,7 @@ Email
 - **If you have already used git commands and want to know what happens under the hood, see [MIT lecture](https://www.youtube.com/watch?v=2sjqTHE0zok) and their [notes and cheatsheet](https://missing.csail.mit.edu/2020/version-control/).**
 - **If not, I encourage to take [Pluralsight git path](https://app.pluralsight.com/paths/skill/managing-source-code-with-git).**
 - **For Arabic, [Eng. Osama ELzero playlist](https://www.youtube.com/playlist?list=PLDoPjvoNmBAw4eOj58MZPakHjaO3frVMF).**
+- **Another Arabic, [Crash course](https://youtu.be/Q6G-J54vgKc).**
 - **To demonstrate git's commands without the need of having actual projects use [git playgorund](https://learngitbranching.js.org/).**
 
 ## UI, UX design using Adobe XD
