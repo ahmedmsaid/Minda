@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/gettingStartFragment">
+
+    <fragment
+        android:id="@+id/gettingStartFragment"
+        android:name="com.example.minda.ui.gettingstartfragment.GettingStartFragment"
+        android:label="GettingStartFragment" >
+        <action
+            android:id="@+id/action_gettingStartFragment_to_accountTypeFragment"
+            app:destination="@id/accountTypeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/accountTypeFragment"
+        android:name="com.example.minda.ui.accounttype.AccountTypeFragment"
+        android:label="AccountTypeFragment" >
+        <action
+            android:id="@+id/action_accountTypeFragment_to_splashFragment"
+            app:destination="@id/splashFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.minda.ui.splash.SplashFragment"
+        android:label="SplashFragment" />
+</navigation>

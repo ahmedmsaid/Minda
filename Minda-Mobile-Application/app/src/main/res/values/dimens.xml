@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="logo_width">300dp</dimen>
+    <dimen name="logo_height">300dp</dimen>
+    <dimen name="logo_margin_top">250dp</dimen>
+    <dimen name="welcome_minda_margin_top">64dp</dimen>
+    <dimen name="welcome_minda_text_size">24sp</dimen>
+    <dimen name="sub_welcome_margin_top">8dp</dimen>
+    <dimen name="sub_welcome_text_size">20sp</dimen>
+    <dimen name="get_start_text_size">24sp</dimen>
+    <dimen name="get_start_margin_start">16dp</dimen>
+    <dimen name="get_start_margin_bottom">16dp</dimen>
+</resources>
