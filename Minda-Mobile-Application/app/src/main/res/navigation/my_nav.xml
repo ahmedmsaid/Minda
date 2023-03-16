@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/my_nav"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/gettingStartFragment">
 
     <fragment
         android:id="@+id/gettingStartFragment"
@@ -22,14 +22,6 @@
         <action
             android:id="@+id/action_accountTypeFragment_to_studentLoginFragment"
             app:destination="@id/studentLoginFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/splashFragment"
-        android:name="com.example.minda.ui.splash.SplashFragment"
-        android:label="SplashFragment" >
-        <action
-            android:id="@+id/action_splashFragment_to_gettingStartFragment"
-            app:destination="@id/gettingStartFragment" />
     </fragment>
     <fragment
         android:id="@+id/instructorLoginFragment"
