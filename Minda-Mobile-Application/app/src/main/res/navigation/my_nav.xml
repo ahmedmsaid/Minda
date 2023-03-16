@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/my_nav"
-    app:startDestination="@id/gettingStartFragment">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/gettingStartFragment"
@@ -17,11 +17,26 @@
         android:name="com.example.minda.ui.accounttype.AccountTypeFragment"
         android:label="AccountTypeFragment" >
         <action
-            android:id="@+id/action_accountTypeFragment_to_splashFragment"
-            app:destination="@id/splashFragment" />
+            android:id="@+id/action_accountTypeFragment_to_instructorLoginFragment"
+            app:destination="@id/instructorLoginFragment" />
+        <action
+            android:id="@+id/action_accountTypeFragment_to_studentLoginFragment"
+            app:destination="@id/studentLoginFragment" />
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
         android:name="com.example.minda.ui.splash.SplashFragment"
-        android:label="SplashFragment" />
+        android:label="SplashFragment" >
+        <action
+            android:id="@+id/action_splashFragment_to_gettingStartFragment"
+            app:destination="@id/gettingStartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/instructorLoginFragment"
+        android:name="com.example.minda.ui.instructor.login.InstructorLoginFragment"
+        android:label="InstructorLoginFragment" />
+    <fragment
+        android:id="@+id/studentLoginFragment"
+        android:name="com.example.minda.ui.student.StudentLoginFragment"
+        android:label="StudentLoginFragment" />
 </navigation>

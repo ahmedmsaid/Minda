@@ -10,6 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         tools:context=".ui.accounttype.AccountTypeFragment">
 
         <ImageView
@@ -42,7 +43,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="@dimen/_5sdp">
+                android:padding="@dimen/_16sdp">
 
                 <TextView
                     android:id="@+id/textView2"
@@ -71,6 +72,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView2">
 
                     <RadioButton
+                        android:padding="@dimen/_10sdp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="@dimen/_8sdp"
@@ -84,6 +86,7 @@
                     <RadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp"
                         android:text="Student"
                         android:id="@+id/studentRadBtn"
                         android:textColor="#292D32"
@@ -105,6 +108,7 @@
             android:layout_marginTop="@dimen/_16sdp"
             android:fontFamily="@font/roboto"
             android:textStyle="bold"
+            android:textColor="@color/white"
             android:paddingTop="@dimen/_10ssp"
             android:paddingBottom="@dimen/_10ssp"
             app:layout_constraintEnd_toEndOf="@+id/materialCardView"
