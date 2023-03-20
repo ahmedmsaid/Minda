@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            tools:context=".ui.instructor.signup.InstructorSignupFragment">
+
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_100sdp"
+                android:contentDescription="Student logo"
+                android:src="@drawable/instructor_logo_signup"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="HardcodedText"
+                tools:layout_editor_absoluteY="16dp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardView3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:elevation="10dp"
+                android:orientation="vertical"
+                android:paddingBottom="5dp"
+                app:cardCornerRadius="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView5">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/_10sdp">
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/carter_one"
+                        android:gravity="center"
+                        android:text="Sign up"
+                        android:textAllCaps="true"
+                        android:textColor="@color/primer_dark_gray"
+                        android:textSize="@dimen/_14ssp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="HardcodedText" />
+
+                    <EditText
+                        android:id="@+id/editText3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/et_background"
+                        android:drawableEnd="@drawable/icon_person"
+                        android:fontFamily="@font/roboto"
+                        android:hint="Username"
+                        android:importantForAutofill="no"
+                        android:inputType="textPersonName"
+                        android:minHeight="@dimen/_35sdp"
+                        android:paddingStart="@dimen/_10sdp"
+                        android:paddingEnd="@dimen/_10sdp"
+                        android:textColorHint="#ABFFFFFF"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView5"
+                        tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+                    <EditText
+                        android:id="@+id/editText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:autofillHints="emailAddress"
+                        android:background="@drawable/et_background"
+                        android:drawableEnd="@drawable/ic_round_email"
+                        android:fontFamily="@font/roboto"
+                        android:hint="Email"
+                        android:inputType="textEmailAddress"
+                        android:minHeight="@dimen/_35sdp"
+                        android:paddingStart="@dimen/_10sdp"
+                        android:paddingEnd="@dimen/_10sdp"
+                        android:textColor="@color/white"
+                        android:textColorHint="#ABFFFFFF"
+                        app:layout_constraintEnd_toEndOf="@+id/editText3"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/editText3"
+                        tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+                    <EditText
+                        android:id="@+id/instructor_id_et"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@drawable/et_background"
+                        android:drawableEnd="@drawable/id_icon"
+                        android:fontFamily="@font/roboto"
+                        android:hint="8-digit-ID"
+                        android:importantForAutofill="no"
+                        android:inputType="textPersonName"
+                        android:minHeight="@dimen/_35sdp"
+                        android:paddingStart="@dimen/_10sdp"
+                        android:paddingEnd="@dimen/_10sdp"
+                        android:textColorHint="#ABFFFFFF"
+                        app:layout_constraintEnd_toEndOf="@+id/editText"
+                        app:layout_constraintStart_toStartOf="@+id/editText"
+                        app:layout_constraintTop_toBottomOf="@+id/editText"
+                        tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+                    <EditText
+                        android:id="@+id/editText2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@drawable/et_background"
+                        android:drawableEnd="@drawable/carbon_password"
+                        android:fontFamily="@font/roboto"
+                        android:hint="Password"
+                        android:importantForAutofill="no"
+                        android:inputType="textPassword"
+                        android:minHeight="@dimen/_35sdp"
+                        android:paddingStart="@dimen/_10sdp"
+                        android:paddingEnd="@dimen/_10sdp"
+                        android:textColor="@color/white"
+                        android:textColorHint="#ABFFFFFF"
+                        android:textSize="@dimen/_14ssp"
+
+                        app:layout_constraintEnd_toEndOf="@+id/instructor_id_et"
+                        app:layout_constraintStart_toStartOf="@+id/instructor_id_et"
+                        app:layout_constraintTop_toBottomOf="@+id/instructor_id_et"
+                        tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+                    <EditText
+                        android:id="@+id/editText4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@drawable/et_background"
+                        android:drawableEnd="@drawable/carbon_password"
+                        android:fontFamily="@font/roboto"
+                        android:hint="Confirm Password"
+                        android:importantForAutofill="no"
+                        android:inputType="textPassword"
+                        android:minHeight="@dimen/_35sdp"
+                        android:paddingStart="@dimen/_10sdp"
+                        android:paddingEnd="@dimen/_10sdp"
+                        android:textColor="@color/white"
+                        android:textColorHint="#ABFFFFFF"
+                        android:textSize="@dimen/_14ssp"
+                        app:layout_constraintEnd_toEndOf="@+id/editText2"
+                        app:layout_constraintStart_toStartOf="@+id/editText2"
+                        app:layout_constraintTop_toBottomOf="@+id/editText2"
+                        tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+                    <Button
+                        android:id="@+id/instructorRegisterBtn"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@drawable/login_btn_background"
+                        android:fontFamily="@font/roboto"
+                        android:text="Register"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_14ssp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="@+id/editText4"
+                        app:layout_constraintStart_toStartOf="@+id/editText4"
+                        app:layout_constraintTop_toBottomOf="@+id/editText4"
+                        tools:ignore="HardcodedText" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <Button
+                android:id="@+id/instructorSingInBtn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:background="@drawable/signup_btn_background"
+                android:fontFamily="@font/roboto"
+                android:text="Sign In"
+                android:textAllCaps="false"
+                android:textColor="@color/primary_dark_orange"
+                android:textSize="@dimen/_14ssp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/materialCardView3"
+                app:layout_constraintStart_toStartOf="@+id/materialCardView3"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView3"
+                tools:ignore="HardcodedText" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>

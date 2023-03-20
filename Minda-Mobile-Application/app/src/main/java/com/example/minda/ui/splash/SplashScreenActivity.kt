@@ -19,5 +19,7 @@ class SplashScreenActivity : AppCompatActivity() {
             finish()
         }, delayMillis)
 
+
+
     }
 }

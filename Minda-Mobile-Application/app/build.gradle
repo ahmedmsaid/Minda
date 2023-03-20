@@ -9,13 +9,14 @@ android {
 
     defaultConfig {
         applicationId "com.example.minda"
-        minSdk 24
+        minSdk 23
         targetSdk 33
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
 
     buildTypes {
         release {
@@ -51,4 +52,7 @@ dependencies {
     //scalable units
     implementation 'com.intuit.ssp:ssp-android:1.1.0'
     implementation 'com.intuit.sdp:sdp-android:1.1.0'
+
+    // custom bottom navigation
+    implementation 'com.github.ismaeldivita:chip-navigation-bar:1.4.0'
 }

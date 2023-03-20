@@ -51,6 +51,8 @@ class AccountTypeFragment : Fragment() {
                     findNavController().navigate(R.id.action_accountTypeFragment_to_studentLoginFragment)
             }
         }
+
+
         return binding.root
     }
 }

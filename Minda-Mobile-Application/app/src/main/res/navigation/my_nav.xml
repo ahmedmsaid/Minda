@@ -26,9 +26,33 @@
     <fragment
         android:id="@+id/instructorLoginFragment"
         android:name="com.example.minda.ui.instructor.login.InstructorLoginFragment"
-        android:label="InstructorLoginFragment" />
+        android:label="InstructorLoginFragment" >
+        <action
+            android:id="@+id/action_instructorLoginFragment_to_instructorSignupFragment"
+            app:destination="@id/instructorSignupFragment" />
+    </fragment>
     <fragment
         android:id="@+id/studentLoginFragment"
-        android:name="com.example.minda.ui.student.StudentLoginFragment"
-        android:label="StudentLoginFragment" />
+        android:name="com.example.minda.ui.student.login.StudentLoginFragment"
+        android:label="StudentLoginFragment" >
+        <action
+            android:id="@+id/action_studentLoginFragment_to_studentSignupFragment"
+            app:destination="@id/studentSignupFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentSignupFragment"
+        android:name="com.example.minda.ui.student.signup.StudentSignupFragment"
+        android:label="StudentSignupFragment" >
+        <action
+            android:id="@+id/action_studentSignupFragment_to_studentLoginFragment"
+            app:destination="@id/studentLoginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/instructorSignupFragment"
+        android:name="com.example.minda.ui.instructor.signup.InstructorSignupFragment"
+        android:label="InstructorSignupFragment" >
+        <action
+            android:id="@+id/action_instructorSignupFragment_to_instructorLoginFragment"
+            app:destination="@id/instructorLoginFragment" />
+    </fragment>
 </navigation>

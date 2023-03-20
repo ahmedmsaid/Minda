@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/home"
+        android:enabled="true"
+        android:icon="@drawable/book_home_icon"
+        android:title="Home"
+        app:cnb_backgroundColor="@color/primary_dark_orange"
+        app:cnb_iconColor="@color/white"
+        app:cnb_iconTintMode="src_in"
+        app:cnb_textColor="@color/white"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:id="@+id/notification"
+        android:enabled="true"
+        android:icon="@drawable/notification_icon"
+        android:title="Notification"
+        app:cnb_backgroundColor="@color/primary_dark_orange"
+        app:cnb_iconColor="@color/white"
+        app:cnb_iconTintMode="src_in"
+        app:cnb_textColor="@color/white"
+        tools:ignore="HardcodedText" />
+
+    <item
+        android:id="@+id/profile"
+        android:enabled="true"
+        android:icon="@drawable/profile_icon"
+        android:title="Profile"
+        app:cnb_backgroundColor="@color/primary_dark_orange"
+        app:cnb_iconColor="@color/white"
+        app:cnb_iconTintMode="src_in"
+        app:cnb_textColor="@color/white"
+        tools:ignore="HardcodedText" />
+
+</menu>
