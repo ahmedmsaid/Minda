@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        tools:context=".ui.instructor.add_quiz.AddQuizDetailFragment">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/materialCardView8"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:elevation="5dp"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="16dp"
+                tools:ignore="HardcodedText">
+
+                <EditText
+                    android:id="@+id/quizQuestionEt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/search_field_background"
+                    android:hint="Question"
+                    android:inputType="textPersonName"
+                    android:padding="12dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="Autofill" />
+
+                <EditText
+                    android:id="@+id/quizFirstChoiceEt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/search_field_background"
+                    android:hint="A"
+                    android:inputType="textPersonName"
+                    android:padding="12dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/quizQuestionEt"
+                    tools:ignore="Autofill" />
+
+                <EditText
+                    android:id="@+id/quizSecondChoiceEt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/search_field_background"
+                    android:hint="B"
+                    android:inputType="textPersonName"
+                    android:padding="12dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/quizFirstChoiceEt"
+                    tools:ignore="Autofill" />
+
+                <EditText
+                    android:id="@+id/quizThirdChoiceEt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/search_field_background"
+                    android:hint="C"
+                    android:inputType="textPersonName"
+                    android:padding="12dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/quizSecondChoiceEt"
+                    tools:ignore="Autofill" />
+
+                <EditText
+                    android:id="@+id/quizFourthChoiceEt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/search_field_background"
+                    android:hint="E"
+                    android:inputType="textPersonName"
+                    android:padding="12dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/quizThirdChoiceEt"
+                    tools:ignore="Autofill" />
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="Specify the most appropriate answer"
+                    android:textColor="@color/primary_dark_orange"
+                    android:textSize="@dimen/_14ssp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/quizFourthChoiceEt"
+                    app:layout_constraintStart_toStartOf="@+id/quizFourthChoiceEt"
+                    app:layout_constraintTop_toBottomOf="@+id/quizFourthChoiceEt" />
+
+                <RadioGroup
+                    android:id="@+id/selectedRightChoiceGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="@+id/quizFourthChoiceEt"
+                    app:layout_constraintStart_toStartOf="@+id/quizFourthChoiceEt"
+                    app:layout_constraintTop_toBottomOf="@+id/textView15">
+
+                    <RadioButton
+                        android:id="@+id/firstChoiceRadioBtn"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="A"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                    <RadioButton
+                        android:id="@+id/secondChoiceRadioBtn"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="B"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                    <RadioButton
+                        android:id="@+id/thirdChoiceRadioBtn"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="C"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                    <RadioButton
+                        android:id="@+id/fourthChoiceRadioBtn"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="E"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                        tools:ignore="TouchTargetSizeCheck" />
+                </RadioGroup>
+
+                <Button
+                    android:id="@+id/nextQuizQuestionBtn"
+                    android:layout_width="@dimen/_200sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/get_start_btn_back"
+                    android:text="Next"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14ssp"
+                    app:layout_constraintEnd_toEndOf="@+id/selectedRightChoiceGroup"
+                    app:layout_constraintStart_toStartOf="@+id/selectedRightChoiceGroup"
+                    app:layout_constraintTop_toBottomOf="@+id/selectedRightChoiceGroup" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <Button
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/get_start_btn_back"
+            android:text="Finish"
+            android:textAllCaps="false"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintEnd_toEndOf="@+id/materialCardView8"
+            app:layout_constraintStart_toStartOf="@+id/materialCardView8"
+            app:layout_constraintTop_toBottomOf="@+id/materialCardView8"
+            tools:ignore="HardcodedText" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

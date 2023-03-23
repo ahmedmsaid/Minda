@@ -7,15 +7,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp"
-        tools:context=".ui.instructor.add_course.AddCourseFragment">
+        tools:context=".ui.instructor.add_quiz.AddQuizFragment">
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/materialCardView5"
+            android:id="@+id/materialCardView7"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_80sdp"
             android:elevation="5dp"
             app:cardCornerRadius="10dp"
-            android:layout_marginTop="@dimen/_80sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -24,68 +24,90 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="16dp">
+                android:padding="16dp"
+                tools:ignore="HardcodedText">
+
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add quiz info"
+                    android:textStyle="bold"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textColor="@color/primary_dark_orange"
+                    android:textSize="@dimen/_16ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/courseTitleEt"
+                    android:id="@+id/quizNoEt"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16sdp"
                     android:background="@drawable/search_field_background"
-                    android:hint="Course Title"
-                    android:inputType="textPersonName"
+                    android:hint="Quiz no."
+                    android:inputType="number"
                     android:padding="12dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="Autofill,HardcodedText" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView14"
+                    tools:ignore="Autofill" />
 
                 <EditText
-                    android:id="@+id/courseDescriptionEt"
+                    android:id="@+id/quizStartTimeEt"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_16sdp"
                     android:background="@drawable/search_field_background"
-                    android:hint="Description"
-                    android:inputType="textPersonName"
-                    android:padding="12dp"
-                    app:layout_constraintEnd_toEndOf="@+id/courseTitleEt"
-                    app:layout_constraintStart_toStartOf="@+id/courseTitleEt"
-                    app:layout_constraintTop_toBottomOf="@+id/courseTitleEt"
-                    tools:ignore="HardcodedText,Autofill" />
-
-                <EditText
-                    android:id="@+id/durationIdEt"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_16sdp"
-                    android:background="@drawable/search_field_background"
-                    android:hint="Duration"
+                    android:hint="Start Time"
                     android:inputType="time"
                     android:padding="12dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/courseDescriptionEt"
-                    tools:ignore="Autofill,HardcodedText" />
+                    app:layout_constraintEnd_toEndOf="@+id/quizNoEt"
+                    app:layout_constraintStart_toStartOf="@+id/quizNoEt"
+                    app:layout_constraintTop_toBottomOf="@+id/quizNoEt"
+                    tools:ignore="Autofill" />
+
+                <EditText
+                    android:id="@+id/quizEndTimeEt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:background="@drawable/search_field_background"
+                    android:hint="End Time"
+                    android:inputType="time"
+                    android:padding="12dp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/quizStartTimeEt"
+                    app:layout_constraintStart_toStartOf="@+id/quizStartTimeEt"
+                    app:layout_constraintTop_toBottomOf="@+id/quizStartTimeEt"
+                    tools:ignore="Autofill" />
+
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.card.MaterialCardView>
 
+
         <Button
-            android:id="@+id/saveCourseBtn"
+            android:id="@+id/nextQuizInfoBtn"
             android:layout_width="@dimen/_200sdp"
             android:layout_height="wrap_content"
             android:background="@drawable/get_start_btn_back"
-            android:text="Save"
+            android:fontFamily="@font/roboto"
+            android:text="Next"
+            android:layout_marginTop="@dimen/_16sdp"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="@dimen/_16ssp"
-            android:layout_marginTop="@dimen/_16sdp"
-            app:layout_constraintEnd_toEndOf="@+id/materialCardView5"
-            app:layout_constraintStart_toStartOf="@+id/materialCardView5"
-            app:layout_constraintTop_toBottomOf="@+id/materialCardView5"
+            app:layout_constraintEnd_toEndOf="@+id/materialCardView7"
+            app:layout_constraintStart_toStartOf="@+id/materialCardView7"
+            app:layout_constraintTop_toBottomOf="@+id/materialCardView7"
             tools:ignore="HardcodedText" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -3,19 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp"
-        tools:context=".ui.instructor.add_course.AddCourseFragment">
+        tools:context=".ui.instructor.add_assignment.AddAssignmentFragment">
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/materialCardView5"
+            android:id="@+id/materialCardView6"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_80sdp"
             android:elevation="5dp"
             app:cardCornerRadius="10dp"
-            android:layout_marginTop="@dimen/_80sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -27,12 +28,13 @@
                 android:padding="16dp">
 
                 <EditText
-                    android:id="@+id/courseTitleEt"
+                    android:id="@+id/weekNoEt"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
                     android:background="@drawable/search_field_background"
-                    android:hint="Course Title"
-                    android:inputType="textPersonName"
+                    android:hint="Week no."
+                    android:inputType="number"
                     android:padding="12dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -40,51 +42,54 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="Autofill,HardcodedText" />
 
-                <EditText
-                    android:id="@+id/courseDescriptionEt"
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_16sdp"
-                    android:background="@drawable/search_field_background"
-                    android:hint="Description"
-                    android:inputType="textPersonName"
-                    android:padding="12dp"
-                    app:layout_constraintEnd_toEndOf="@+id/courseTitleEt"
-                    app:layout_constraintStart_toStartOf="@+id/courseTitleEt"
-                    app:layout_constraintTop_toBottomOf="@+id/courseTitleEt"
-                    tools:ignore="HardcodedText,Autofill" />
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="@+id/weekNoEt"
+                    app:layout_constraintStart_toStartOf="@+id/weekNoEt"
+                    app:layout_constraintTop_toBottomOf="@+id/weekNoEt">
 
-                <EditText
-                    android:id="@+id/durationIdEt"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_16sdp"
-                    android:background="@drawable/search_field_background"
-                    android:hint="Duration"
-                    android:inputType="time"
-                    android:padding="12dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/courseDescriptionEt"
-                    tools:ignore="Autofill,HardcodedText" />
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Add file"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                        android:textColor="@color/veryDarkGray"
+                        tools:ignore="HardcodedText" />
+
+                    <Button
+                        android:id="@+id/uploadAssignmentBtn"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/primary_dark_orange"
+                        android:text="Upload"
+                        android:textSize="@dimen/_14ssp"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        tools:ignore="HardcodedText" />
+                </LinearLayout>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
-
         </com.google.android.material.card.MaterialCardView>
 
         <Button
-            android:id="@+id/saveCourseBtn"
+            android:id="@+id/saveAssignmentBtn"
             android:layout_width="@dimen/_200sdp"
             android:layout_height="wrap_content"
             android:background="@drawable/get_start_btn_back"
             android:text="Save"
             android:textAllCaps="false"
+            android:layout_marginTop="@dimen/_16sdp"
             android:textColor="@color/white"
             android:textSize="@dimen/_16ssp"
-            android:layout_marginTop="@dimen/_16sdp"
-            app:layout_constraintEnd_toEndOf="@+id/materialCardView5"
-            app:layout_constraintStart_toStartOf="@+id/materialCardView5"
-            app:layout_constraintTop_toBottomOf="@+id/materialCardView5"
+            app:layout_constraintEnd_toEndOf="@+id/materialCardView6"
+            app:layout_constraintStart_toStartOf="@+id/materialCardView6"
+            app:layout_constraintTop_toBottomOf="@+id/materialCardView6"
             tools:ignore="HardcodedText" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

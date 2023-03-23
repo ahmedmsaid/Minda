@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import com.example.minda.R
 import com.example.minda.databinding.FragmentInstructorHomeBinding
+import com.example.minda.ui.instructor.add_course.AddCourseFragment
 
 class InstructorHomeFragment : Fragment() {
 
@@ -22,9 +23,9 @@ class InstructorHomeFragment : Fragment() {
         binding = DataBindingUtil.inflate(layoutInflater,R.layout.fragment_instructor_home,container,false)
 
         binding.addNewCourseBtn.setOnClickListener {
-            findNavController().navigate(R.id.action_instructorHomeFragment_to_addCourseFragment)
+//            findNavController().navigate(R.id.action_instructorHomeFragment_to_addCourseFragment)
+            AddCourseFragment().show(requireActivity().supportFragmentManager,"addNewCourseSheet")
         }
-
         return binding.root
     }
 }
