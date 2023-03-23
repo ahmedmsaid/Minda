@@ -2,10 +2,36 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/instructor_inner_nav"
-    app:startDestination="@id/instructorProfileFragment">
+    app:startDestination="@id/instructorHomeFragment">
 
     <fragment
         android:id="@+id/instructorProfileFragment"
         android:name="com.example.minda.ui.instructor.profile.InstructorProfileFragment"
-        android:label="InstructorProfileFragment" />
+        android:label="Profile" >
+        <action
+            android:id="@+id/action_instructorProfileFragment_to_instructorHomeFragment"
+            app:destination="@id/instructorHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/instructorHomeFragment"
+        android:name="com.example.minda.ui.instructor.home.InstructorHomeFragment"
+        android:label="Home" >
+        <action
+            android:id="@+id/action_instructorHomeFragment_to_instructorProfileFragment"
+            app:destination="@id/instructorProfileFragment" />
+        <action
+            android:id="@+id/action_instructorHomeFragment_to_addCourseFragment"
+            app:destination="@id/addCourseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addCourseFragment"
+        android:name="com.example.minda.ui.instructor.add_course.AddCourseFragment"
+        android:label="Add Course" >
+        <action
+            android:id="@+id/action_addCourseFragment_to_instructorHomeFragment"
+            app:destination="@id/instructorHomeFragment" />
+        <action
+            android:id="@+id/action_addCourseFragment_to_instructorProfileFragment"
+            app:destination="@id/instructorProfileFragment" />
+    </fragment>
 </navigation>

@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="primer_dark_gray">#545D62</color>
     <color name="primary_dark_orange">#FF8941</color>
+    <color name="veryDarkGray">#29353B</color>
 </resources>

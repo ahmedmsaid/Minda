@@ -3,6 +3,7 @@ package com.example.minda
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.navigation.findNavController
 import com.example.minda.databinding.ActivityContentStudentBinding
 
 class StudentContentActivity : AppCompatActivity() {
@@ -12,18 +13,27 @@ class StudentContentActivity : AppCompatActivity() {
         binding = ActivityContentStudentBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.studentBottomNavigationView.setItemSelected(R.id.profile,true)
+        binding.studentBottomNavigationView.setItemSelected(R.id.home,true)
 
         binding.studentBottomNavigationView.setOnItemSelectedListener {id->
+            val page = binding.fragmentContainerView2.findNavController().currentDestination?.label
             when (id) {
                 R.id.home -> {
-                    Toast.makeText(this,"Student Home",Toast.LENGTH_SHORT).show()
+                    if (page == "Profile"){
+                        binding.fragmentContainerView2
+                            .findNavController()
+                            .navigate(R.id.action_studentProfileFragment_to_studentHomeFragment)
+                    }
                 }
                 R.id.notification -> {
                     Toast.makeText(this,"Student Notification",Toast.LENGTH_SHORT).show()
                 }
                 R.id.profile -> {
-                    Toast.makeText(this,"Student Profile",Toast.LENGTH_SHORT).show()
+                    if (page == "Home"){
+                        binding.fragmentContainerView2
+                            .findNavController()
+                            .navigate(R.id.action_studentHomeFragment_to_studentProfileFragment)
+                    }
                 }
             }
         }

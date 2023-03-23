@@ -28,7 +28,6 @@ class StudentProfileFragment : Fragment() {
             }
         }
 
-
         return binding.root
     }
 }
