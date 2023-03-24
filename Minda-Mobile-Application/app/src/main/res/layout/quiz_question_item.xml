@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:padding="16dp"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:elevation="5dp"
+            app:cardCornerRadius="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+                <TextView
+                    android:id="@+id/questionHeader"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:minLines="3"
+                    android:text="@string/question_header"
+                    android:textColor="@color/veryDarkGray"
+                    android:textSize="@dimen/_12ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="HardcodedText" />
+
+                <RadioGroup
+                    android:id="@+id/reviewQuizChoicesRadGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/questionHeader">
+
+                    <RadioButton
+                        android:id="@+id/firstChoiceReview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="mini-batches"
+                        android:textSize="@dimen/_12ssp"
+                        tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+                    <RadioButton
+                        android:id="@+id/secondChoiceReview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="hyper-parameters"
+                        android:textSize="@dimen/_12ssp"
+                        tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+                    <RadioButton
+                        android:id="@+id/thirdChoiceReview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="super-parameters"
+                        android:textSize="@dimen/_12ssp"
+                        tools:ignore="HardcodedText,TouchTargetSizeCheck,TouchTargetSizeCheck" />
+
+                    <RadioButton
+                        android:id="@+id/fourthChoiceReview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="optimized-parameters"
+                        android:textSize="@dimen/_12ssp"
+                        tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+                </RadioGroup>
+
+                <TextView
+                    android:id="@+id/questionAnswerTv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Answer"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#FF0000"
+                    android:textSize="@dimen/_12ssp"
+                    app:layout_constraintEnd_toEndOf="@+id/reviewQuizChoicesRadGroup"
+                    app:layout_constraintStart_toStartOf="@+id/reviewQuizChoicesRadGroup"
+                    app:layout_constraintTop_toBottomOf="@+id/reviewQuizChoicesRadGroup"
+                    tools:ignore="HardcodedText" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

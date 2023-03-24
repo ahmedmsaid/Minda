@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import com.example.minda.R
 import com.example.minda.databinding.FragmentInstructorHomeBinding
+import com.example.minda.ui.instructor.add_assignment.AddAssignmentFragment
 import com.example.minda.ui.instructor.add_course.AddCourseFragment
 
 class InstructorHomeFragment : Fragment() {
