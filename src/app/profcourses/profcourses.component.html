@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="container"> 
+    <div class="content">
+        <div class="top">
+            <p class="Courses">Managed Courses</p>
+            <input type="submit" class="add" value="Add Courses" />
+        </div>
+        <div class="flex">
+            <div class="cont" *ngFor="let course of courses">
+                <div class="info">
+                  <p class="name"><i class="fa fa-book" style="color: rgb(59, 76, 76);"></i> {{ course.name }}</p>
+                  <p class="description">{{ course.description }}</p>
+                  <p class="icon"><i class="fa fa-clock-o"></i> {{ course.time }} 
+                    <i class="fa fa-signal space"></i> {{ course.level }}
+                  </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

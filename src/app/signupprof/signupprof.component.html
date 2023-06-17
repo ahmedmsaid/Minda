@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="input">
+        <p class="minda">Minda</p>
+        <p class="sign">Sign up</p>
+        <form #signupprofForm="ngForm" (ngSubmit)="onSubmit(signupprofForm)">
+            <div class="inp-box">
+                <span id="fname" class="text-danger"></span>
+                <input ngModel name="firstName" id="fname"  placeholder="First Name" />&nbsp;
+                <span id="lname" class="text-danger"></span>
+                <input ngModel name="lastName" id="lname"  placeholder="Last Name" /><br /><br />
+                <span id="Email" class="text-danger"></span>
+                <input ngModel name="email" id="Email"  placeholder="Email Address" />&nbsp;
+                <span id="profcode" class="text-danger"></span>
+                <input ngModel name="profcode" id="profcode"  placeholder="8-digit-number" /><br /><br />
+                <span id="Password"  class="text-danger"></span>
+                <input ngModel name="password" type="password" id="Password" placeholder="password" /><br /><br />
+                <span id="cPassword"  class="text-danger"></span>
+                <input ngModel name="confirmPassword" type="password" id="cPassword" placeholder="Confirm password" /><br /><br />
+                <span id="bd"  class="text-danger"></span>
+                <input ngModel name="Birthdate" type="date" id="bd" placeholder="Birthdate mm/dd/yyyy" /><br /><br />
+                <span id="phone"  class="text-danger"></span>
+                <input ngModel name="phone" type="number" id="phone" placeholder="Phone" /><br /><br />
+                <span id="phone"  class="text-danger"></span>
+                <label class="gender" for="gender">Select Gender:</label><br/>
+                <select ngModel name="gender" id="gender" name="gender">
+                    <option value="male">Male</option>
+                    <option value="femal">Female</option>
+                </select>
+            </div>
+            <input type="submit" class="signup" value="Sign Up" /><br />
+            <p class="acc">Do you have an account? <a routerLink="/loginprof"> Log In </a></p>
+        </form>
+    </div>
+    <div class="img"></div>
+</div>

@@ -1,0 +1,121 @@
+.container {
+    margin: auto;
+    display: flex;
+   flex-direction: column;
+}
+.img{
+    display: flex;
+    height: 282px;
+    left: 0px;
+    top: 109px;
+    background: linear-gradient(359.7deg, rgba(35, 31, 32, 0.82) 45.72%, rgba(217, 217, 217, 0) 99.86%),url(../../assets/img/img.jpg);
+    mix-blend-mode: multiply;
+}
+.title{
+    position: absolute;
+    width: 858px;
+    height: 80px;
+    left: 66px;
+    font-family: 'Tw Cen MT';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 70px;
+    color: #FFFFFF;
+}
+
+.name{
+    position: absolute;
+    width: 858px;
+    height: 80px;
+    left: 93px;
+    top: 129px;
+    font-family: 'Tw Cen MT';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 39px;
+    color: #FFFFFF;
+}
+
+.content{
+    display: flex;
+}
+.aside{
+    display: flex;
+    background: #D8D8D8;
+    float: right;
+    border-left: 1px solid #858383;
+    margin-left: 80px;
+}
+.quiz{
+    font-family: 'Tw Cen MT';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 30px;
+    line-height: 29px;
+    color: #000000;
+    width: 930px;
+}
+.quiz h1{
+    width: 979px;
+    height: 47px;
+    font-family: 'Tw Cen MT';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 36px;
+    line-height: 39px;
+    color: #000000;
+}
+.bg{
+  position: relative;
+  height: 1px;
+}
+
+.bg::before{
+  content: '';
+  background-image: linear-gradient(to right, #000000 0%, #e82908 100%);
+  top: -10px;
+  left: -10px;
+  bottom: -10px;
+  right: -10px;
+  position: absolute;
+  height: 4px;
+}
+input[type=radio] {
+    appearance: none;
+}
+input[type=radio] {
+    border: 7px solid #b1b1b1;
+    border-radius: 50%;
+}
+input[type=radio]:checked::before {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: #418EBA;
+    border-radius: 50%;
+    margin: auto;
+}
+ul {
+    list-style-type: none;
+}
+  
+li {
+    margin: 10px;
+}
+button{
+    width: 163px;
+    height: 51px;
+    margin-left: 45%;
+    background: #E3654B;
+    mix-blend-mode: normal;
+    border-radius: 5px;
+    font-family: 'Tw Cen MT';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 35px;
+    color: #FFFFFF;
+}

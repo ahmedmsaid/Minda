@@ -1,0 +1,42 @@
+nav{
+    display: flex;
+    background-color: #fff;
+    padding: 1rem;
+    justify-content: space-between;
+    max-height: 70px;
+}
+.logo img{
+    margin-top: -25px;
+    margin-left: -30px;
+    height: 150px;
+    width: auto;
+    // padding-right: 300px;
+}
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000000;
+  }
+  a {
+    padding-left: 3rem;
+    text-decoration: none;
+    margin-right: 1rem;
+    font-family: 'Tw Cen MT';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 25px;
+    color: #000000;
+  }
+
+  .icons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .icon-black {
+    color: #000;
+    font-size: 1.2rem;
+    margin: 0 0.5rem;
+  }

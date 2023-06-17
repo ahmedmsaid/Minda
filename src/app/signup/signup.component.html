@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="input">
+      <p class="minda">Minda</p>
+      <p class="sign">Sign up</p>
+      <form #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)">
+        <div class="inp-box">
+          <span id="fnames" class="text-danger"></span>
+          <input ngModel name="firstName" id="firstName"  placeholder="First Name" />&nbsp;
+          <span id="lnames" class="text-danger"></span>
+          <input ngModel name="lastName" id="lastName"  placeholder="Last Name" /><br /><br />
+          <span id="Emails" class="text-danger"></span>
+          <input ngModel name="email" id="Email" placeholder="Email Address" /><br /><br />
+          <span id="Passwords" class="text-danger"></span>
+          <input type="password" ngModel name="password" id="Password" placeholder="password" /><br /><br />
+          <span id="cPasswords" class="text-danger"></span>
+          <input type="password" ngModel name="confirmPassword" id="confirmPassword" placeholder="Confirm password" /><br /><br />
+          <span id="bds" class="text-danger"></span>
+          <input type="date" ngModel name="birthdate" id="birthdate" placeholder="Birthdate mm/dd/yyyy" /><br /><br />
+          <span id="phones" class="text-danger"></span>
+          <input type="number" ngModel name="phone" id="phone" placeholder="Phone" /><br /><br />
+          <span id="phones" class="text-danger"></span>
+          <label class="gender" for="gender">Select Gender:</label><br />
+          <select ngModel name="gender" id="gender">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
+        <input type="submit" class="signup" value="Sign Up" /><br />
+        <p class="acc">Do you have an account? <a routerLink="/login"> Log In </a></p>
+      </form>
+    </div>
+    <div class="img"></div>
+  </div>

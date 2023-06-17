@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="input">
+        <p class="minda">Minda</p>
+        <p class="add"> Add Course </p>
+        <form #addcourseForm="ngForm" (ngSubmit)="onSubmit(addcourseForm)" class="cont">
+            <div class="inp-box">
+                <span id="name" class="text-danger"></span>
+                <input ngModel name="name" id="name" placeholder="course name" /><br /><br />
+                <span id="description"  class="text-danger"></span>
+                <input ngModel name="description" id="description" placeholder="course description" /><br /><br />
+                <span id="image"  class="text-danger"></span>
+                <label id="image">course image</label><br />
+                <input ngModel name="image" type="file" class="Upload" value="Upload" /><br /><br />
+            </div>
+            <input type="submit" class="Next" value="Next" /><br /><br /><br />
+        </form>
+    </div>
+    <div class="img"></div>
+</div>

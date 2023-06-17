@@ -1,0 +1,144 @@
+.container{
+    display: flex;
+    background: #D8D8D8;
+    width: 90%;
+    height: max-content;
+    margin-top: 20px;
+}
+
+.input{
+    display: flex;
+    flex-direction: column;
+    width: 650px;
+    padding-left: 40px;
+    background: #F1EFEF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+.minda{
+    width: 250px;
+    height: 143px;
+    font-family: 'Traditional Arabic';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 96px;
+    line-height: 143px;
+    color: #2D5D78;
+    margin-top: -2px;
+}
+
+.add{
+    height: 52px;
+    margin-top: -120px;
+    font-family: 'Tw Cen MT';
+    font-style: italic;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 52px;
+    color: #E3654B;
+}
+
+.inp-box input{
+    box-sizing: border-box;
+    width: 435px;
+    height: 77px;
+    background: #FFFFFF;
+    border: 2px solid #898787;
+    border-radius: 8px;
+    font-family: "Tw Cen MT";
+    font-style: italic;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 35px;
+    color: #898787;
+    padding-left: 10px;
+}
+
+
+.login{
+    position: absolute;
+    width: 217px;
+    height: 63px;
+    left: 178px;
+    top: 564px;
+    background: #E3654B;
+    mix-blend-mode: normal;
+    border-radius: 5px;
+    font-family: "Tw Cen MT";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 44px;
+    color: #FFFFFF;
+}
+
+label{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #666666;
+}
+
+.Next{
+    width: 217px;
+    height: 63px;
+    background: #E3654B;
+    mix-blend-mode: normal;
+    border-radius: 5px;
+    font-family: "Tw Cen MT";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 44px;
+    color: #FFFFFF;
+    margin-left: 110px;
+}
+
+.img{
+    width: 679px;
+    background: url(../../assets/img/lec.jpg);
+    border-radius: 10px 10px 10px 10px;
+    background-size: cover;
+    background-position: center;
+    margin-left: 10%;
+}
+
+@media screen and (max-width: 850px) {
+    .container {   
+        height: 650px;
+    }
+    .img{
+        display: none;
+    }
+    .inp-box input{
+        width: 250px;
+    }
+    .input{
+        margin-left: 10%;
+        width: 700px;
+    }
+    .Next{
+        margin-left: 0;
+    }
+  }
+  @media screen and (max-width: 1400px) and (min-width: 600px){
+    .container {   
+        height: 650px;
+    }
+    .img{
+        width: 650px;
+    }
+    .inp-box input{
+        width: 320px;
+    }
+    .input{
+        width: 700px;
+    }
+    .Next{
+        margin-left: 0;
+    }
+  }
+

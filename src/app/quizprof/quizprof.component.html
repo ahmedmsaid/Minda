@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="img">
+      <h3 class="title">{{ course.title }}</h3><br>
+      <h3 class="name">By :- {{ course.authorName }}</h3>
+  </div><!-- #questionText="ngModel" -->
+  <div class="content">
+      <div class="quiz">
+        <h1>Create a Quiz</h1>
+        <div class="bg"></div>
+        <form #quizprofform="ngForm" (ngSubmit)="onSubmit(quizprofform)">
+          <label for="questionText">Question:</label>&nbsp;
+          
+          <input type="text" ngModel name="questionText" required ><br>
+          
+          <input type="radio" ngModel name="correctChoice" value="1"/>
+          <input type="text" ngModel name="choice1Text" /> <br>
+          
+          <input type="radio" ngModel name="correctChoice" value="2" />
+          <input type="text" ngModel name="choice2Text"  /><br>
+           
+          <input type="radio" ngModel name="correctChoice"  value="3"/>
+          <input type="text" ngModel name="choice3Text"  /><br>
+      
+          <input type="radio" ngModel name="correctChoice"  value="4"/>
+          <input type="text" ngModel name="choice4Text"  /><br>
+          <div>Selected choice: {{ getSelectedChoiceText() }}</div>
+          <button type="submit">Add Question</button>
+        </form> 
+      </div>
+      <div class="aside"></div>
+  </div>
+</div>

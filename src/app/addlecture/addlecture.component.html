@@ -1,0 +1,18 @@
+<div class="container"> 
+    <div class="img"></div>
+    <div class="input">
+        <p class="minda">Minda</p>
+        <p class="add"> - Add Lecture </p>
+        <form #addlectureForm="ngForm" (ngSubmit)="onSubmit(addlectureForm)" class="cont">
+            <div class="inp-box">
+                <span id="name" class="text-danger"></span>
+                <input ngModel name="name" id="name" placeholder="Lecture name" /><br /><br />
+                <span id="description"  class="text-danger"></span>
+                <input ngModel name="description" id="description" placeholder="Lecture description" /><br /><br />
+                <span id="duration"  class="text-danger"></span>
+                <input ngModel name="datetime" type="datetime" id="duration" placeholder="Lecture duration" /><br /><br />
+            </div>
+            <input type="submit" class="Next" value="Add lecture" /><br /><br /><br />
+        </form>
+    </div>
+</div>

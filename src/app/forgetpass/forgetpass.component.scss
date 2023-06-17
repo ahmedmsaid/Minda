@@ -1,0 +1,118 @@
+/* Forget Pass */
+.container{
+    display: flex;
+    background: #D8D8D8;
+    width: 90%;
+    height: max-content;
+    margin-top: 20px;
+}
+
+.input{
+    display: flex;
+    flex-direction: column;
+    width: 650px;
+    padding-left: 40px;
+    margin-left: 10%;
+    background: #F1EFEF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+.minda{
+    width: 250px;
+    height: 143px;
+    font-family: 'Traditional Arabic';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 96px;
+    line-height: 143px;
+    color: #2D5D78;
+    margin-top: 15px;
+}
+
+p{
+    margin-top: -120px;
+    font-family: 'Tw Cen MT';
+    font-style: italic;
+    font-weight: 300;
+    font-size: 38px;
+    line-height: 52px;
+    color: #000000;
+}
+.inp-box input{
+    box-sizing: border-box;
+    width: 390px;
+    height: 77px;
+    background: #FFFFFF;
+    border: 2px solid #898787;
+    border-radius: 8px;
+    font-family: "Tw Cen MT";
+    font-style: italic;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 35px;
+    color: #898787;
+    padding-left: 10px;
+}
+
+.Reset{
+    width: 300px;
+    height: 63px;
+    background: #E3654B;
+    mix-blend-mode: normal;
+    border-radius: 5px;
+    font-family: "Tw Cen MT";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 44px;
+    color: #FFFFFF;
+    margin-left: 40px;
+}
+
+.imga{
+    background-size: cover;
+    background-position: center;
+    /* width: 875px; */
+    height: 564px;
+    margin-left: 124px;
+    margin-top: 100px;
+}
+
+@media screen and (max-width: 960px) {
+    .container {   
+        height: 750px;
+    }
+    .imga{
+        display: none;
+    }
+    .inp-box input{
+        width: 250px;
+    }
+    .input{
+        width: 700px;
+    }
+    .Reset{
+        margin-left: 0;
+        font-size: 30px;
+        width: 250px;
+    }
+  }
+  @media screen and (max-width: 1400px) and (min-width: 960px){
+    .container {   
+        height: 750px;
+    }
+    .inp-box input{
+        width: 300px;
+    }
+    .imga{
+        width: 300px;
+    }
+    .input{
+        width: 900px;
+    }
+    .Reset{
+        margin-left: 0;
+        
+    }
+  }

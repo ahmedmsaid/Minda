@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="input">
+        <p class="minda">Minda</p>
+        <form #forgetpassForm="ngForm" (ngSubmit)="onSubmit(forgetpassForm)" class="cont">
+            <div class="inp-box">
+                <p>Forgot your password? <br>Please, enter your credentials:</p>
+                <span id="Email" class="text-danger"></span>
+                <input ngModel name="email" id="Email" placeholder="Email Address" /><br /><br />
+                <span id="Password"  class="text-danger"></span>
+                <input ngModel name="password" type="password" id="Password" placeholder="password" /><br /><br />
+                <span id="cPassword"  class="text-danger"></span>
+                <input ngModel name="confirmPassword" type="password" id="cPassword" placeholder="Confirm password" /><br /><br />
+            </div>
+            <input type="submit" class="Reset" value="Reset Password" /><br />
+        </form>
+    </div>
+    <div class="img"><img class="imga" src="../../assets/img/Resetpassword.jpg"></div>
+</div>

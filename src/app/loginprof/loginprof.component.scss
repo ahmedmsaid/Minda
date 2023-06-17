@@ -1,0 +1,151 @@
+/* Sign In Prof */
+.container{
+    display: flex;
+    background: #D8D8D8;
+    width: 90%;
+    height: max-content;
+}
+
+.input{
+    display: flex;
+    flex-direction: column;
+    width: 650px;
+    padding-left: 40px;
+    margin-left: 10%;
+    background: #F1EFEF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+.minda{
+    width: 250px;
+    height: 143px;
+    font-family: 'Traditional Arabic';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 96px;
+    line-height: 143px;
+    color: #2D5D78;
+}
+
+.sign{
+    width: 127px;
+    height: 52px;
+    margin-top: -120px;
+    font-family: 'Tw Cen MT';
+    font-style: italic;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 52px;
+    color: #E3654B;
+}
+
+.inp-box input{
+    box-sizing: border-box;
+    width: 435px;
+    height: 77px;
+    background: #FFFFFF;
+    border: 2px solid #898787;
+    border-radius: 8px;
+    font-family: "Tw Cen MT";
+    font-style: italic;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 35px;
+    color: #898787;
+    padding-left: 10px;
+}
+
+.forgot{
+    width: 180px;
+    height: 37px;
+    font-family: "Traditional Arabic";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 37px;
+    color: #4B4B4B;
+}
+
+.login{
+    width: 217px;
+    height: 63px;
+    background: #677E98;
+    mix-blend-mode: normal;
+    border-radius: 5px;
+    font-family: "Tw Cen MT";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 44px;
+    color: #FFFFFF;
+    margin-left: 110px;
+}
+
+.acc{
+    width: 352px;
+    height: 37px;
+    font-family: "Traditional Arabic";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 37px;
+    color: #000000;
+    margin-left: 50px;
+}
+
+a{
+    color: #5B7A81;
+    text-decoration: none;
+}
+
+.img{
+    width: 679px;
+    background: url(../../assets/img/login-std.jpg);
+    border-radius: 0px 10px 10px 0px;
+    background-size: cover;
+    background-position: center;
+}
+
+@media screen and (max-width: 850px) {
+    .container {   
+        height: 750px;
+    }
+    .img{
+        display: none;
+    }
+    .inp-box input{
+        width: 250px;
+    }
+    .input{
+        width: 700px;
+    }
+    .login{
+        margin-left: 0;
+    }
+    .acc{
+        font-size: 18px;
+        margin-left: 0;
+    }
+  }
+  @media screen and (max-width: 1400px) and (min-width: 600px){
+    .container {   
+        height: 750px;
+    }
+    .img{
+        width: 650px;
+    }
+    .inp-box input{
+        width: 320px;
+    }
+    .input{
+        width: 700px;
+    }
+    .login{
+        margin-left: 0;
+    }
+    .acc{
+        font-size: 18px;
+        margin-left: 0;
+    }
+  }
