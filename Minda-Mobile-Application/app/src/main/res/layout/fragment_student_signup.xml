@@ -30,9 +30,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:paddingBottom="5dp"
                 android:elevation="10dp"
                 android:orientation="vertical"
+                android:paddingBottom="5dp"
                 app:cardCornerRadius="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -59,106 +59,136 @@
                         app:layout_constraintTop_toTopOf="parent"
                         tools:ignore="HardcodedText" />
 
-                    <EditText
-                        android:id="@+id/editText3"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/studentUsernameRegister"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10sdp"
-                        android:background="@drawable/et_background"
-                        android:drawableEnd="@drawable/icon_person"
                         android:fontFamily="@font/roboto"
                         android:hint="Username"
-                        android:importantForAutofill="no"
-                        android:inputType="textPersonName"
                         android:minHeight="@dimen/_38sdp"
-                        android:paddingStart="@dimen/_10sdp"
-                        android:paddingEnd="@dimen/_10sdp"
-                        android:textColorHint="#ABFFFFFF"
+                        app:boxStrokeColor="@color/primary_dark_orange"
+                        app:boxStrokeWidth="2dp"
+                        android:textColorHint="@color/primary_dark_orange"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView5"
-                        tools:ignore="HardcodedText" />
+                        tools:ignore="HardcodedText">
 
-                    <EditText
-                        android:id="@+id/editText"
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableEnd="@drawable/icon_person"
+                            android:inputType="textPersonName"
+                            android:textColor="@color/black" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/studentEmailForRegister"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_5sdp"
-                        android:autofillHints="emailAddress"
-                        android:background="@drawable/et_background"
-                        android:drawableEnd="@drawable/ic_round_email"
                         android:fontFamily="@font/roboto"
                         android:hint="Email"
-                        android:inputType="textEmailAddress"
+                        app:boxStrokeColor="@color/primary_dark_orange"
+                        app:boxStrokeWidth="2dp"
                         android:minHeight="@dimen/_38sdp"
-                        android:paddingStart="@dimen/_10sdp"
-                        android:paddingEnd="@dimen/_10sdp"
-                        android:textColor="@color/white"
-                        android:textColorHint="#ABFFFFFF"
-                        app:layout_constraintEnd_toEndOf="@+id/editText3"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/primary_dark_orange"
+                        app:layout_constraintEnd_toEndOf="@+id/studentUsernameRegister"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/editText3"
-                        tools:ignore="HardcodedText" />
+                        app:layout_constraintTop_toBottomOf="@+id/studentUsernameRegister"
+                        tools:ignore="HardcodedText">
 
-                    <EditText
-                        android:id="@+id/editText2"
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableEnd="@drawable/ic_round_email"
+                            android:inputType="textEmailAddress"
+
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/studentPasswordForRegister"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_5sdp"
-                        android:background="@drawable/et_background"
-                        android:drawableEnd="@drawable/carbon_password"
                         android:fontFamily="@font/roboto"
                         android:hint="Password"
-                        android:importantForAutofill="no"
-                        android:inputType="textPassword"
                         android:minHeight="@dimen/_38sdp"
-                        android:paddingStart="@dimen/_10sdp"
-                        android:paddingEnd="@dimen/_10sdp"
-                        android:textColor="@color/white"
-                        android:textColorHint="#ABFFFFFF"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/primary_dark_orange"
                         android:textSize="@dimen/_14ssp"
-                        app:layout_constraintEnd_toEndOf="@+id/editText"
+                        app:boxStrokeColor="@color/primary_dark_orange"
+                        app:boxStrokeWidth="2dp"
+                        app:layout_constraintEnd_toEndOf="@+id/studentEmailForRegister"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/editText"
-                        tools:ignore="HardcodedText" />
+                        app:layout_constraintTop_toBottomOf="@+id/studentEmailForRegister"
+                        app:passwordToggleEnabled="true"
+                        app:passwordToggleTint="@color/primary_dark_orange"
+                        tools:ignore="HardcodedText">
 
-                    <EditText
-                        android:id="@+id/editText4"
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPassword" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/studentConfirmPasswordForRegister"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_5sdp"
-                        android:background="@drawable/et_background"
-                        android:drawableEnd="@drawable/carbon_password"
                         android:fontFamily="@font/roboto"
                         android:hint="Confirm Password"
-                        android:importantForAutofill="no"
-                        android:inputType="textPassword"
                         android:minHeight="@dimen/_38sdp"
-                        android:paddingStart="@dimen/_10sdp"
-                        android:paddingEnd="@dimen/_10sdp"
-                        android:textColor="@color/white"
-                        android:textColorHint="#ABFFFFFF"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/primary_dark_orange"
                         android:textSize="@dimen/_14ssp"
-                        app:layout_constraintEnd_toEndOf="@+id/editText2"
-                        app:layout_constraintStart_toStartOf="@+id/editText2"
-                        app:layout_constraintTop_toBottomOf="@+id/editText2"
-                        tools:ignore="HardcodedText" />
+                        app:layout_constraintEnd_toEndOf="@+id/studentPasswordForRegister"
+                        app:layout_constraintStart_toStartOf="@+id/studentPasswordForRegister"
+                        app:layout_constraintTop_toBottomOf="@+id/studentPasswordForRegister"
+                        app:passwordToggleEnabled="true"
+                        app:passwordToggleTint="@color/primary_dark_orange"
+                        app:boxStrokeColor="@color/primary_dark_orange"
+                        app:boxStrokeWidth="2dp"
+                        tools:ignore="HardcodedText">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPassword" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
 
                     <Button
                         android:id="@+id/studentRegisterBtn"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginBottom="@dimen/_5sdp"
                         android:background="@drawable/login_btn_background"
                         android:fontFamily="@font/roboto"
+                        android:paddingTop="@dimen/_10sdp"
+                        android:paddingBottom="@dimen/_10sdp"
                         android:text="Register"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_14ssp"
                         android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="@+id/editText4"
-                        app:layout_constraintStart_toStartOf="@+id/editText4"
-                        app:layout_constraintTop_toBottomOf="@+id/editText4"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/studentConfirmPasswordForRegister"
+                        app:layout_constraintStart_toStartOf="@+id/studentConfirmPasswordForRegister"
+                        app:layout_constraintTop_toBottomOf="@+id/studentConfirmPasswordForRegister"
                         tools:ignore="HardcodedText" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -169,6 +199,10 @@
                 android:id="@+id/studentSignInBtn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginBottom="16dp"
                 android:background="@drawable/signup_btn_background"
                 android:fontFamily="@font/roboto"
                 android:text="Sign In"
@@ -176,9 +210,7 @@
                 android:textColor="@color/primary_dark_orange"
                 android:textSize="@dimen/_14ssp"
                 android:textStyle="bold"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/materialCardView3"
                 app:layout_constraintStart_toStartOf="@+id/materialCardView3"
                 app:layout_constraintTop_toBottomOf="@+id/materialCardView3"

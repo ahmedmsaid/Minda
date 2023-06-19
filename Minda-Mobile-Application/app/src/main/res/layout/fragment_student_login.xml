@@ -61,52 +61,65 @@
                         app:layout_constraintTop_toTopOf="parent"
                         tools:ignore="HardcodedText" />
 
-                    <EditText
-                        android:id="@+id/editText"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/studentEmailForLogin"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10sdp"
-                        android:autofillHints="emailAddress"
-                        android:background="@drawable/et_background"
-                        android:drawableEnd="@drawable/ic_round_email"
                         android:fontFamily="@font/roboto"
                         android:hint="Email"
-                        android:inputType="textEmailAddress"
                         android:minHeight="@dimen/_40sdp"
-                        android:paddingStart="@dimen/_10sdp"
-                        android:paddingEnd="@dimen/_10sdp"
-                        android:textColor="@color/white"
-                        android:textColorHint="#ABFFFFFF"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/primary_dark_orange"
+                        android:textSize="@dimen/_16ssp"
+                        app:boxStrokeColor="@color/primary_dark_orange"
+                        app:boxStrokeWidth="2dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView3"
-                        tools:ignore="HardcodedText,TextContrastCheck" />
+                        tools:ignore="HardcodedText,TextContrastCheck">
 
-                    <EditText
-                        android:id="@+id/editText2"
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableEnd="@drawable/ic_round_email"
+                            android:inputType="textEmailAddress" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/studentPasswordForLogin"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10sdp"
-                        android:background="@drawable/et_background"
-                        android:drawableEnd="@drawable/carbon_password"
                         android:fontFamily="@font/roboto"
                         android:hint="Password"
-                        android:importantForAutofill="no"
-                        android:inputType="textPassword"
                         android:minHeight="@dimen/_40sdp"
-                        android:paddingStart="@dimen/_10sdp"
-                        android:paddingEnd="@dimen/_10sdp"
-                        android:textColor="@color/white"
-                        android:textColorHint="#ABFFFFFF"
-                        android:textSize="@dimen/_14ssp"
-                        app:layout_constraintEnd_toEndOf="@+id/editText"
-                        app:layout_constraintStart_toStartOf="@+id/editText"
-                        app:layout_constraintTop_toBottomOf="@+id/editText"
-                        tools:ignore="HardcodedText,TextContrastCheck" />
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/primary_dark_orange"
+                        android:textSize="@dimen/_16ssp"
+                        app:boxStrokeColor="@color/primary_dark_orange"
+                        app:boxStrokeWidth="2dp"
+                        app:passwordToggleEnabled="true"
+                        app:passwordToggleTint="@color/primary_dark_orange"
+                        app:layout_constraintEnd_toEndOf="@+id/studentEmailForLogin"
+                        app:layout_constraintStart_toStartOf="@+id/studentEmailForLogin"
+                        app:layout_constraintTop_toBottomOf="@+id/studentEmailForLogin"
+                        tools:ignore="HardcodedText,TextContrastCheck">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPassword"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
 
                     <TextView
-                        android:id="@+id/textView4"
+                        android:id="@+id/studentForgetPassword"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_2sdp"
@@ -118,9 +131,9 @@
                         android:textColor="#29353B"
                         android:textSize="@dimen/_14ssp"
                         android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="@+id/editText2"
-                        app:layout_constraintStart_toStartOf="@+id/editText2"
-                        app:layout_constraintTop_toBottomOf="@+id/editText2"
+                        app:layout_constraintEnd_toEndOf="@+id/studentPasswordForLogin"
+                        app:layout_constraintStart_toStartOf="@+id/studentPasswordForLogin"
+                        app:layout_constraintTop_toBottomOf="@+id/studentPasswordForLogin"
                         tools:ignore="HardcodedText,TouchTargetSizeCheck" />
 
                     <Button
@@ -128,16 +141,20 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_5sdp"
                         android:background="@drawable/login_btn_background"
                         android:fontFamily="@font/roboto"
+                        android:paddingTop="@dimen/_10sdp"
+                        android:paddingBottom="@dimen/_10sdp"
                         android:text="Login"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_14ssp"
                         android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="@+id/textView4"
-                        app:layout_constraintStart_toStartOf="@+id/textView4"
-                        app:layout_constraintTop_toBottomOf="@+id/textView4"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/studentForgetPassword"
+                        app:layout_constraintStart_toStartOf="@+id/studentForgetPassword"
+                        app:layout_constraintTop_toBottomOf="@+id/studentForgetPassword"
                         tools:ignore="HardcodedText" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -147,16 +164,20 @@
                 android:id="@+id/studentSignUpBtn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginBottom="16dp"
                 android:background="@drawable/signup_btn_background"
                 android:fontFamily="@font/roboto"
+                android:paddingTop="@dimen/_12sdp"
+                android:paddingBottom="@dimen/_12sdp"
                 android:text="Sign Up"
                 android:textAllCaps="false"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginEnd="@dimen/_10sdp"
                 android:textColor="@color/primary_dark_orange"
-                android:textStyle="bold"
                 android:textSize="@dimen/_14ssp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/materialCardView2"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/materialCardView2"

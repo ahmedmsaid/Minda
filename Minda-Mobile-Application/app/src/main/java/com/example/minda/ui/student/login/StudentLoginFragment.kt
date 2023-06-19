@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import com.example.minda.StudentContentActivity
@@ -30,6 +31,7 @@ class StudentLoginFragment : Fragment() {
         }
 
         binding.studentSignUpBtn.setOnClickListener {
+//            Toast.makeText(requireContext(), binding.studentEmailForLogin.editText?.text.toString() , Toast.LENGTH_LONG).show()
             findNavController().navigate(R.id.action_studentLoginFragment_to_studentSignupFragment)
         }
         return binding.root
