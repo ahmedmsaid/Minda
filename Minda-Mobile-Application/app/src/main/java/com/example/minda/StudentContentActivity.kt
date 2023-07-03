@@ -3,11 +3,14 @@ package com.example.minda
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.minda.databinding.ActivityContentStudentBinding
+import com.example.minda.viewmodel.SharedViewModel
 
 class StudentContentActivity : AppCompatActivity() {
     private lateinit var binding:ActivityContentStudentBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityContentStudentBinding.inflate(layoutInflater)

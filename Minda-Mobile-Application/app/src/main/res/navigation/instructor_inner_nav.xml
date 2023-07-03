@@ -10,7 +10,9 @@
         android:label="Profile" >
         <action
             android:id="@+id/action_instructorProfileFragment_to_instructorHomeFragment"
-            app:destination="@id/instructorHomeFragment" />
+            app:destination="@id/instructorHomeFragment"
+            app:popUpTo="@id/instructorProfileFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/instructorHomeFragment"
