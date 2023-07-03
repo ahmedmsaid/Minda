@@ -26,7 +26,18 @@ export class SignupprofComponent {
         phone: signupprofForm.value.phone,
         gender: signupprofForm.value.gender
       };
-
+      if (signupprofForm.value.firstName ==='' || signupprofForm.value.lastName === ''|| signupprofForm.value.email === ''
+      || signupprofForm.value.password === ''|| signupprofForm.value.confirmPassword === ''|| signupprofForm.value.birthdate === ''
+      || signupprofForm.value.phone === ''|| signupprofForm.value.gender === '' ) {
+          const correctSpan = document.getElementById('checked');
+          if (correctSpan !== null) {
+            correctSpan.innerText = 'All Fileds Are Required';
+            console.log(formData);
+          }
+        }else{
+          this.router.navigate(['/loginprof']);
+          console.log(formData);
+        }
     // this.http.post('your-api-url', formData).subscribe(
     //   response => {
     //     console.log(response);
@@ -35,7 +46,5 @@ export class SignupprofComponent {
     //     console.error(error);
     //   }
     // );
-    this.router.navigate(['/loginprof']);
-    console.log(formData);
   }
 }

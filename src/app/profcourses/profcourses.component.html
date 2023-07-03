@@ -4,10 +4,10 @@
     <div class="content">
         <div class="top">
             <p class="Courses">Managed Courses</p>
-            <input type="submit" class="add" value="Add Courses" />
+            <input (click)="add()" type="submit" class="add" value="Add Courses" />
         </div>
         <div class="flex">
-            <div class="cont" *ngFor="let course of courses">
+            <div class="cont" *ngFor="let course of courses" (click)="onCourseClick(course.id)">
                 <div class="info">
                   <p class="name"><i class="fa fa-book" style="color: rgb(59, 76, 76);"></i> {{ course.name }}</p>
                   <p class="description">{{ course.description }}</p>

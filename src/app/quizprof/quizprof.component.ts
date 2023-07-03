@@ -2,10 +2,6 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 
-// interface Question {
-//   text: string;
-//   choices: { text: string; correct: boolean }[]; 
-// }
 
 @Component({
   selector: 'app-quizprof',
@@ -16,57 +12,37 @@ import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
   course = 
     {
       title: 'Information Retrieval',
-      authorName: "Dr. Asmaa",
     };
-
-  correctChoice!: number;
-  choice1Text: string = '';
-  choice2Text: string = '';
-  choice3Text: string = '';
-  choice4Text: string = '';
-
-  getSelectedChoiceText(): string {
-    if (this.correctChoice === 1) {
-      return this.choice1Text;
-    } else if (this.correctChoice === 2) {
-      return this.choice2Text;
-    } else if (this.correctChoice === 3) {
-      return this.choice3Text;
-    } else if (this.correctChoice === 4) {
-      return this.choice4Text;
-    } else {
-      return '';
-    }
-  }
-
-  // constructor(private http: HttpClient) {}
- // if (!this.person.firstName || !this.person.lastName || !this.person.email || !this.person.password || !this.person.confirmPassword) {
-    //   console.log('Please fill out all required fields');
-    //   return;
-    // }
+    quiz = {
+      q: '',
+      choices: [{
+        a1: '',
+        a2: '',
+        a3: '',
+        a4: '',
+      }],
+      Correct:''
+    };  
     onSubmit(quizprofform: NgForm) {
-      console.log(quizprofform.value.choiceCorrect);
       const formData = {
-        questionText: quizprofform.value.questionText,
-        choices: [
-            {
-              text: quizprofform.value.choice1Text,
-              correct: quizprofform.value.choiceCorrect, 
-            },
-            {
-              text: quizprofform.value.choice2Text,
-              correct: quizprofform.value.choiceCorrect, 
-            },
-            {
-              text: quizprofform.value.choice3Text,
-              correct: quizprofform.value.choiceCorrect, 
-            },
-            {
-              text: quizprofform.value.choice3Text,
-              correct: quizprofform.value.choiceCorrect, 
-            },
-        ],
+        q: quizprofform.value.q,
+        a1: quizprofform.value.a1,
+        a2: quizprofform.value.a2,
+        a3: quizprofform.value.a3,
+        a4: quizprofform.value.a4,
+        Correct: quizprofform.value.Correct,
       };
+
+      if (quizprofform.value.Correct !== quizprofform.value.a1 && quizprofform.value.Correct !== quizprofform.value.a2 &&
+        quizprofform.value.Correct !== quizprofform.value.a3 && quizprofform.value.Correct !== quizprofform.value.a4) {
+          const correctSpan = document.getElementById('Correct');
+          if (correctSpan !== null) {
+            correctSpan.innerText = 'Correct answer should be in the previous 4 fildes';
+            console.log(formData);
+          }
+        }else{
+          console.log(formData);
+        }
 
     // this.http.post('your-api-url', formData).subscribe(
     //   response => {
@@ -76,6 +52,6 @@ import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
     //     console.error(error);
     //   }
     // );
-    console.log(formData);
+    
   }
  }

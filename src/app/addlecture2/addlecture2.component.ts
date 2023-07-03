@@ -20,7 +20,16 @@ export class Addlecture2Component {
         file: addlecture2Form.value.file,
         image: addlecture2Form.value.image,
       };
-
+      if (addlecture2Form.value.video ==='' || addlecture2Form.value.file === ''|| addlecture2Form.value.image === '' ) {
+        const correctSpan = document.getElementById('checked');
+        if (correctSpan !== null) {
+          correctSpan.innerText = 'All Fileds Are Required';
+          console.log(formData);
+        }
+      }else{
+        this.router.navigate(['/courses']);
+        console.log(formData);
+      }
     // this.http.post('your-api-url', formData).subscribe(
     //   response => {
     //     console.log(response);
@@ -29,7 +38,6 @@ export class Addlecture2Component {
     //     console.error(error);
     //   }
     // );
-    this.router.navigate(['/courses']);
-    console.log(formData);
+    //route to Overviewcoursesprof use idcourse ***************************
   }
 }

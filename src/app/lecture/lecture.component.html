@@ -1,1 +1,29 @@
-<p>lecture works!</p>
+<div class="container">
+    <div class="left">
+        <div class="vid">
+            <video id="myVideo" src="../../assets/videos/test.mp4" controls></video>
+        </div>
+        <div class="content">
+            <p class="title">Description</p>
+            <div class="line"></div>
+            <div class="words">
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    is simply dummy text of the printing and typesetting industry</p>
+            </div>
+            <br>
+            <p class="title">Assignments</p>
+            <div class="line"></div>
+        </div>
+    </div>
+    <div class="aside">
+        <p class="title">course name</p>
+        <div class="line"></div>
+        <table class="my-table">
+            <tr *ngFor="let row of data">
+            <td>{{ row.name }}</td>
+            <td>{{ row.time }}</td>
+            </tr>
+        </table>
+    </div>
+</div>

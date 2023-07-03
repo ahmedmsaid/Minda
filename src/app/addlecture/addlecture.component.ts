@@ -21,7 +21,16 @@ export class AddlectureComponent {
         description: addlectureForm.value.description,
         datetime: addlectureForm.value.datetime,
       };
-
+      if (addlectureForm.value.name ==='' || addlectureForm.value.description === ''|| addlectureForm.value.datetime === '' ) {
+        const correctSpan = document.getElementById('checked');
+        if (correctSpan !== null) {
+          correctSpan.innerText = 'All Fileds Are Required';
+          console.log(formData);
+        }
+      }else{
+        this.router.navigate(['/addlecture2']);
+        console.log(formData);
+      }
     // this.http.post('your-api-url', formData).subscribe(
     //   response => {
     //     console.log(response);
@@ -30,7 +39,5 @@ export class AddlectureComponent {
     //     console.error(error);
     //   }
     // );
-    this.router.navigate(['/addlecture2']);
-    console.log(formData);
   }
 }

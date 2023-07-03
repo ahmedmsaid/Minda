@@ -14,12 +14,27 @@ export class LoginComponent {
     //   console.log('Please fill out all required fields');
     //   return;
     // }
+    sign(){
+      this.router.navigate(['/Signup']);
+    }
+    forgetpass(){
+      this.router.navigate(['/forgetpass']);
+    }
     onSubmit(loginForm: NgForm) {
       const formData = {
         email: loginForm.value.email,
         password: loginForm.value.password,
       };
-
+      if (loginForm.value.email ==='' || loginForm.value.password === '' ) {
+        const correctSpan = document.getElementById('checked');
+        if (correctSpan !== null) {
+          correctSpan.innerText = 'All Fileds Are Required';
+          console.log(formData);
+        }
+      }else{
+        this.router.navigate(['/courses']);
+        console.log(formData);
+      }
     // this.http.post('your-api-url', formData).subscribe(
     //   response => {
     //     console.log(response);
@@ -28,7 +43,5 @@ export class LoginComponent {
     //     console.error(error);
     //   }
     // );
-    this.router.navigate(['/courses']);
-    console.log(formData);
   }
 }

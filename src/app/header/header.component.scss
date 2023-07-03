@@ -40,3 +40,34 @@ nav{
     font-size: 1.2rem;
     margin: 0 0.5rem;
   }
+
+  @media screen and (max-width: 830px) {
+    nav{
+        flex-direction: column;
+        max-height: 110%;
+        
+    }
+    .logo{
+      margin-top: 20px;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .logo img {
+      justify-content: center;
+      align-items: center;
+    }
+    .nav{
+      justify-content: center;
+    }
+    .icons{
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+    .content{
+        display: flex;
+        flex-direction: column;
+    }
+  }

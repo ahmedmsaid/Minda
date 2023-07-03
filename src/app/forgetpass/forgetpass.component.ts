@@ -20,7 +20,16 @@ export class ForgetpassComponent {
         password: forgetpassForm.value.password,
         confirmPassword: forgetpassForm.value.confirmPassword,
       };
-
+      if (forgetpassForm.value.email ==='' || forgetpassForm.value.password === ''|| forgetpassForm.value.confirmPassword === '' ) {
+        const correctSpan = document.getElementById('checked');
+        if (correctSpan !== null) {
+          correctSpan.innerText = 'All Fileds Are Required';
+          console.log(formData);
+        }
+      }else{
+        this.router.navigate(['/login']);
+        console.log(formData);
+      }
     // this.http.post('your-api-url', formData).subscribe(
     //   response => {
     //     console.log(response);
@@ -29,7 +38,5 @@ export class ForgetpassComponent {
     //     console.error(error);
     //   }
     // );
-    this.router.navigate(['/login']);
-    console.log(formData);
   }
 }

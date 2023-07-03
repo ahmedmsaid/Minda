@@ -20,7 +20,16 @@ export class AddcourseComponent {
         description: addcourseForm.value.description,
         image: addcourseForm.value.image,
       };
-
+      if (addcourseForm.value.name ==='' || addcourseForm.value.description === ''|| addcourseForm.value.image === '' ) {
+          const correctSpan = document.getElementById('checked');
+          if (correctSpan !== null) {
+            correctSpan.innerText = 'All Fileds Are Required';
+            console.log(formData);
+          }
+        }else{
+          this.router.navigate(['/courses']);
+          console.log(formData);
+        }
     // this.http.post('your-api-url', formData).subscribe(
     //   response => {
     //     console.log(response);
@@ -29,7 +38,7 @@ export class AddcourseComponent {
     //     console.error(error);
     //   }
     // );
-    this.router.navigate(['/courses']);
-    console.log(formData);
+    // this.router.navigate(['/courses']);
+    // console.log(formData);
   }
 }

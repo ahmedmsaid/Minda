@@ -24,23 +24,27 @@ import { EditprofileComponent } from './editprofile/editprofile.component';
 import { OverviewcoursesComponent } from './overviewcourses/overviewcourses.component';
 import { OverviewcoursesprofComponent } from './overviewcoursesprof/overviewcoursesprof.component';
 import { LectureComponent } from './lecture/lecture.component';
-import { HomeComponent } from 'src/home/home.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: '', component: HomeComponent },
   { path: 'courses', component: CoursesComponent },
   { path: 'profcourses', component: ProfcoursesComponent },
   { path: 'Signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
   { path: 'loginprof', component: LoginprofComponent },
+  { path: 'Signupprof', component: SignupprofComponent },
   { path: 'editprofile', component: EditprofileComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'overviewcourses', component: OverviewcoursesComponent },
+  { path: 'overviewcourses/:id', component: OverviewcoursesComponent },
+  { path: 'Overviewcoursesprof/:id', component: OverviewcoursesprofComponent },
   { path: 'quiz', component: QuizComponent },
   { path: 'lecture', component: LectureComponent },
+  { path: 'Addcourse', component: AddcourseComponent },
   { path: 'addlecture', component: AddlectureComponent },
   { path: 'addlecture2', component: Addlecture2Component },
-  { path: 'forgetpass', component: ForgetpassComponent },
+  { path: 'forgetpass', component: ForgetpassComponent },/*/:id*/
+  { path: 'quizprof' , component: QuizprofComponent },
 ];
 
 @NgModule({

@@ -32,40 +32,27 @@ export class QuizComponent {
     };
   
 
-  // The current question index
-  index = 0;
-
   // The user's score
   score = 0;
+  point = 0;
 
-  // The user's selected option
-  selected = -1;
+  // The user's selected options
+  selected: number[] = new Array(this.questions.length).fill(-1);
 
   // A flag to indicate if the quiz is over
   finished = false;
-  btn='Next';
 
-  // A method to check the user's answer and update the score
-  checkAnswer() {
-    if (this.selected === this.questions[this.index].answer) {
-      this.score++;
+  // A method to check the user's answers and update the score
+  checkAnswers() {
+    this.score = 0;
+    for (let i = 0; i < this.questions.length; i++) {
+      const question = this.questions[i];
+      const selectedOption = this.selected[i];
+      if (question.options[selectedOption] === question.options[question.answer]) {
+        this.score++;
+      }
     }
-    this.nextQuestion();
+    this.point=Math.floor((this.score/this.questions.length)*100);
+    this.finished = true;
   }
-
-  // A method to move to the next question or end the quiz
-  nextQuestion() {
-    this.selected = -1;
-    if (this.index < this.questions.length - 1) {
-      this.index++;
-    } else {
-      this.finished = true;
-    }
-    // if (this.index = this.questions.length - 1) {
-    //   this.btn='Submit';
-    // }else {
-    //   this.finished = false;
-    // }
-  }
-
 }

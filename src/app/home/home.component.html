@@ -1,1 +1,96 @@
-<p>home works!</p>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
+<div class="home">
+    <div class="main">
+        <div class="right">
+            <p class="info">Faculty of Computers and information<br>Menoufia University</p>
+            <p class="minda">Minda</p>
+            <p class="info2">E-Learning platform that helps students and professors</p>
+            <p class="info3">“Learning never exhausts the mind.”<br> ― Leonardo da Vinci</p>
+            <div class="btn">
+                <button (click)="learn()" class="learn">Learn More</button>&nbsp;&nbsp;
+                <button (click)="start()" class="start">Get Started</button>
+            </div>
+        </div>
+        <div class="imgs">
+            <img class="front-image" src="../../assets/img/main-std-1.png" alt="Image 1">
+            <img class="img2" src="../../assets/img/main-std-2.png" alt="Image 2">
+        </div>
+    </div>
+    <div id="goal-section" class="goal">
+        <p class="title">Our Goal</p>
+        <div class="line"></div>
+        <p class="words">We are a technology workforce development company that helps people learn premium technology skills virtually and also guide them on their career success path.</p>
+        <div class="goals">
+            <div class="box">
+                <p>01. Years of intense teaching and mentorship<br>
+                    <span>We have successfully mentored over 500+ individuals
+                    in their tech career for the past three years.</span></p>
+            </div>
+            <div class="vline"></div>
+            <div class="box">
+                <p>02. Projects<br>
+                    <span>Several live projects has been worked
+                        on successfully by our team</span></p>
+            </div>
+            <div class="vline"></div>
+            <div class="box">
+                <p>03. Testimonials<br>
+                    <span>Amazing feedbacks from our mentees that are
+                        in their tech career for the past three years.
+                        already doing well in the tech industry.</span></p>
+            </div>
+        </div>
+        <br>
+    </div>
+    <div class="why">
+        <div class="right">
+            <p class="title">Why Virtual Learning Method?</p>
+            <div class="line"></div>
+            <p class="word">Virtual learning environments provide opportunities for
+                everyone to participate in classes on their own schedule
+                which enables people to learn at their own pace, providing
+            </p>
+            <div class="icon">
+                <div class="iconbox">
+                    <i class="far fa-clock" style="font-size:120px;color:#418EBA"></i>
+                    <p>Flexible Time</p>
+                </div> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="iconbox">
+                    <i class='fas fa-cube sicon' style='font-size:120px;color:#418EBA'></i>
+                    <p>Lifetime Access</p>
+                </div> 
+            </div>
+        </div>
+        <div class="left">
+            <img class="im" src="../../assets/img/login-std.jpg" alt="Image">
+        </div>
+    </div>
+    <div class="join">
+        <div class="right">
+            <p class="title">Become Our Student Today</p>
+            <div class="line"></div>
+            <p class="sent">Join us today by providing us with basic
+                information about you
+            </p>
+            <form #joinForm="ngForm" (ngSubmit)="onSubmit(joinForm)">
+                <div class="inp-box">
+                  <span id="fnames" class="text-danger"></span>
+                  <input ngModel name="firstName" id="firstName"  placeholder="First Name" />
+                  <span id="lnames" class="text-danger"></span>
+                  <input ngModel name="lastName" id="lastName"  placeholder="Last Name" />
+                  <span id="Emails" class="text-danger"></span>
+                  <input ngModel name="email" id="Email" placeholder="Email Address" />
+                  <span id="phones" class="text-danger"></span>
+                  <input type="number" ngModel name="phone" id="phone" placeholder="Phone" /><br /><br />
+                  <span id="phones" class="text-danger"></span>
+                </div>
+                <input type="submit" class="joinus" value="Join Us" /><br />
+            </form>
+        </div>
+        <div class="left">
+            <img class="leftim" src="../../assets/img/main-reg-sec.jpg" alt="Image">
+        </div>
+    </div>
+</div>

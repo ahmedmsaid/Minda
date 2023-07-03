@@ -13,42 +13,36 @@
             <form #editprofileForm="ngForm" (ngSubmit)="onSubmit(editprofileForm)">
                 <div class="inp-box">
                     <div class="input">
-                        <span id="name" class="text-danger"></span>
-                        <label class="lbl" for="name">Edit Name:</label><br />
-                        <input ngModel name="name" id="name" [value]="info[0].name"/><br /><br />
+                        <label class="lbl" for="fname">Edit FName:</label><br />
+                        <input ngModel name="fname" id="fname" [value]="info[0].fname"/><br /><br />
                     </div>
                     <div class="input">
-                        <span id="Email" class="text-danger"></span>
+                        <label class="lbl" for="lname">Edit LName:</label><br />
+                        <input ngModel name="lname" id="lname" [value]="info[0].lname"/><br /><br />
+                    </div>
+                    <div class="input">
                         <label class="lbl" for="email">Edit password:</label><br />
                         <input ngModel name="email" type="password" id="pass"  [value]="info[0].password"/><br /><br />
                     </div>
                     <div class="input">
-                        <span id="Email" class="text-danger"></span>
-                        <label class="lbl" for="job">Edit Job:</label><br />
-                        <input ngModel name="job" id="job" [value]="info[0].job"/><br /><br />
-                    </div>
-                    <div class="input">
-                        <span id="Email" class="text-danger"></span>
                         <label class="lbl" for="country">Edit Country:</label><br />
                         <input ngModel name="country" id="country"  [value]="info[0].country"/><br /><br />
                     </div>
                     <div class="input">
-                        <span id="Email" class="text-danger"></span>
-                        <label class="lbl" for="school">Edit School:</label><br />
-                        <input ngModel name="school" id="school" [value]="info[0].school"/><br /><br />
+                        <label class="lbl" for="school">Edit Job:</label><br />
+                        <input ngModel name="job" id="job" [value]="info[0].job"/><br /><br />
                     </div>
                     <div class="input">
-                        <span id="Email" class="text-danger"></span>
                         <label class="lbl" for="Phone">Edit Phone:</label><br />
                         <input ngModel name="Phone" id="Phone" [value]="info[0].phone" /><br /><br />
                     </div>
                     <div class="bio">
-                        <span id="bioo" class="text-danger"></span>
                         <label class="lbl" for="Phone">Edit Bio:</label><br />
                         <!-- <input ngModel name="bioo" id="bioo" value="" /> -->
                         <textarea ngModel name="bioo" id="bioo" [value]="info[0].bio" rows="6" cols="70"></textarea><br /><br />
                     </div>
                 </div>
+                <span id="checked" class="text-danger"></span><br><br>
                 <input type="submit" class="Save" value="Save Personal Info" /><br />
             </form>
         </div>

@@ -4,7 +4,8 @@
     <div class="content">
         <p class="Courses">Courses</p>
         <div class="flex">
-            <div class="cont" *ngFor="let course of courses">
+            <div class="cont" *ngFor="let course of courses" (click)="onCourseClick(course.id)">
+              <!-- <a routerLink="/overviewcourses"></a>  -->
                 <div class="info">
                   <p class="name"><i class="fa fa-book" style="color: rgb(59, 76, 76);"></i> {{ course.name }}</p>
                   <p class="description">{{ course.description }}</p>
@@ -12,6 +13,7 @@
                     <i class="fa fa-signal space"></i> {{ course.level }}
                   </p>
                 </div>
+               
             </div>
         </div>
     </div>

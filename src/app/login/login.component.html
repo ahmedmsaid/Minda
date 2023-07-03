@@ -4,14 +4,13 @@
         <p class="sign">Sign in</p>
         <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
             <div class="inp-box">
-                <span id="Email" class="text-danger"></span>
                 <input ngModel name="email" id="Email" placeholder="Email Address" /><br /><br />
-                <span id="Password"  class="text-danger"></span>
                 <input ngModel name="password" type="password" id="Password" placeholder="password" /><br /><br />
-                <p class="forgot"><a routerLink="/forgetpass" style="color: #000000;">forgot password?</a></p>
+                <p class="forgot"><a (click)="forgetpass()" style="color: #000000;">forgot password?</a></p>
             </div>
+            <span id="checked" class="text-danger"></span><br /><br />
             <input type="submit" class="login" value="Log in" /><br />
-            <p class="acc">Do not have an account? <a routerLink="/Signup"> Sign Up </a></p>
+            <p class="acc">Do not have an account? <a (click)="sign()"> Sign Up </a></p><br />
         </form>
     </div>
     <div class="img"></div>

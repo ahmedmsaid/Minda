@@ -159,18 +159,21 @@ button{
 }
 .start{
     background: #E3654B;
+    cursor: pointer;
 }
 .quizz,.Lesson{
     background: linear-gradient(180deg, rgba(27, 26, 28, 0.16) 0%, rgba(27, 26, 28, 0.1264) 100%);
     border: 1px solid #E3654B;
     border-radius: 5px;
     color: #E3654B;
+    cursor: pointer;
 }
 .quizz:hover,.Lesson:hover{
     background: linear-gradient(180deg, #E3654B 0%, rgba(27, 26, 28, 0.1264) 100%);
     border: 1px solid #E3654B;
     border-radius: 5px;
     color: #f3eeed;
+    cursor: pointer;
 }
 .my-table {
     border-collapse: collapse;

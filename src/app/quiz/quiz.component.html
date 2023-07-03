@@ -1,27 +1,28 @@
 <div class="container">
     <div class="img">
-        <h3 class="title">{{ course.title }}</h3><br>
-        <h3 class="name">By :- {{ course.authorName }}</h3>
+      <h3 class="title">{{ course.title }}</h3><br>
     </div>
     <div class="content">
-        <div class="quiz">
-            <h1>You must answer the following questions and get points above 60%</h1>
-            <div class="bg"></div>
-            <div *ngIf="!finished">
-                <h4>{{ questions[index].question }}</h4>
-                <ul>
-                    <li *ngFor="let option of questions[index].options; let i = index">
-                    <input type="radio" name="options" id="option{{ i }}" [(ngModel)]="selected" [value]="i"> 
-                    <label for="option{{ i }}">{{ option }}</label>
-                    </li>
-                </ul>
-                <button [disabled]="selected === -1" (click)="checkAnswer()">{{btn}}</button>
-            </div>
-            <div *ngIf="finished">
-            <h3>Your score is {{ score }} out of {{ questions.length }}</h3>
-            <!-- <button (click)="ReviewQuiz()">Review</button> -->
-            </div>
+      <div class="quiz">
+        <h1>You must answer the following questions and get points above 60%</h1>
+        <div class="bg"></div>
+        <div *ngIf="!finished">
+          <div *ngFor="let question of questions; let qIndex = index">
+            <h4>{{ question.question }}</h4>
+            <ul>
+              <li *ngFor="let option of question.options; let i = index">
+                <input type="radio" name="options{{qIndex}}" id="option{{ qIndex }}{{ i }}" [(ngModel)]="selected[qIndex]" [value]="i">
+                <label for="option{{ qIndex }}{{ i }}">{{ option }}</label>
+              </li>
+            </ul>
+          </div>
+          <button (click)="checkAnswers()">Submit</button>
         </div>
-        <div class="aside"></div>
+        <div *ngIf="finished">
+          <h3>Your score is {{ score }} out of {{ questions.length }}</h3>
+          <h3>So Your Point is {{ point }}</h3>
+        </div>
+      </div>
+      <div class="aside"></div>
     </div>
   </div>

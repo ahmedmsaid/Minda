@@ -11,7 +11,8 @@ export class EditprofileComponent {
   info = [
     {
       image: '../../assets/img/add.jpg',
-      name:'OLa Yasser',
+      fname:'OLa',
+      lname:'Yasser',
       job:'student',
       school:'jdjdjjdjddd',
       country:'egypt',
@@ -23,12 +24,11 @@ export class EditprofileComponent {
   person = {
     firstName: '',
     lastName: '',
-    email: '',
+    job: '',
     password: '',
-    confirmPassword: '',
-    birthdate: '',
+    country: '',
+    bio: '',
     phone: '',
-    gender: ''
   };
   constructor(private router: Router) { }
   // constructor(private http: HttpClient) {}
@@ -36,18 +36,28 @@ export class EditprofileComponent {
     //   console.log('Please fill out all required fields');
     //   return;
     // }
-    onSubmit(signupForm: NgForm) {
+    onSubmit(editprofileForm: NgForm) {
       const formData = {
-        firstName: signupForm.value.firstName,
-        lastName: signupForm.value.lastName,
-        email: signupForm.value.email,
-        password: signupForm.value.password,
-        confirmPassword: signupForm.value.confirmPassword,
-        birthdate: signupForm.value.birthdate,
-        phone: signupForm.value.phone,
-        gender: signupForm.value.gender
+        fname: editprofileForm.value.fname,
+        lname: editprofileForm.value.lname,
+        email: editprofileForm.value.email,
+        password: editprofileForm.value.password,
+        job: editprofileForm.value.job,
+        country: editprofileForm.value.country,
+        phone: editprofileForm.value.phone,
       };
-
+      if (editprofileForm.value.fname ==='' || editprofileForm.value.lname === ''|| editprofileForm.value.email === ''
+      || editprofileForm.value.password === ''|| editprofileForm.value.job === ''|| editprofileForm.value.country === ''
+      || editprofileForm.value.phone === '' ) {
+          const correctSpan = document.getElementById('checked');
+          if (correctSpan !== null) {
+            correctSpan.innerText = 'All Fileds Are Required';
+            console.log(formData);
+          }
+        }else{
+          this.router.navigate(['/profile']);
+          console.log(formData);
+        }
     // this.http.post('your-api-url', formData).subscribe(
     //   response => {
     //     console.log(response);
@@ -56,7 +66,5 @@ export class EditprofileComponent {
     //     console.error(error);
     //   }
     // );
-    this.router.navigate(['/profile']);
-    console.log(formData);
   }
 }

@@ -4,16 +4,14 @@
         <p class="add"> - Add Lecture </p>
         <form #addlecture2Form="ngForm" (ngSubmit)="onSubmit(addlecture2Form)" class="cont">
             <div class="inp-box">
-                <span id="video"  class="text-danger"></span>
                 <label id="image">Lecture video</label><br />
                 <input ngModel name="video" type="file" id="video"  class="Upload" value="Upload" /><br /><br />
-                <span id="file"  class="text-danger"></span>
                 <label id="file">Lecture file</label><br />
                 <input  ngModel name="file" type="file" id="file"  class="Upload" value="Upload" /><br /><br />
-                <span id="image"  class="text-danger"></span>
                 <label id="image">Lecture image</label><br />
                 <input ngModel name="image" type="file" id="image" class="Upload" value="Upload"  /><br /><br /><br />
             </div>
+            <span id="checked"  class="text-danger"></span><br /><br />
             <input type="submit" class="Next" value="Add lecture" /><br /><br /><br />
         </form>
     </div>
