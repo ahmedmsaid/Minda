@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.minda.R
 import com.example.minda.databinding.FragmentStudentSignupBinding
-import com.example.minda.pojo.student.StudentRegisterRequest
+import com.example.minda.pojo.student.auth.StudentRegisterRequest
 import com.example.minda.utile.isValidEmail
 import com.example.minda.utile.isValidPassword
 import com.example.minda.utile.showToast

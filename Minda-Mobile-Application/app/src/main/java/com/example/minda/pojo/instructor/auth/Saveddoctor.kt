@@ -1,8 +1,11 @@
-package com.example.minda.pojo.instructor
+package com.example.minda.pojo.instructor.auth
 
-data class InstructorRegisterRequest(
+data class Saveddoctor(
+    val __v: Int,
+    val _id: String,
     val code: String,
     val confirmPassword: String,
+    val courses: List<Any>,
     val email: String,
     val firstName: String,
     val lastName: String,

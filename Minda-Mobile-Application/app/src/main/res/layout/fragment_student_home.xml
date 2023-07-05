@@ -7,7 +7,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp"
+        android:padding="8dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="16dp"
         android:background="#B6FFFFFF"
         tools:context=".ui.student.home.StudentHomeFragment">
 
@@ -91,19 +94,52 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <EditText
+        <TextView
+            android:id="@+id/textView4"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:padding="12dp"
-            android:background="@drawable/search_field_background"
-            android:drawableEnd="@drawable/search_icon"
-            android:hint="search about course"
-            android:inputType="textPersonName"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:text="Enrolled courses"
+            android:textColor="@color/primary_dark_orange"
+            android:textSize="@dimen/_16ssp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/materialCardView4"
             app:layout_constraintStart_toStartOf="@+id/materialCardView4"
             app:layout_constraintTop_toBottomOf="@+id/materialCardView4"
-            tools:ignore="Autofill,HardcodedText" />
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/noCoursesYetForStudent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No courses yet"
+            android:textSize="@dimen/_16ssp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/textView4"
+            app:layout_constraintStart_toStartOf="@+id/textView4"
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            tools:ignore="HardcodedText" />
+
+        <ProgressBar
+            android:visibility="gone"
+            android:id="@+id/enrolledCoursesLoadingIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/studentCoursesRecycler"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/textView4"
+            app:layout_constraintStart_toStartOf="@+id/textView4"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

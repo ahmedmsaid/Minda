@@ -44,7 +44,7 @@ class StudentLoginFragment : Fragment() {
             if (email.isEmpty() || password.isEmpty()) {
                 showToast("All fields are required!",requireContext())
             } else {
-                val request = LoginRequest(email.lowercase(), password)
+                val request = LoginRequest(email, password)
                 viewModel.loginForStudent(request)
             }
         }
@@ -56,7 +56,8 @@ class StudentLoginFragment : Fragment() {
                 if (status == "Your credential is not correct" || status == "Internal error") {
                     showToast(status,requireContext())
                 } else {
-                    viewModel.currentLoggedInUserToken.value = status
+                    SharedViewModel.currentLoggedInUserEmail.value =
+                        binding.studentEmailForLogin.editText!!.text.toString()
                     Intent(requireActivity(), StudentContentActivity::class.java).also {
                         startActivity(it)
                     }

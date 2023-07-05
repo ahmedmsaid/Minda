@@ -1,4 +1,4 @@
-package com.example.minda.pojo.instructor
+package com.example.minda.pojo.instructor.auth
 
 data class RegisteredInstructorResponse(
     val saveddoctor: Saveddoctor?

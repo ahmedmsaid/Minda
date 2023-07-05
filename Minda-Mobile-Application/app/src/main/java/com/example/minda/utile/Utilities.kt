@@ -4,6 +4,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.widget.Toast
+import com.auth0.android.jwt.JWT
 
 fun isValidEmail(email: String): Boolean {
     val emailRegex = Regex("[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")
@@ -28,4 +29,9 @@ fun isInternetAvailable(context: Context): Boolean {
         connectivityManager.getNetworkCapabilities(networkCapabilities) ?: return false
 
     return activeNetwork.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+}
+
+fun getIdOfLoggedInPerson(token: String): String? {
+    val jwt = JWT(token)
+    return jwt.getClaim("id").asString()
 }

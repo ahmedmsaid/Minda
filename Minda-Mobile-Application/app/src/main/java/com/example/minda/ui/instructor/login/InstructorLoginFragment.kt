@@ -58,13 +58,15 @@ class InstructorLoginFragment : Fragment() {
                 if (value == "Your credential is not correct" || value == "Internal error") {
                     showToast(value, requireContext())
                 } else {
-                    viewModel.currentLoggedInUserToken.value = value
+                    SharedViewModel.currentLoggedInUserEmail.value =
+                        binding.instructorEmailForLogin.editText!!.text.toString()
                     Intent(requireActivity(), InstructorContentActivity::class.java).also {
                         startActivity(it)
                     }
                 }
             }
         }
+
 
         binding.instructorSignUpBtn.setOnClickListener {
             findNavController().navigate(R.id.action_instructorLoginFragment_to_instructorSignupFragment)

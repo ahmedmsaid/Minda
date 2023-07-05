@@ -1,4 +1,4 @@
-package com.example.minda.pojo.student
+package com.example.minda.pojo.student.auth
 
 data class StudentRegisterRequest(
     val email: String,

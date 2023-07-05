@@ -1,4 +1,4 @@
-package com.example.minda.pojo.student
+package com.example.minda.pojo.student.auth
 
 data class RegisteredStudentResponse(
     val __v: Int?,

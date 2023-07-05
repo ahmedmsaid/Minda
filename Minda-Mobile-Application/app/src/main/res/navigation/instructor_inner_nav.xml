@@ -23,7 +23,11 @@
             app:destination="@id/instructorProfileFragment" />
         <action
             android:id="@+id/action_instructorHomeFragment_to_addCourseFragment"
-            app:destination="@id/addCourseFragment" />
+            app:destination="@id/addCourseFragment"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_instructorHomeFragment_to_courseInfoFragment"
+            app:destination="@id/courseInfoFragment" />
     </fragment>
     <fragment
         android:id="@+id/addCourseFragment"
@@ -36,4 +40,8 @@
             android:id="@+id/action_addCourseFragment_to_instructorProfileFragment"
             app:destination="@id/instructorProfileFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/courseInfoFragment"
+        android:name="com.example.minda.ui.instructor.course_info.CourseInfoFragment"
+        android:label="CourseInfoFragment" />
 </navigation>

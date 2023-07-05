@@ -5,15 +5,17 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/courseItemLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="12dp">
+        android:padding="6dp">
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            app:cardCornerRadius="5dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="5dp"
             android:backgroundTint="#29353B"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -27,8 +29,8 @@
 
                 <ImageView
                     android:id="@+id/imageView6"
-                    android:layout_width="@dimen/_30sdp"
-                    android:layout_height="@dimen/_50sdp"
+                    android:layout_width="@dimen/_25sdp"
+                    android:layout_height="@dimen/_35sdp"
                     android:src="@drawable/icon_book_outline"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -41,7 +43,7 @@
                     android:fontFamily="@font/roboto"
                     android:text="Course Name"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_18ssp"
+                    android:textSize="@dimen/_16ssp"
                     android:textStyle="bold"
                     android:layout_marginStart="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView6"
@@ -55,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto"
                     android:text="@string/lorem"
-                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_12ssp"
                     android:ellipsize="end"
@@ -66,8 +68,8 @@
 
                 <ImageView
                     android:id="@+id/imageView7"
-                    android:layout_width="@dimen/_25sdp"
-                    android:layout_height="@dimen/_40sdp"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_30sdp"
                     android:src="@drawable/icon_time"
                     android:layout_marginEnd="10dp"
                     app:layout_constraintBottom_toBottomOf="@+id/courseDuration"
@@ -83,7 +85,7 @@
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:text="5Hr"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_14ssp"
+                    android:textSize="@dimen/_12ssp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/courseDescription"
                     tools:ignore="HardcodedText" />

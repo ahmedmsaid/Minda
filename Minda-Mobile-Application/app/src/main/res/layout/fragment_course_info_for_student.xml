@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="16dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingBottom="16dp"
+        tools:ignore="HardcodedText"
+        tools:context=".ui.student.course_info.CourseInfoFragmentForStudent">
+
+        <TextView
+            android:id="@+id/courseInfoNameForStudent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Course name"
+            android:textStyle="bold|italic"
+            android:textColor="@color/primary_dark_orange"
+            android:textSize="@dimen/_20sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView18ForStudent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:text="description"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintEnd_toEndOf="@+id/courseInfoNameForStudent"
+            app:layout_constraintStart_toStartOf="@+id/courseInfoNameForStudent"
+            app:layout_constraintTop_toBottomOf="@+id/courseInfoNameForStudent" />
+
+        <TextView
+            android:id="@+id/textView19ForStudent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16ssp"
+            android:text="Lectures"
+            android:textColor="@color/primer_dark_gray"
+            android:textSize="@dimen/_16ssp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/textView18ForStudent"
+            app:layout_constraintStart_toStartOf="@+id/textView18ForStudent"
+            app:layout_constraintTop_toBottomOf="@+id/textView18ForStudent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/studentLecturesRecycler"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@+id/textView19ForStudent"
+            app:layout_constraintStart_toStartOf="@+id/textView19ForStudent"
+            app:layout_constraintTop_toBottomOf="@+id/textView19ForStudent" />
+
+        <TextView
+            android:id="@+id/textView20ForStudent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Quizzes"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:textColor="@color/primer_dark_gray"
+            android:textSize="@dimen/_16ssp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/studentLecturesRecycler"
+            app:layout_constraintStart_toStartOf="@+id/studentLecturesRecycler"
+            app:layout_constraintTop_toBottomOf="@+id/studentLecturesRecycler" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/studentQuizzesRecycler"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/_8sdp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="@+id/textView20ForStudent"
+            app:layout_constraintStart_toStartOf="@+id/textView20ForStudent"
+            app:layout_constraintTop_toBottomOf="@+id/textView20ForStudent" />
+
+        <TextView
+            android:id="@+id/textView21ForStudent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:text="Assignments"
+            android:textColor="@color/primer_dark_gray"
+            android:textSize="@dimen/_16ssp"
+            android:textStyle="bold"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="@+id/studentQuizzesRecycler"
+            app:layout_constraintStart_toStartOf="@+id/studentQuizzesRecycler"
+            app:layout_constraintTop_toBottomOf="@+id/studentQuizzesRecycler" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/studentAssignmentsRecycler"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="invisible"
+            android:layout_marginTop="@dimen/_8sdp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="@+id/textView21ForStudent"
+            app:layout_constraintStart_toStartOf="@+id/textView21ForStudent"
+            app:layout_constraintTop_toBottomOf="@+id/textView21ForStudent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

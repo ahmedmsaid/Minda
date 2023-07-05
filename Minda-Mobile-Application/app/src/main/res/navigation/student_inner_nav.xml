@@ -19,5 +19,12 @@
         <action
             android:id="@+id/action_studentHomeFragment_to_studentProfileFragment"
             app:destination="@id/studentProfileFragment" />
+        <action
+            android:id="@+id/action_studentHomeFragment_to_courseInfoFragmentForStudent"
+            app:destination="@id/courseInfoFragmentForStudent" />
     </fragment>
+    <fragment
+        android:id="@+id/courseInfoFragmentForStudent"
+        android:name="com.example.minda.ui.student.course_info.CourseInfoFragmentForStudent"
+        android:label="CourseInfoFragmentForStudent" />
 </navigation>
