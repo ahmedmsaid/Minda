@@ -1,17 +1,20 @@
 <div class="container">
     <div class="input">
-        <p class="minda">Minda</p>
-        <p class="sign">Sign in</p>
+        <h1 class="minda">Minda</h1><br>
+        <h3 class="sign">Sign in</h3>
         <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
             <div class="inp-box">
                 <input ngModel name="email" id="Email" placeholder="Email Address" /><br /><br />
                 <input ngModel name="password" type="password" id="Password" placeholder="password" /><br /><br />
+                <br >
+                <div *ngIf="loginInvalid" style="color: red;">Invalid Login Info</div>
                 <p class="forgot"><a (click)="forgetpass()" style="color: #000000;">forgot password?</a></p>
             </div>
             <span id="checked" class="text-danger"></span><br /><br />
             <input type="submit" class="login" value="Log in" /><br />
             <p class="acc">Do not have an account? <a (click)="sign()"> Sign Up </a></p><br />
         </form>
+        
     </div>
-    <div class="img"></div>
+    <div class="img"></div> 
 </div>

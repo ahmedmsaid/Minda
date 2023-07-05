@@ -6,6 +6,7 @@
             <div class="inp-box">
                 <input ngModel name="email" id="Email" placeholder="Email Address" /><br /><br />
                 <input ngModel name="password" type="password" id="Password" placeholder="password" /><br /><br />
+                <div *ngIf="loginInvalid" style="color: red;">Invalid Login Info</div>
                 <p class="forgot"><a (click)="forgetpass()" style="color: #000000;">forgot password?</a></p>
             </div>
             <span id="checked" class="text-danger"></span><br /><br />

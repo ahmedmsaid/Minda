@@ -1,11 +1,14 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, catchError, of } from 'rxjs';
 
 interface Lesson {
     id: number;
     title: string;
     description: string;
     duration: string;
-  }
+}
+
 interface Course {
   id: number;
   name: string;
@@ -14,10 +17,30 @@ interface Course {
   lessons: Lesson[];
 }
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
+
 export class CourseService {
+  //private const api = ""
+
+  constructor(private http: HttpClient) { }
+
+  getCourses(): Observable<Course[]> {
+    return this.http.get<Course[]>('/api/events')
+    .pipe(catchError(this.handleError<Course[]>('getCourses', [])))
+  }
+
+  getCourseById(id: number): Course | undefined {
+    return this.courses.find(course => course.id === id);
+  }
+
+  private handleError<T> (operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error)
+      return of (result as T)
+    }
+  }
+
+
   courses: Course[] = [
     {
       id: 1,
@@ -100,10 +123,4 @@ export class CourseService {
       ]
     }
   ];
-
-  constructor() { }
-
-  getCourseById(id: number): Course | undefined {
-    return this.courses.find(course => course.id === id);
-  }
 }

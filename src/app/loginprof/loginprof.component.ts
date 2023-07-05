@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-loginprof',
@@ -8,7 +9,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./loginprof.component.scss']
 })
 export class LoginprofComponent {
-  constructor(private router: Router) { }
+  loginInvalid = false
+
+  constructor(private router: Router, private auth: AuthService) { }
   // constructor(private http: HttpClient) {}
  // if (!this.person.firstName || !this.person.lastName || !this.person.email || !this.person.password || !this.person.confirmPassword) {
     //   console.log('Please fill out all required fields');
@@ -21,27 +24,28 @@ export class LoginprofComponent {
       this.router.navigate(['/forgetpass']);
     }
     onSubmit(loginprofForm: NgForm) {
-      const formData = {
-        email: loginprofForm.value.email,
-        password: loginprofForm.value.password,
-      };
+        let email = loginprofForm.value.email
+        let password = loginprofForm.value.password
+
+        this.login(email, password)
+
       if (loginprofForm.value.email ==='' ||loginprofForm.value.password === '' ) {
         const correctSpan = document.getElementById('checked');
         if (correctSpan !== null) {
           correctSpan.innerText = 'All Fileds Are Required';
-          console.log(formData);
         }
-      }else{
-        this.router.navigate(['/profcourses']);
-        console.log(formData);
       }
-    // this.http.post('your-api-url', formData).subscribe(
-    //   response => {
-    //     console.log(response);
-    //   },
-    //   error => {
-    //     console.error(error);
-    //   }
-    // );
   }
+
+  login(email: string, password: string) {
+    this.auth.loginProf(email, password)
+    .subscribe( res => {
+      if(!res) {
+          this.loginInvalid = true
+      } else {
+        console.log("User is logged in");
+        this.router.navigate(['/profcourses']);
+      }
+  })
+}
 }

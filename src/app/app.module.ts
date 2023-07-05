@@ -25,15 +25,18 @@ import { OverviewcoursesComponent } from './overviewcourses/overviewcourses.comp
 import { OverviewcoursesprofComponent } from './overviewcoursesprof/overviewcoursesprof.component';
 import { LectureComponent } from './lecture/lecture.component';
 import { HomeComponent } from './home/home.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './auth.service';
+import { CourseService } from './CourseService';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'courses', component: CoursesComponent },
   { path: 'profcourses', component: ProfcoursesComponent },
-  { path: 'Signup', component: SignupComponent },
+  { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
   { path: 'loginprof', component: LoginprofComponent },
-  { path: 'Signupprof', component: SignupprofComponent },
+  { path: 'signupprof', component: SignupprofComponent },
   { path: 'editprofile', component: EditprofileComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'overviewcourses/:id', component: OverviewcoursesComponent },
@@ -74,12 +77,16 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     FormsModule,
     [RouterModule.forRoot(routes)]
   ],
   exports: [RouterModule],
-  providers: [],
+  providers: [
+    AuthService,
+    CourseService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

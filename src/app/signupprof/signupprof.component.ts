@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { IProf } from '../prof.model';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-signupprof',
@@ -8,35 +10,35 @@ import { Router } from '@angular/router';
   styleUrls: ['./signupprof.component.scss']
 })
 export class SignupprofComponent {
-  constructor(private router: Router) { }
+  prof!: IProf
+  constructor(private router: Router, private auth: AuthService) { }
   // constructor(private http: HttpClient) {}
  // if (!this.person.firstName || !this.person.lastName || !this.person.email || !this.person.password || !this.person.confirmPassword) {
     //   console.log('Please fill out all required fields');
     //   return;
     // }
     onSubmit(signupprofForm: NgForm) {
-      const formData = {
+      this.prof = {
+        id: undefined,
         firstName: signupprofForm.value.firstName,
         lastName: signupprofForm.value.lastName,
         email: signupprofForm.value.email,
-        profcode:signupprofForm.value.profcode,
         password: signupprofForm.value.password,
         confirmPassword: signupprofForm.value.confirmPassword,
-        birthdate: signupprofForm.value.birthdate,
+        date: signupprofForm.value.birthdate,
         phone: signupprofForm.value.phone,
-        gender: signupprofForm.value.gender
-      };
+        code: signupprofForm.value.profcode,
+      }
+
+      this.signup(this.prof);
+
       if (signupprofForm.value.firstName ==='' || signupprofForm.value.lastName === ''|| signupprofForm.value.email === ''
       || signupprofForm.value.password === ''|| signupprofForm.value.confirmPassword === ''|| signupprofForm.value.birthdate === ''
       || signupprofForm.value.phone === ''|| signupprofForm.value.gender === '' ) {
           const correctSpan = document.getElementById('checked');
           if (correctSpan !== null) {
             correctSpan.innerText = 'All Fileds Are Required';
-            console.log(formData);
           }
-        }else{
-          this.router.navigate(['/loginprof']);
-          console.log(formData);
         }
     // this.http.post('your-api-url', formData).subscribe(
     //   response => {
@@ -46,5 +48,11 @@ export class SignupprofComponent {
     //     console.error(error);
     //   }
     // );
+  }
+
+  signup(prof: IProf) {
+    this.auth.signUpProf(prof).subscribe(() => {
+      this.router.navigate(['/loginprof'])
+    });
   }
 }
