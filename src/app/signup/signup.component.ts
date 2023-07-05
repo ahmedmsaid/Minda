@@ -26,12 +26,22 @@ export class SignupComponent {
         date: signupForm.value.birthdate,
         phone: signupForm.value.phone
       };
+      if (signupForm.value.firstName ==='' || signupForm.value.lastName === ''|| signupForm.value.email === ''
+      || signupForm.value.password === ''|| signupForm.value.confirmPassword === ''|| signupForm.value.birthdate === ''
+      || signupForm.value.phone === ''|| signupForm.value.gender === '' ) {
+          const correctSpan = document.getElementById('checked');
+          if (correctSpan !== null) {
+            correctSpan.innerText = 'All Fileds Are Required';
+          }
+          
+        }else{
+            this.signup(this.user);
+          }
+  }
 
-      this.auth.signUpUser(this.user).subscribe(() => {
-        this.router.navigate(['/login'])
+  signup(user: IUser) {
+    this.auth.signUpUser(user).subscribe(() => {
+      this.router.navigate(['/login'])
     });
-
-      console.log(this.user)
-    
   }
 }

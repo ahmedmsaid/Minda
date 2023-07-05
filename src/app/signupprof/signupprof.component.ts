@@ -30,8 +30,6 @@ export class SignupprofComponent {
         code: signupprofForm.value.profcode,
       }
 
-      this.signup(this.prof);
-
       if (signupprofForm.value.firstName ==='' || signupprofForm.value.lastName === ''|| signupprofForm.value.email === ''
       || signupprofForm.value.password === ''|| signupprofForm.value.confirmPassword === ''|| signupprofForm.value.birthdate === ''
       || signupprofForm.value.phone === ''|| signupprofForm.value.gender === '' ) {
@@ -39,15 +37,10 @@ export class SignupprofComponent {
           if (correctSpan !== null) {
             correctSpan.innerText = 'All Fileds Are Required';
           }
-        }
-    // this.http.post('your-api-url', formData).subscribe(
-    //   response => {
-    //     console.log(response);
-    //   },
-    //   error => {
-    //     console.error(error);
-    //   }
-    // );
+          
+        }else{
+            this.signup(this.prof);
+          }
   }
 
   signup(prof: IProf) {
