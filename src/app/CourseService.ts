@@ -1,6 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, of } from 'rxjs';
+import { AuthService } from './auth.service';
+import { ICourse } from './course.model';
 
 interface Lesson {
     id: number;
@@ -10,26 +12,29 @@ interface Lesson {
 }
 
 interface Course {
-  id: number;
-  name: string;
-  description: string;
-  authorName: string;
-  lessons: Lesson[];
+  id: string | number;
+  name?: string;
+  description?: string;
+  authorName?: string;
+  rating? : number
+  lessons?: Lesson[];
 }
 
 @Injectable()
 
 export class CourseService {
-  //private const api = ""
+  private api = "https://e-learning1.onrender.com/api/";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private auth: AuthService) { }
 
-  getCourses(): Observable<Course[]> {
-    return this.http.get<Course[]>('/api/events')
-    .pipe(catchError(this.handleError<Course[]>('getCourses', [])))
+  getCourses(userId: any, token: string): Observable<any[]> {
+    let options = { headers: new HttpHeaders({ 'x-auth-token': token })}
+
+    return this.http.get<any[]>(this.api + 'user/enrolledCourses/' + userId, options)
+    .pipe(catchError(this.handleError<any[]>('getCourses', [])))
   }
 
-  getCourseById(id: number): Course | undefined {
+  getCourseById(id: string): Course | undefined {
     return this.courses.find(course => course.id === id);
   }
 

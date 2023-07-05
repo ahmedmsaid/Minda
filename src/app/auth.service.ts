@@ -3,12 +3,15 @@ import { Injectable } from "@angular/core"
 import { Observable, catchError, of, tap } from "rxjs";
 import { IUser } from "./user.model";
 import { IProf } from "./prof.model";
+import { LoginComponent } from "./login/login.component";
+import jwtDecode from "jwt-decode";
 
 @Injectable()
 
 export class AuthService {
     currentUser: any
     currentProf: any
+    userToken: any
     private api = "https://e-learning1.onrender.com/api/";
 
     constructor(private http: HttpClient) {}
@@ -18,12 +21,20 @@ export class AuthService {
         let options = { headers: new HttpHeaders({ 'Content-Type': 'application/json'})}
 
         return this.http.post(this.api +  'auth/userlogin', loginInfo, options)
-        .pipe(tap( (data: any) => {
-                    this.currentUser = data['user']
+        .pipe(tap((data: any) => {
+                    this.userToken = data
                 }))
         .pipe(catchError( err => {
                     return of(false)
                 }))
+    }
+
+    getUserToken() {
+        return this.userToken
+    }
+
+    getUserId() {
+        var decoded = jwtDecode(this.userToken)
     }
 
     loginProf( email: string, password: string) {
@@ -65,7 +76,7 @@ export class AuthService {
         }
 
         return this.http.post(this.api + 'doctor/signup', newProf, options)
-        .pipe(catchError(this.handleError<IUser>('signup')))
+        .pipe(catchError(this.handleError<IProf>('signup')))
     }
 
     private handleError<T> (operation = 'operation', result?: T) {

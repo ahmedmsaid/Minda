@@ -4,16 +4,15 @@
     <div class="content">
         <p class="Courses">Courses</p>
         <div class="flex">
-            <div class="cont" *ngFor="let course of courses" (click)="onCourseClick(course.id)">
+            <div class="cont" *ngFor="let course of courses" (click)="onCourseClick(course._id)">
               <!-- <a routerLink="/overviewcourses"></a>  -->
                 <div class="info">
-                  <p class="name"><i class="fa fa-book" style="color: rgb(59, 76, 76);"></i> {{ course.name }}</p>
-                  <p class="description">{{ course.description }}</p>
-                  <p class="icon"><i class="fa fa-clock-o"></i> {{ course.time }} 
-                    <i class="fa fa-signal space"></i> {{ course.level }}
+                  <p class="name"><i class="fa fa-book" style="color: rgb(59, 76, 76);"></i> {{ course.courseName }}</p>
+                  <p class="description">{{ course.description}}</p>
+                  <p class="icon"><i class="fa fa-clock-o"></i> {{ course.duration }} 
+                    <i class="fa fa-signal space"></i> {{ course.averageRating }}
                   </p>
                 </div>
-               
             </div>
         </div>
     </div>
