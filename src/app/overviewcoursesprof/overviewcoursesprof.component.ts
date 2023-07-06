@@ -1,11 +1,21 @@
 import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import jwtDecode from 'jwt-decode';
+import { CourseService } from '../CourseService';
+import { tap } from 'rxjs';
+import { AuthService } from '../auth.service';
 
 interface Course {
-  title: string;
-  authorName: string;
-  Description: string;
+  doctorData: {
+    firstName: string,
+    doctorId: string
+  };
+  _id: number;
+  courseName: string;
+  description: string;
+  duration: string;
+  averageRating?: number
 }
 
 interface Lesson {
@@ -18,8 +28,9 @@ interface Lesson {
   templateUrl: './overviewcoursesprof.component.html',
   styleUrls: ['./overviewcoursesprof.component.scss']
 })
+
 export class OverviewcoursesprofComponent implements OnInit {
-  course: {
+  /*course: {
     id: number;
     name: string;
     description: string;
@@ -36,16 +47,25 @@ export class OverviewcoursesprofComponent implements OnInit {
     { name: 'Course Overview', time: '5m' },
     { name: 'Lession 1', time: '30m' },
     { name: 'Lession 2', time: '35m' }
-  ];
-  CoursesComponent: any;
-  constructor(private router: Router, private sanitizer: DomSanitizer,private route: ActivatedRoute) { }
+  ];*/
 
-  ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
-    const course = this.CoursesComponent.getCourseById(id);
-    if (course) {
-      this.course = course;
-    }
+  public courses!: Course
+
+  CoursesComponent: any;
+
+  token = this.auth.getProfToken()
+  info: any
+  id: any
+
+  constructor(private router: Router, private route: ActivatedRoute, private courseService: CourseService, private auth: AuthService) { }
+
+   ngOnInit(){
+    this.info = jwtDecode(this.token)
+    this.id = this.info.id
+    
+
+  }
+
     // TODO: Use the id to retrieve the corresponding course data from your database or API
     // For now, we'll just hardcode some dummy data
     // this.course = {
@@ -54,7 +74,6 @@ export class OverviewcoursesprofComponent implements OnInit {
     //   Description: 'About course, Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
     //   authorName: 'Dr. Asmaa'
     // };
-  }
     start() {
       this.router.navigate(['/lecture']);
     }

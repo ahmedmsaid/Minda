@@ -2,6 +2,8 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import {CoursesComponent} from '../courses/courses.component';
+import { CourseService } from '../CourseService';
+import { tap } from 'rxjs';
 // interface Course {
 //   id: number;
 //   title: string;
@@ -14,13 +16,30 @@ interface Lesson {
   time: string;
 }
 
+interface Course {
+  doctorData: {
+    firstName: string,
+    doctorId: string
+  }
+  _id: string
+  courseName: string
+  description: string
+  lectures: lectureId[]
+}
+
+interface lectureId {
+  _id: string
+  title: string
+}
+
 @Component({
   selector: 'app-overviewcourses',
   templateUrl: './overviewcourses.component.html',
   styleUrls: ['./overviewcourses.component.scss']
 })
+
 export class OverviewcoursesComponent implements OnInit {
-  course: {
+  /*course: {
     id: number;
     name: string;
     description: string;
@@ -37,16 +56,23 @@ export class OverviewcoursesComponent implements OnInit {
     { name: 'Course Overview', time: '5m' },
     { name: 'Lession 1', time: '30m' },
     { name: 'Lession 2', time: '35m' }
-  ];
+  ];*/
+
+  course!: Course
+  lecture!: lectureId[]
+
   CoursesComponent: any;
-  constructor(private router: Router, private sanitizer: DomSanitizer,private route: ActivatedRoute) { }
+  
+  constructor(private router: Router, private route: ActivatedRoute, private courseService: CourseService) { }
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
-    const course = this.CoursesComponent.getCourseById(id);
-    if (course) {
-      this.course = course;
-    }
+    var id = this.route.snapshot.paramMap.get('id')!;
+    this.getCourse(id)
+    this.getInfo(id)
+    console.log(id)
+    console.log(this.course)
+    console.log(this.lecture)
+
     // TODO: Use the id to retrieve the corresponding course data from your database or API
     // For now, we'll just hardcode some dummy data
     // this.course = {
@@ -57,6 +83,22 @@ export class OverviewcoursesComponent implements OnInit {
     // };
   }
   // Other methods for switching between course content, description, and discussion
+    getCourse(id: string){
+      this.courseService.getCourseById(id)
+      .pipe(tap( (data: any) => {
+        this.course = data
+    }))
+    .subscribe()
+    }
+
+    getInfo(id: string){
+      this.courseService.getCourseInfo(id)
+      .pipe(tap( (data: any) => {
+        this.lecture = data['lectureId']
+    }))
+    .subscribe()
+    }
+
     start() {
       this.router.navigate(['/lecture']);
     }

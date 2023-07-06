@@ -12,6 +12,7 @@ export class AuthService {
     currentUser: any
     currentProf: any
     userToken: any
+    profToken: any
     private api = "https://e-learning1.onrender.com/api/";
 
     constructor(private http: HttpClient) {}
@@ -43,11 +44,15 @@ export class AuthService {
 
         return this.http.post(this.api +  'auth/doctorlogin', loginInfo, options)
         .pipe(tap( (data: any) => {
-                    this.currentProf = data['user']
+                    this.profToken = data
                 }))
         .pipe(catchError( err => {
                     return of(false)
                 }))
+    }
+
+    getProfToken(){
+        return this.profToken
     }
 
     signUpUser(user: IUser) {

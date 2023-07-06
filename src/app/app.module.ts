@@ -43,7 +43,7 @@ const routes: Routes = [
   { path: 'Overviewcoursesprof/:id', component: OverviewcoursesprofComponent },
   { path: 'quiz', component: QuizComponent },
   { path: 'lecture', component: LectureComponent },
-  { path: 'Addcourse', component: AddcourseComponent },
+  { path: 'profcourses/Addcourse', component: AddcourseComponent },
   { path: 'addlecture', component: AddlectureComponent },
   { path: 'addlecture2', component: Addlecture2Component },
   { path: 'forgetpass', component: ForgetpassComponent },/*/:id*/

@@ -39,6 +39,7 @@ export class CoursesComponent {
   onCourseClick(id: string) {
     this.router.navigate(['/overviewcourses', id]);
   }
+
   /*getCourseById(id: number): Course | undefined {
     return this.courses.find(course => course.id === id);
   }*/

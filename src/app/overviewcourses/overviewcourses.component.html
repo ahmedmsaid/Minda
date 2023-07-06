@@ -1,8 +1,8 @@
 <div class="container">
     <div class="left">
         <div class="img">
-            <h3 class="title">{{ course.name }}</h3>
-            <h3 class="name">By :- {{ course.authorName }}</h3>
+            <h3 class="title">{{ course.courseName }}</h3>
+            <h3 class="name">By :- {{ course.doctorData.firstName}}</h3>
             <p>{{course.description}}</p>
             <div class="btn">
                 <button (click)="start()" class="start">Start Course</button>&nbsp;&nbsp;
@@ -14,15 +14,13 @@
             <div class="quiz">
                 <div class="buttton">
                     <button (click)="Content()" >Content</button>
-                    <button (click)="Description()" >Description</button>
                     <button (click)="Discussion()" >Discussion</button>
                 </div>
                 <div class="bg"></div>
                 <div class="change" #content>
-                    <table class="my-table">
-                        <tr *ngFor="let row of data">
-                        <td>{{ row.name }}</td>
-                        <td>{{ row.time }}</td>
+                   <table class="my-table">
+                        <tr *ngFor="let row of lecture">
+                        <td>{{ row.title }}</td>
                         </tr>
                     </table>
                 </div>
