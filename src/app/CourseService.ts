@@ -77,6 +77,13 @@ export class CourseService {
       .pipe(catchError(this.handleError<any>('addCourse')))
   } 
 
+  addLec1(formValue: any, id: string, cId: string){
+    let options = { headers: new HttpHeaders({ 'x-auth-token': this.profToken })}
+
+      return this.http.post(this.api + 'lecture/' + cId + '/' + id, formValue, options)
+      .pipe(catchError(this.handleError<any>('addCourse')))
+  } 
+
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error)

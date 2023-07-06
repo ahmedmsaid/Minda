@@ -81,7 +81,7 @@ export class OverviewcoursesprofComponent implements OnInit {
       this.router.navigate(['/quizprof']);
     }
     Lesson() {
-      this.router.navigate(['/addlecture']);
+      this.router.navigate(['profcourses/Overviewcoursesprof/:id/addlecture']);////////
     }
     @ViewChild('content') content!: ElementRef;
 

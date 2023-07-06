@@ -129,6 +129,9 @@ export class OverviewcoursesComponent implements OnInit {
   }
     
     Discussion(){}
+    onLecClick(id: string) {
+      this.router.navigate(['/lecture', id]);/////
+    }
 }
 
 // import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';

@@ -42,9 +42,9 @@ const routes: Routes = [
   { path: 'overviewcourses/:id', component: OverviewcoursesComponent },
   { path: 'Overviewcoursesprof/:id', component: OverviewcoursesprofComponent },
   { path: 'quiz', component: QuizComponent },
-  { path: 'lecture', component: LectureComponent },
+  { path: 'lecture/:id', component: LectureComponent },
   { path: 'profcourses/Addcourse', component: AddcourseComponent },
-  { path: 'addlecture', component: AddlectureComponent },
+  { path: 'profcourses/Overviewcoursesprof/:id/addlecture', component: AddlectureComponent },
   { path: 'addlecture2', component: Addlecture2Component },
   { path: 'forgetpass', component: ForgetpassComponent },/*/:id*/
   { path: 'quizprof' , component: QuizprofComponent },

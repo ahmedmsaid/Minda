@@ -20,7 +20,7 @@
                 <div class="change" #content>
                    <table class="my-table">
                         <tr *ngFor="let row of lecture">
-                        <td>{{ row.title }}</td>
+                        <td (click)="onLecClick(row._id)">{{ row.title }}</td>
                         </tr>
                     </table>
                 </div>
