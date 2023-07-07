@@ -21,6 +21,7 @@ class InstructorContentActivity : AppCompatActivity() {
 
         binding.instructorBottomNavigationView.setItemSelected(R.id.home, true)
 
+
         binding.instructorBottomNavigationView.setOnItemSelectedListener { id ->
             val page = binding.fragmentContainerView4.findNavController().currentDestination?.label
             when (id) {

@@ -42,6 +42,49 @@
     </fragment>
     <fragment
         android:id="@+id/courseInfoFragment"
-        android:name="com.example.minda.ui.instructor.course_info.CourseInfoFragment"
-        android:label="CourseInfoFragment" />
+        android:name="com.example.minda.ui.instructor.course_info.CourseInfoFragmentForInstructor"
+        android:label="Course Info" >
+        <argument
+            android:name="courseId"
+            app:argType="string" />
+        <argument
+            android:name="courseName"
+            app:argType="string" />
+        <argument
+            android:name="courseDesc"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_courseInfoFragment_to_addQuizFragment"
+            app:destination="@id/addQuizFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addQuizFragment"
+        android:name="com.example.minda.ui.instructor.add_quiz.AddQuizFragment"
+        android:label="Adding Quiz" >
+        <action
+            android:id="@+id/action_addQuizFragment_to_addQuizDetailFragment"
+            app:destination="@id/addQuizDetailFragment" />
+        <argument
+            android:name="courseId"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/addQuizDetailFragment"
+        android:name="com.example.minda.ui.instructor.add_quiz.AddQuizDetailFragment"
+        android:label="Quiz Details" >
+        <argument
+            android:name="quizName"
+            app:argType="string" />
+        <argument android:name="questionCount"
+            app:argType="string" />
+        <argument
+            android:name="eachQuestionMark"
+            app:argType="string" />
+        <argument
+            android:name="courseId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_addQuizDetailFragment_to_instructorHomeFragment"
+            app:destination="@id/instructorHomeFragment" />
+    </fragment>
 </navigation>

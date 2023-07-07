@@ -47,8 +47,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_16sdp"
                     android:background="@drawable/search_field_background"
-                    android:hint="Quiz no."
-                    android:inputType="number"
+                    android:hint="Quiz name."
+                    android:inputType="text"
                     android:padding="12dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -57,13 +57,13 @@
                     tools:ignore="Autofill" />
 
                 <EditText
-                    android:id="@+id/quizStartTimeEt"
+                    android:id="@+id/quizQuestionNumberEt"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_16sdp"
                     android:background="@drawable/search_field_background"
-                    android:hint="Start Time"
-                    android:inputType="time"
+                    android:hint="Q. count"
+                    android:inputType="number"
                     android:padding="12dp"
                     app:layout_constraintEnd_toEndOf="@+id/quizNoEt"
                     app:layout_constraintStart_toStartOf="@+id/quizNoEt"
@@ -71,19 +71,19 @@
                     tools:ignore="Autofill" />
 
                 <EditText
-                    android:id="@+id/quizEndTimeEt"
+                    android:id="@+id/eachQuestionMarkEt"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_16sdp"
                     android:background="@drawable/search_field_background"
-                    android:hint="End Time"
-                    android:inputType="time"
+                    android:hint="Q. mark"
+                    android:inputType="number"
                     android:padding="12dp"
                     android:layout_marginBottom="@dimen/_10sdp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/quizStartTimeEt"
-                    app:layout_constraintStart_toStartOf="@+id/quizStartTimeEt"
-                    app:layout_constraintTop_toBottomOf="@+id/quizStartTimeEt"
+                    app:layout_constraintEnd_toEndOf="@+id/quizQuestionNumberEt"
+                    app:layout_constraintStart_toStartOf="@+id/quizQuestionNumberEt"
+                    app:layout_constraintTop_toBottomOf="@+id/quizQuestionNumberEt"
                     tools:ignore="Autofill" />
 
 

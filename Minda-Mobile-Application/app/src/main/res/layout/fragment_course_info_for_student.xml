@@ -28,7 +28,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView18ForStudent"
+            android:id="@+id/courseDescriptionForStudent"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
@@ -49,9 +49,9 @@
             android:textColor="@color/primer_dark_gray"
             android:textSize="@dimen/_16ssp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/textView18ForStudent"
-            app:layout_constraintStart_toStartOf="@+id/textView18ForStudent"
-            app:layout_constraintTop_toBottomOf="@+id/textView18ForStudent" />
+            app:layout_constraintEnd_toEndOf="@+id/courseDescriptionForStudent"
+            app:layout_constraintStart_toStartOf="@+id/courseDescriptionForStudent"
+            app:layout_constraintTop_toBottomOf="@+id/courseDescriptionForStudent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/studentLecturesRecycler"
@@ -60,22 +60,44 @@
             android:layout_marginTop="@dimen/_8sdp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:orientation="horizontal"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="@+id/textView19ForStudent"
             app:layout_constraintStart_toStartOf="@+id/textView19ForStudent"
             app:layout_constraintTop_toBottomOf="@+id/textView19ForStudent" />
+
+        <ProgressBar
+            android:id="@+id/loadingStudentsLecIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@+id/studentLecturesRecycler"
+            app:layout_constraintStart_toStartOf="@+id/studentLecturesRecycler"
+            app:layout_constraintTop_toBottomOf="@+id/studentLecturesRecycler" />
+
+        <TextView
+            android:id="@+id/noLecYetForStudent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_12ssp"
+            android:text="No Lectures yet"
+            android:visibility="gone"
+            android:gravity="center_horizontal"
+            app:layout_constraintEnd_toEndOf="@+id/studentLecturesRecycler"
+            app:layout_constraintStart_toStartOf="@+id/studentLecturesRecycler"
+            app:layout_constraintTop_toBottomOf="@+id/loadingStudentsLecIndicator" />
 
         <TextView
             android:id="@+id/textView20ForStudent"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Quizzes"
-            android:layout_marginTop="@dimen/_16sdp"
             android:textColor="@color/primer_dark_gray"
             android:textSize="@dimen/_16ssp"
             android:textStyle="bold"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_5sdp"
             app:layout_constraintEnd_toEndOf="@+id/studentLecturesRecycler"
             app:layout_constraintStart_toStartOf="@+id/studentLecturesRecycler"
-            app:layout_constraintTop_toBottomOf="@+id/studentLecturesRecycler" />
+            app:layout_constraintTop_toBottomOf="@+id/noLecYetForStudent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/studentQuizzesRecycler"
@@ -83,24 +105,46 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="@dimen/_8sdp"
+            android:visibility="invisible"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="@+id/textView20ForStudent"
             app:layout_constraintStart_toStartOf="@+id/textView20ForStudent"
             app:layout_constraintTop_toBottomOf="@+id/textView20ForStudent" />
 
         <TextView
+            android:id="@+id/noQuizYetForStudent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="No Quizzes yet"
+            android:textSize="@dimen/_12ssp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/studentQuizzesRecycler"
+            app:layout_constraintStart_toStartOf="@+id/studentQuizzesRecycler"
+            app:layout_constraintTop_toBottomOf="@+id/loadingStudentsQuizIndicator" />
+
+        <ProgressBar
+            android:id="@+id/loadingStudentsQuizIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="@+id/studentQuizzesRecycler"
+            app:layout_constraintStart_toStartOf="@+id/studentQuizzesRecycler"
+            app:layout_constraintTop_toBottomOf="@+id/studentQuizzesRecycler" />
+
+        <TextView
             android:id="@+id/textView21ForStudent"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_16sdp"
             android:text="Assignments"
             android:textColor="@color/primer_dark_gray"
             android:textSize="@dimen/_16ssp"
             android:textStyle="bold"
             android:visibility="invisible"
+            android:layout_marginTop="@dimen/_5sdp"
             app:layout_constraintEnd_toEndOf="@+id/studentQuizzesRecycler"
             app:layout_constraintStart_toStartOf="@+id/studentQuizzesRecycler"
-            app:layout_constraintTop_toBottomOf="@+id/studentQuizzesRecycler" />
+            app:layout_constraintTop_toBottomOf="@+id/noQuizYetForStudent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/studentAssignmentsRecycler"

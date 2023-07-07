@@ -1,4 +1,4 @@
-package com.example.minda.ui.instructor.lectures
+package com.example.minda.ui.lectures
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

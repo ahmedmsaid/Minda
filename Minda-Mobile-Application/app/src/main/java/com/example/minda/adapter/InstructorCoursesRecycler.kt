@@ -1,6 +1,5 @@
 package com.example.minda.adapter
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,11 +10,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.minda.R
 import com.example.minda.databinding.CourseItemLayoutBinding
-import com.example.minda.pojo.student.content.EnrolledCourse
-import com.example.minda.ui.student.home.StudentHomeFragmentDirections
+import com.example.minda.pojo.instructor.content.Course
 
-class StudentCoursesAdapter(private val fragment: Fragment) :
-    ListAdapter<EnrolledCourse, StudentCoursesAdapter.ViewHolder>(ItemDiff()) {
+class InstructorCoursesAdapter(private val fragment: Fragment) :
+    ListAdapter<Course, InstructorCoursesAdapter.ViewHolder>(ItemDiff()) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -28,7 +26,6 @@ class StudentCoursesAdapter(private val fragment: Fragment) :
         )
     }
 
-    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.courseName.text = getItem(position).courseName
         holder.binding.courseDescription.text = getItem(position).description
@@ -43,7 +40,7 @@ class StudentCoursesAdapter(private val fragment: Fragment) :
                 putString("courseName", name)
                 putString("courseDesc", description)
             }
-            navController.navigate(R.id.action_studentHomeFragment_to_courseInfoFragmentForStudent,bundle)
+            navController.navigate(R.id.action_instructorHomeFragment_to_courseInfoFragment,bundle)
         }
     }
 
@@ -51,15 +48,16 @@ class StudentCoursesAdapter(private val fragment: Fragment) :
     inner class ViewHolder(val binding: CourseItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root)
 
-    class ItemDiff : DiffUtil.ItemCallback<EnrolledCourse>() {
+
+    class ItemDiff : DiffUtil.ItemCallback<Course>() {
         override fun areItemsTheSame(
-            oldItem: EnrolledCourse, newItem:
-            EnrolledCourse
+            oldItem: Course, newItem:
+            Course
         ): Boolean {
             return oldItem._id == newItem._id
         }
 
-        override fun areContentsTheSame(oldItem: EnrolledCourse, newItem: EnrolledCourse): Boolean {
+        override fun areContentsTheSame(oldItem: Course, newItem: Course): Boolean {
             return oldItem == newItem
         }
 

@@ -2,6 +2,7 @@ package com.example.minda.ui.instructor.profile
 
 import android.annotation.SuppressLint
 import android.app.Application
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -16,6 +17,7 @@ import com.example.minda.R
 import com.example.minda.databinding.FragmentInstructorProfileBinding
 import com.example.minda.viewmodel.SharedViewModel
 import com.example.minda.viewmodel.SharedViewModelFactory
+import com.ismaeldivita.chipnavigation.ChipNavigationBar
 
 
 class InstructorProfileFragment : Fragment() {
@@ -62,4 +64,6 @@ class InstructorProfileFragment : Fragment() {
         binding.instructorEmail.text = SharedViewModel.currentLoggedInUserEmail.value
 
     }
+
+
 }

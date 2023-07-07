@@ -1,6 +1,6 @@
 package com.example.minda.pojo.instructor.content
 
-import com.example.minda.pojo.Profileimg
+import com.example.minda.pojo.profile_image.Profileimg
 
 data class InstructorProfileResponse(
     val firstName: String?,

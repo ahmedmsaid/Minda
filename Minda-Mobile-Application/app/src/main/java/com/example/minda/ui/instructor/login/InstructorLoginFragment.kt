@@ -14,7 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.minda.InstructorContentActivity
 import com.example.minda.R
 import com.example.minda.databinding.FragmentInstructorLoginBinding
-import com.example.minda.pojo.LoginRequest
+import com.example.minda.pojo.login.LoginRequest
 import com.example.minda.utile.showToast
 import com.example.minda.viewmodel.SharedViewModel
 import com.example.minda.viewmodel.SharedViewModelFactory

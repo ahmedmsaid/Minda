@@ -2,6 +2,7 @@ package com.example.minda.ui.student.profile
 
 import android.annotation.SuppressLint
 import android.app.Application
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,6 +17,7 @@ import com.example.minda.R
 import com.example.minda.databinding.FragmentStudentProfileBinding
 import com.example.minda.viewmodel.SharedViewModel
 import com.example.minda.viewmodel.SharedViewModelFactory
+import com.ismaeldivita.chipnavigation.ChipNavigationBar
 
 class StudentProfileFragment : Fragment() {
 
@@ -60,4 +62,5 @@ class StudentProfileFragment : Fragment() {
         binding.studentName.text = SharedViewModel.currentLoggedInUserName.value
         binding.studentEmail.text = SharedViewModel.currentLoggedInUserEmail.value
     }
+
 }

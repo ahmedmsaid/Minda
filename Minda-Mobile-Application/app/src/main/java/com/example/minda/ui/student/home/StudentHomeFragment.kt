@@ -2,6 +2,7 @@ package com.example.minda.ui.student.home
 
 import android.annotation.SuppressLint
 import android.app.Application
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +17,7 @@ import com.example.minda.databinding.FragmentStudentHomeBinding
 import com.example.minda.utile.getIdOfLoggedInPerson
 import com.example.minda.viewmodel.SharedViewModel
 import com.example.minda.viewmodel.SharedViewModelFactory
+import com.ismaeldivita.chipnavigation.ChipNavigationBar
 
 class StudentHomeFragment : Fragment() {
     private lateinit var binding: FragmentStudentHomeBinding
@@ -41,6 +43,7 @@ class StudentHomeFragment : Fragment() {
 
         return binding.root
     }
+
 
     @SuppressLint("SetTextI18n")
     private fun refreshHome() {
@@ -86,4 +89,5 @@ class StudentHomeFragment : Fragment() {
             }
         }
     }
+
 }

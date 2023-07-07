@@ -1,14 +1,19 @@
 package com.example.minda.data
 
+import com.example.minda.pojo.course.CourseDetailsResponse
 import com.example.minda.pojo.instructor.auth.InstructorRegisterRequest
 import com.example.minda.pojo.student.auth.RegisteredStudentResponse
-import com.example.minda.pojo.LoginRequest
+import com.example.minda.pojo.login.LoginRequest
 import com.example.minda.pojo.instructor.auth.RegisteredInstructorResponse
 import com.example.minda.pojo.instructor.content.CreateCourseRequest
 import com.example.minda.pojo.instructor.content.CreatedCourseResponse
 import com.example.minda.pojo.instructor.content.InstructorProfileResponse
+import com.example.minda.pojo.instructor.content.quiz.post.PostQuizRequest
+import com.example.minda.pojo.instructor.content.quiz.response.PostingQuizResponse
 import com.example.minda.pojo.student.auth.StudentRegisterRequest
-import com.example.minda.pojo.student.content.EnrolledCourse
+import com.example.minda.pojo.student.content.AnswerQuizRequest
+import com.example.minda.pojo.student.content.MyQuizMarksResponse
+import com.example.minda.pojo.student.content.QuizQuestionsResponse
 import com.example.minda.pojo.student.content.StudentProfileResponse
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -19,7 +24,6 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
-import retrofit2.http.Headers
 import retrofit2.http.POST
 import retrofit2.http.Path
 import java.util.concurrent.TimeUnit
@@ -78,7 +82,48 @@ interface MindaAPI {
         @Body request: CreateCourseRequest
     ): Response<CreatedCourseResponse>
 
+    @POST("quiz/courses/{course-id}/quizze")
+    suspend fun createNewQuizByInstructor(
+        @Path("course-id") id: String,
+        @Header("x-auth-token") token: String,
+        @Body request: PostQuizRequest
+    ): Response<PostingQuizResponse>
 
+    @GET("course/courseDetails/{course-id}")
+    suspend fun getEnrolledInCourseDetailsForStudent(
+        @Path("course-id") id: String,
+        @Header("x-auth-token") token: String,
+    ): Response<CourseDetailsResponse>
+
+    @GET("course/course-Details/{course-id}")
+    suspend fun getControlledCourseDetailsForInstructor(
+        @Path("course-id") id: String,
+        @Header("x-auth-token") token: String,
+    ): Response<CourseDetailsResponse>
+
+    @GET("quiz/{quiz-id}/{course-id}")
+    suspend fun getQuizQuestionsForStudentToAnswer(
+        @Path("quiz-id") quizId: String,
+        @Path("course-id") courseId: String,
+        @Header("x-auth-token") token: String,
+    ): Response<QuizQuestionsResponse>
+
+    @POST("quiz/courses/{course-id}/quizzes/{quiz-id}/submit")
+    suspend fun studentAnswerTheQuiz(
+        @Path("course-id") courseId: String,
+        @Path("quiz-id") quizId: String,
+        @Header("x-auth-token") token: String,
+        @Body request: AnswerQuizRequest
+    ): Response<String>
+
+
+    @GET("quiz/courses/{course-id}/quizzes/{quiz-id}/user/{user-id}")
+    suspend fun getQuizMarksForTheStudent(
+        @Path("course-id") courseId: String,
+        @Path("quiz-id") quizId: String,
+        @Path("user-id") userId: String,
+        @Header("x-auth-token") token: String,
+    ): Response<MyQuizMarksResponse>
 
 }
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/inner_nav"
     app:startDestination="@id/studentHomeFragment">
 
@@ -26,5 +27,42 @@
     <fragment
         android:id="@+id/courseInfoFragmentForStudent"
         android:name="com.example.minda.ui.student.course_info.CourseInfoFragmentForStudent"
-        android:label="CourseInfoFragmentForStudent" />
+        android:label="Course Info" >
+        <action
+            android:id="@+id/action_courseInfoFragmentForStudent_to_lectureInfoFragment"
+            app:destination="@id/lectureInfoFragment" />
+        <action
+            android:id="@+id/action_courseInfoFragmentForStudent_to_takingQuizFragment"
+            app:destination="@id/takingQuizFragment" />
+        <argument
+            android:name="courseId"
+            app:argType="string" />
+        <argument
+            android:name="courseName"
+            app:argType="string" />
+        <argument
+            android:name="courseDesc"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/lectureInfoFragment"
+        android:name="com.example.minda.ui.lectures.LectureInfoFragment"
+        android:label="Lecture Info" />
+    <fragment
+        android:id="@+id/takingQuizFragment"
+        android:name="com.example.minda.ui.student.quiz.TakingQuizFragment"
+        android:label="Taking Quiz"
+        tools:layout="@layout/fragment_taking_quiz" >
+        <argument
+            android:name="courseId"
+            app:argType="string" />
+        <argument
+            android:name="quizId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_takingQuizFragment_to_studentHomeFragment"
+            app:destination="@id/studentHomeFragment"
+            app:popUpTo="@id/takingQuizFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

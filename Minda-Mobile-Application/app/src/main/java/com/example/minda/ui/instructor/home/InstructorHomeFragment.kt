@@ -1,6 +1,7 @@
 package com.example.minda.ui.instructor.home
 import android.annotation.SuppressLint
 import android.app.Application
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,12 +11,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.minda.R
-import com.example.minda.adapter.CoursesAdapter
+import com.example.minda.adapter.InstructorCoursesAdapter
 import com.example.minda.databinding.FragmentInstructorHomeBinding
 import com.example.minda.ui.instructor.add_course.AddCourseFragment
 import com.example.minda.utile.getIdOfLoggedInPerson
 import com.example.minda.viewmodel.SharedViewModel
 import com.example.minda.viewmodel.SharedViewModelFactory
+import com.ismaeldivita.chipnavigation.ChipNavigationBar
 
 class InstructorHomeFragment : Fragment() {
 
@@ -71,7 +73,7 @@ class InstructorHomeFragment : Fragment() {
                     SharedViewModel.currentLoggedInUserName.value = binding.instructorName.text.toString()
 
                     binding.noCoursesYet.visibility = View.GONE
-                    val coursesAdapter = CoursesAdapter(this)
+                    val coursesAdapter = InstructorCoursesAdapter(this)
                     if (instructorProfile.profileimg?.url != null) {
                         SharedViewModel.currentLoggedInUserImage.value = instructorProfile.profileimg.url
                         Glide.with(requireContext())
@@ -95,4 +97,5 @@ class InstructorHomeFragment : Fragment() {
             }
         }
     }
+
 }

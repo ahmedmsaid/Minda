@@ -5,7 +5,7 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
+        android:id="@+id/constraintLayoutForInstructor"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingTop="16dp"
@@ -13,10 +13,10 @@
         android:paddingEnd="8dp"
         android:paddingBottom="16dp"
         tools:ignore="HardcodedText"
-        tools:context=".ui.instructor.course_info.CourseInfoFragment">
+        tools:context=".ui.instructor.course_info.CourseInfoFragmentForInstructor">
 
         <TextView
-            android:id="@+id/courseInfoName"
+            android:id="@+id/courseInfoNameForInstructor"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Course name"
@@ -28,7 +28,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView18"
+            android:id="@+id/courseDescriptionForInstructor"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
@@ -36,12 +36,12 @@
             android:maxLines="3"
             android:text="description"
             android:textSize="@dimen/_14ssp"
-            app:layout_constraintEnd_toEndOf="@+id/courseInfoName"
-            app:layout_constraintStart_toStartOf="@+id/courseInfoName"
-            app:layout_constraintTop_toBottomOf="@+id/courseInfoName" />
+            app:layout_constraintEnd_toEndOf="@+id/courseInfoNameForInstructor"
+            app:layout_constraintStart_toStartOf="@+id/courseInfoNameForInstructor"
+            app:layout_constraintTop_toBottomOf="@+id/courseInfoNameForInstructor" />
 
         <TextView
-            android:id="@+id/textView19"
+            android:id="@+id/textView19ForInstructor"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_16ssp"
@@ -49,70 +49,114 @@
             android:textColor="@color/primer_dark_gray"
             android:textSize="@dimen/_16ssp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/textView18"
-            app:layout_constraintStart_toStartOf="@+id/textView18"
-            app:layout_constraintTop_toBottomOf="@+id/textView18" />
+            app:layout_constraintEnd_toEndOf="@+id/courseDescriptionForInstructor"
+            app:layout_constraintStart_toStartOf="@+id/courseDescriptionForInstructor"
+            app:layout_constraintTop_toBottomOf="@+id/courseDescriptionForInstructor" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/instructorLecturesRecycler"
+            android:id="@+id/InstructorLecturesRecycler"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_8sdp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="@+id/textView19"
-            app:layout_constraintStart_toStartOf="@+id/textView19"
-            app:layout_constraintTop_toBottomOf="@+id/textView19" />
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="@+id/textView19ForInstructor"
+            app:layout_constraintStart_toStartOf="@+id/textView19ForInstructor"
+            app:layout_constraintTop_toBottomOf="@+id/textView19ForInstructor" />
+
+        <ProgressBar
+            android:id="@+id/loadingInstructorLecIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@+id/InstructorLecturesRecycler"
+            app:layout_constraintStart_toStartOf="@+id/InstructorLecturesRecycler"
+            app:layout_constraintTop_toBottomOf="@+id/InstructorLecturesRecycler" />
 
         <TextView
-            android:id="@+id/textView20"
+            android:id="@+id/noLecYetForInstructor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_12ssp"
+            android:text="No Lectures yet"
+            android:visibility="gone"
+            android:gravity="center_horizontal"
+            app:layout_constraintEnd_toEndOf="@+id/InstructorLecturesRecycler"
+            app:layout_constraintStart_toStartOf="@+id/InstructorLecturesRecycler"
+            app:layout_constraintTop_toBottomOf="@+id/loadingInstructorLecIndicator" />
+
+        <TextView
+            android:id="@+id/textView20ForInstructor"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Quizzes"
-            android:layout_marginTop="@dimen/_16sdp"
             android:textColor="@color/primer_dark_gray"
             android:textSize="@dimen/_16ssp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/instructorLecturesRecycler"
-            app:layout_constraintStart_toStartOf="@+id/instructorLecturesRecycler"
-            app:layout_constraintTop_toBottomOf="@+id/instructorLecturesRecycler" />
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:layout_constraintEnd_toEndOf="@+id/InstructorLecturesRecycler"
+            app:layout_constraintStart_toStartOf="@+id/InstructorLecturesRecycler"
+            app:layout_constraintTop_toBottomOf="@+id/noLecYetForInstructor" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/instructorQuizzesRecycler"
+            android:id="@+id/InstructorQuizzesRecycler"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="@dimen/_8sdp"
+            android:visibility="invisible"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="@+id/textView20"
-            app:layout_constraintStart_toStartOf="@+id/textView20"
-            app:layout_constraintTop_toBottomOf="@+id/textView20" />
+            app:layout_constraintEnd_toEndOf="@+id/textView20ForInstructor"
+            app:layout_constraintStart_toStartOf="@+id/textView20ForInstructor"
+            app:layout_constraintTop_toBottomOf="@+id/textView20ForInstructor" />
 
         <TextView
-            android:id="@+id/textView21"
+            android:id="@+id/noQuizYetForInstructor"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_16sdp"
+            android:gravity="center_horizontal"
+            android:text="No Quizzes yet"
+            android:textSize="@dimen/_12ssp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/InstructorQuizzesRecycler"
+            app:layout_constraintStart_toStartOf="@+id/InstructorQuizzesRecycler"
+            app:layout_constraintTop_toBottomOf="@+id/loadingInstructorQuizIndicator" />
+
+        <ProgressBar
+            android:id="@+id/loadingInstructorQuizIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="@+id/InstructorQuizzesRecycler"
+            app:layout_constraintStart_toStartOf="@+id/InstructorQuizzesRecycler"
+            app:layout_constraintTop_toBottomOf="@+id/InstructorQuizzesRecycler" />
+
+        <TextView
+            android:id="@+id/textView21ForInstructor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:text="Assignments"
             android:textColor="@color/primer_dark_gray"
             android:textSize="@dimen/_16ssp"
             android:textStyle="bold"
             android:visibility="invisible"
-            app:layout_constraintEnd_toEndOf="@+id/instructorQuizzesRecycler"
-            app:layout_constraintStart_toStartOf="@+id/instructorQuizzesRecycler"
-            app:layout_constraintTop_toBottomOf="@+id/instructorQuizzesRecycler" />
+            android:layout_marginTop="@dimen/_5sdp"
+            app:layout_constraintEnd_toEndOf="@+id/InstructorQuizzesRecycler"
+            app:layout_constraintStart_toStartOf="@+id/InstructorQuizzesRecycler"
+            app:layout_constraintTop_toBottomOf="@+id/noQuizYetForInstructor" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/instructorAssignmentsRecycler"
+            android:id="@+id/InstructorAssignmentsRecycler"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:visibility="invisible"
             android:layout_marginTop="@dimen/_8sdp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="@+id/textView21"
-            app:layout_constraintStart_toStartOf="@+id/textView21"
-            app:layout_constraintTop_toBottomOf="@+id/textView21" />
+            app:layout_constraintEnd_toEndOf="@+id/textView21ForInstructor"
+            app:layout_constraintStart_toStartOf="@+id/textView21ForInstructor"
+            app:layout_constraintTop_toBottomOf="@+id/textView21ForInstructor" />
 
         <LinearLayout
             android:layout_width="0dp"

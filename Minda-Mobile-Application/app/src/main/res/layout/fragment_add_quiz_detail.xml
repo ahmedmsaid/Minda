@@ -181,12 +181,14 @@
         </com.google.android.material.card.MaterialCardView>
 
         <Button
+            android:id="@+id/finishPreparingQuizBtn"
             android:layout_width="@dimen/_200sdp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
             android:background="@drawable/get_start_btn_back"
+            android:visibility="invisible"
             android:text="Finish"
             android:textAllCaps="false"
-            android:layout_marginTop="@dimen/_10sdp"
             android:textColor="@color/white"
             android:textSize="@dimen/_14ssp"
             app:layout_constraintEnd_toEndOf="@+id/materialCardView8"
