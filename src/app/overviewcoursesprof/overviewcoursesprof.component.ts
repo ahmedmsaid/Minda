@@ -10,17 +10,18 @@ interface Course {
   doctorData: {
     firstName: string,
     doctorId: string
-  };
-  _id: number;
-  courseName: string;
-  description: string;
-  duration: string;
-  averageRating?: number
-}
-
-interface Lesson {
-  name: string;
-  time: string;
+  }
+  _id: string
+  courseName: string
+  description: string
+  lectureId: [{
+    _id: string
+    title: string
+  }],
+  quizzes: [{
+    _id: string
+    quizname: string
+  }],
 }
 
 @Component({
@@ -30,59 +31,41 @@ interface Lesson {
 })
 
 export class OverviewcoursesprofComponent implements OnInit {
-  /*course: {
-    id: number;
-    name: string;
-    description: string;
-    authorName: string;
-    lessons: Lesson[];
-  } = {
-    id: 0,
-    name: '',
-    description: '',
-    authorName: '',
-    lessons: []
-  };
-  data: Lesson[] = [
-    { name: 'Course Overview', time: '5m' },
-    { name: 'Lession 1', time: '30m' },
-    { name: 'Lession 2', time: '35m' }
-  ];*/
-
-  public courses!: Course
-
+  courses!: Course
   CoursesComponent: any;
-
   token = this.auth.getProfToken()
   info: any
   id: any
-
+  courseId=this.route.snapshot.paramMap.get('id')!;
   constructor(private router: Router, private route: ActivatedRoute, private courseService: CourseService, private auth: AuthService) { }
-
    ngOnInit(){
-    this.info = jwtDecode(this.token)
-    this.id = this.info.id
-    
-
+    var id = this.route.snapshot.paramMap.get('id')!;
+    // this.getCourse(id)
+    this.getInfoDoc(id)
+    console.log(id)
+    console.log(this.courses)
   }
-
-    // TODO: Use the id to retrieve the corresponding course data from your database or API
-    // For now, we'll just hardcode some dummy data
-    // this.course = {
-    //   id: +id!,
-    //   title: titlee,
-    //   Description: 'About course, Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    //   authorName: 'Dr. Asmaa'
-    // };
-    start() {
-      this.router.navigate(['/lecture']);
+  getInfoDoc(id: string){
+    this.courseService.getCourseInfoDoc(id)
+  .subscribe((data: any)=>{
+      this.courses = data
+  })
+  console.log("dddd"+this.courses)
+  }
+    start(Cid: string,Lid: string) {
+      this.router.navigate([`profcourses/Overviewcoursesprof/${Cid}/lecture/${Lid}`]);
     }
     quiz() {
       this.router.navigate(['/quizprof']);
     }
     Lesson() {
-      this.router.navigate(['profcourses/Overviewcoursesprof/:id/addlecture']);////////
+      this.router.navigate([`profcourses/Overviewcoursesprof/${this.courseId}/addlecture`]);////////
     }
+    onLecClick(Cid: string,Lid: string) {
+
+      this.router.navigate([`profcourses/Overviewcoursesprof/${Cid}/lecture/${Lid}`]);/////
+    }
+    
     @ViewChild('content') content!: ElementRef;
 
     Content() {

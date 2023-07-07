@@ -28,6 +28,8 @@ import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { CourseService } from './CourseService';
+import { LecComponent } from './lec/lec.component';
+import { UserService } from './user.service';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -42,12 +44,14 @@ const routes: Routes = [
   { path: 'overviewcourses/:id', component: OverviewcoursesComponent },
   { path: 'Overviewcoursesprof/:id', component: OverviewcoursesprofComponent },
   { path: 'quiz', component: QuizComponent },
-  { path: 'lecture/:id', component: LectureComponent },
+  { path: 'profcourses/Overviewcoursesprof/:id/lecture/:Lid', component: LectureComponent },
+  { path: 'courses/overviewcourses/:id/lec/:Lid', component: LecComponent },
   { path: 'profcourses/Addcourse', component: AddcourseComponent },
   { path: 'profcourses/Overviewcoursesprof/:id/addlecture', component: AddlectureComponent },
   { path: 'addlecture2', component: Addlecture2Component },
   { path: 'forgetpass', component: ForgetpassComponent },/*/:id*/
   { path: 'quizprof' , component: QuizprofComponent },
+  
 ];
 
 @NgModule({
@@ -74,6 +78,7 @@ const routes: Routes = [
     OverviewcoursesprofComponent,
     LectureComponent,
     HomeComponent,
+    LecComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,7 +90,8 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: [
     AuthService,
-    CourseService
+    CourseService,
+    UserService,
   ],
   bootstrap: [AppComponent]
 })

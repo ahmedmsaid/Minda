@@ -6,7 +6,7 @@
             <p>{{courses.description}}</p>
             <div class="btn">
                 <div class="leftbtn">
-                    <button (click)="start()" class="start">Start Course</button>
+                    <button (click)="start(courses._id,courses.lectureId[0]._id)" class="start">Start Course</button>
                 </div>
                 <div class="rightbtn">
                     <button (click)="Lesson()" class="Lesson">Add New Lesson</button>&nbsp;&nbsp;
@@ -24,12 +24,11 @@
                 </div>
                 <div class="bg"></div>
                 <div class="change" #content>
-                    <!--<table class="my-table">
-                        <tr *ngFor="let row of data">
-                        <td>{{ row.name }}</td>
-                        <td>{{ row.time }}</td>
+                    <table class="my-table">
+                        <tr *ngFor="let row of courses.lectureId">
+                        <td (click)="onLecClick(courses._id,row._id)" >{{ row.title }}</td>
                         </tr>
-                    </table>-->
+                    </table>
                 </div>
             </div>
         </div>

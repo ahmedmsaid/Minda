@@ -24,8 +24,8 @@ interface Course {
 
 export class CourseService {
   private api = "https://e-learning1.onrender.com/api/";
-  userToken: any
-  profToken: any
+  userToken: string
+  profToken: string
   info: any
 
   constructor(private http: HttpClient, private auth: AuthService) {
@@ -48,7 +48,7 @@ export class CourseService {
   }
 
   getCourseById(id: string): any {
-    let options = { headers: new HttpHeaders({ 'x-auth-token': this.userToken })}
+    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getUserToken() })}
     console.log(this.auth.getUserToken())
 
     return this.http.get<any[]>(this.api + 'course/' + id, options)
@@ -56,13 +56,17 @@ export class CourseService {
   }
 
   getCourseInfo(id: string): any {
-    let options = { headers: new HttpHeaders({ 'x-auth-token': this.userToken })}
+    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getUserToken() })}
     console.log(this.auth.getUserToken())
-
-    return this.http.get<any[]>(this.api + 'course/courseDetails/' + id, options)
+    return this.http.get<any[]>(this.api + 'course/couseInfo/' + id, options)
     .pipe(catchError(this.handleError<any[]>('getCourses', [])))
   }
-
+  getCourseInfoDoc(id: string): any {
+    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getProfToken() })}
+    console.log(this.auth.getProfToken())
+    return this.http.get<any[]>(this.api + 'course/doctor/couseInfo/' + id, options)
+    .pipe(catchError(this.handleError<any[]>('getCourses', [])))
+  }
   /*getLectureInfo(userId: string, courseId: string, lectureId: string){
     let options = { headers: new HttpHeaders({ 'x-auth-token': this.userToken })}
 
@@ -77,13 +81,24 @@ export class CourseService {
       .pipe(catchError(this.handleError<any>('addCourse')))
   } 
 
-  addLec1(formValue: any, id: string, cId: string){
-    let options = { headers: new HttpHeaders({ 'x-auth-token': this.profToken })}
+  addLec1(formValue: any,cId: string, id: string ){
+    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getProfToken() })}
 
       return this.http.post(this.api + 'lecture/' + cId + '/' + id, formValue, options)
       .pipe(catchError(this.handleError<any>('addCourse')))
   } 
-
+  getLec(lId: string, cId: string  ): any{
+    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getProfToken() })}
+    // console.log(this.auth.getProfToken())
+      return this.http.get(this.api + 'lecture/lec/' + lId + '/course/' + cId, options)
+      .pipe(catchError(this.handleError<any>('addCourse')))
+  } 
+  getLecUser(lId: string): any{
+    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getUserToken() })}
+    console.log(this.auth.getUserToken())
+      return this.http.get(this.api + 'lecture/lec/' + lId , options)
+      .pipe(catchError(this.handleError<any>('addCourse')))
+  } 
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error)

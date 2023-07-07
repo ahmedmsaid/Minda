@@ -5,7 +5,7 @@
             <h3 class="name">By :- {{ course.doctorData.firstName}}</h3>
             <p>{{course.description}}</p>
             <div class="btn">
-                <button (click)="start()" class="start">Start Course</button>&nbsp;&nbsp;
+                <button (click)="start(course._id,course.lectureId[0]._id)" class="start">Start Course</button>&nbsp;&nbsp;
                 <button (click)="quiz()" class="quizz">Take a quiz</button>
             </div>
             <div class="step"></div>
@@ -19,8 +19,8 @@
                 <div class="bg"></div>
                 <div class="change" #content>
                    <table class="my-table">
-                        <tr *ngFor="let row of lecture">
-                        <td (click)="onLecClick(row._id)">{{ row.title }}</td>
+                        <tr *ngFor="let row of course.lectureId">
+                        <td (click)="onLecClick(course._id,row._id)">{{ row.title }}</td>
                         </tr>
                     </table>
                 </div>

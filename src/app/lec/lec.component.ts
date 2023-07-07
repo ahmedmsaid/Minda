@@ -27,11 +27,11 @@ interface Lec {
 }
 
 @Component({
-  selector: 'app-lecture',
-  templateUrl: './lecture.component.html',
-  styleUrls: ['./lecture.component.scss']
+  selector: 'app-lec',
+  templateUrl: './lec.component.html',
+  styleUrls: ['./lec.component.scss']
 })
-export class LectureComponent {
+export class LecComponent {
   lec!: Lec
   description:any
   cname:any
@@ -41,7 +41,7 @@ export class LectureComponent {
   token: any
   info: any
   constructor(private courseService: CourseService, private auth: AuthService, private route: ActivatedRoute) {
-    this.token = this.auth.getProfToken()
+    this.token = this.auth.getUserToken()
   }
 
   ngOnInit(){
@@ -50,11 +50,11 @@ export class LectureComponent {
     this.courseId = this.route.snapshot.paramMap.get('id')!;
     this.lectureId = this.route.snapshot.paramMap.get('Lid')!;
     // console.log("cid"+this.courseId+" lid "+this.lectureId)
-    this.getLec(this.lectureId ,this.courseId )
+    this.getLec(this.lectureId )
   }
 
-  getLec(lId: string, cId: string){
-      this.courseService.getLec(lId, cId)
+  getLec(lId: string){
+      this.courseService.getLecUser(lId)
     .subscribe((data: any)=>{
         this.description = data.lecture.description
         this.cname=data.lecture.courseData.courseName
@@ -63,4 +63,3 @@ export class LectureComponent {
     })
  }
 }
-

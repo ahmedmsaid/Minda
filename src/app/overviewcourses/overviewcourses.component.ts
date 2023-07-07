@@ -24,13 +24,17 @@ interface Course {
   _id: string
   courseName: string
   description: string
-  lectures: lectureId[]
+  lectureId: [{
+    _id: string
+    title: string
+  }],
+  quizzes: [{
+    _id: string
+    quizname: string
+  }],
 }
 
-interface lectureId {
-  _id: string
-  title: string
-}
+  
 
 @Component({
   selector: 'app-overviewcourses',
@@ -39,27 +43,8 @@ interface lectureId {
 })
 
 export class OverviewcoursesComponent implements OnInit {
-  /*course: {
-    id: number;
-    name: string;
-    description: string;
-    authorName: string;
-    lessons: Lesson[];
-  } = {
-    id: 0,
-    name: '',
-    description: '',
-    authorName: '',
-    lessons: []
-  };
-  data: Lesson[] = [
-    { name: 'Course Overview', time: '5m' },
-    { name: 'Lession 1', time: '30m' },
-    { name: 'Lession 2', time: '35m' }
-  ];*/
-
   course!: Course
-  lecture!: lectureId[]
+  // lecture!: lectureId[]
 
   CoursesComponent: any;
   
@@ -67,11 +52,10 @@ export class OverviewcoursesComponent implements OnInit {
 
   ngOnInit() {
     var id = this.route.snapshot.paramMap.get('id')!;
-    this.getCourse(id)
+    // this.getCourse(id)
     this.getInfo(id)
     console.log(id)
     console.log(this.course)
-    console.log(this.lecture)
 
     // TODO: Use the id to retrieve the corresponding course data from your database or API
     // For now, we'll just hardcode some dummy data
@@ -83,24 +67,25 @@ export class OverviewcoursesComponent implements OnInit {
     // };
   }
   // Other methods for switching between course content, description, and discussion
-    getCourse(id: string){
-      this.courseService.getCourseById(id)
-      .pipe(tap( (data: any) => {
-        this.course = data
-    }))
-    .subscribe()
-    }
+    // getCourse(id: string){
+    //   this.courseService.getCourseById(id)
+    //   .pipe(tap( (data: any) => {
+    //     this.course = data
+    // }))
+    // .subscribe()
+    // }
 
     getInfo(id: string){
       this.courseService.getCourseInfo(id)
-      .pipe(tap( (data: any) => {
-        this.lecture = data['lectureId']
-    }))
-    .subscribe()
+    .subscribe((data: any)=>{
+        this.course = data
+    })
+    
+    console.log("dddd"+this.course)
     }
 
-    start() {
-      this.router.navigate(['/lecture']);
+    start(Cid: string,Lid: string) {
+      this.router.navigate([`courses/overviewcourses/${Cid}/lec/${Lid}`]);
     }
     quiz() {
       this.router.navigate(['/quiz']);
@@ -129,8 +114,9 @@ export class OverviewcoursesComponent implements OnInit {
   }
     
     Discussion(){}
-    onLecClick(id: string) {
-      this.router.navigate(['/lecture', id]);/////
+    onLecClick(Cid: string,Lid: string) {
+
+      this.router.navigate([`courses/overviewcourses/${Cid}/lec/${Lid}`]);/////
     }
 }
 
