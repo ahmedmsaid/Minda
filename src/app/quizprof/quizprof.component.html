@@ -7,23 +7,25 @@
         <h1>Create a Quiz</h1>
         <div class="bg"></div>
         <form #quizprofform="ngForm" (ngSubmit)="onSubmit(quizprofform)">
-          <div class="inp-box">
-            <span id="q" class="text-danger"></span>
-            <input ngModel name="q" id="q"  placeholder="Enter Question?" /><br>
-            <span id="a1" class="text-danger"></span>
-            <input ngModel name="a1" id="a1"  placeholder="First Answer" />
-            <span id="a2" class="text-danger"></span>
-            <input ngModel name="a2" id="a2" placeholder="Second Answer" />
-            <span id="a3" class="text-danger"></span>
-            <input ngModel name="a3" id="a3" placeholder="Thrid Answer" />
-            <span id="a4" class="text-danger"></span>
-            <input ngModel name="a4" id="a4" placeholder="Fourth Answer" /><br>
-            <span id="Correct" class="text-danger"></span>
-            <input ngModel name="Correct" id="Correct" placeholder="Enter Correct Answer" />
-          </div>
-          <input type="submit" class="add" value="Add" /><br />
+          <input class="inp" ngModel name="quizname" id="quizname" [(ngModel)]="quiz.quizname" placeholder="Enter Quiz Title" /><br>
+          <div class="line"></div>
+          <div *ngFor="let question of quiz.questions; let i = index" class="inp-box">
+            <input class="inp" ngModel name="q{{i}}" id="q{{i}}" [(ngModel)]="question.title" placeholder="Enter Question?" />
+            <input class="inp" type="number" ngModel name="mark{{i}}" id="mark{{i}}" [(ngModel)]="question.mark" placeholder="Enter Mark" /><br>
+            <div class="answer" *ngFor="let answer of question.choose; let j = index">
+              <span id="a{{j}}{{i}}" class="text-danger"></span>
+              <input type="radio" name="answer{{i}}" id="a{{j}}{{i}}" [(ngModel)]="selectedAnswer[i]" [value]="j" />
+              <input class="inp" ngModel name="a{{j}}{{i}}" id="a{{j}}{{i}}" [(ngModel)]="answer.text" placeholder="Answer {{j + 1}}" />
+            </div><br>
+            <a class="Selection" (click)="addAnswer(i)">Add Selection</a>
+            <div *ngIf="isAddAnswerVisible[i]"></div>
+            <div class="line"></div>
+          </div><br>
+          <span id="Correct" class="text-danger"></span><br>
+          <a class="question" (click)="addQuestion()">Add A New Question</a><br>
+          <input type="submit" class="add" value="Submit" /><br />
         </form> 
       </div>
-      <div class="aside"></div>
+      <!-- <div class="aside"></div> -->
   </div>
 </div>
