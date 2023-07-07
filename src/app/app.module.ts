@@ -30,7 +30,7 @@ import { AuthService } from './auth.service';
 import { CourseService } from './CourseService';
 import { LecComponent } from './lec/lec.component';
 import { UserService } from './user.service';
-
+import { ProfileDocComponent } from './profile-doc/profile-doc.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'courses', component: CoursesComponent },
@@ -41,6 +41,7 @@ const routes: Routes = [
   { path: 'signupprof', component: SignupprofComponent },
   { path: 'editprofile', component: EditprofileComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'profileDoc', component: ProfileDocComponent },
   { path: 'overviewcourses/:id', component: OverviewcoursesComponent },
   { path: 'Overviewcoursesprof/:id', component: OverviewcoursesprofComponent },
   { path: 'quiz', component: QuizComponent },
@@ -79,6 +80,7 @@ const routes: Routes = [
     LectureComponent,
     HomeComponent,
     LecComponent,
+    ProfileDocComponent,
   ],
   imports: [
     BrowserModule,

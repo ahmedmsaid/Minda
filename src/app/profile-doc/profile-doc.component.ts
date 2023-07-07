@@ -5,11 +5,11 @@ import { AuthService } from '../auth.service';
 import jwtDecode from 'jwt-decode';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  selector: 'app-profile-doc',
+  templateUrl: './profile-doc.component.html',
+  styleUrls: ['./profile-doc.component.scss']
 })
-export class ProfileComponent {
+export class ProfileDocComponent {
   profile:any
   token:any
   info:any
@@ -17,9 +17,10 @@ export class ProfileComponent {
   constructor(private router: Router, private route: ActivatedRoute, private userServiuce: UserService, private auth: AuthService) { 
   }
    ngOnInit(){
-    this.checkUserToken();
+    this.token=this.auth.getUserToken()
     this.info=jwtDecode(this.token)
     this.id = this.info.id
+    // this.getCourse(id)
     this.getProfile(this.id,this.token)
   }
   getProfile(id: string,token:string){
@@ -29,10 +30,4 @@ export class ProfileComponent {
   })
   // console.log("dddd"+this.courses)
   }
-  checkUserToken() {
-    if (this.auth.getUserToken()) {
-      this.token=this.auth.getUserToken()
-    } else {
-      this.token=this.auth.getProfToken()
-    }}
 }

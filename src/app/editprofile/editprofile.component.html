@@ -1,7 +1,7 @@
 <div class="container">
     <div class="prof">
         <div class="img">
-            <img [src]="info[0].image" alt="image">
+            <img [src]="profile.profileimg.url" alt="image">
         </div>
         <div class="text">
             <a class="edit" routerLink="#"> update profile image </a>
@@ -14,13 +14,13 @@
                 <div class="inp-box">
                     <div class="input">
                         <label class="lbl" for="fname">Edit FName:</label><br />
-                        <input ngModel name="fname" id="fname" [value]="info[0].fname"/><br /><br />
+                        <input ngModel name="fname" id="fname" [value]="profile.firstName"/><br /><br />
                     </div>
                     <div class="input">
                         <label class="lbl" for="lname">Edit LName:</label><br />
-                        <input ngModel name="lname" id="lname" [value]="info[0].lname"/><br /><br />
+                        <input ngModel name="lname" id="lname" [value]="profile.lastName"/><br /><br />
                     </div>
-                    <div class="input">
+                    <!-- <div class="input">
                         <label class="lbl" for="email">Edit password:</label><br />
                         <input ngModel name="email" type="password" id="pass"  [value]="info[0].password"/><br /><br />
                     </div>
@@ -38,9 +38,8 @@
                     </div>
                     <div class="bio">
                         <label class="lbl" for="Phone">Edit Bio:</label><br />
-                        <!-- <input ngModel name="bioo" id="bioo" value="" /> -->
                         <textarea ngModel name="bioo" id="bioo" [value]="info[0].bio" rows="6" cols="70"></textarea><br /><br />
-                    </div>
+                    </div> -->
                 </div>
                 <span id="checked" class="text-danger"></span><br><br>
                 <input type="submit" class="Save" value="Save Personal Info" /><br />

@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import jwtDecode from 'jwt-decode';
+import { UserService } from '../user.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-editprofile',
@@ -8,63 +11,81 @@ import { Router } from '@angular/router';
   styleUrls: ['./editprofile.component.scss']
 })
 export class EditprofileComponent {
-  info = [
-    {
-      image: '../../assets/img/add.jpg',
-      fname:'OLa',
-      lname:'Yasser',
-      job:'student',
-      school:'jdjdjjdjddd',
-      country:'egypt',
-      phone:'01063553343',
-      password:'54666',
-      bio:'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-    },
-  ];
-  person = {
-    firstName: '',
-    lastName: '',
-    job: '',
-    password: '',
-    country: '',
-    bio: '',
-    phone: '',
-  };
-  constructor(private router: Router) { }
-  // constructor(private http: HttpClient) {}
- // if (!this.person.firstName || !this.person.lastName || !this.person.email || !this.person.password || !this.person.confirmPassword) {
-    //   console.log('Please fill out all required fields');
-    //   return;
-    // }
+  
+  // info = [
+  //   {
+  //     image: '../../assets/img/add.jpg',
+  //     fname:'OLa',
+  //     lname:'Yasser',
+  //     job:'student',
+  //     school:'jdjdjjdjddd',
+  //     country:'egypt',
+  //     phone:'01063553343',
+  //     password:'54666',
+  //     bio:'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+  //   },
+  // ];
+  // person = {
+  //   firstName: '',
+  //   lastName: '',
+  //   job: '',
+  //   password: '',
+  //   country: '',
+  //   bio: '',
+  //   phone: '',
+  // };
+  profile:any
+  token:any
+  info:any
+  id:any
+  constructor(private router: Router, private route: ActivatedRoute, private userServiuce: UserService, private auth: AuthService) { 
+  }
+   ngOnInit(){
+    this.checkUserToken();
+    this.info=jwtDecode(this.token)
+    this.id = this.info.id
+    this.getProfile(this.id,this.token)
+    // this.getCourse(id)
+  }
     onSubmit(editprofileForm: NgForm) {
       const formData = {
-        fname: editprofileForm.value.fname,
-        lname: editprofileForm.value.lname,
-        email: editprofileForm.value.email,
-        password: editprofileForm.value.password,
-        job: editprofileForm.value.job,
-        country: editprofileForm.value.country,
-        phone: editprofileForm.value.phone,
+        firstName: editprofileForm.value.fname,
+        lastName: editprofileForm.value.lname,
+        // email: editprofileForm.value.email,
+        // password: editprofileForm.value.password,
+        // job: editprofileForm.value.job,
+        // country: editprofileForm.value.country,
+        // phone: editprofileForm.value.phone,
       };
-      if (editprofileForm.value.fname ==='' || editprofileForm.value.lname === ''|| editprofileForm.value.email === ''
-      || editprofileForm.value.password === ''|| editprofileForm.value.job === ''|| editprofileForm.value.country === ''
-      || editprofileForm.value.phone === '' ) {
+      if (editprofileForm.value.fname ==='' || editprofileForm.value.lname === ''// ||editprofileForm.value.email === ''
+      //|| editprofileForm.value.password === ''|| editprofileForm.value.job === ''|| editprofileForm.value.country === ''
+      /*|| editprofileForm.value.phone === '' */) {
           const correctSpan = document.getElementById('checked');
           if (correctSpan !== null) {
             correctSpan.innerText = 'All Fileds Are Required';
             console.log(formData);
           }
         }else{
+          this.update(formData,this.info.id,this.token)
           this.router.navigate(['/profile']);
           console.log(formData);
         }
-    // this.http.post('your-api-url', formData).subscribe(
-    //   response => {
-    //     console.log(response);
-    //   },
-    //   error => {
-    //     console.error(error);
-    //   }
-    // );
+        
   }
+  update(formValue: any, id: string,token:string ) {
+    this.userServiuce.userUpdate(formValue,id ,token).subscribe(() => {
+    this.router.navigate(['/profile'])
+    });
+  }
+  getProfile(id: string,token:string){
+    this.userServiuce.getInfo(id,token)
+  .subscribe((data: any)=>{
+      this.profile = data
+  })}
+  checkUserToken() {
+    if (this.auth.getUserToken()) {
+      this.token=this.auth.getUserToken()
+    } else {
+      this.token=this.auth.getProfToken()
+    }}
 }
