@@ -1,58 +1,14 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<div class="container">
-    <div class="prof">
-        <img [src]="profile.profileimg.url" alt="image">
-        <p class="stuname" > {{ profile.firstName }} </p>
-        
-        <a class="edit" routerLink="/editprofile"> Edit Profile</a>
-        
-    </div> 
-    <div class="data">
-            <i>job</i>&nbsp;
-            <i>school</i>&nbsp;
-            <i>country</i>&nbsp;
-            <i>phone</i>&nbsp;
-            <p>bio</p>
-        </div>
-    <!-- <br><br> -->
-    <div class="content">
-        <p class="Courses">Enrolled Courses</p>
-        <div class="flex">
-            <div class="cont"  *ngFor="let course of profile.enrolledCourses">
-                <div class="info">
-                  <p class="name"><i class="fa fa-book" style="color: rgb(59, 76, 76);"></i> {{ course.courseName }}</p>
-                  <p class="description">{{ course.description }}</p>
-                  <p class="icon"><i class="fa fa-clock-o"></i> {{ course.duration }} 
-                    <i class="fa fa-signal space"></i> {{ course.averageRating }}
-                  </p>
-                </div>
-            </div>
-        </div>
+<div class="container" *ngIf="quiz">
+    <div class="img">
+      <h3 class="title"> Result For Quiz </h3><br>
     </div>
-    <!-- <div class="content">
-        <p class="Courses">Completed Courses</p>
-        <div class="flex">
-            <div class="cont"  *ngFor="let course of info[0].coursecompleted">
-                <div class="info">
-                  <p class="name"><i class="fa fa-book" style="color: rgb(59, 76, 76);"></i> {{ course.name }}</p>
-                  <p class="description">{{ course.description }}</p>
-                  <p class="icon"><i class="fa fa-clock-o"></i> {{ course.time }} 
-                    <i class="fa fa-signal space"></i> {{ course.level }}
-                  </p>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- <div class="content">
-        <p class="Courses">Badget</p>
-        <div class="flex">
-            <div class="cont"  *ngFor="let badget of info[0].badgets">
-                <div class="info">
-                  <p class="name">{{ badget.title }}</p>
-                  <p class="description">{{ badget.image }}</p>
-                </div>
-            </div>
-        </div>
-    </div> -->
-</div>
+    <div class="content">
+      <div class="quiz">
+        <h1>Student Name : {{quiz.userData.firstName}} {{quiz.userData.lastName}}</h1>
+        <div class="bg"></div>
+          <p>Quiz Mark : {{quiz.quizMark}}</p>
+          <p>Your score: {{quiz.userMark}}</p>
+          <p>Your percentage: {{percentage}}%</p>
+      <div class="aside"></div>
+    </div>
+  </div>

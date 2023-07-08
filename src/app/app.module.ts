@@ -31,6 +31,9 @@ import { CourseService } from './CourseService';
 import { LecComponent } from './lec/lec.component';
 import { UserService } from './user.service';
 import { ProfileDocComponent } from './profile-doc/profile-doc.component';
+import { QuizDocComponent } from './quiz-doc/quiz-doc.component';
+import { DetaillsComponent } from './detaills/detaills.component';
+
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'courses', component: CoursesComponent },
@@ -41,17 +44,19 @@ const routes: Routes = [
   { path: 'signupprof', component: SignupprofComponent },
   { path: 'editprofile', component: EditprofileComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'profileDoc', component: ProfileDocComponent },
+  { path: 'courses/overviewcourses/:id/quiz/:Qid/result', component: ProfileDocComponent },
   { path: 'overviewcourses/:id', component: OverviewcoursesComponent },
   { path: 'Overviewcoursesprof/:id', component: OverviewcoursesprofComponent },
-  { path: 'quiz', component: QuizComponent },
+  { path: 'courses/overviewcourses/:id/quiz/:Qid', component: QuizComponent },
+  { path: 'profcourses/Overviewcoursesprof/:id/quiz/:Qid', component: QuizDocComponent },
   { path: 'profcourses/Overviewcoursesprof/:id/lecture/:Lid', component: LectureComponent },
   { path: 'courses/overviewcourses/:id/lec/:Lid', component: LecComponent },
   { path: 'profcourses/Addcourse', component: AddcourseComponent },
   { path: 'profcourses/Overviewcoursesprof/:id/addlecture', component: AddlectureComponent },
   { path: 'addlecture2', component: Addlecture2Component },
   { path: 'forgetpass', component: ForgetpassComponent },/*/:id*/
-  { path: 'quizprof' , component: QuizprofComponent },
+  { path: 'profcourses/Overviewcoursesprof/:id/quizprof' , component: QuizprofComponent },
+  { path:'profcourses/Overviewcoursesprof/:id/quiz/:Qid/deataills',component:DetaillsComponent}
   
 ];
 
@@ -81,6 +86,9 @@ const routes: Routes = [
     HomeComponent,
     LecComponent,
     ProfileDocComponent,
+    QuizDocComponent,
+    DetaillsComponent,
+    
   ],
   imports: [
     BrowserModule,

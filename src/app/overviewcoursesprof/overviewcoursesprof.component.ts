@@ -38,56 +38,59 @@ export class OverviewcoursesprofComponent implements OnInit {
   id: any
   courseId=this.route.snapshot.paramMap.get('id')!;
   constructor(private router: Router, private route: ActivatedRoute, private courseService: CourseService, private auth: AuthService) { }
-   ngOnInit(){
+  ngOnInit(){
     var id = this.route.snapshot.paramMap.get('id')!;
-    // this.getCourse(id)
     this.getInfoDoc(id)
     console.log(id)
     console.log(this.courses)
   }
   getInfoDoc(id: string){
     this.courseService.getCourseInfoDoc(id)
-  .subscribe((data: any)=>{
+    .subscribe((data: any)=>{
       this.courses = data
   })
-  console.log("dddd"+this.courses)
+  console.log(this.courses)
   }
-    start(Cid: string,Lid: string) {
-      this.router.navigate([`profcourses/Overviewcoursesprof/${Cid}/lecture/${Lid}`]);
-    }
-    quiz() {
-      this.router.navigate(['/quizprof']);
-    }
-    Lesson() {
-      this.router.navigate([`profcourses/Overviewcoursesprof/${this.courseId}/addlecture`]);////////
-    }
-    onLecClick(Cid: string,Lid: string) {
+  start(Cid: string,Lid: string) {
+    this.router.navigate([`profcourses/Overviewcoursesprof/${Cid}/lecture/${Lid}`]);
+  }
+  quiz() {
+    this.router.navigate([`profcourses/Overviewcoursesprof/${this.courseId}/quizprof`]);
+  }
+  Lesson() {
+    this.router.navigate([`profcourses/Overviewcoursesprof/${this.courseId}/addlecture`]);////////
+  }
+  onLecClick(Cid: string,Lid: string) {
+    this.router.navigate([`profcourses/Overviewcoursesprof/${Cid}/lecture/${Lid}`]);/////
+  }
+  onQuizClick(Cid: string,Qid: string) {
+    this.router.navigate([`profcourses/Overviewcoursesprof/${Cid}/quiz/${Qid}`]);/////
+  }
+  onQuizDetaillClick(Cid: string,Qid: string) {
+    this.router.navigate([`profcourses/Overviewcoursesprof/${Cid}/quiz/${Qid}/deataills`]);/////
+  }
+  @ViewChild('content') content!: ElementRef;
 
-      this.router.navigate([`profcourses/Overviewcoursesprof/${Cid}/lecture/${Lid}`]);/////
-    }
-    
-    @ViewChild('content') content!: ElementRef;
-
-    Content() {
-      // const newContent = `
-      //   <table class="my-table">
-      //     <tr *ngFor="let row of data">
-      //       <td>{{ row.name }}</td>
-      //       <td>{{ row.time }}</td>
-      //     </tr>
-      //   </table>
-      // `;
-      // if (this.content) {
-      //   const safeContent: SafeHtml = this.sanitizer.bypassSecurityTrustHtml(newContent);
-      //   this.content.nativeElement.innerHTML = newContent;
-      // }
-    }
-    Description(){
+  Content() {
+    // const newContent = `
+    //   <table class="my-table">
+    //     <tr *ngFor="let row of data">
+    //       <td>{{ row.name }}</td>
+    //       <td>{{ row.time }}</td>
+    //     </tr>
+    //   </table>
+    // `;
+    // if (this.content) {
+    //   const safeContent: SafeHtml = this.sanitizer.bypassSecurityTrustHtml(newContent);
+    //   this.content.nativeElement.innerHTML = newContent;
+    // }
+  }
+  Description(){
     //   const newContent = ` <p>{{ course.Description }}</p> `;
     // if (this.content) {
     //   this.content.nativeElement.innerHTML = newContent;
     // }
   }
     
-    Discussion(){}
+  Discussion(){}
 }

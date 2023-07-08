@@ -27,6 +27,8 @@ export class CourseService {
   userToken: string
   profToken: string
   info: any
+  path: any;
+  fpath: any;
 
   constructor(private http: HttpClient, private auth: AuthService) {
     this.userToken = this.auth.getUserToken()
@@ -93,12 +95,56 @@ export class CourseService {
       return this.http.get(this.api + 'lecture/lec/' + lId + '/course/' + cId, options)
       .pipe(catchError(this.handleError<any>('addCourse')))
   } 
+  addQuiz(formValue: any,cId: string){
+    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getProfToken() })}
+
+      return this.http.post(this.api + 'quiz/courses/' + cId + '/quizze' , formValue, options)
+      .pipe(catchError(this.handleError<any>('addQuiz')))
+  } 
+  getQuiz(qId: string, cId: string , token: string ): any{
+    this.checkUserToken();
+    let options = { headers: new HttpHeaders({ 'x-auth-token': token })}
+      return this.http.get(this.api + 'quiz/' + qId + '/' + cId + '/forDoc', options)
+      .pipe(catchError(this.handleError<any>('getQuiz')))
+  } 
   getLecUser(lId: string): any{
     let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getUserToken() })}
     console.log(this.auth.getUserToken())
       return this.http.get(this.api + 'lecture/lec/' + lId , options)
       .pipe(catchError(this.handleError<any>('addCourse')))
-  } 
+  }
+  getQuizUser(qId: string, cId: string , token: string ): any{
+    let options = { headers: new HttpHeaders({ 'x-auth-token': token})}
+    console.log(this.auth.getUserToken())
+      return this.http.get(this.api + 'quiz/' + qId +'/'+ cId, options)
+      .pipe(catchError(this.handleError<any>('getQuiz')))
+  }
+  getResult(cId: string ,qId: string, uId: string,  token: string ): any{
+    let options = { headers: new HttpHeaders({ 'x-auth-token': token})}
+    console.log(this.auth.getUserToken())
+      return this.http.get(this.api + 'quiz/courses/' + cId+'/quizzes/'+ qId +'/user/'+ +uId, options)
+      .pipe(catchError(this.handleError<any>('getresult')))
+  }
+  postQuizUser(formValue: any,cId: string , qId: string,  token: string ): any{
+    let options = { headers: new HttpHeaders({ 'x-auth-token': token})}
+    console.log(this.auth.getUserToken())
+      return this.http.post(this.api + 'quiz/courses/'+ cId +'/quizzes/' + qId +'/submit',formValue, options)
+      .pipe(catchError(this.handleError<any>('getQuiz')))
+  }
+  getDetail(cId: string ,qId: string,  token: string ): any{
+    let options = { headers: new HttpHeaders({ 'x-auth-token': token})}
+    console.log(this.auth.getProfToken())
+      return this.http.get(this.api + 'quiz/courseId/' + cId+'/quizId/'+ qId , options)
+      .pipe(catchError(this.handleError<any>('getresult')))
+  }
+  checkUserToken() {
+    if (this.auth.getUserToken()) {
+      this.path='/forDoc'
+      this.fpath='quiz/'
+    } else {
+      this.path='doctorProfile'
+      this.fpath='doctor'
+    }} 
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error)

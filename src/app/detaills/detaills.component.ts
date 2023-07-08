@@ -6,38 +6,38 @@ import jwtDecode from 'jwt-decode';
 import { CourseService } from '../CourseService';
 
 @Component({
-  selector: 'app-profile-doc',
-  templateUrl: './profile-doc.component.html',
-  styleUrls: ['./profile-doc.component.scss']
+  selector: 'app-detaills',
+  templateUrl: './detaills.component.html',
+  styleUrls: ['./detaills.component.scss']
 })
-export class ProfileDocComponent {
-  quiz:any
-  percentage:any
+export class DetaillsComponent {
+  deatills:any
   token:any
   info:any
   id:any
   courseId: any;
   quizId: any;
+  quizMark:any
   constructor(private router: Router, private route: ActivatedRoute, private CourseService: CourseService, private auth: AuthService) { 
   }
    ngOnInit(){
-    this.token=this.auth.getUserToken()
+    this.token=this.auth.getProfToken()
     this.info=jwtDecode(this.token)
     this.id = this.info.id
     this.courseId = this.route.snapshot.paramMap.get('id')!;
     this.quizId = this.route.snapshot.paramMap.get('Qid')!;
-    this.getResultUser(this.courseId,this.quizId,this.id,this.token)
+    this.getInfo(this.courseId,this.quizId,this.token)
     console.log(this.getuserResult)
   }
-  getResultUser(Cid: string,Qid: string,Uid: string,token:string){
-    this.CourseService.getResult(Cid,Qid,Uid,token)
+  getInfo(Cid: string,Qid: string,token:string){
+    this.CourseService.getDetail(Cid,Qid,token)
   .subscribe((data: any)=>{
-      this.quiz = data
-      this.getuserResult()
+      this.deatills = data
+      this.quizMark =data.quizMark
+      // this.getuserResult()
   })
-  // console.log("dddd"+this.courses)
   }
-  getuserResult(){
-    this.percentage=Math.floor(Number(this.quiz.userMark) / this.quiz.quizMark * 100)
+  getuserResult(mark:string){
+    return Math.floor(Number(mark) / this.quizMark * 100)
   }
 }

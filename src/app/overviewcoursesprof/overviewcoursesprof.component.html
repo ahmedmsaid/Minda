@@ -32,5 +32,14 @@
                 </div>
             </div>
         </div>
-    </div><div class="aside"></div>
+    </div><div class="aside">
+        <p class="title">quizzes</p>
+        <div class="underline"></div>
+        <table class="my-table">
+            <tr *ngFor="let quiz of courses.quizzes">
+            <td (click)="onQuizClick(courses._id,quiz._id)" >{{ quiz.quizname }}</td>
+            <td><i (click)="onQuizDetaillClick(courses._id,quiz._id)" class="fa fa-vcard-o"></i></td>
+            </tr>
+        </table>
+    </div>
   </div>

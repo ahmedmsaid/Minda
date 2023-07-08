@@ -1,28 +1,26 @@
-<div class="container">
-    <div class="img">
-      <h3 class="title">{{ course.title }}</h3><br>
-    </div>
-    <div class="content">
-      <div class="quiz">
-        <h1>You must answer the following questions and get points above 60%</h1>
-        <div class="bg"></div>
-        <div *ngIf="!finished">
-          <div *ngFor="let question of questions; let qIndex = index">
-            <h4>{{ question.question }}</h4>
-            <ul>
-              <li *ngFor="let option of question.options; let i = index">
-                <input type="radio" name="options{{qIndex}}" id="option{{ qIndex }}{{ i }}" [(ngModel)]="selected[qIndex]" [value]="i">
-                <label for="option{{ qIndex }}{{ i }}">{{ option }}</label>
-              </li>
-            </ul>
-          </div>
-          <button (click)="checkAnswers()">Submit</button>
-        </div>
-        <div *ngIf="finished">
-          <h3>Your score is {{ score }} out of {{ questions.length }}</h3>
-          <h3>So Your Point is {{ point }}</h3>
-        </div>
-      </div>
-      <div class="aside"></div>
-    </div>
+<div class="container" *ngIf="quiz">
+  <div class="img">
+    <h3 class="title">{{ quiz.quizname }}</h3><br>
   </div>
+  <div class="content">
+    <div class="quiz">
+      <h1>You must answer the following questions and get points above 60%</h1>
+      <div class="bg"></div>
+      <form #quizform="ngForm" (ngSubmit)="onSubmit(quizform)">
+        <div *ngFor="let question of quiz.questions; let i = index">
+          <h4>{{i+1}}. {{question.title}}</h4>
+          <div *ngFor="let option of question.choose; let j = index">
+            <label>
+              <input type="radio" name="q{{i}}" [checked]="selected[i] === j" (change)="selected[i] = j; answers[i] = j;">
+              {{option.text}}
+            </label>
+          </div>
+          <hr>
+        </div><br>
+        <span id="Correct" class="text-danger"></span><br>
+        <button type="submit">Submit Quiz</button>
+      </form>
+    </div>
+    <div class="aside"></div>
+  </div>
+</div>

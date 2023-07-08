@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="img">
+      <h3 class="title">{{ Quiz.quizname }}</h3><br>
+    </div>
+    <div class="content">
+        <div class="quiz">
+          <h1>There Are questions for this Quiz</h1>
+          <div class="bg"></div>
+          <div *ngFor="let question of Quiz.questions; let qIndex = index">
+            <h4>{{ question.title }} - {{ question.mark }} point</h4>
+            <ul>
+              <li *ngFor="let option of question.choose; let i = index">
+                <input type="radio" name="options{{qIndex}}" id="option{{qIndex}}{{i}}" [value]="i" [checked]="option.isCorrect" [disabled]="true">
+                <label for="option{{qIndex}}{{i}}">{{ option.text }}</label>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+  </div>

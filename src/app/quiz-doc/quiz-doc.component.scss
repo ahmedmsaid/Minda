@@ -20,16 +20,16 @@
     color: #FFFFFF;
 }
 
-// .content{
-//     display: flex;
-//     flex-direction: row;
-// }
-// .aside{
-//     display: flex;
-//     background: #D8D8D8;
-//     border-left: 1px solid #858383;
-//     width: 42%;
-// }
+.content{
+    display: flex;
+    flex-direction: row;
+}
+.aside{
+    display: flex;
+    background: #D8D8D8;
+    border-left: 1px solid #858383;
+    width: 35%;
+}
 .quiz{
     font-family: 'Tw Cen MT';
     font-style: normal;
@@ -54,26 +54,6 @@
     margin-bottom: 15px;
 }
 
-.inp{
-    // box-sizing: border-box;
-    margin: 15px;
-    width: 38.7%;
-    height: 77px;
-    background: #D8D8D8;
-    border-bottom: 2px solid #898787;
-    border-radius: 8px;
-    // border: none;
-    font-family: "Tw Cen MT";
-    font-style: italic;
-    font-weight: 400;
-    font-size: 32px;
-    line-height: 35px;
-    color: #898787;
-    padding-left: 10px;
-}
-.answer{
-    margin-left: 100px;
-}
 input[type=radio] {
     appearance: none;
     cursor: pointer;
@@ -91,36 +71,14 @@ input[type=radio]:checked::before {
     border-radius: 50%;
     margin: auto;
 }
-.Selection{
-    font-family: "Tw Cen MT";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 32px;
-    line-height: 39px;
-    color: #E3654B;
-    margin-left: 125px;
-    margin-bottom: 50px;
+ul {
+    list-style-type: none;
 }
-.line{
-    border: 2px solid #333333;
-    transform: rotate(-0.07deg);
-    margin-top: 20px;
+  
+li {
+    margin: 10px;
 }
-.question{
-    font-family: 'Tw Cen MT';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 36px;
-    line-height: 39px;
-    margin-left: 35%;
-    color: #E3654B;
-
-
-}
-#q ,#Correct{
-    width: 80.5%;
-}
-.add{
+button{
     width: 217px;
     height: 63px;
     background: #E3654B;
@@ -134,9 +92,7 @@ input[type=radio]:checked::before {
     color: #FFFFFF;
     margin: 15px;
     cursor: pointer;
-    float: right;
 }
-
 @media screen and (max-width: 830px) {
     .aside{
         display: none;
@@ -146,4 +102,3 @@ input[type=radio]:checked::before {
         flex-direction: column;
     }
   }
-  

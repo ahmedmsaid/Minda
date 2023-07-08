@@ -26,5 +26,13 @@
                 </div>
             </div>
         </div>
-    </div><div class="aside"></div>
+    </div><div class="aside">
+        <p class="title">quizzes</p>
+        <div class="underline"></div>
+        <table class="my-table">
+            <tr *ngFor="let row of course.quizzes">
+            <td (click)="onQuizClick(course._id,row._id)" >{{ row.quizname }}</td>
+            </tr>
+        </table>
+    </div>
   </div>

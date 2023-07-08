@@ -1,18 +1,22 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CourseService } from '../CourseService';
+import { AuthService } from '../auth.service';
+import jwtDecode from 'jwt-decode';
 
 interface Answer {
   text: string;
   isCorrect: boolean;
-  _id: string;
+  // _id: string;
 }
 
 interface Question {
   title: string;
   choose: Answer[];
   mark: Number;
-  _id: string;
+  // _id: string;
 }
 
 interface Quiz {
@@ -25,6 +29,15 @@ interface Quiz {
   styleUrls: ['./quizprof.component.scss']
 })
  export class QuizprofComponent  {
+  cId:any
+  token:any
+  info:any
+  constructor(private router: Router, private route: ActivatedRoute, private courseService: CourseService, private auth: AuthService) { 
+    this.token = this.auth.getProfToken()
+    this.info = jwtDecode(this.token)
+    this.cId=this.route.snapshot.paramMap.get('id')!;
+    console.log("cid"+this.cId)
+  }
   course = {
     title: 'Information Retrieval',
   };
@@ -37,16 +50,16 @@ interface Quiz {
           {
             text: '',
             isCorrect: false,
-            _id: '',
+            // _id: '',
           },
           {
             text: '',
             isCorrect: false,
-            _id: '',
+            // _id: '',
           },
         ],
         mark: 1,
-        _id: '',
+        // _id: '',
       },
     ],
   };
@@ -59,16 +72,16 @@ interface Quiz {
         {
           text: '',
           isCorrect: false,
-          _id: '',
+          // _id: '',
         },
         {
           text: '',
           isCorrect: false,
-          _id: '',
+          // _id: '',
         },
       ],
       mark: 1,
-      _id: '',
+      // _id: '',
     });
     this.isAddAnswerVisible.push(false);////
   }
@@ -78,7 +91,7 @@ interface Quiz {
       this.quiz.questions[questionIndex].choose.push({
         text: '',
         isCorrect: false,
-        _id: '',
+        // _id: '',
       });
     }else{
       this.isAddAnswerVisible[questionIndex] = !this.isAddAnswerVisible[questionIndex];
@@ -86,11 +99,12 @@ interface Quiz {
   }
   getAnswers(): Answer[][] {
     return this.quiz.questions.map((question, i) => {
+      const correctAnswerIndex = this.selectedAnswer[i];
       const answers = question.choose.map((answer, j) => {
         return {
           text: answer.text,
-          isCorrect: j === this.selectedAnswer[i],
-          _id: answer._id,
+          isCorrect: j === correctAnswerIndex,
+          // _id: answer._id,
         };
       });
       return answers;
@@ -98,17 +112,24 @@ interface Quiz {
   }
 
   onSubmit(quizprofform: NgForm) {
-    const answers = this.getAnswers();
     let isFormValid = true;
-    for (let i = 0; i < answers.length; i++) {
-      if (this.selectedAnswer[i] === undefined) {
+    for (let i = 0; i < this.quiz.questions.length; i++) {
+      const question = this.quiz.questions[i];
+      const selectedAnswerIndex = this.selectedAnswer[i];
+      if (selectedAnswerIndex === undefined) {
         isFormValid = false;
         break;
       }
-      const markIndex = i;
-      const questionTitle = quizprofform.value['q' + markIndex];
-      const mark = quizprofform.value['mark' + markIndex];
-      if (!questionTitle || questionTitle.trim() === '') {
+      const correctAnswer = question.choose[selectedAnswerIndex];
+      for (let j = 0; j < question.choose.length; j++) {
+        const answer = question.choose[j];
+        answer.isCorrect = answer === correctAnswer;
+        if (answer.text.trim() === '') {
+          isFormValid = false;
+          break;
+        }
+      }
+      if (!question.title || question.title.trim() === '') {
         isFormValid = false;
         break;
       }
@@ -116,14 +137,10 @@ interface Quiz {
         isFormValid = false;
         break;
       }
-      for (let j = 0; j < answers[i].length; j++) {
-        if (answers[i][j].text.trim() === '') {
-          isFormValid = false;
-          break;
-        }
-      }
     }
+  
     if (isFormValid) {
+      this.makeQuiz(this.quiz, this.cId);
       console.log(this.quiz);
     } else {
       const errorMessage = 'All Fields Are Required';
@@ -133,4 +150,8 @@ interface Quiz {
       }
     }
   }
+  makeQuiz(formValue: any, cId: string) {
+    this.courseService.addQuiz(formValue,cId).subscribe(() => {
+    this.router.navigate(['/Overviewcoursesprof',this.cId])
+  });}
  }

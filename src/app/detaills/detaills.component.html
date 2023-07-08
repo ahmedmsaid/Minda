@@ -1,0 +1,25 @@
+<div class="container" *ngIf="deatills">
+    <div class="img">
+      <h3 class="title"> Details For Quiz </h3><br>
+    </div>
+    <div class="content">
+      <div class="quiz">
+        <table class="my-table">
+            <thead>
+                <td>Full Name</td>
+                <!-- <td>last Name</td> -->
+                <td>quiz Mark</td>
+                <td>Student mark</td>
+                <td>percentage</td>
+            </thead>
+            <tr *ngFor="let row of deatills.quizResponseData">
+                <td>{{ row.firstName }} {{ row.lastName }}</td>
+                <!-- <td>{{ row.lastName }}</td> -->
+                <td>{{ quizMark}}</td>
+                <td>{{ row.mark }}</td>
+                <td><em [ngClass]="getuserResult(row.mark) < 50 ? 'faild' : 'success'">{{ getuserResult(row.mark) }} %</em></td>
+            </tr>
+        </table><br>
+      <div class="aside"></div>
+    </div>
+  </div>
