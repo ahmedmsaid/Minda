@@ -50,7 +50,6 @@ export class LecComponent {
     this.userId = this.info.id
     this.courseId = this.route.snapshot.paramMap.get('id')!;
     this.lectureId = this.route.snapshot.paramMap.get('Lid')!;
-    // console.log("cid"+this.courseId+" lid "+this.lectureId)
     this.getLec(this.lectureId )
     if(!this.lec.vedios[0].url){
       this.video=""

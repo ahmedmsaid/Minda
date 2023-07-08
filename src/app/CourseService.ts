@@ -77,7 +77,7 @@ export class CourseService {
   }*/
 
   addCourse(formValue: any, id: string){
-    let options = { headers: new HttpHeaders({ 'x-auth-token': this.profToken })}
+    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getProfToken() })}
 
       return this.http.post(this.api + 'course/' + id, formValue, options)
       .pipe(catchError(this.handleError<any>('addCourse')))
@@ -151,6 +151,21 @@ export class CourseService {
     let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getProfToken() })}
     return this.http.delete(this.api + 'quiz/quizzes/' + id , options)
       .pipe(catchError(this.handleError<any>('delete')))
+  } 
+  deleteCourse(id: number ){
+    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getProfToken() })}
+    return this.http.delete(this.api + 'course/' +id, options)
+      .pipe(catchError(this.handleError<any>('delete')))
+  } 
+  uploadVideo(formValue: any,lId: string){
+    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getProfToken() })}
+      return this.http.put(this.api + 'lecture/lec/'+lId+'/videos' , formValue, options)
+      .pipe(catchError(this.handleError<any>('upload')))
+  } 
+  updateCourse(formValue: any,cId: string){
+    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getProfToken() })}
+      return this.http.put(this.api + 'course/updateCourseInfo/'+cId , formValue, options)
+      .pipe(catchError(this.handleError<any>('update')))
   } 
 
   checkUserToken() {

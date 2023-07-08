@@ -73,9 +73,8 @@ export class EditprofileComponent {
         
   }
   update(formValue: any, id: string,token:string ) {
-    this.userServiuce.userUpdate(formValue,id ,token).subscribe(() => {
+    this.userServiuce.userUpdate(formValue,id ,token).subscribe(() => {});
     this.router.navigate(['/profile'])
-    });
   }
   getProfile(id: string,token:string){
     this.userServiuce.getInfo(id,token)

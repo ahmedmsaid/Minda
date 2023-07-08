@@ -41,14 +41,14 @@ export class ProfcoursesComponent {
     this.router.navigate(['/Overviewcoursesprof', id]);
   }
   onCourseDeleteClick(id: number) {
-    this.router.navigate(['/Overviewcoursesprof', id]);
+    this.courseService.deleteCourse(id).subscribe(()=>{})
   }
-  onCourseEditClick(id: number) {
-    this.router.navigate(['/Overviewcoursesprof', id]);
+  onCourseEditClick(Cid: number) {
+    // this.courseService.updateCourse(Cid).subscribe(()=>{})
+    this.router.navigate([`profcourses/${Cid}/edit/`]);
   }
+  
 }
-
-
 
 interface Course {
   _id: number;

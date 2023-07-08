@@ -54,6 +54,7 @@ const routes: Routes = [
   { path: 'profcourses/Overviewcoursesprof/:id/quiz/:Qid', component: QuizDocComponent },
   { path: 'profcourses/Overviewcoursesprof/:id/lecture/:Lid', component: LectureComponent },
   { path: 'profcourses/Overviewcoursesprof/:id/lecture/:Lid/edit', component: EditlecComponent },
+  { path: 'profcourses/:id/edit', component: EditCoursesComponent },
   { path: 'courses/overviewcourses/:id/lec/:Lid', component: LecComponent },
   { path: 'profcourses/Addcourse', component: AddcourseComponent },
   { path: 'profcourses/Overviewcoursesprof/:id/addlecture', component: AddlectureComponent },

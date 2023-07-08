@@ -29,6 +29,7 @@ export class UserService {
   info: any
   path:any
   fpath:any
+  update:any
   constructor(private http: HttpClient, private auth: AuthService) {
     this.userToken = this.auth.getUserToken()
     this.profToken = this.auth.getProfToken()
@@ -43,13 +44,14 @@ export class UserService {
   userUpdate(formValue: any,userId: any, token: string): Observable<any[]> {
     this.checkUserToken();
     let options = { headers: new HttpHeaders({ 'x-auth-token': token })}
-    return this.http.put<any[]>(this.api + this.fpath +'/'+ userId,formValue, options)
+    return this.http.put<any[]>(this.api + this.fpath +'/'+ userId,formValue, options)/*this.update +'/'+*/
     .pipe(catchError(this.handleError<any[]>('profile', [])))
   }
   checkUserToken() {
     if (this.auth.getUserToken()) {
       this.path='userProfile'
       this.fpath='user'
+      this.update='updateProfile'
     } else {
       this.path='doctorProfile'
       this.fpath='doctor'
