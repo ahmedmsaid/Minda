@@ -40,6 +40,7 @@ export class LecComponent {
   userId: any
   token: any
   info: any
+  video:any
   constructor(private courseService: CourseService, private auth: AuthService, private route: ActivatedRoute) {
     this.token = this.auth.getUserToken()
   }
@@ -51,6 +52,11 @@ export class LecComponent {
     this.lectureId = this.route.snapshot.paramMap.get('Lid')!;
     // console.log("cid"+this.courseId+" lid "+this.lectureId)
     this.getLec(this.lectureId )
+    if(!this.lec.vedios[0].url){
+      this.video=""
+    }else{
+      this.video=this.lec.vedios[0].url
+    }
   }
 
   getLec(lId: string){

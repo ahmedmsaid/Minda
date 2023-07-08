@@ -33,7 +33,10 @@ import { UserService } from './user.service';
 import { ProfileDocComponent } from './profile-doc/profile-doc.component';
 import { QuizDocComponent } from './quiz-doc/quiz-doc.component';
 import { DetaillsComponent } from './detaills/detaills.component';
-
+import { EditCoursesComponent } from './edit-courses/edit-courses.component';
+import { EditProfileImageComponent } from './edit-profile-image/edit-profile-image.component';
+import { EditlecComponent } from './editlec/editlec.component';
+import { EditlecvideoComponent } from './editlecvideo/editlecvideo.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'courses', component: CoursesComponent },
@@ -50,6 +53,7 @@ const routes: Routes = [
   { path: 'courses/overviewcourses/:id/quiz/:Qid', component: QuizComponent },
   { path: 'profcourses/Overviewcoursesprof/:id/quiz/:Qid', component: QuizDocComponent },
   { path: 'profcourses/Overviewcoursesprof/:id/lecture/:Lid', component: LectureComponent },
+  { path: 'profcourses/Overviewcoursesprof/:id/lecture/:Lid/edit', component: EditlecComponent },
   { path: 'courses/overviewcourses/:id/lec/:Lid', component: LecComponent },
   { path: 'profcourses/Addcourse', component: AddcourseComponent },
   { path: 'profcourses/Overviewcoursesprof/:id/addlecture', component: AddlectureComponent },
@@ -57,7 +61,7 @@ const routes: Routes = [
   { path: 'forgetpass', component: ForgetpassComponent },/*/:id*/
   { path: 'profcourses/Overviewcoursesprof/:id/quizprof' , component: QuizprofComponent },
   { path:'profcourses/Overviewcoursesprof/:id/quiz/:Qid/deataills',component:DetaillsComponent}
-  
+
 ];
 
 @NgModule({
@@ -88,7 +92,10 @@ const routes: Routes = [
     ProfileDocComponent,
     QuizDocComponent,
     DetaillsComponent,
-    
+    EditCoursesComponent,
+    EditProfileImageComponent,
+    EditlecComponent,
+    EditlecvideoComponent,
   ],
   imports: [
     BrowserModule,

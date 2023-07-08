@@ -40,6 +40,12 @@ export class ProfcoursesComponent {
   onCourseClick(id: number) {
     this.router.navigate(['/Overviewcoursesprof', id]);
   }
+  onCourseDeleteClick(id: number) {
+    this.router.navigate(['/Overviewcoursesprof', id]);
+  }
+  onCourseEditClick(id: number) {
+    this.router.navigate(['/Overviewcoursesprof', id]);
+  }
 }
 
 

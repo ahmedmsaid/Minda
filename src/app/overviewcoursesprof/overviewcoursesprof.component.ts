@@ -69,6 +69,24 @@ export class OverviewcoursesprofComponent implements OnInit {
   onQuizDetaillClick(Cid: string,Qid: string) {
     this.router.navigate([`profcourses/Overviewcoursesprof/${Cid}/quiz/${Qid}/deataills`]);/////
   }
+  onQuizDeleteClick(Qid: string) {
+    console.log(Qid)
+    this.deleteQuizz(Qid)
+    
+  }
+  onLecDeleteClick(Cid: string,Lid: string) {
+    this.deleteLec(Lid,Cid)
+  }
+  onLecEditClick(Cid: string,Lid: string) {
+    this.router.navigate([`profcourses/Overviewcoursesprof/${Cid}/lecture/${Lid}/edit`]);/////
+  }
+
+  deleteLec(Lid: string,Cid: string){
+    this.courseService.deleteLec(Lid,Cid).subscribe(()=>{})
+  }
+  deleteQuizz(Qid: string){
+    this.courseService.deleteQuiz(Qid).subscribe(()=>{})
+  }
   @ViewChild('content') content!: ElementRef;
 
   Content() {

@@ -1,4 +1,3 @@
-
 .container{
     display: flex;
     background: #D8D8D8;
@@ -12,7 +11,6 @@
     flex-direction: column;
     width: 650px;
     padding-left: 40px;
-    margin-left: 10%;
     background: #F1EFEF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
@@ -102,18 +100,18 @@ label{
     cursor: pointer;
 }
 
-
 .img{
     width: 679px;
-    background: url(../../assets/img/add.jpg);
+    background: url(../../assets/img/lec.jpg);
     border-radius: 10px 10px 10px 10px;
     background-size: cover;
     background-position: center;
+    margin-left: 10%;
 }
 
 @media screen and (max-width: 850px) {
     .container {   
-        height: 750px;
+        height: 650px;
     }
     .img{
         display: none;
@@ -122,6 +120,7 @@ label{
         width: 250px;
     }
     .input{
+        margin-left: 10%;
         width: 700px;
     }
     .Next{
@@ -130,7 +129,7 @@ label{
   }
   @media screen and (max-width: 1400px) and (min-width: 600px){
     .container {   
-        height: 750px;
+        height: 650px;
     }
     .img{
         width: 650px;
@@ -145,3 +144,4 @@ label{
         margin-left: 0;
     }
   }
+

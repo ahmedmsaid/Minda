@@ -6,41 +6,39 @@ import { AuthService } from '../auth.service';
 import jwtDecode from 'jwt-decode';
 
 @Component({
-  selector: 'app-addcourse',
-  templateUrl: './addcourse.component.html',
-  styleUrls: ['./addcourse.component.scss']
+  selector: 'app-edit-courses',
+  templateUrl: './edit-courses.component.html',
+  styleUrls: ['./edit-courses.component.scss']
 })
-
-export class AddcourseComponent {
-
+export class EditCoursesComponent {
   token: any
   info: any
-
+  course:any
   constructor(private router: Router, private courseService: CourseService, private auth: AuthService) { 
     this.token = this.auth.getProfToken()
     this.info = jwtDecode(this.token)
   }
-    onSubmit(addcourseForm: NgForm) {
+    onSubmit(updatecourseForm: NgForm) {
       const formData = {
-        courseName: addcourseForm.value.name,
-        description: addcourseForm.value.description
+        courseName: updatecourseForm.value.name,
+        description: updatecourseForm.value.description
       };
 
-      if (addcourseForm.value.name ==='' || addcourseForm.value.description === '') {
+      if (updatecourseForm.value.name ==='' || updatecourseForm.value.description === '') {
           const correctSpan = document.getElementById('checked');
           if (correctSpan !== null) {
             correctSpan.innerText = 'All Fileds Are Required';
             console.log(formData);
           }
         }else{
-          this.addCourse(formData, this.info.id)
+          this.updateCourse(formData, this.info.id)
           console.log(formData);
         }
   }
 
-  addCourse(formValue: any, id: string) {
+  updateCourse(formValue: any, id: string) {
     this.courseService.addCourse(formValue, id).subscribe(() => {
-      this.router.navigate(['/profcourses'])
+      this.router.navigate(['/Overviewcoursesprof', id]);
     });
   }
 }

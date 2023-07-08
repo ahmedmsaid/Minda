@@ -6,38 +6,47 @@ import { CourseService } from '../CourseService';
 import { AuthService } from '../auth.service';
 
 @Component({
-  selector: 'app-addlecture',
-  templateUrl: './addlecture.component.html',
-  styleUrls: ['./addlecture.component.scss']
+  selector: 'app-editlec',
+  templateUrl: './editlec.component.html',
+  styleUrls: ['./editlec.component.scss']
 })
-
-export class AddlectureComponent {
+export class EditlecComponent {
+  lec:any
   cId:any
   token:any
   info:any
+  lecId:any
   constructor(private router: Router, private route: ActivatedRoute, private courseService: CourseService, private auth: AuthService) { 
     this.token = this.auth.getProfToken()
     this.info = jwtDecode(this.token)
     this.cId=this.route.snapshot.paramMap.get('id')!;
+    this.lecId=this.route.snapshot.paramMap.get('Lid')!;
   }
-    onSubmit(addlectureForm: NgForm) {
+  ngOnInit(){
+    this.getLec1(this.lecId,this.cId)
+  }
+    onSubmit(updatelectureForm: NgForm) {
       const formData = {
-        title: addlectureForm.value.name,
-        description: addlectureForm.value.description,
+        title: updatelectureForm.value.name,
+        description: updatelectureForm.value.description,
       };
-      if (addlectureForm.value.name ==='' || addlectureForm.value.description === '' ) {
+      if (updatelectureForm.value.name ==='' || updatelectureForm.value.description === '' ) {
         const correctSpan = document.getElementById('checked');
         if (correctSpan !== null) {
           correctSpan.innerText = 'All Fileds Are Required';
           console.log(formData);
         }
       }else{
-        this.addLec1(formData,this.cId, this.info.id)
+        this.editLec1(formData,this.lecId)
         console.log(formData);
       }
   }
-  addLec1(formValue: any, cId: string,id: string ) {
-    this.courseService.addLec1(formValue,cId ,id).subscribe(() => {
+  editLec1(formValue: any, id: string ) {
+    this.courseService.editLec(formValue,id).subscribe();
     this.router.navigate(['/Overviewcoursesprof',this.cId])
+  }
+  getLec1(lId: string,cId: string ) {
+    this.courseService.getLec(lId ,cId).subscribe((data:any) => {
+      this.lec=data.lecture
   });}
 }

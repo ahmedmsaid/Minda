@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="input">
+        <p class="minda">Minda</p>
+        <p class="add"> Update Course </p>
+        <form #updatecourseForm="ngForm" (ngSubmit)="onSubmit(updatecourseForm)" class="cont">
+            <div class="inp-box">
+                <input ngModel name="name" id="name" placeholder="course name" [value]="course.name"/><br /><br />
+                <input ngModel name="description" id="description" placeholder="course description" [value]="course.description"/><br /><br />
+            </div>
+            <span id="checked" class="text-danger"></span><br><br />
+            <input type="submit" class="Next" value="update" /><br /><br /><br />
+        </form>
+    </div>
+    <div class="img"></div>
+</div>

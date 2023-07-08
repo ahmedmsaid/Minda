@@ -27,6 +27,8 @@
                     <table class="my-table">
                         <tr *ngFor="let row of courses.lectureId">
                         <td (click)="onLecClick(courses._id,row._id)" >{{ row.title }}</td>
+                        <td><i (click)="onLecDeleteClick(courses._id,row._id)" class="fa fa-trash-o" ></i></td>
+                        <td><i (click)="onLecEditClick(courses._id,row._id)" class="fa fa-edit" ></i></td>
                         </tr>
                     </table>
                 </div>
@@ -39,6 +41,7 @@
             <tr *ngFor="let quiz of courses.quizzes">
             <td (click)="onQuizClick(courses._id,quiz._id)" >{{ quiz.quizname }}</td>
             <td><i (click)="onQuizDetaillClick(courses._id,quiz._id)" class="fa fa-vcard-o"></i></td>
+            <td><i (click)="onQuizDeleteClick(quiz._id)" class="fa fa-trash-o" ></i></td>
             </tr>
         </table>
     </div>

@@ -91,7 +91,6 @@ export class CourseService {
   } 
   getLec(lId: string, cId: string  ): any{
     let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getProfToken() })}
-    // console.log(this.auth.getProfToken())
       return this.http.get(this.api + 'lecture/lec/' + lId + '/course/' + cId, options)
       .pipe(catchError(this.handleError<any>('addCourse')))
   } 
@@ -137,6 +136,23 @@ export class CourseService {
       return this.http.get(this.api + 'quiz/courseId/' + cId+'/quizId/'+ qId , options)
       .pipe(catchError(this.handleError<any>('getresult')))
   }
+
+  editLec(formValue: any,id: string ){
+    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getProfToken() })}
+    return this.http.put(this.api + 'lecture/lectureData/' + id, formValue, options)
+      .pipe(catchError(this.handleError<any>('update')))
+  } 
+  deleteLec(Lid: string,id: string ){
+    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getProfToken() })}
+    return this.http.delete(this.api + 'lecture/' + Lid + '/course/' +id, options)
+      .pipe(catchError(this.handleError<any>('delete')))
+  } 
+  deleteQuiz(id: string ){
+    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getProfToken() })}
+    return this.http.delete(this.api + 'quiz/quizzes/' + id , options)
+      .pipe(catchError(this.handleError<any>('delete')))
+  } 
+
   checkUserToken() {
     if (this.auth.getUserToken()) {
       this.path='/forDoc'
