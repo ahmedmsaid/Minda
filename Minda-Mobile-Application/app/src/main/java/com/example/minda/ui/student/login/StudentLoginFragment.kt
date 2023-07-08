@@ -44,7 +44,7 @@ class StudentLoginFragment : Fragment() {
             if (email.isEmpty() || password.isEmpty()) {
                 showToast("All fields are required!",requireContext())
             } else {
-                val request = LoginRequest(email, password)
+                val request = LoginRequest(email.lowercase(), password)
                 viewModel.loginForStudent(request)
             }
         }

@@ -47,7 +47,11 @@
     <fragment
         android:id="@+id/lectureInfoFragment"
         android:name="com.example.minda.ui.lectures.LectureInfoFragment"
-        android:label="Lecture Info" />
+        android:label="Lecture Info" >
+        <argument
+            android:name="lecId"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/takingQuizFragment"
         android:name="com.example.minda.ui.student.quiz.TakingQuizFragment"

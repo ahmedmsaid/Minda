@@ -10,6 +10,7 @@ import com.example.minda.pojo.instructor.content.CreatedCourseResponse
 import com.example.minda.pojo.instructor.content.InstructorProfileResponse
 import com.example.minda.pojo.instructor.content.quiz.post.PostQuizRequest
 import com.example.minda.pojo.instructor.content.quiz.response.PostingQuizResponse
+import com.example.minda.pojo.lecture.LectureInfoResponse
 import com.example.minda.pojo.student.auth.StudentRegisterRequest
 import com.example.minda.pojo.student.content.AnswerQuizRequest
 import com.example.minda.pojo.student.content.MyQuizMarksResponse
@@ -22,6 +23,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
@@ -89,6 +91,12 @@ interface MindaAPI {
         @Body request: PostQuizRequest
     ): Response<PostingQuizResponse>
 
+    @DELETE("quiz/quizzes/{quiz-id}")
+    suspend fun deleteTheQuizByInstructor(
+        @Path("quiz-id") id: String,
+        @Header("x-auth-token") token: String,
+    ): Response<String>
+
     @GET("course/courseDetails/{course-id}")
     suspend fun getEnrolledInCourseDetailsForStudent(
         @Path("course-id") id: String,
@@ -124,6 +132,19 @@ interface MindaAPI {
         @Path("user-id") userId: String,
         @Header("x-auth-token") token: String,
     ): Response<MyQuizMarksResponse>
+
+    @GET("lecture/lec/{lec-id}")
+    suspend fun getLectureByIdToViewItsContentForStudent(
+        @Path("lec-id") lecId: String,
+        @Header("x-auth-token") token: String,
+    ): Response<LectureInfoResponse>
+
+    @GET("lecture/lec/{lec-id}/course/{course-id}")
+    suspend fun getLectureByIdToViewItsContentForInstructor(
+        @Path("lec-id") lecId: String,
+        @Path("course-id") courseId: String,
+        @Header("x-auth-token") token: String,
+    ): Response<LectureInfoResponse>
 
 }
 

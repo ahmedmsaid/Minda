@@ -66,7 +66,8 @@ class CourseInfoFragmentForStudent : Fragment() {
 
             if (courseDetails != null) {
                 if (courseDetails.lectureId.isNotEmpty()) {
-                    val lecAdapter = LecturesAdapter(this)
+                    val lecAdapter = LecturesAdapter(this,"student")
+                    LecturesAdapter.courseId = courseId!!
                     lecAdapter.submitList(courseDetails.lectureId)
                     binding.studentLecturesRecycler.apply {
                         adapter = lecAdapter

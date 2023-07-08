@@ -14,6 +14,7 @@ import com.example.minda.pojo.instructor.content.CreatedCourseResponse
 import com.example.minda.pojo.instructor.content.InstructorProfileResponse
 import com.example.minda.pojo.instructor.content.quiz.post.PostQuizRequest
 import com.example.minda.pojo.instructor.content.quiz.response.PostingQuizResponse
+import com.example.minda.pojo.lecture.LectureInfoResponse
 import com.example.minda.pojo.student.auth.RegisteredStudentResponse
 import com.example.minda.pojo.student.auth.StudentRegisterRequest
 import com.example.minda.pojo.student.content.AnswerQuizRequest
@@ -47,11 +48,13 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
     val studentProfileStatus = MutableLiveData<StudentProfileResponse?>()
     val instructorCreateCourseStatus = MutableLiveData<CreatedCourseResponse?>()
     val instructorCreateQuizStatus = MutableLiveData<PostingQuizResponse?>()
+    val instructorDeleteQuizStatus = MutableLiveData<String>()
     val studentCourseDetailsStatus = MutableLiveData<CourseDetailsResponse?>()
     val instructorCourseDetailsStatus = MutableLiveData<CourseDetailsResponse?>()
     val studentQuizShowQuestionsStatus = MutableLiveData<QuizQuestionsResponse?>()
     val studentQuizAnsweringStatus = MutableLiveData<String?>()
     val studentGetQuizMarksStatus = MutableLiveData<MyQuizMarksResponse?>()
+    val lectureInfoStatus = MutableLiveData<LectureInfoResponse?>()
 
 
     fun loginForStudent(request: LoginRequest) {
@@ -204,6 +207,23 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
             }
         }
     }
+    fun deleteTheQuizByInstructor(quizID: String, token: String) {
+        viewModelScope.launch {
+            if (isInternetAvailable(app.applicationContext)) {
+                try {
+                    val result = repo.deleteTheQuizByInstructor(quizID, token)
+                    instructorDeleteQuizStatus.value = result
+                } catch (e: Exception) {
+                    showToast("Server is busy, try again", app.applicationContext)
+                }
+            } else {
+                showToast(
+                    "No Internet connection to complete the operation",
+                    app.applicationContext
+                )
+            }
+        }
+    }
 
 
     fun getEnrolledInCourseDetailsForStudent(id: String, token: String) {
@@ -285,6 +305,42 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
                 try {
                     val result = repo.getQuizMarksForTheStudent(courseId,quizId,userId ,token)
                     studentGetQuizMarksStatus.value = result
+
+                } catch (e: Exception) {
+                    showToast("Server is busy, try again", app.applicationContext)
+                }
+            } else {
+                showToast(
+                    "No Internet connection to complete the operation",
+                    app.applicationContext
+                )
+            }
+        }
+    }
+
+    fun getLectureByIdToViewItsContentForStudent(lecId:String, token: String) {
+        viewModelScope.launch {
+            if (isInternetAvailable(app.applicationContext)) {
+                try {
+                    val result = repo.getLectureByIdToViewItsContentForStudent(lecId ,token)
+                    lectureInfoStatus.value = result
+
+                } catch (e: Exception) {
+                    showToast("Server is busy, try again", app.applicationContext)
+                }
+            } else {
+                showToast(
+                    "No Internet connection to complete the operation",
+                    app.applicationContext
+                )
+            }
+        }
+    } fun getLectureByIdToViewItsContentForInstructor(lecId:String,courseId: String, token: String) {
+        viewModelScope.launch {
+            if (isInternetAvailable(app.applicationContext)) {
+                try {
+                    val result = repo.getLectureByIdToViewItsContentForInstructor(lecId ,courseId,token)
+                    lectureInfoStatus.value = result
 
                 } catch (e: Exception) {
                     showToast("Server is busy, try again", app.applicationContext)

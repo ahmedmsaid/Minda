@@ -10,6 +10,7 @@ import com.example.minda.pojo.instructor.content.CreatedCourseResponse
 import com.example.minda.pojo.instructor.content.InstructorProfileResponse
 import com.example.minda.pojo.instructor.content.quiz.post.PostQuizRequest
 import com.example.minda.pojo.instructor.content.quiz.response.PostingQuizResponse
+import com.example.minda.pojo.lecture.LectureInfoResponse
 import com.example.minda.pojo.student.auth.RegisteredStudentResponse
 import com.example.minda.pojo.student.auth.StudentRegisterRequest
 import com.example.minda.pojo.student.content.AnswerQuizRequest
@@ -87,6 +88,13 @@ class SharedRepository {
         }
         return null
     }
+    suspend fun deleteTheQuizByInstructor(id:String,token:String):String{
+        val response = ApiService.retrofitService.deleteTheQuizByInstructor(id,token)
+        if (response.isSuccessful){
+            return "Deleted successfully"
+        }
+        return "Failed to delete"
+    }
 
     suspend fun getEnrolledInCourseDetailsForStudent(id:String,token:String):CourseDetailsResponse?{
         val response = ApiService.retrofitService.getEnrolledInCourseDetailsForStudent(id,token)
@@ -119,6 +127,21 @@ class SharedRepository {
     }
     suspend fun getQuizMarksForTheStudent(courseId:String,quizId:String,userId:String,token:String):MyQuizMarksResponse?{
         val response = ApiService.retrofitService.getQuizMarksForTheStudent(courseId,quizId,userId,token)
+        if (response.isSuccessful){
+            return response.body()
+        }
+        return null
+    }
+
+    suspend fun getLectureByIdToViewItsContentForStudent(lecId:String,token:String):LectureInfoResponse?{
+        val response = ApiService.retrofitService.getLectureByIdToViewItsContentForStudent(lecId,token)
+        if (response.isSuccessful){
+            return response.body()
+        }
+        return null
+    }
+    suspend fun getLectureByIdToViewItsContentForInstructor(lecId:String,courseId: String,token:String):LectureInfoResponse?{
+        val response = ApiService.retrofitService.getLectureByIdToViewItsContentForInstructor(lecId,courseId,token)
         if (response.isSuccessful){
             return response.body()
         }

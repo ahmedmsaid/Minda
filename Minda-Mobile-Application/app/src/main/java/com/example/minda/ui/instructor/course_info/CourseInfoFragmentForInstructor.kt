@@ -36,8 +36,6 @@ class CourseInfoFragmentForInstructor : Fragment() {
 
         refreshData()
 
-
-
         return binding.root
     }
 
@@ -70,7 +68,8 @@ class CourseInfoFragmentForInstructor : Fragment() {
 
             if (courseDetails != null) {
                 if (courseDetails.lectureId.isNotEmpty()) {
-                    val lecAdapter = LecturesAdapter(this)
+                    val lecAdapter = LecturesAdapter(this,"instructor")
+                    LecturesAdapter.courseId = courseId!!
                     lecAdapter.submitList(courseDetails.lectureId)
                     binding.InstructorLecturesRecycler.apply {
                         adapter = lecAdapter

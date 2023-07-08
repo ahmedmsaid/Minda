@@ -56,6 +56,9 @@
         <action
             android:id="@+id/action_courseInfoFragment_to_addQuizFragment"
             app:destination="@id/addQuizFragment" />
+        <action
+            android:id="@+id/action_courseInfoFragment_to_lectureInfoFragment2"
+            app:destination="@id/lectureInfoFragment2" />
     </fragment>
     <fragment
         android:id="@+id/addQuizFragment"
@@ -86,5 +89,15 @@
         <action
             android:id="@+id/action_addQuizDetailFragment_to_instructorHomeFragment"
             app:destination="@id/instructorHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/lectureInfoFragment2"
+        android:name="com.example.minda.ui.lectures.LectureInfoFragment"
+        android:label="LectureInfoFragment" >
+        <argument android:name="lecId"
+            app:argType="string" />
+        <argument
+            android:name="courseId"
+            app:argType="string" />
     </fragment>
 </navigation>

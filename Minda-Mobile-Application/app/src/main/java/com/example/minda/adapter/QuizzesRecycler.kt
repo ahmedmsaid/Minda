@@ -1,5 +1,4 @@
 package com.example.minda.adapter
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -14,11 +13,9 @@ import com.example.minda.pojo.course.Quizze
 
 class QuizzesAdapter(private val fragment: Fragment) : ListAdapter<Quizze, QuizzesAdapter.ViewHolder>(ItemDiff()) {
 
-
     companion object{
         lateinit var courseId:String
     }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -33,6 +30,7 @@ class QuizzesAdapter(private val fragment: Fragment) : ListAdapter<Quizze, Quizz
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         holder.binding.quizName.text = getItem(position).quizname
+
         holder.binding.root.setOnClickListener {
             val navController = NavHostFragment.findNavController(fragment)
             val id = getItem(position)._id
