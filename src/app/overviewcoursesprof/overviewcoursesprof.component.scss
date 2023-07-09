@@ -157,9 +157,16 @@ button{
     background: #E3654B;
     cursor: pointer;
 }
-.quizz,.Lesson{
+.Lesson{
     background: linear-gradient(180deg, rgba(27, 26, 28, 0.16) 0%, rgba(27, 26, 28, 0.1264) 100%);
     border: 1px solid #E3654B;
+    border-radius: 5px;
+    color: #E3654B;
+    cursor: pointer;
+}
+.quizz{
+    // background: linear-gradient(180deg, rgba(27, 26, 28, 0.16) 0%, rgba(27, 26, 28, 0.1264) 100%);
+    // border: 1px solid #E3654B;
     border-radius: 5px;
     color: #E3654B;
     cursor: pointer;

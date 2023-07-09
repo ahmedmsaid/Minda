@@ -1,0 +1,30 @@
+<div class="container" *ngIf="deatills">
+    <div class="img">
+      <h3 class="title"> Details For Assignment </h3><br>
+    </div>
+    <div class="content">
+      <div class="quiz">
+        <table class="my-table">
+            <thead>
+                <td>Student Name {{deatills[0].userId.firstName}}</td>
+                <td>Link of Assignment</td>
+                <td>submitted Date</td>
+                <td>Put Degree</td>
+            </thead>
+            <tr *ngFor="let row of deatills">
+                <td>{{ row.userId.firstName }} {{ row.userId.lastName }}</td>
+                <td><a [href]=" row.answerFile" target="_blank" >Open Student Answer</a></td>
+                <td>{{ row.submittedAt|date }}</td>
+                <td >
+                  <div >
+                    <form #assignmentform="ngForm" (ngSubmit)="onSubmit(assignmentform,row.userId._id)">
+                      <input class="inp" type="number" ngModel name="degree" id="degree" placeholder="Enter degree" />
+                      <input type="submit" class="add" value="Submit" /><br />
+                    </form>
+                  </div>
+                </td>
+            </tr>
+        </table><br>
+      <div class="aside"></div>
+    </div>
+  </div>

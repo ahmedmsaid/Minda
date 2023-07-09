@@ -9,8 +9,7 @@
                     <!-- <button (click)="start(courses._id,courses.lectureId[0]._id)" class="start">Start Course</button> -->
                 </div>
                 <div class="rightbtn">
-                    <button (click)="Lesson()" class="Lesson">Add New Lesson</button>&nbsp;&nbsp;
-                    <button (click)="quiz()" class="quizz">Add Quiz</button>
+                    <button (click)="Lesson()" class="Lesson">Add New Lecture</button>&nbsp;&nbsp;
                 </div> 
             </div>
             <div class="step"></div>
@@ -39,9 +38,24 @@
         <div class="underline"></div>
         <table class="my-table">
             <tr *ngFor="let quiz of courses.quizzes">
-            <td (click)="onQuizClick(courses._id,quiz._id)" >{{ quiz.quizname }}</td>
-            <td><i (click)="onQuizDetaillClick(courses._id,quiz._id)" class="fa fa-vcard-o"></i></td>
-            <td><i (click)="onQuizDeleteClick(quiz._id)" class="fa fa-trash-o" ></i></td>
+                <td (click)="onQuizClick(courses._id,quiz._id)" >{{ quiz.quizname }}</td>
+                <td><i (click)="onQuizDetaillClick(courses._id,quiz._id)" class="fa fa-vcard-o"></i></td>
+                <td><i (click)="onQuizDeleteClick(quiz._id)" class="fa fa-trash-o" ></i></td>
+            </tr>
+            <tr>
+                <td (click)="quiz()" class="quizz">Add Quiz</td>
+            </tr>
+        </table>
+        <p class="title">Assignments</p>
+        <div class="underline"></div>
+        <table class="my-table">
+            <tr *ngFor="let assignment of assignments">
+                <td (click)="onAssignmentClick(courses._id,assignment._id)" >{{ assignment.title }}</td>
+                <td><i (click)="onAssignmentDetaillClick(courses._id,assignment._id)" class="fa fa-vcard-o"></i></td>
+                <td><i (click)="onAssignmentDeleteClick(assignment._id)" class="fa fa-trash-o" ></i></td>
+            </tr>
+            <tr>
+                <td (click)="assignment()" class="quizz">Add Assignment</td>
             </tr>
         </table>
     </div>

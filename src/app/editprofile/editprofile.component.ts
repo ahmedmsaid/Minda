@@ -38,6 +38,8 @@ export class EditprofileComponent {
   token:any
   info:any
   id:any
+  selectedimgFile:any
+  img:any
   constructor(private router: Router, private route: ActivatedRoute, private userServiuce: UserService, private auth: AuthService) { 
   }
    ngOnInit(){
@@ -76,6 +78,21 @@ export class EditprofileComponent {
     this.userServiuce.userUpdate(formValue,id ,token).subscribe(() => {});
     this.router.navigate(['/profile'])
   }
+  uploadimg() {
+      const formData = new FormData();
+      formData.append('image', this.selectedimgFile);
+      this.addimg(formData,this.info.id,this.token)
+    }
+  addimg(formValue: any, id: string ,token:string) {
+      this.userServiuce.uploadimg(formValue,id,token).subscribe();
+      // this.router.navigate(['/Overviewcoursesprof',this.cId])
+    } 
+    deleteimg() {
+      this.brushimg(this.info.id,this.token)
+    }
+    brushimg(id: string,token: string){
+      this.userServiuce.deleteimg(id,token).subscribe(()=>{})
+    }
   getProfile(id: string,token:string){
     this.userServiuce.getInfo(id,token)
   .subscribe((data: any)=>{
@@ -87,4 +104,9 @@ export class EditprofileComponent {
     } else {
       this.token=this.auth.getProfToken()
     }}
+    onFileSelected(event:any) {
+      this.selectedimgFile = event.target.files[0];
+    }
+    
+    
 }

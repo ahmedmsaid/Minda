@@ -36,11 +36,16 @@ export class OverviewcoursesprofComponent implements OnInit {
   token = this.auth.getProfToken()
   info: any
   id: any
+  assignments:any
   courseId=this.route.snapshot.paramMap.get('id')!;
-  constructor(private router: Router, private route: ActivatedRoute, private courseService: CourseService, private auth: AuthService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private courseService: CourseService, private auth: AuthService) {
+    this.info=jwtDecode(this.token);
+    // this.id=this.info.id
+   }
   ngOnInit(){
     var id = this.route.snapshot.paramMap.get('id')!;
     this.getInfoDoc(id)
+    this.getAssign(this.courseId,this.info.id)
     console.log(id)
     console.log(this.courses)
   }
@@ -51,11 +56,21 @@ export class OverviewcoursesprofComponent implements OnInit {
   })
   console.log(this.courses)
   }
+  getAssign(cid: string,did: string){
+    this.courseService.getAssignmentdoc(cid,did)
+    .subscribe((data: any)=>{
+      this.assignments = data
+  })
+  console.log(this.courses)
+  }
   start(Cid: string,Lid: string) {
     this.router.navigate([`profcourses/Overviewcoursesprof/${Cid}/lecture/${Lid}`]);
   }
   quiz() {
     this.router.navigate([`profcourses/Overviewcoursesprof/${this.courseId}/quizprof`]);
+  }
+  assignment(){
+    this.router.navigate([`profcourses/Overviewcoursesprof/${this.courseId}/assignment`]);
   }
   Lesson() {
     this.router.navigate([`profcourses/Overviewcoursesprof/${this.courseId}/addlecture`]);////////
@@ -72,7 +87,16 @@ export class OverviewcoursesprofComponent implements OnInit {
   onQuizDeleteClick(Qid: string) {
     console.log(Qid)
     this.deleteQuizz(Qid)
-    
+  }
+  onAssignmentClick(Cid: string,Qid: string) {
+    this.router.navigate([`profcourses/Overviewcoursesprof/${Cid}/assignment/${Qid}/deg`]);/////profcourses/Overviewcoursesprof/:id/assignment/:aid/deg
+  }
+  onAssignmentDetaillClick(Cid: string,aid: string) {
+    this.router.navigate([`profcourses/Overviewcoursesprof/${Cid}/assignment/${aid}/deataills`]);//profcourses/Overviewcoursesprof/:id/assignment/:aid/deataills
+  }
+  onAssignmentDeleteClick(Qid: string) {
+    console.log(Qid)
+    this.deleteQuizz(Qid)
   }
   onLecDeleteClick(Cid: string,Lid: string) {
     this.deleteLec(Lid,Cid)

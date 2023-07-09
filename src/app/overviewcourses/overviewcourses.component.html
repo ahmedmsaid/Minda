@@ -34,5 +34,12 @@
             <td (click)="onQuizClick(course._id,row._id)" >{{ row.quizname }}</td>
             </tr>
         </table>
+        <p class="title">Assignments</p>
+        <div class="underline"></div>
+        <table class="my-table">
+            <tr *ngFor="let row of course.assignments">
+            <td (click)="onAssignmentClick(course._id,row._id)" >{{ row.title }}</td>
+            </tr>
+        </table>
     </div>
   </div>

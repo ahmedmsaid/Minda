@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="img">
+      <h3 class="title">{{ deatils.title }}</h3><br>
+    </div>
+    <div class="content">
+      <div class="quiz">
+        <h1>Upload Your Answer</h1>
+          <div class="bg"></div>
+          <form #assignmentform="ngForm" (ngSubmit)="onSubmit(assignmentform)">
+            <input type="file" class="inp" ngModel name="file" id="file" placeholder="Enter file" (change)="onFileSelected($event)" /><br>
+            <div class="line"></div>
+            <span id="Correct" class="text-danger"></span><br>
+            <input type="submit" class="add" value="Submit" /><br />
+          </form> 
+      </div>
+      <div class="aside">
+        <p class="titlee">{{ deatils.description }}</p>
+        <div class="underline"></div>
+        <p><a [href]="deatils.file" target="_blank">Open Assignment File</a></p>
+      </div>
+    </div>
+  </div>

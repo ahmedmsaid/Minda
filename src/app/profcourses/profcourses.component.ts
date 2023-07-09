@@ -41,7 +41,9 @@ export class ProfcoursesComponent {
     this.router.navigate(['/Overviewcoursesprof', id]);
   }
   onCourseDeleteClick(id: number) {
-    this.courseService.deleteCourse(id).subscribe(()=>{})
+    
+    this.courseService.deleteCourse(id).subscribe(()=>{this.router.navigate(['/profcourses'])})
+    
   }
   onCourseEditClick(Cid: number) {
     // this.courseService.updateCourse(Cid).subscribe(()=>{})

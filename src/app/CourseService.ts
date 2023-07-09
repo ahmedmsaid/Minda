@@ -167,7 +167,48 @@ export class CourseService {
       return this.http.put(this.api + 'course/updateCourseInfo/'+cId , formValue, options)
       .pipe(catchError(this.handleError<any>('update')))
   } 
-
+  
+  addAssignment(formValue: any,cId: string){
+    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getProfToken() })}
+      return this.http.post(this.api + 'assignment/courses/' + cId + '/assignments' , formValue, options)
+      .pipe(catchError(this.handleError<any>('addAssignment')))
+  } 
+  getAssignmentdoc(Id: string, dId: string ): any{
+    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getProfToken() })}
+      return this.http.get(this.api + 'assignment/course/' + Id + '/doctor/' + dId +'/assignments' , options)
+      .pipe(catchError(this.handleError<any>('getQuiz')))
+  }
+  answerAssignment(formValue: any,cId: string, aId: string ): any{
+    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getUserToken() })}
+      return this.http.post(this.api + 'assignment/courses/' + cId + '/assignments/' + aId +'/submit',formValue, options)
+      .pipe(catchError(this.handleError<any>('getassign')))
+  }
+  getuserAnswerAssignment(cId:string,aId: string): any{
+    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getProfToken() })}
+      return this.http.get(this.api + 'assignment/courses/' + cId + '/assignments/'+ aId + '/answers' , options)
+      .pipe(catchError(this.handleError<any>('getanswer')))
+  }
+  getAssignmentdetails(cId: string,aId: string): any{
+    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getProfToken() })}
+      return this.http.get(this.api + 'assignment/courses/' + cId + '/assignments/'+ aId + '/responses'  , options)
+      .pipe(catchError(this.handleError<any>('getanswer')))
+  }
+  postdegAssignment(formValue: any,cId: string,aId: string): any{
+    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getProfToken() })}
+      return this.http.post(this.api + 'assignment/courses/' + cId + '/assignments/'+ aId + '/score' , formValue,options)
+      .pipe(catchError(this.handleError<any>('getanswer')))
+  }
+  getAssignmentforuser(cId: string,uId: string): any{
+    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getUserToken() })}
+      return this.http.get(this.api + 'course/' + cId + '/user/'+ uId + '/assignments'  , options)
+      .pipe(catchError(this.handleError<any>('getassign')))
+  }
+  getDetailAssignmentforuser(cId: string,uId: string,aid:string): any{
+    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getUserToken() })}
+    // "/course/:courseId/assignment/:assignmentId",
+      return this.http.get(this.api + 'assignment/course/' + cId + '/assignment/' +aid  , options)
+      .pipe(catchError(this.handleError<any>('getassign')))
+  }
   checkUserToken() {
     if (this.auth.getUserToken()) {
       this.path='/forDoc'

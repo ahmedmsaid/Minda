@@ -38,6 +38,7 @@ export class CoursesComponent {
 
   onCourseClick(id: string) {
     this.router.navigate(['/overviewcourses', id]);
+    console.log(id)
   }
 
   /*getCourseById(id: number): Course | undefined {

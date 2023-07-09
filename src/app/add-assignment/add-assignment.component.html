@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="img">
+        <h3 class="title">Create a Assignment</h3><br>
+    </div>
+    <div class="content">
+        <div class="quiz">
+          <h1>Create a Assignment</h1>
+          <div class="bg"></div>
+          <form #assignmentform="ngForm" (ngSubmit)="onSubmit(assignmentform)">
+            <input class="inp" ngModel name="title" id="title" placeholder="Enter Title" /><br>
+            <input class="inp" ngModel name="description" id="description" placeholder="Enter description" /><br>
+            <input type="file" class="inp" ngModel name="file" id="file" placeholder="Enter file" (change)="onFileSelected($event)" /><br>
+            <div class="line"></div>
+            <span id="Correct" class="text-danger"></span><br>
+            <input type="submit" class="add" value="Submit" /><br />
+          </form> 
+        </div>
+    </div>
+  </div>

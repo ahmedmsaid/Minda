@@ -37,14 +37,21 @@ import { EditCoursesComponent } from './edit-courses/edit-courses.component';
 import { EditProfileImageComponent } from './edit-profile-image/edit-profile-image.component';
 import { EditlecComponent } from './editlec/editlec.component';
 import { EditlecvideoComponent } from './editlecvideo/editlecvideo.component';
+import { AddAssignmentComponent } from './add-assignment/add-assignment.component';
+import { AnsAssignmentComponent } from './ans-assignment/ans-assignment.component';
+import { AnsAssignmentDegComponent } from './ans-assignment-deg/ans-assignment-deg.component';
+import { AssigndetailsComponent } from './assigndetails/assigndetails.component';
+import { AssigninfoComponent } from './assigninfo/assigninfo.component';
+// import { SafePipe } from './assigninfo/assigninfo.component';
+
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'courses', component: CoursesComponent },
   { path: 'profcourses', component: ProfcoursesComponent },
-  { path: 'signup', component: SignupComponent },
+  { path: 'Signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
   { path: 'loginprof', component: LoginprofComponent },
-  { path: 'signupprof', component: SignupprofComponent },
+  { path: 'Signupprof', component: SignupprofComponent },
   { path: 'editprofile', component: EditprofileComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'courses/overviewcourses/:id/quiz/:Qid/result', component: ProfileDocComponent },
@@ -61,7 +68,12 @@ const routes: Routes = [
   { path: 'addlecture2', component: Addlecture2Component },
   { path: 'forgetpass', component: ForgetpassComponent },/*/:id*/
   { path: 'profcourses/Overviewcoursesprof/:id/quizprof' , component: QuizprofComponent },
-  { path:'profcourses/Overviewcoursesprof/:id/quiz/:Qid/deataills',component:DetaillsComponent}
+  { path: 'profcourses/Overviewcoursesprof/:id/assignment' , component: AddAssignmentComponent },
+  { path: 'courses/overviewcourses/:id/assignment/:aid/upload' , component: AnsAssignmentComponent },
+  { path: 'profcourses/Overviewcoursesprof/:id/quiz/:Qid/deataills',component:DetaillsComponent},
+  { path: 'profcourses/Overviewcoursesprof/:id/assignment/:aid/deg',component:AnsAssignmentDegComponent},
+  { path: 'profcourses/Overviewcoursesprof/:id/assignment/:aid/deataills',component:AssigndetailsComponent},
+  { path: 'courses/overviewcourses/:id/assignment/:aid/deatails',component:AssigninfoComponent},
 
 ];
 
@@ -97,6 +109,12 @@ const routes: Routes = [
     EditProfileImageComponent,
     EditlecComponent,
     EditlecvideoComponent,
+    AddAssignmentComponent,
+    AnsAssignmentComponent,
+    AnsAssignmentDegComponent,
+    AssigndetailsComponent,
+    AssigninfoComponent,
+
   ],
   imports: [
     BrowserModule,

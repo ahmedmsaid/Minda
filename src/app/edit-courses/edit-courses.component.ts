@@ -34,6 +34,7 @@ export class EditCoursesComponent {
         }else{
           this.editCourse(formData, this.cId)
           console.log(formData);
+          this.router.navigate(['/Overviewcoursesprof', this.cId]);
         }
   }
   editCourse(formValue: any, id: string) {

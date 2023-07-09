@@ -1,10 +1,19 @@
 <div class="container">
     <div class="prof">
         <div class="img">
-            <img [src]="profile.profileimg.url" alt="image">
-        </div>
+            <ng-container *ngIf="profile.profileimg === null || !profile.profileimg.url || (profile.profileimg && !profile.profileimg.url)">
+                <label for="videoFile">Upload Video:</label><br>
+                <input type="file" id="file" (change)="onFileSelected($event)"><br>
+                <button class="upload" (click)="uploadimg()">Upload</button><br>
+              </ng-container>
+            <ng-container *ngIf="profile.profileimg && profile.profileimg.url">
+              <img [src]="profile.profileimg.url" alt="image">
+            </ng-container>
+          </div>
         <div class="text">
-            <a class="edit" routerLink="#"> update profile image </a>
+            <ng-container *ngIf="profile.profileimg && profile.profileimg.url">
+                <a class="edit" (click)="deleteimg()"> To update profile image Click To Delete First</a>
+            </ng-container>
             <p>Personal Info</p>
             <div class="line"></div>
         </div><!--<p class="stuname" *ngFor="let item of info"> {{ item.name }} </p> -->

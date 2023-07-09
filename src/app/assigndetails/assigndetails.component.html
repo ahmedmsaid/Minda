@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="img">
+      <h3 class="title"> Details For Assignment </h3><br>
+    </div>
+    <div class="content">
+      <div class="quiz">
+        <table class="my-table">
+            <thead>
+                <td>Full Name</td>
+                <td>score</td>
+            </thead>
+            <tr *ngFor="let row of deatills">
+                <td>{{ row.userId.firstName }} {{ row.userId.lastName }}</td>
+                <td><em>{{ row.score }} </em></td>
+            </tr>
+        </table><br>
+      <div class="aside"></div>
+    </div>
+  </div>
