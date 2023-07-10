@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CourseService } from '../CourseService';
 import { AuthService } from '../auth.service';
-import { tap } from 'rxjs';
+import { map, tap } from 'rxjs';
 import jwtDecode from 'jwt-decode';
 import { ActivatedRoute, Router } from '@angular/router';
 interface Lec {
@@ -41,6 +41,7 @@ export class LecComponent {
   token: any
   info: any
   video:any
+  showAddVideos: boolean = false;
   constructor(private courseService: CourseService, private auth: AuthService, private route: ActivatedRoute) {
     this.token = this.auth.getUserToken()
   }
@@ -50,21 +51,23 @@ export class LecComponent {
     this.userId = this.info.id
     this.courseId = this.route.snapshot.paramMap.get('id')!;
     this.lectureId = this.route.snapshot.paramMap.get('Lid')!;
-    this.getLec(this.lectureId )
-    if(!this.lec.vedios[0].url){
-      this.video=""
-    }else{
-      this.video=this.lec.vedios[0].url
-    }
+    this.getLec(this.lectureId ).subscribe((lec: Lec) => {
+      this.lec = lec;
+      if (!this.lec.vedios[0]?.url) {
+        this.video = "";
+        this.showAddVideos = true;
+      } else {
+        this.video = this.lec.vedios[0].url;
+      }
+    });
   }
-
   getLec(lId: string){
-      this.courseService.getLecUser(lId)
-    .subscribe((data: any)=>{
-        this.description = data.lecture.description
-        this.cname=data.lecture.courseData.courseName
-        this.lec=data.lecture
-        console.log(this.lec)
-    })
+      return this.courseService.getLecUser(lId).pipe(
+        tap((data: any) => {
+          this.description = data.lecture.description;
+          this.cname = data.lecture.courseData.courseName;
+        }),
+        map((data: any) => data.lecture)
+      );
  }
 }

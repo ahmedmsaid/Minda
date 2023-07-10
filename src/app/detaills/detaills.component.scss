@@ -20,16 +20,6 @@
     color: #FFFFFF;
 }
 
-// .content{
-//     display: flex;
-//     flex-direction: row;
-// }
-// .aside{
-//     display: flex;
-//     background: #D8D8D8;
-//     border-left: 1px solid #858383;
-//     width: 42%;
-// }
 .quiz{
     font-family: 'Tw Cen MT';
     font-style: normal;
@@ -55,7 +45,6 @@
 }
 
 .inp{
-    // box-sizing: border-box;
     margin: 15px;
     width: 38.7%;
     height: 77px;
@@ -148,12 +137,10 @@ input[type=radio]:checked::before {
   .my-table td {
     border-bottom: 1px solid #333333;
     padding: 0.5rem;
-    // color: #418EBA;
     margin: auto 0;
     align-content: center;
   }
   .my-table th{
-    // color: #E3654B;
     margin: auto 0;
   }
 

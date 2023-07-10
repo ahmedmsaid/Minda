@@ -12,16 +12,11 @@ export class LoginprofComponent {
   loginInvalid = false
 
   constructor(private router: Router, private auth: AuthService) { }
-  // constructor(private http: HttpClient) {}
- // if (!this.person.firstName || !this.person.lastName || !this.person.email || !this.person.password || !this.person.confirmPassword) {
-    //   console.log('Please fill out all required fields');
-    //   return;
-    // }
     sign(){
       this.router.navigate(['/Signupprof']);
     }
     forgetpass(){
-      this.router.navigate(['/forgetpass']);
+      this.router.navigate(['/forgetpassDoc']);
     }
     onSubmit(loginprofForm: NgForm) {
         let email = loginprofForm.value.email

@@ -42,7 +42,7 @@ import { AnsAssignmentComponent } from './ans-assignment/ans-assignment.componen
 import { AnsAssignmentDegComponent } from './ans-assignment-deg/ans-assignment-deg.component';
 import { AssigndetailsComponent } from './assigndetails/assigndetails.component';
 import { AssigninfoComponent } from './assigninfo/assigninfo.component';
-// import { SafePipe } from './assigninfo/assigninfo.component';
+import { ForgetpassDocComponent } from './forgetpass-doc/forgetpass-doc.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -66,7 +66,8 @@ const routes: Routes = [
   { path: 'profcourses/Addcourse', component: AddcourseComponent },
   { path: 'profcourses/Overviewcoursesprof/:id/addlecture', component: AddlectureComponent },
   { path: 'addlecture2', component: Addlecture2Component },
-  { path: 'forgetpass', component: ForgetpassComponent },/*/:id*/
+  { path: 'forgetpass', component: ForgetpassComponent },
+  { path: 'forgetpassDoc', component: ForgetpassDocComponent },
   { path: 'profcourses/Overviewcoursesprof/:id/quizprof' , component: QuizprofComponent },
   { path: 'profcourses/Overviewcoursesprof/:id/assignment' , component: AddAssignmentComponent },
   { path: 'courses/overviewcourses/:id/assignment/:aid/upload' , component: AnsAssignmentComponent },
@@ -114,7 +115,7 @@ const routes: Routes = [
     AnsAssignmentDegComponent,
     AssigndetailsComponent,
     AssigninfoComponent,
-
+    ForgetpassDocComponent
   ],
   imports: [
     BrowserModule,

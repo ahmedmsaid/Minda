@@ -14,34 +14,20 @@ import jwtDecode from 'jwt-decode';
 
 export class CoursesComponent {
   courses!: any
-  
-  //dummy!: ICourse[]
-
   token = this.auth.getUserToken()
   data: any
   id: any
-
   constructor(private router: Router, private courseService: CourseService, private auth: AuthService) { }
-
   ngOnInit() {
     this.data = jwtDecode(this.token)
     this.id = this.data.id
-
-      this.courseService.getCourses(this.id, this.token)
+    this.courseService.getCourses(this.id, this.token)
       .pipe(tap( (data: any) => {
         this.courses = <ICourse>data['enrolledCourses']
-    }))
-    .subscribe()
-
-    console.log(this.token)
+    })).subscribe()
   }
-
   onCourseClick(id: string) {
     this.router.navigate(['/overviewcourses', id]);
     console.log(id)
   }
-
-  /*getCourseById(id: number): Course | undefined {
-    return this.courses.find(course => course.id === id);
-  }*/
 }

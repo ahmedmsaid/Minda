@@ -8,40 +8,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  person = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-  };
   constructor(private router: Router,private el: ElementRef) { }
-  // constructor(private http: HttpClient) {}
- // if (!this.person.firstName || !this.person.lastName || !this.person.email || !this.person.password || !this.person.confirmPassword) {
-    //   console.log('Please fill out all required fields');
-    //   return;
-    // }
-    onSubmit(joinForm: NgForm) {
-      const formData = {
-        firstName: joinForm.value.firstName,
-        lastName: joinForm.value.lastName,
-        email: joinForm.value.email,
-        phone: joinForm.value.phone,
-      };
-
-    // this.http.post('your-api-url', formData).subscribe(
-    //   response => {
-    //     console.log(response);
-    //   },
-    //   error => {
-    //     console.error(error);
-    //   }
-    // );
+  onSubmit(joinForm: NgForm) {
     this.router.navigate(['/Signup']);
-    console.log(formData);
   }
 
   start() {
-    this.router.navigate(['/Signup']);
+    this.router.navigate(['/login']);
   }
   learn() : void {
     this.el.nativeElement.querySelector('#goal-section').scrollIntoView({ behavior: 'smooth' });

@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 
 @Component({
-  selector: 'app-forgetpass',
-  templateUrl: './forgetpass.component.html',
-  styleUrls: ['./forgetpass.component.scss']
+  selector: 'app-forgetpass-doc',
+  templateUrl: './forgetpass-doc.component.html',
+  styleUrls: ['./forgetpass-doc.component.scss']
 })
-export class ForgetpassComponent {
+export class ForgetpassDocComponent {
   showElement: boolean = false;
   Element: boolean = false;
   uid:any
@@ -29,7 +29,7 @@ export class ForgetpassComponent {
       }
   }
   forget(formValue: any) {
-    this.userServiuce.forgetUser(formValue).subscribe();
+    this.userServiuce.forgetProf(formValue).subscribe();
     this.showElement = !this.showElement;
   }
   ontokenSubmit(tokenForm: NgForm) {
@@ -42,15 +42,14 @@ export class ForgetpassComponent {
         correctSpan.innerText = 'All Fileds Are Required';
       }
     }else{
-        this.showElement=false
         this.token(tokenData)
         this.gettoken=tokenData.token
       }
   }
   token(formValue: any) {
-    this.userServiuce.tokenUser(formValue).subscribe();
+    this.userServiuce.tokenProf(formValue).subscribe();
     this.Element = !this.Element;
-    
+    this.showElement = !this.showElement;
   }
   onresetSubmit(resetpassForm: NgForm) {
     const Data = {
@@ -67,8 +66,8 @@ export class ForgetpassComponent {
       }
   }
   reset(formValue: any) {
-    this.userServiuce.resetUser(formValue).subscribe();
-    this.router.navigate(['/login']);
+    this.userServiuce.resetProf(formValue).subscribe();
+    this.router.navigate(['/loginprof']);
 
   }
 }

@@ -3,10 +3,9 @@
         <div class="img">
             <h3 class="title">{{ course.courseName }}</h3>
             <h3 class="name">By :- {{ course.doctorData.firstName}}</h3>
-            <p>{{course.description}}</p>
+            <p >{{course.description}}</p>
             <div class="btn">
                 <button (click)="start(course._id,course.lectureId[0]._id)" class="start">Start Course</button>&nbsp;&nbsp;
-                <button (click)="quiz()" class="quizz">Take a quiz</button>
             </div>
             <div class="step"></div>
         </div>
@@ -17,12 +16,55 @@
                     <button (click)="Discussion()" >Discussion</button>
                 </div>
                 <div class="bg"></div>
-                <div class="change" #content>
+                <div *ngIf="!showElement" class="change" #content>
                    <table class="my-table">
                         <tr *ngFor="let row of course.lectureId">
                         <td (click)="onLecClick(course._id,row._id)">{{ row.title }}</td>
                         </tr>
                     </table>
+                </div>
+                <form  *ngIf="showElement"  #addPostForm="ngForm" (ngSubmit)="onSubmit(addPostForm)" class="add-post">
+                    <span id="checked" class="text-danger"></span><br>
+                    <h3>add Post</h3>
+                    <textarea ngModel name="content" placeholder="enter your post" required maxlength="1000" cols="30" rows="10"></textarea>
+                    <input type="submit" value="add post" class="inline-btn" name="add_comment">
+                </form>
+                <div *ngIf="showElement" class="post">
+                    <h1 class="heading">user Posts</h1>
+                    <div class="box-container">
+                        <div class="box" *ngFor="let post of course.posts">
+                            <div class="user">
+                                <img *ngIf="post.user.profileimg.url!==' '" [src]="post.user.profileimg.url" alt="profile">
+                                <img *ngIf="post.user.profileimg.url===' '" src="../../assets/img/pic-1.jpg" alt="image">
+                                <div>
+                                <h3>{{post.user.firstName}}</h3>
+                                <span>{{post.createdAt | date }}</span>
+                                </div>
+                            </div>
+                            <div class="post-box">{{post.content}}
+                               <div class="comment-content">
+                                    <form #addCommentForm="ngForm" (ngSubmit)="onSubmitcomment(addCommentForm,post._id)" class="add-comment" > 
+                                        <textarea ngModel name="comment" placeholder="enter your comment" required maxlength="1000" cols="20" rows="2"></textarea>
+                                        <button class="submit" type="submit">Submit</button>
+                                    </form>
+                                    <div class="box-container">
+                                        <div class="box" *ngFor="let comment of post.comments">
+                                            <div class="user">
+                                                <img *ngIf="comment.user.profileimg.url!==' '" [src]="comment.user.profileimg.url" alt="profile">
+                                                <img *ngIf="comment.user.profileimg.url===' '" src="../../assets/img/pic-1.jpg" alt="image">
+                                                <div class="info">
+                                                <span>{{comment.user.firstName}}</span>
+                                                <div class="comment-box">{{comment.content}}</div>
+                                                <i *ngIf="profile === comment.user.firstName" (click)="onDeleteComment(course._id,post._id,comment._id)" class="fa fa-trash-o icon" ></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+                                <i *ngIf="profile === post.user.firstName" (click)="onDeletePost(course._id,post._id)" class="fa fa-trash-o cicon" ></i>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

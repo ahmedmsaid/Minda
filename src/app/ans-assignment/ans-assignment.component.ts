@@ -28,22 +28,18 @@ export class AnsAssignmentComponent {
     this.selectedFile = event.target.files[0];
   }
   onSubmit(assignmentform: NgForm) {
-    
     const formdata = new FormData();
     formdata.append('answerFile', this.selectedFile);
     if (assignmentform.value.file === '') {
-        const correctSpan = document.getElementById('Correct');
-        if (correctSpan !== null) {
-          correctSpan.innerText = 'All Fileds Are Required';
-          console.log(formdata);
-        }
-      }else{
-        this.makeAssignment(formdata, this.cId,this.aId)
-        console.log(formdata);
+      const correctSpan = document.getElementById('Correct');
+      if (correctSpan !== null) {
+        correctSpan.innerText = 'All Fileds Are Required';
       }
+    }else{
+      this.makeAssignment(formdata, this.cId,this.aId)
+    }
   }
   makeAssignment(formValue: any, cId: string,aId :string) {
-
     this.courseService.answerAssignment(formValue,cId,aId).subscribe(() => {
     this.router.navigate(['/Overviewcoursesprof',this.cId])
   });}

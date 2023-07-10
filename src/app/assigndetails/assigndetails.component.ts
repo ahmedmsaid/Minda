@@ -20,7 +20,7 @@ export class AssigndetailsComponent {
   quizMark:any
   constructor(private router: Router, private route: ActivatedRoute, private CourseService: CourseService, private auth: AuthService) { 
   }
-   ngOnInit(){
+  ngOnInit(){
     this.token=this.auth.getProfToken()
     this.info=jwtDecode(this.token)
     this.id = this.info.id
@@ -30,8 +30,7 @@ export class AssigndetailsComponent {
   }
   getInfo(Cid: string,aid: string){
     this.CourseService.getAssignmentdetails(Cid,aid)
-  .subscribe((data: any)=>{
-      this.deatills = data.assignmentResponses
-  })
+    .subscribe((data: any)=>{
+      this.deatills = data.assignmentResponses})
   }
 }

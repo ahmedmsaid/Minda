@@ -10,20 +10,13 @@
                 <p>{{lec.description}}</p>
             </div>
             <br>
-            <p class="title">Assignments</p>
-            <div class="line"></div>
         </div>
     </div>
     <div class="aside">
         <p class="title">{{lec.courseData.courseName}}</p>
         <div class="line"></div>
         <table class="my-table">
-            <!-- <tr *ngFor="let row of data">
-            <td>{{ row.name }}</td>
-            <td>{{ row.time }}</td>
-            </tr> -->
         </table>
-        <!-- <p *ngIf="showAddVideos">Add videos</p> -->
         <div *ngIf="showAddVideos">
             <label style="margin-left: 20px;" for="videoFile">Upload Video:</label><br>
             <input type="file" id="videoFile" (change)="onVideoSelected($event)"><br>

@@ -37,55 +37,40 @@ export class CourseService {
 
   getCourses(userId: any, token: string): Observable<any[]> {
     let options = { headers: new HttpHeaders({ 'x-auth-token': token })}
-
     return this.http.get<any[]>(this.api + 'user/enrolledCourses/' + userId, options)
     .pipe(catchError(this.handleError<any[]>('getCourses', [])))
   }
 
   getManagedCourses(userId: any, token: string): Observable<any[]> {
     let options = { headers: new HttpHeaders({ 'x-auth-token': token })}
-
     return this.http.get<any[]>(this.api + 'doctor/' + userId + '/doctorProfile', options)
     .pipe(catchError(this.handleError<any[]>('getCourses', [])))
   }
 
   getCourseById(id: string): any {
     let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getUserToken() })}
-    console.log(this.auth.getUserToken())
-
     return this.http.get<any[]>(this.api + 'course/' + id, options)
     .pipe(catchError(this.handleError<any[]>('getCourses', [])))
   }
 
   getCourseInfo(id: string): any {
     let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getUserToken() })}
-    console.log(this.auth.getUserToken())
     return this.http.get<any[]>(this.api + 'course/couseInfo/' + id, options)
     .pipe(catchError(this.handleError<any[]>('getCourses', [])))
   }
   getCourseInfoDoc(id: string): any {
     let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getProfToken() })}
-    console.log(this.auth.getProfToken())
     return this.http.get<any[]>(this.api + 'course/doctor/couseInfo/' + id, options)
     .pipe(catchError(this.handleError<any[]>('getCourses', [])))
   }
-  /*getLectureInfo(userId: string, courseId: string, lectureId: string){
-    let options = { headers: new HttpHeaders({ 'x-auth-token': this.userToken })}
-
-    return this.http.get<any[]>(this.api + 'user/' + userId + courseId + lectureId, options)
-    .pipe(catchError(this.handleError<any[]>('getCourses', [])))
-  }*/
-
   addCourse(formValue: any, id: string){
     let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getProfToken() })}
-
       return this.http.post(this.api + 'course/' + id, formValue, options)
       .pipe(catchError(this.handleError<any>('addCourse')))
   } 
 
   addLec1(formValue: any,cId: string, id: string ){
     let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getProfToken() })}
-
       return this.http.post(this.api + 'lecture/' + cId + '/' + id, formValue, options)
       .pipe(catchError(this.handleError<any>('addCourse')))
   } 
@@ -108,31 +93,26 @@ export class CourseService {
   } 
   getLecUser(lId: string): any{
     let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getUserToken() })}
-    console.log(this.auth.getUserToken())
       return this.http.get(this.api + 'lecture/lec/' + lId , options)
       .pipe(catchError(this.handleError<any>('addCourse')))
   }
   getQuizUser(qId: string, cId: string , token: string ): any{
     let options = { headers: new HttpHeaders({ 'x-auth-token': token})}
-    console.log(this.auth.getUserToken())
       return this.http.get(this.api + 'quiz/' + qId +'/'+ cId, options)
       .pipe(catchError(this.handleError<any>('getQuiz')))
   }
   getResult(cId: string ,qId: string, uId: string,  token: string ): any{
     let options = { headers: new HttpHeaders({ 'x-auth-token': token})}
-    console.log(this.auth.getUserToken())
       return this.http.get(this.api + 'quiz/courses/' + cId+'/quizzes/'+ qId +'/user/'+ +uId, options)
       .pipe(catchError(this.handleError<any>('getresult')))
   }
   postQuizUser(formValue: any,cId: string , qId: string,  token: string ): any{
     let options = { headers: new HttpHeaders({ 'x-auth-token': token})}
-    console.log(this.auth.getUserToken())
       return this.http.post(this.api + 'quiz/courses/'+ cId +'/quizzes/' + qId +'/submit',formValue, options)
       .pipe(catchError(this.handleError<any>('getQuiz')))
   }
   getDetail(cId: string ,qId: string,  token: string ): any{
     let options = { headers: new HttpHeaders({ 'x-auth-token': token})}
-    console.log(this.auth.getProfToken())
       return this.http.get(this.api + 'quiz/courseId/' + cId+'/quizId/'+ qId , options)
       .pipe(catchError(this.handleError<any>('getresult')))
   }
@@ -205,9 +185,33 @@ export class CourseService {
   }
   getDetailAssignmentforuser(cId: string,uId: string,aid:string): any{
     let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getUserToken() })}
-    // "/course/:courseId/assignment/:assignmentId",
       return this.http.get(this.api + 'assignment/course/' + cId + '/assignment/' +aid  , options)
       .pipe(catchError(this.handleError<any>('getassign')))
+  }
+  addPost(formValue: any,cId: string){
+    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getUserToken() })}
+      return this.http.post(this.api + 'post/courses/' + cId + '/posts' , formValue, options)
+      .pipe(catchError(this.handleError<any>('addpost')))
+  } 
+  addComment(formValue: any,cId: string,pId:string){
+    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getUserToken() })}
+      return this.http.post(this.api + 'comment/courses/' + cId + '/posts/'+pId+'/comments' , formValue, options)
+      .pipe(catchError(this.handleError<any>('addpost')))
+  } 
+  deleteComment(id: string,pid:string,cid:string ){
+    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getUserToken() })}
+    return this.http.delete(this.api + 'comment/courses/' + id +'/posts/'+pid +'/comments/'+cid, options)
+      .pipe(catchError(this.handleError<any>('delete')))
+  } 
+  deletePost(cid: string ,pid:string){
+    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getUserToken() })}
+    return this.http.delete(this.api + 'post/courses/' +cid +'/posts/'+pid, options)
+      .pipe(catchError(this.handleError<any>('delete')))
+  }
+  getPost(cId: string): any{
+    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getUserToken() })}
+      return this.http.get(this.api + 'post/courses/' + cId + '/posts', options)
+      .pipe(catchError(this.handleError<any>('getpost')))
   }
   checkUserToken() {
     if (this.auth.getUserToken()) {
@@ -225,88 +229,3 @@ export class CourseService {
   }
 
   }
-
-
-
-  /*courses: Course[] = [
-    {
-      id: 1,
-      name: 'Information Retrieval',
-      description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      authorName: 'John Doe',
-      lessons: [
-        {
-          id: 1,
-          title: 'Lesson 1',
-          description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-          duration: '1h'
-        },
-        {
-          id: 2,
-          title: 'Lesson 2',
-          description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-          duration: '1h'
-        }
-      ]
-    },
-    {
-      id: 2,
-      name: 'AI',
-      description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      authorName: 'Jane Doe',
-      lessons: [
-        {
-          id: 1,
-          title: 'Lesson 1',
-          description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-          duration: '1h'
-        },
-        {
-          id: 2,
-          title: 'Lesson 2',
-          description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-          duration: '1h'
-        }
-      ]
-    },
-    {
-      id: 3,
-      name: 'Robotics',
-      description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      authorName: 'John Smith',
-      lessons: [
-        {
-          id: 1,
-          title: 'Lesson 1',
-          description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-          duration: '1h'
-        },
-        {
-          id: 2,
-          title: 'Lesson 2',
-          description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-          duration: '1h'
-        }
-      ]
-    },
-    {
-      id: 4,
-      name: 'Computer Programming 1',
-      description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-      authorName: 'Jane Smith',
-      lessons: [
-        {
-          id: 1,
-          title: 'Lesson 1',
-          description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-          duration: '1h'
-        },
-        {
-          id: 2,
-          title: 'Lesson 2',
-          description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-          duration: '1h'
-        }
-      ]
-    }
-  ];*/

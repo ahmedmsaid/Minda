@@ -113,7 +113,7 @@
     font-family: 'Yu Gothic';
     font-style: normal;
     font-weight: 400;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 38px;
     color: #000000;
     margin-left: 20px;
@@ -123,12 +123,24 @@
     font-family: 'Yu Gothic';
     font-style: normal;
     font-weight: 400;
-    font-size: 15px;
+    font-size: 13px;
     line-height: 24px;
     margin-left: 20px;
     color: #4B4B4B;
     margin-top: -5px;
     margin-right: 5px;
+    overflow: overlay;
+}
+.description::-webkit-scrollbar{
+    width: 3px;
+    height: .5rem;
+}
+.description::-webkit-scrollbar-track{
+    background-color: transparent;
+ }
+  
+ .description::-webkit-scrollbar-thumb{
+    background-image: linear-gradient(to bottom, #677E98 0%, #E3654B 100%);
 }
 .icon{
     height: 24px;

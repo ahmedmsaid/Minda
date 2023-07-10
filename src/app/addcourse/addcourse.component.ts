@@ -20,22 +20,19 @@ export class AddcourseComponent {
     this.token = this.auth.getProfToken()
     this.info = jwtDecode(this.token)
   }
-    onSubmit(addcourseForm: NgForm) {
-      const formData = {
-        courseName: addcourseForm.value.name,
-        description: addcourseForm.value.description
-      };
+  onSubmit(addcourseForm: NgForm) {
+    const formData = {
+      courseName: addcourseForm.value.name,
+      description: addcourseForm.value.description
+    };
 
-      if (addcourseForm.value.name ==='' || addcourseForm.value.description === '') {
-          const correctSpan = document.getElementById('checked');
-          if (correctSpan !== null) {
-            correctSpan.innerText = 'All Fileds Are Required';
-            console.log(formData);
-          }
-        }else{
-          this.addCourse(formData, this.info.id)
-          console.log(formData);
-        }
+    if (addcourseForm.value.name ==='' || addcourseForm.value.description === '') {
+      const correctSpan = document.getElementById('checked');
+      if (correctSpan !== null) {
+        correctSpan.innerText = 'All Fileds Are Required';}
+    }else{
+      this.addCourse(formData, this.info.id)
+    }
   }
 
   addCourse(formValue: any, id: string) {

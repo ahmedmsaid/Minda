@@ -23,12 +23,9 @@ export class SignupComponent {
         email: signupForm.value.email,
         password: signupForm.value.password,
         confirmPassword: signupForm.value.confirmPassword,
-        date: signupForm.value.birthdate,
-        phone: signupForm.value.phone
       };
       if (signupForm.value.firstName ==='' || signupForm.value.lastName === ''|| signupForm.value.email === ''
-      || signupForm.value.password === ''|| signupForm.value.confirmPassword === ''|| signupForm.value.birthdate === ''
-      || signupForm.value.phone === ''|| signupForm.value.gender === '' ) {
+      || signupForm.value.password === ''|| signupForm.value.confirmPassword === '') {
           const correctSpan = document.getElementById('checked');
           if (correctSpan !== null) {
             correctSpan.innerText = 'All Fileds Are Required';

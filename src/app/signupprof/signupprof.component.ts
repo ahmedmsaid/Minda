@@ -12,11 +12,6 @@ import { AuthService } from '../auth.service';
 export class SignupprofComponent {
   prof!: IProf
   constructor(private router: Router, private auth: AuthService) { }
-  // constructor(private http: HttpClient) {}
- // if (!this.person.firstName || !this.person.lastName || !this.person.email || !this.person.password || !this.person.confirmPassword) {
-    //   console.log('Please fill out all required fields');
-    //   return;
-    // }
     onSubmit(signupprofForm: NgForm) {
       this.prof = {
         id: undefined,
@@ -25,14 +20,11 @@ export class SignupprofComponent {
         email: signupprofForm.value.email,
         password: signupprofForm.value.password,
         confirmPassword: signupprofForm.value.confirmPassword,
-        date: signupprofForm.value.birthdate,
-        phone: signupprofForm.value.phone,
         code: signupprofForm.value.profcode,
       }
 
       if (signupprofForm.value.firstName ==='' || signupprofForm.value.lastName === ''|| signupprofForm.value.email === ''
-      || signupprofForm.value.password === ''|| signupprofForm.value.confirmPassword === ''|| signupprofForm.value.birthdate === ''
-      || signupprofForm.value.phone === ''|| signupprofForm.value.gender === '' ) {
+      || signupprofForm.value.password === ''|| signupprofForm.value.confirmPassword === '' || signupprofForm.value.profcode === '') {
           const correctSpan = document.getElementById('checked');
           if (correctSpan !== null) {
             correctSpan.innerText = 'All Fileds Are Required';

@@ -2,7 +2,7 @@
     <div class="left">
         <div class="vid">
              <video id="myVideo" [src]="video" controls></video>
-        </div><!--lec.vedios[0].url -->
+        </div>
         <div class="content">
             <p class="title">Description</p>
             <div class="line"></div>
@@ -10,18 +10,12 @@
                 <p>{{lec.description}}</p>
             </div>
             <br>
-            <p class="title">Assignments</p>
-            <div class="line"></div>
         </div>
     </div>
     <div class="aside">
         <p class="title">{{lec.courseData.courseName}}</p>
         <div class="line"></div>
         <table class="my-table">
-            <!-- <tr *ngFor="let row of data">
-            <td>{{ row.name }}</td>
-            <td>{{ row.time }}</td>
-            </tr> -->
         </table>
     </div>
 </div>

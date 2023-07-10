@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from '../user.service';
 import { AuthService } from '../auth.service';
 import jwtDecode from 'jwt-decode';
 import { CourseService } from '../CourseService';
@@ -21,7 +20,7 @@ export class AnsAssignmentDegComponent {
   score:any
   constructor(private router: Router, private route: ActivatedRoute, private CourseService: CourseService, private auth: AuthService) { 
   }
-   ngOnInit(){
+  ngOnInit(){
     this.token=this.auth.getProfToken()
     this.info=jwtDecode(this.token)
     this.id = this.info.id
@@ -29,20 +28,16 @@ export class AnsAssignmentDegComponent {
     this.cId = this.route.snapshot.paramMap.get('id')!;
     this.getInfo(this.cId,this.aId)
     this.getScore(this.cId,this.aId)
-    console.log(this.deatills)
   }
   getInfo(cid:string,aid: string){
     this.CourseService.getuserAnswerAssignment(cid,aid)
-  .subscribe((data: any)=>{
-      this.deatills = data
-    console.log(this.deatills)
-
-  })}
+    .subscribe((data: any)=>{
+      this.deatills = data})
+  }
   getScore(Cid: string,aid: string){
     this.CourseService.getAssignmentdetails(Cid,aid)
-  .subscribe((data: any)=>{
-      this.score = data.assignmentResponses
-  })
+    .subscribe((data: any)=>{
+      this.score = data.assignmentResponses.score})
   }
   onSubmit(assignmentform: NgForm,uId:string) {
     const formdata= {
@@ -50,16 +45,13 @@ export class AnsAssignmentDegComponent {
       score:Number(assignmentform.value.degree),
     }
     if (assignmentform.value.degree ==='' ) {
-        const correctSpan = document.getElementById('Correct');
-        if (correctSpan !== null) {
-          correctSpan.innerText = 'All Fileds Are Required';
-          console.log(formdata);
-        }
-      }else{
-        this.putInfo(formdata,this.cId,this.aId )
-
-        console.log(formdata);
+      const correctSpan = document.getElementById('Correct');
+      if (correctSpan !== null) {
+        correctSpan.innerText = 'All Fileds Are Required';
       }
+    }else{
+      this.putInfo(formdata,this.cId,this.aId )
+    }
   }
   putInfo(formdata:any,cid:string,aid: string){
     this.CourseService.postdegAssignment(formdata,cid,aid).subscribe(()=>{})}

@@ -16,7 +16,7 @@
                 <td><a [href]=" row.answerFile" target="_blank" >Open Student Answer</a></td>
                 <td>{{ row.submittedAt|date }}</td>
                 <td >
-                  <div >
+                  <div>
                     <form #assignmentform="ngForm" (ngSubmit)="onSubmit(assignmentform,row.userId._id)">
                       <input class="inp" type="number" ngModel name="degree" id="degree" placeholder="Enter degree" />
                       <input type="submit" class="add" value="Submit" /><br />

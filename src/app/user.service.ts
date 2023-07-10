@@ -59,6 +59,32 @@ export class UserService {
     return this.http.delete(this.api + this.fpath + '/' +id +this.delete, options)
       .pipe(catchError(this.handleError<any>('delete')))
   } 
+
+  resetUser(formValue: any): Observable<any[]> {
+    return this.http.post<any[]>(this.api +'forgetPass/reset/new-password' ,formValue)
+    .pipe(catchError(this.handleError<any[]>('profile', [])))
+  }
+  resetProf(formValue: any): Observable<any[]> {
+    return this.http.post<any[]>(this.api +'forgetPass/reset/new-password/Doc' ,formValue)
+    .pipe(catchError(this.handleError<any[]>('profile', [])))
+  }
+  forgetUser(formValue: any): Observable<any[]> {
+    return this.http.post<any[]>(this.api +'forgetPass/reset',formValue)
+    .pipe(catchError(this.handleError<any[]>('profile', [])))
+  }
+  forgetProf(formValue: any,): Observable<any[]> {
+    return this.http.post<any[]>(this.api +'forgetPass/resetDoc' , formValue)
+    .pipe(catchError(this.handleError<any[]>('profile', [])))
+  }
+  tokenUser(formValue: any): Observable<any[]> {
+    return this.http.post<any[]>(this.api +'forgetPass/reset/check-token',formValue, )
+    .pipe(catchError(this.handleError<any[]>('profile', [])))
+  }
+  tokenProf(formValue: any,): Observable<any[]> {
+    return this.http.post<any[]>(this.api +'forgetPass/reset/checkToken/Doc' , formValue)
+    .pipe(catchError(this.handleError<any[]>('profile', [])))
+  }
+
   checkUserToken() {
     if (this.auth.getUserToken()) {
       this.path='userProfile'

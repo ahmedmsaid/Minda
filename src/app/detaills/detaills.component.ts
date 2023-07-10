@@ -18,24 +18,21 @@ export class DetaillsComponent {
   courseId: any;
   quizId: any;
   quizMark:any
-  constructor(private router: Router, private route: ActivatedRoute, private CourseService: CourseService, private auth: AuthService) { 
-  }
-   ngOnInit(){
+  constructor(private router: Router, private route: ActivatedRoute, private CourseService: CourseService, private auth: AuthService) {}
+  ngOnInit(){
     this.token=this.auth.getProfToken()
     this.info=jwtDecode(this.token)
     this.id = this.info.id
     this.courseId = this.route.snapshot.paramMap.get('id')!;
     this.quizId = this.route.snapshot.paramMap.get('Qid')!;
     this.getInfo(this.courseId,this.quizId,this.token)
-    console.log(this.getuserResult)
   }
   getInfo(Cid: string,Qid: string,token:string){
     this.CourseService.getDetail(Cid,Qid,token)
-  .subscribe((data: any)=>{
+    .subscribe((data: any)=>{
       this.deatills = data
       this.quizMark =data.quizMark
-      // this.getuserResult()
-  })
+    })
   }
   getuserResult(mark:string){
     return Math.floor(Number(mark) / this.quizMark * 100)

@@ -20,21 +20,19 @@ export class AddlectureComponent {
     this.info = jwtDecode(this.token)
     this.cId=this.route.snapshot.paramMap.get('id')!;
   }
-    onSubmit(addlectureForm: NgForm) {
-      const formData = {
-        title: addlectureForm.value.name,
-        description: addlectureForm.value.description,
-      };
-      if (addlectureForm.value.name ==='' || addlectureForm.value.description === '' ) {
-        const correctSpan = document.getElementById('checked');
-        if (correctSpan !== null) {
-          correctSpan.innerText = 'All Fileds Are Required';
-          console.log(formData);
-        }
-      }else{
-        this.addLec1(formData,this.cId, this.info.id)
-        console.log(formData);
+  onSubmit(addlectureForm: NgForm) {
+    const formData = {
+      title: addlectureForm.value.name,
+      description: addlectureForm.value.description,
+    };
+    if (addlectureForm.value.name ==='' || addlectureForm.value.description === '' ) {
+      const correctSpan = document.getElementById('checked');
+      if (correctSpan !== null) {
+        correctSpan.innerText = 'All Fileds Are Required';
       }
+    }else{
+      this.addLec1(formData,this.cId, this.info.id)
+    }
   }
   addLec1(formValue: any, cId: string,id: string ) {
     this.courseService.addLec1(formValue,cId ,id).subscribe(() => {

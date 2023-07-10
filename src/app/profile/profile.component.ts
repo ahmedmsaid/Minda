@@ -26,9 +26,7 @@ export class ProfileComponent {
     this.userServiuce.getInfo(id,token)
   .subscribe((data: any)=>{
       this.profile = data
-  })
-  // console.log("dddd"+this.courses)
-  }
+  })}
   checkUserToken() {
     if (this.auth.getUserToken()) {
       this.token=this.auth.getUserToken()

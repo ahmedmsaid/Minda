@@ -111,28 +111,7 @@ export class OverviewcoursesprofComponent implements OnInit {
   deleteQuizz(Qid: string){
     this.courseService.deleteQuiz(Qid).subscribe(()=>{})
   }
-  @ViewChild('content') content!: ElementRef;
-
-  Content() {
-    // const newContent = `
-    //   <table class="my-table">
-    //     <tr *ngFor="let row of data">
-    //       <td>{{ row.name }}</td>
-    //       <td>{{ row.time }}</td>
-    //     </tr>
-    //   </table>
-    // `;
-    // if (this.content) {
-    //   const safeContent: SafeHtml = this.sanitizer.bypassSecurityTrustHtml(newContent);
-    //   this.content.nativeElement.innerHTML = newContent;
-    // }
-  }
-  Description(){
-    //   const newContent = ` <p>{{ course.Description }}</p> `;
-    // if (this.content) {
-    //   this.content.nativeElement.innerHTML = newContent;
-    // }
-  }
-    
+  Content() {}
+  Description(){}
   Discussion(){}
 }

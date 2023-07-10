@@ -2,14 +2,14 @@
     <div class="input">
         <p class="minda">Minda</p>
         <div *ngIf="!Element" class="form">
-        <form *ngIf="!showElement" #forgetpassForm="ngForm" (ngSubmit)="onSubmit(forgetpassForm)" class="cont">
-            <div  class="inp-box">
-                <p>Forgot your password? <br>Please, enter your credentials:</p>
-                <input ngModel name="email" id="Email" placeholder="Email Address" /><br /><br />
-            </div>
-            <span id="checked" class="text-danger"></span><br /><br />
-            <input type="submit" class="Reset" value="forget Password" /><br /><br />
-        </form></div>
+            <form *ngIf="!showElement" #forgetpassForm="ngForm" (ngSubmit)="onSubmit(forgetpassForm)" class="cont">
+                <div  class="inp-box">
+                    <p>Forgot your password? <br>Please, enter your credentials:</p>
+                    <input ngModel name="email" id="Email" placeholder="Email Address" /><br /><br />
+                </div>
+                <span id="checked" class="text-danger"></span><br /><br />
+                <input type="submit" class="Reset" value="forget Password" /><br /><br />
+            </form></div>
         <form *ngIf="showElement" #tokenForm="ngForm" (ngSubmit)="ontokenSubmit(tokenForm)" class="cont">
             <div class="inp-box">
                 <p>Forgot your password? <br>Please, enter your credentials:</p>
