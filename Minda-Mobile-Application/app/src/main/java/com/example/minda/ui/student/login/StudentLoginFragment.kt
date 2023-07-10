@@ -66,12 +66,21 @@ class StudentLoginFragment : Fragment() {
         }
 
         binding.studentSignUpBtn.setOnClickListener {
-//            Toast.makeText(
-//                requireContext(),
-//                binding.studentEmailForLogin.editText?.text.toString(),
-//                Toast.LENGTH_LONG
-//            ).show()
             findNavController().navigate(R.id.action_studentLoginFragment_to_studentSignupFragment)
+        }
+
+        binding.studentForgetPassword.setOnClickListener{
+            val email = binding.studentEmailForLogin.editText!!.text.toString()
+            if (email.isEmpty() || email.isBlank()){
+                showToast("Enter your email first!",requireContext())
+            }else{
+                val bundle = Bundle().apply {
+                    putString("email",email)
+                    putString("type","student")
+                }
+
+                findNavController().navigate(R.id.action_studentLoginFragment_to_forgetPasswordFragment,bundle)
+            }
         }
 
         return binding.root

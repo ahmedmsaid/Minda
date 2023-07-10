@@ -39,7 +39,7 @@ class InstructorSignupFragment : Fragment() {
 
         binding.instructorRegisterBtn.setOnClickListener {
             val username =
-                binding.instructorUsernameForRegister.editText?.text.toString().split(" ")
+                binding.instructorUsernameForRegister.editText?.text.toString().split(" ").map { it.trim() }.filter { it.isNotBlank() }
             val email = binding.instructorEmailForRegister.editText?.text.toString()
             val password = binding.instructorPasswordForRegister.editText?.text.toString()
             val confirmPassword =
@@ -55,8 +55,8 @@ class InstructorSignupFragment : Fragment() {
                     showToast("Please enter your full name separated by space ", requireContext())
                 } else {
                     if (isValidEmail(email) && isValidPassword(password)) {
-                        val firstName = username[0].trimIndent()
-                        val lastName = username[username.size - 1].trimIndent()
+                        val firstName = username[0].trimIndent().replaceFirstChar { it.uppercase() }
+                        val lastName = username[username.size - 1].trimIndent().replaceFirstChar { it.uppercase() }
                         val request = InstructorRegisterRequest(
                             email = email.lowercase(),
                             password = password,
@@ -79,6 +79,7 @@ class InstructorSignupFragment : Fragment() {
         viewModel.instructorRegisterStatus.observe(viewLifecycleOwner){
             if (it != null){
                 showToast("Hi, ${it.saveddoctor?.firstName}",requireContext())
+                findNavController().navigate(R.id.action_instructorSignupFragment_to_instructorLoginFragment)
             }else{
                 showToast("Not valid request, try again or change data",requireContext())
             }

@@ -116,7 +116,7 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <TextView
-                        android:id="@+id/studentForgetPassword"
+                        android:id="@+id/instructorForgetPassword"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_2sdp"
@@ -149,9 +149,9 @@
                         android:textSize="@dimen/_14ssp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="@+id/studentForgetPassword"
-                        app:layout_constraintStart_toStartOf="@+id/studentForgetPassword"
-                        app:layout_constraintTop_toBottomOf="@+id/studentForgetPassword"
+                        app:layout_constraintEnd_toEndOf="@+id/instructorForgetPassword"
+                        app:layout_constraintStart_toStartOf="@+id/instructorForgetPassword"
+                        app:layout_constraintTop_toBottomOf="@+id/instructorForgetPassword"
                         tools:ignore="HardcodedText" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

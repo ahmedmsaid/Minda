@@ -14,10 +14,13 @@ import com.example.minda.databinding.FragmentAddQuizBinding
 import com.example.minda.utile.showToast
 import com.example.minda.viewmodel.SharedViewModel
 import com.example.minda.viewmodel.SharedViewModelFactory
+import com.ismaeldivita.chipnavigation.ChipNavigationBar
 
 class AddQuizFragment : Fragment() {
 
     private lateinit var binding:FragmentAddQuizBinding
+    private lateinit var bottomNavigationBar: ChipNavigationBar
+
     private val viewModel: SharedViewModel by lazy {
         val application = requireActivity().application as Application
         ViewModelProvider(this, SharedViewModelFactory(application))[SharedViewModel::class.java]
@@ -30,6 +33,8 @@ class AddQuizFragment : Fragment() {
         // Inflate the layout for this fragment
 
         binding = DataBindingUtil.inflate(layoutInflater,R.layout.fragment_add_quiz, container, false)
+        bottomNavigationBar = activity?.findViewById(R.id.instructorBottomNavigationView)!!
+        bottomNavigationBar.visibility = View.GONE
 
 
         refreshData()
@@ -62,4 +67,8 @@ class AddQuizFragment : Fragment() {
         }
 
     }
+//    override fun onDestroyView() {
+//        super.onDestroyView()
+//        bottomNavigationBar.visibility = View.VISIBLE
+//    }
 }

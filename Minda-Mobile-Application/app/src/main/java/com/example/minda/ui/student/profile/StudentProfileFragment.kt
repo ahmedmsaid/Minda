@@ -22,6 +22,8 @@ import com.ismaeldivita.chipnavigation.ChipNavigationBar
 class StudentProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentStudentProfileBinding
+    private lateinit var bottomNavigationBar: ChipNavigationBar
+
     private val viewModel by lazy {
         val application = requireActivity().application as Application
         ViewModelProvider(this, SharedViewModelFactory(application))[SharedViewModel::class.java]
@@ -39,6 +41,8 @@ class StudentProfileFragment : Fragment() {
             container,
             false
         )
+        bottomNavigationBar = activity?.findViewById(R.id.studentBottomNavigationView)!!
+        bottomNavigationBar.visibility = View.VISIBLE
 
         refreshData()
 

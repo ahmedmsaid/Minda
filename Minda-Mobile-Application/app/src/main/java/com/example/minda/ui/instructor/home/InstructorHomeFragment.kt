@@ -1,4 +1,5 @@
 package com.example.minda.ui.instructor.home
+
 import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
@@ -9,6 +10,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.minda.R
 import com.example.minda.adapter.InstructorCoursesAdapter
@@ -22,6 +24,8 @@ import com.ismaeldivita.chipnavigation.ChipNavigationBar
 class InstructorHomeFragment : Fragment() {
 
     private lateinit var binding: FragmentInstructorHomeBinding
+    private lateinit var bottomNavigationBar: ChipNavigationBar
+
     private val viewModel: SharedViewModel by lazy {
         val application = requireActivity().application as Application
         ViewModelProvider(this, SharedViewModelFactory(application))[SharedViewModel::class.java]
@@ -41,12 +45,13 @@ class InstructorHomeFragment : Fragment() {
             container,
             false
         )
+        bottomNavigationBar = activity?.findViewById(R.id.instructorBottomNavigationView)!!
+        bottomNavigationBar.visibility = View.VISIBLE
 
         refreshHome()
 
         binding.addNewCourseBtn.setOnClickListener {
-//            findNavController().navigate(R.id.action_instructorHomeFragment_to_addCourseFragment)
-            AddCourseFragment().show(requireActivity().supportFragmentManager, "addNewCourseSheet")
+            findNavController().navigate(R.id.action_instructorHomeFragment_to_addCourseFragment)
         }
 
         return binding.root
@@ -70,12 +75,14 @@ class InstructorHomeFragment : Fragment() {
                     binding.instructorName.text =
                         "${instructorProfile.firstName} ${instructorProfile.lastName}"
 
-                    SharedViewModel.currentLoggedInUserName.value = binding.instructorName.text.toString()
+                    SharedViewModel.currentLoggedInUserName.value =
+                        binding.instructorName.text.toString()
 
                     binding.noCoursesYet.visibility = View.GONE
                     val coursesAdapter = InstructorCoursesAdapter(this)
                     if (instructorProfile.profileimg?.url != null) {
-                        SharedViewModel.currentLoggedInUserImage.value = instructorProfile.profileimg.url
+                        SharedViewModel.currentLoggedInUserImage.value =
+                            instructorProfile.profileimg.url
                         Glide.with(requireContext())
                             .load(instructorProfile.profileimg.url)
                             .placeholder(R.drawable.loading)

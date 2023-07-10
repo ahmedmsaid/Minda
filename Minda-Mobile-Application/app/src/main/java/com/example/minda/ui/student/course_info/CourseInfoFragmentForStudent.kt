@@ -20,6 +20,7 @@ import com.ismaeldivita.chipnavigation.ChipNavigationBar
 class CourseInfoFragmentForStudent : Fragment() {
 
     private lateinit var binding: FragmentCourseInfoForStudentBinding
+    private lateinit var bottomNavigationBar: ChipNavigationBar
     private val viewModel: SharedViewModel by lazy {
         val application = requireActivity().application as Application
         ViewModelProvider(this, SharedViewModelFactory(application))[SharedViewModel::class.java]
@@ -36,6 +37,8 @@ class CourseInfoFragmentForStudent : Fragment() {
             container,
             false
         )
+        bottomNavigationBar = activity?.findViewById(R.id.studentBottomNavigationView)!!
+        bottomNavigationBar.visibility = View.GONE
 
 
         refreshData()
@@ -81,7 +84,7 @@ class CourseInfoFragmentForStudent : Fragment() {
                 }
 
                 if (courseDetails.quizzes.isNotEmpty()) {
-                    val quizAdapter = QuizzesAdapter(this)
+                    val quizAdapter = QuizzesAdapter(this,"student")
                     QuizzesAdapter.courseId = courseDetails._id
                     quizAdapter.submitList(courseDetails.quizzes)
                     binding.studentQuizzesRecycler.apply {
@@ -104,4 +107,8 @@ class CourseInfoFragmentForStudent : Fragment() {
             }
         }
     }
+//    override fun onDestroyView() {
+//        super.onDestroyView()
+//        bottomNavigationBar.visibility = View.VISIBLE
+//    }
 }

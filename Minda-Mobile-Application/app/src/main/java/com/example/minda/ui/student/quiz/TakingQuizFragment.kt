@@ -17,11 +17,14 @@ import com.example.minda.pojo.student.content.AnswerQuizRequest
 import com.example.minda.utile.showToast
 import com.example.minda.viewmodel.SharedViewModel
 import com.example.minda.viewmodel.SharedViewModelFactory
+import com.ismaeldivita.chipnavigation.ChipNavigationBar
 
 
 class TakingQuizFragment : Fragment() {
 
     private lateinit var binding: FragmentTakingQuizBinding
+    private lateinit var bottomNavigationBar: ChipNavigationBar
+
     private val viewModel: SharedViewModel by lazy {
         val application = requireActivity().application as Application
         ViewModelProvider(this, SharedViewModelFactory(application))[SharedViewModel::class.java]
@@ -35,6 +38,8 @@ class TakingQuizFragment : Fragment() {
         binding =
             DataBindingUtil.inflate(layoutInflater, R.layout.fragment_taking_quiz, container, false)
 
+        bottomNavigationBar = activity?.findViewById(R.id.studentBottomNavigationView)!!
+        bottomNavigationBar.visibility = View.GONE
 
         refreshData()
 
@@ -172,6 +177,11 @@ class TakingQuizFragment : Fragment() {
         }
         return selectedOptions
     }
+
+//    override fun onDestroyView() {
+//        super.onDestroyView()
+//        bottomNavigationBar.visibility = View.VISIBLE
+//    }
 
 
 }

@@ -8,9 +8,13 @@ import com.example.minda.pojo.instructor.auth.RegisteredInstructorResponse
 import com.example.minda.pojo.instructor.content.CreateCourseRequest
 import com.example.minda.pojo.instructor.content.CreatedCourseResponse
 import com.example.minda.pojo.instructor.content.InstructorProfileResponse
+import com.example.minda.pojo.instructor.content.quiz.grades.studentQuizGradesInstructorResponse
 import com.example.minda.pojo.instructor.content.quiz.post.PostQuizRequest
 import com.example.minda.pojo.instructor.content.quiz.response.PostingQuizResponse
 import com.example.minda.pojo.lecture.LectureInfoResponse
+import com.example.minda.pojo.password.EmailForResetPasswordRequest
+import com.example.minda.pojo.password.ResetPasswordRequest
+import com.example.minda.pojo.password.VerifyCodeRequest
 import com.example.minda.pojo.student.auth.RegisteredStudentResponse
 import com.example.minda.pojo.student.auth.StudentRegisterRequest
 import com.example.minda.pojo.student.content.AnswerQuizRequest
@@ -54,6 +58,49 @@ class SharedRepository {
         val response = ApiService.retrofitService.registerForInstructor(request)
         if (response.isSuccessful) {
             return response.body()!!
+        }
+        return null
+    }
+    suspend fun beginForgetPasswordForStudent(emailRequest: EmailForResetPasswordRequest): String? {
+        val response = ApiService.retrofitService.beginForgetPasswordForStudent(emailRequest)
+        if (response.isSuccessful) {
+            return "Code sent to email"
+        }
+        return null
+    }
+    suspend fun sendingTokenAndPassForStudent(request: ResetPasswordRequest): String? {
+        val response = ApiService.retrofitService.sendingTokenAndPassForStudent(request)
+        if (response.isSuccessful) {
+            return "Password reset successfully"
+        }
+        return null
+    }
+    suspend fun validateTokenAndPassForStudent(token: VerifyCodeRequest): String? {
+        val response = ApiService.retrofitService.validateTokenAndPassForStudent(token)
+        if (response.isSuccessful) {
+            return "Valid"
+        }
+        return null
+    }
+    suspend fun beginForgetPasswordForInstructor(emailRequest: EmailForResetPasswordRequest): String? {
+        val response = ApiService.retrofitService.beginForgetPasswordForInstructor(emailRequest)
+        if (response.isSuccessful) {
+            return "code sent to the email"
+        }
+        return null
+    }
+    suspend fun validateTokenAndPassForInstructor(token: VerifyCodeRequest): String? {
+        val response = ApiService.retrofitService.validateTokenAndPassForInstructor(token)
+        if (response.isSuccessful) {
+            return "Valid"
+        }
+        return null
+    }
+
+    suspend fun sendingTokenAndPassForInstructor(request: ResetPasswordRequest): String? {
+        val response = ApiService.retrofitService.sendingTokenAndPassForInstructor(request)
+        if (response.isSuccessful) {
+            return "Password rest successfully"
         }
         return null
     }
@@ -118,6 +165,13 @@ class SharedRepository {
         }
         return null
     }
+    suspend fun getQuizQuestionsForInstructorOverView(quizId:String,courseId:String,token:String):QuizQuestionsResponse?{
+        val response = ApiService.retrofitService.getQuizQuestionsForInstructorOverView(quizId,courseId,token)
+        if (response.isSuccessful){
+            return response.body()
+        }
+        return null
+    }
     suspend fun studentAnswerTheQuiz(courseId:String,quizId:String,token:String,request: AnswerQuizRequest):String?{
         val response = ApiService.retrofitService.studentAnswerTheQuiz(courseId,quizId,token,request)
         if (response.isSuccessful){
@@ -127,6 +181,13 @@ class SharedRepository {
     }
     suspend fun getQuizMarksForTheStudent(courseId:String,quizId:String,userId:String,token:String):MyQuizMarksResponse?{
         val response = ApiService.retrofitService.getQuizMarksForTheStudent(courseId,quizId,userId,token)
+        if (response.isSuccessful){
+            return response.body()
+        }
+        return null
+    }
+    suspend fun getQuizMarksForInstructor(courseId:String,quizId:String,token:String):studentQuizGradesInstructorResponse?{
+        val response = ApiService.retrofitService.getQuizMarksForInstructor(courseId,quizId,token)
         if (response.isSuccessful){
             return response.body()
         }

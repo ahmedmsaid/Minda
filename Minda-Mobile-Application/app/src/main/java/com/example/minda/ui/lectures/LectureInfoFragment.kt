@@ -13,12 +13,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.minda.R
 import com.example.minda.databinding.FragmentLectureInfoBinding
-import com.example.minda.utile.showToast
 import com.example.minda.viewmodel.SharedViewModel
 import com.example.minda.viewmodel.SharedViewModelFactory
+import com.ismaeldivita.chipnavigation.ChipNavigationBar
 
 class LectureInfoFragment : Fragment() {
     private lateinit var binding: FragmentLectureInfoBinding
+    private lateinit var bottomNavigationBar: ChipNavigationBar
     private val viewModel: SharedViewModel by lazy {
         val application = requireActivity().application as Application
         ViewModelProvider(this, SharedViewModelFactory(application))[SharedViewModel::class.java]
@@ -48,6 +49,14 @@ class LectureInfoFragment : Fragment() {
         val lecTitle = requireArguments().getString("lecTitle")
         val courseId = requireArguments().getString("courseId")
         val accountType = requireArguments().getString("accountType")
+
+        if (accountType == "instructor"){
+            bottomNavigationBar = activity?.findViewById(R.id.instructorBottomNavigationView)!!
+            bottomNavigationBar.visibility = View.GONE
+        }else{
+            bottomNavigationBar = activity?.findViewById(R.id.studentBottomNavigationView)!!
+            bottomNavigationBar.visibility = View.GONE
+        }
 
         if (accountType == "instructor"){
             viewModel.getLectureByIdToViewItsContentForInstructor(
@@ -100,4 +109,9 @@ class LectureInfoFragment : Fragment() {
             binding.lecTitleUnderVideo.visibility = View.VISIBLE
         }
     }
+
+//    override fun onDestroyView() {
+//        super.onDestroyView()
+//        bottomNavigationBar.visibility = View.VISIBLE
+//    }
 }

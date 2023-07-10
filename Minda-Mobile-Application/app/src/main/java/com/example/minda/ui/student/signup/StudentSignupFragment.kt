@@ -2,6 +2,7 @@ package com.example.minda.ui.student.signup
 
 import android.app.Application
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,7 +42,7 @@ class StudentSignupFragment : Fragment() {
 
         binding.studentRegisterBtn.setOnClickListener {
             val username =
-                binding.studentUsernameRegister.editText?.text.toString().split(" ")
+                binding.studentUsernameRegister.editText?.text.toString()
             val email = binding.studentEmailForRegister.editText?.text.toString()
             val password = binding.studentPasswordForRegister.editText?.text.toString()
             val confirmPassword =
@@ -52,22 +53,24 @@ class StudentSignupFragment : Fragment() {
             } else if (password != confirmPassword) {
                 showToast("Passwords must match", requireContext())
             } else {
-                if (username.size <= 1) {
-                    showToast("Please enter your full name separated by space ", requireContext())
+                val updatedUsername = username.split(" ").map { it.trim() }.filter { it.isNotBlank() }
+                if (updatedUsername.size != 4) {
+                    showToast("Please enter your full name as in NAT.Id", requireContext())
                 } else {
                     if (isValidEmail(email) && isValidPassword(password)) {
-                        val firstName = username[0].trimIndent()
-                        val lastName = username[username.size - 1].trimIndent()
+                        val firstName = updatedUsername[0].lowercase().replaceFirstChar { it.uppercase() } + " " + updatedUsername[1].lowercase().replaceFirstChar { it.uppercase() }
+                        val lastName = updatedUsername[2].lowercase().replaceFirstChar { it.uppercase() } + " " + updatedUsername[3].lowercase().replaceFirstChar { it.uppercase() }
                         val request = StudentRegisterRequest(
                             email = email.lowercase(),
                             password = password,
                             confirmPassword = confirmPassword,
                             firstName = firstName,
-                            lastName =  lastName)
+                            lastName = lastName
+                        )
                         viewModel.registerForStudent(request)
 
-                    }else{
-                        showToast("Enter valid email or password",requireContext())
+                    } else {
+                        showToast("Enter valid email or password", requireContext())
                     }
                 }
             }
@@ -75,11 +78,12 @@ class StudentSignupFragment : Fragment() {
         }
 
 
-        viewModel.studentRegisterStatus.observe(viewLifecycleOwner){
-            if (it != null){
-                showToast("Hi, ${it.firstName}",requireContext())
-            }else{
-                showToast("Not valid request, try again or change data",requireContext())
+        viewModel.studentRegisterStatus.observe(viewLifecycleOwner) {
+            if (it != null) {
+                showToast("Hi, ${it.firstName}", requireContext())
+                findNavController().navigate(R.id.action_studentSignupFragment_to_studentLoginFragment)
+            } else {
+                showToast("Not valid request, try again or change data", requireContext())
             }
         }
 

@@ -25,6 +25,7 @@ class CourseInfoFragmentForInstructor : Fragment() {
         val application = requireActivity().application as Application
         ViewModelProvider(this, SharedViewModelFactory(application))[SharedViewModel::class.java]
     }
+    private lateinit var bottomNavigationBar: ChipNavigationBar
 
 
     override fun onCreateView(
@@ -33,6 +34,10 @@ class CourseInfoFragmentForInstructor : Fragment() {
     ): View{
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(layoutInflater,R.layout.fragment_course_info,container,false)
+
+        bottomNavigationBar = activity?.findViewById(R.id.instructorBottomNavigationView)!!
+        bottomNavigationBar.visibility = View.GONE
+
 
         refreshData()
 
@@ -83,7 +88,8 @@ class CourseInfoFragmentForInstructor : Fragment() {
                 }
 
                 if (courseDetails.quizzes.isNotEmpty()) {
-                    val quizAdapter = QuizzesAdapter(this)
+                    val quizAdapter = QuizzesAdapter(this,"instructor")
+                    QuizzesAdapter.courseId = courseId!!
                     quizAdapter.submitList(courseDetails.quizzes)
                     binding.InstructorQuizzesRecycler.apply {
                         adapter = quizAdapter
@@ -103,5 +109,10 @@ class CourseInfoFragmentForInstructor : Fragment() {
             }
         }
     }
+
+//    override fun onDestroyView() {
+//        super.onDestroyView()
+//        bottomNavigationBar.visibility = View.VISIBLE
+//    }
 
 }

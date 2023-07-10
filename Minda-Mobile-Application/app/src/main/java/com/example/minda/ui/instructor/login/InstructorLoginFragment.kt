@@ -71,6 +71,23 @@ class InstructorLoginFragment : Fragment() {
         binding.instructorSignUpBtn.setOnClickListener {
             findNavController().navigate(R.id.action_instructorLoginFragment_to_instructorSignupFragment)
         }
+
+
+        binding.instructorForgetPassword.setOnClickListener {
+            val email = binding.instructorEmailForLogin.editText!!.text.toString()
+            if (email.isEmpty() || email.isBlank()){
+                showToast("Enter your email first!",requireContext())
+            }else{
+                val bundle = Bundle().apply {
+                    putString("email",email)
+                    putString("type","instructor")
+                }
+
+                findNavController().navigate(R.id.action_instructorLoginFragment_to_forgetPasswordFragment,bundle)
+            }
+        }
+
+
         return binding.root
     }
 }

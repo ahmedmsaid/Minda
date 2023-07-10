@@ -11,7 +11,7 @@ import com.example.minda.R
 import com.example.minda.databinding.QuizItemLayoutBinding
 import com.example.minda.pojo.course.Quizze
 
-class QuizzesAdapter(private val fragment: Fragment) : ListAdapter<Quizze, QuizzesAdapter.ViewHolder>(ItemDiff()) {
+class QuizzesAdapter(private val fragment: Fragment,private val sourceIdentifier:String) : ListAdapter<Quizze, QuizzesAdapter.ViewHolder>(ItemDiff()) {
 
     companion object{
         lateinit var courseId:String
@@ -38,7 +38,12 @@ class QuizzesAdapter(private val fragment: Fragment) : ListAdapter<Quizze, Quizz
                 putString("quizId",id)
                 putString("courseId", courseId)
             }
-            navController.navigate(R.id.action_courseInfoFragmentForStudent_to_takingQuizFragment,bundle)
+            if (sourceIdentifier == "student")
+            {
+                navController.navigate(R.id.action_courseInfoFragmentForStudent_to_takingQuizFragment,bundle)
+            }else{
+                navController.navigate(R.id.action_courseInfoFragment_to_quizOverviewFragment,bundle)
+            }
         }
     }
 

@@ -32,6 +32,9 @@
         <action
             android:id="@+id/action_instructorLoginFragment_to_instructorSignupFragment"
             app:destination="@id/instructorSignupFragment" />
+        <action
+            android:id="@+id/action_instructorLoginFragment_to_forgetPasswordFragment"
+            app:destination="@id/forgetPasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/studentLoginFragment"
@@ -40,6 +43,9 @@
         <action
             android:id="@+id/action_studentLoginFragment_to_studentSignupFragment"
             app:destination="@id/studentSignupFragment" />
+        <action
+            android:id="@+id/action_studentLoginFragment_to_forgetPasswordFragment"
+            app:destination="@id/forgetPasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/studentSignupFragment"
@@ -60,5 +66,24 @@
             app:destination="@id/instructorLoginFragment"
             app:popUpTo="@id/instructorSignupFragment"
             app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgetPasswordFragment"
+        android:name="com.example.minda.ui.forget_pass.ForgetPasswordFragment"
+        android:label="ForgetPasswordFragment" >
+        <action
+            android:id="@+id/action_forgetPasswordFragment_to_resetPasswordFragment"
+            app:destination="@id/resetPasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resetPasswordFragment"
+        android:name="com.example.minda.ui.reset_pass.ResetPasswordFragment"
+        android:label="ResetPasswordFragment" >
+        <action
+            android:id="@+id/action_resetPasswordFragment_to_studentLoginFragment"
+            app:destination="@id/studentLoginFragment" />
+        <action
+            android:id="@+id/action_resetPasswordFragment_to_instructorLoginFragment"
+            app:destination="@id/instructorLoginFragment" />
     </fragment>
 </navigation>

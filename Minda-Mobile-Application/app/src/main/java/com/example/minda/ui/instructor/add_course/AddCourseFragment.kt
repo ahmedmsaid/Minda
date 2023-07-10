@@ -8,7 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.minda.R
 import com.example.minda.databinding.FragmentAddCourseBinding
 import com.example.minda.pojo.instructor.content.CreateCourseRequest
@@ -19,7 +21,7 @@ import com.example.minda.viewmodel.SharedViewModelFactory
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
 
-class AddCourseFragment : BottomSheetDialogFragment() {
+class AddCourseFragment : Fragment() {
 
     private lateinit var binding:FragmentAddCourseBinding
     private lateinit var bottomNavigationBar: ChipNavigationBar
@@ -28,6 +30,10 @@ class AddCourseFragment : BottomSheetDialogFragment() {
         ViewModelProvider(this, SharedViewModelFactory(application))[SharedViewModel::class.java]
     }
 
+    private lateinit var createdCourseId:String
+    private lateinit var createdCourseName:String
+    private lateinit var createdCourseDescription:String
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,8 +41,8 @@ class AddCourseFragment : BottomSheetDialogFragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(layoutInflater,R.layout.fragment_add_course,container,false)
 
-//        bottomNavigationBar = activity?.findViewById(R.id.instructorBottomNavigationView)!!
-//        bottomNavigationBar.visibility = View.GONE
+        bottomNavigationBar = activity?.findViewById(R.id.instructorBottomNavigationView)!!
+        bottomNavigationBar.visibility = View.GONE
 
         val token:String?
         var id:String? = null
@@ -49,20 +55,20 @@ class AddCourseFragment : BottomSheetDialogFragment() {
 
 
             binding.saveCourseBtn.setOnClickListener {
-            val courseName = binding.courseTitleEt.text.toString()
-            val description = binding.courseDescriptionEt.text.toString()
+             createdCourseName = binding.courseTitleEt.text.toString()
+             createdCourseDescription = binding.courseDescriptionEt.text.toString()
 
-            if (validateInput(courseName,description)){
+            if (validateInput(createdCourseName,createdCourseDescription)){
                 Toast.makeText(requireContext(),"All fields are required!",Toast.LENGTH_SHORT).show()
             }else{
-                val request = CreateCourseRequest(courseName,description)
+                val request = CreateCourseRequest(createdCourseName,createdCourseDescription)
                 viewModel.createNewCourseByInstructor(id!!,token,request)
             }
         }
 
         viewModel.instructorCreateCourseStatus.observe(viewLifecycleOwner){
             if (it != null){
-                dismiss()
+                findNavController().navigate(R.id.action_addCourseFragment_to_instructorHomeFragment)
             }else{
                 showToast("Course creation failed!",requireContext())
             }
@@ -75,8 +81,8 @@ class AddCourseFragment : BottomSheetDialogFragment() {
         return (TextUtils.isEmpty(title) || TextUtils.isEmpty(description))
     }
 
-//    override fun onDestroyView() {
-//        super.onDestroyView()
-//        bottomNavigationBar.visibility = View.VISIBLE
-//    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        bottomNavigationBar.visibility = View.VISIBLE
+    }
 }

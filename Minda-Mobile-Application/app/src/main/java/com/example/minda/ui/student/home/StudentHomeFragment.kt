@@ -21,6 +21,8 @@ import com.ismaeldivita.chipnavigation.ChipNavigationBar
 
 class StudentHomeFragment : Fragment() {
     private lateinit var binding: FragmentStudentHomeBinding
+    private lateinit var bottomNavigationBar: ChipNavigationBar
+
     private val viewModel: SharedViewModel by lazy {
         val application = requireActivity().application as Application
         ViewModelProvider(this, SharedViewModelFactory(application))[SharedViewModel::class.java]
@@ -38,6 +40,8 @@ class StudentHomeFragment : Fragment() {
             container,
             false
         )
+        bottomNavigationBar = activity?.findViewById(R.id.studentBottomNavigationView)!!
+        bottomNavigationBar.visibility = View.VISIBLE
 
         refreshHome()
 
@@ -57,8 +61,10 @@ class StudentHomeFragment : Fragment() {
 
         viewModel.studentProfileStatus.observe(viewLifecycleOwner) { studentProfile ->
             if (studentProfile != null) {
+                val firstName = studentProfile.firstName.split(" ")[0]
+                val lastName = studentProfile.lastName.split(" ")[1]
                 binding.studentName.text =
-                    "${studentProfile.firstName} ${studentProfile.lastName}"
+                    "$firstName $lastName "
 
                 SharedViewModel.currentLoggedInUserId.value = id
                 SharedViewModel.currentLoggedInUserName.value = binding.studentName.text.toString()
@@ -89,5 +95,9 @@ class StudentHomeFragment : Fragment() {
             }
         }
     }
+//    override fun onDestroyView() {
+//        super.onDestroyView()
+//        bottomNavigationBar.visibility = View.VISIBLE
+//    }
 
 }

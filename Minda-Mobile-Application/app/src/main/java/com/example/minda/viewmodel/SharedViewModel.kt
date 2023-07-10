@@ -12,9 +12,13 @@ import com.example.minda.pojo.instructor.auth.RegisteredInstructorResponse
 import com.example.minda.pojo.instructor.content.CreateCourseRequest
 import com.example.minda.pojo.instructor.content.CreatedCourseResponse
 import com.example.minda.pojo.instructor.content.InstructorProfileResponse
+import com.example.minda.pojo.instructor.content.quiz.grades.studentQuizGradesInstructorResponse
 import com.example.minda.pojo.instructor.content.quiz.post.PostQuizRequest
 import com.example.minda.pojo.instructor.content.quiz.response.PostingQuizResponse
 import com.example.minda.pojo.lecture.LectureInfoResponse
+import com.example.minda.pojo.password.EmailForResetPasswordRequest
+import com.example.minda.pojo.password.ResetPasswordRequest
+import com.example.minda.pojo.password.VerifyCodeRequest
 import com.example.minda.pojo.student.auth.RegisteredStudentResponse
 import com.example.minda.pojo.student.auth.StudentRegisterRequest
 import com.example.minda.pojo.student.content.AnswerQuizRequest
@@ -44,6 +48,9 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
     val studentRegisterStatus = MutableLiveData<RegisteredStudentResponse?>()
     val instructorLoginStatus = MutableLiveData<String>()
     val instructorRegisterStatus = MutableLiveData<RegisteredInstructorResponse?>()
+    val beginForgetPassStatus = MutableLiveData<String?>()
+    val sendingTokenAndPassStatus = MutableLiveData<String?>()
+    val validateTokenAndPassStatus = MutableLiveData<String?>()
     val instructorProfileStatus = MutableLiveData<InstructorProfileResponse?>()
     val studentProfileStatus = MutableLiveData<StudentProfileResponse?>()
     val instructorCreateCourseStatus = MutableLiveData<CreatedCourseResponse?>()
@@ -52,8 +59,10 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
     val studentCourseDetailsStatus = MutableLiveData<CourseDetailsResponse?>()
     val instructorCourseDetailsStatus = MutableLiveData<CourseDetailsResponse?>()
     val studentQuizShowQuestionsStatus = MutableLiveData<QuizQuestionsResponse?>()
+    val QuizQuestionsOverViewStatus = MutableLiveData<QuizQuestionsResponse?>()
     val studentQuizAnsweringStatus = MutableLiveData<String?>()
     val studentGetQuizMarksStatus = MutableLiveData<MyQuizMarksResponse?>()
+    val studentGetQuizMarksStatusInstructorPerspective = MutableLiveData<studentQuizGradesInstructorResponse?>()
     val lectureInfoStatus = MutableLiveData<LectureInfoResponse?>()
 
 
@@ -66,7 +75,7 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
                     currentLoggedInUserToken.value = result
 
                 } catch (e: Exception) {
-                    showToast("Server is busy, try again", app.applicationContext)
+                    showToast("Server is busy", app.applicationContext)
                 }
             } else {
                 showToast(
@@ -86,7 +95,7 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
                     currentLoggedInUserToken.value = result
 
                 } catch (e: Exception) {
-                    showToast("Server is busy, try again", app.applicationContext)
+                    showToast("Server is busy", app.applicationContext)
                 }
             } else {
                 showToast(
@@ -134,6 +143,114 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
             }
         }
     }
+    fun beginForgetPasswordForStudent(emailRequest:EmailForResetPasswordRequest) {
+        viewModelScope.launch {
+            if (isInternetAvailable(app.applicationContext)) {
+                try {
+                    val result = repo.beginForgetPasswordForStudent(emailRequest)
+                    beginForgetPassStatus.value = result
+
+                } catch (e: Exception) {
+                    showToast("Server is busy, try again", app.applicationContext)
+                }
+            } else {
+                showToast(
+                    "No Internet connection to complete the operation",
+                    app.applicationContext
+                )
+            }
+        }
+    }
+    fun sendingTokenAndPassForStudent(request:ResetPasswordRequest) {
+        viewModelScope.launch {
+            if (isInternetAvailable(app.applicationContext)) {
+                try {
+                    val result = repo.sendingTokenAndPassForStudent(request)
+                    sendingTokenAndPassStatus.value = result
+
+                } catch (e: Exception) {
+                    showToast("Server is busy, try again", app.applicationContext)
+                }
+            } else {
+                showToast(
+                    "No Internet connection to complete the operation",
+                    app.applicationContext
+                )
+            }
+        }
+    }
+    fun validateTokenAndPassForStudent(token:VerifyCodeRequest) {
+        viewModelScope.launch {
+            if (isInternetAvailable(app.applicationContext)) {
+                try {
+                    val result = repo.validateTokenAndPassForStudent(token)
+                    validateTokenAndPassStatus.value = result
+
+                } catch (e: Exception) {
+                    showToast("Server is busy, try again", app.applicationContext)
+                }
+            } else {
+                showToast(
+                    "No Internet connection to complete the operation",
+                    app.applicationContext
+                )
+            }
+        }
+    }
+    fun beginForgetPasswordForInstructor(emailRequest:EmailForResetPasswordRequest) {
+        viewModelScope.launch {
+            if (isInternetAvailable(app.applicationContext)) {
+                try {
+                    val result = repo.beginForgetPasswordForInstructor(emailRequest)
+                    beginForgetPassStatus.value = result
+
+                } catch (e: Exception) {
+                    showToast("Server is busy, try again", app.applicationContext)
+                }
+            } else {
+                showToast(
+                    "No Internet connection to complete the operation",
+                    app.applicationContext
+                )
+            }
+        }
+    }
+    fun sendingTokenAndPassForInstructor(request:ResetPasswordRequest) {
+        viewModelScope.launch {
+            if (isInternetAvailable(app.applicationContext)) {
+                try {
+                    val result = repo.sendingTokenAndPassForInstructor(request)
+                    sendingTokenAndPassStatus.value = result
+
+                } catch (e: Exception) {
+                    showToast("Server is busy, try again", app.applicationContext)
+                }
+            } else {
+                showToast(
+                    "No Internet connection to complete the operation",
+                    app.applicationContext
+                )
+            }
+        }
+    }
+    fun validateTokenAndPassForInstructor(token:VerifyCodeRequest) {
+        viewModelScope.launch {
+            if (isInternetAvailable(app.applicationContext)) {
+                try {
+                    val result = repo.validateTokenAndPassForInstructor(token)
+                    validateTokenAndPassStatus.value = result
+
+                } catch (e: Exception) {
+                    showToast("Server is busy, try again", app.applicationContext)
+                }
+            } else {
+                showToast(
+                    "No Internet connection to complete the operation",
+                    app.applicationContext
+                )
+            }
+        }
+    }
 
     fun getInstructorProfile(id: String, token: String) {
         viewModelScope.launch {
@@ -143,7 +260,7 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
                     instructorProfileStatus.value = result
 
                 } catch (e: Exception) {
-                    showToast("Server is busy, try again", app.applicationContext)
+                    showToast("Server is busy", app.applicationContext)
                 }
             } else {
                 showToast(
@@ -161,7 +278,7 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
                     studentProfileStatus.value = result
 
                 } catch (e: Exception) {
-                    showToast("Server is busy, try again", app.applicationContext)
+                    showToast("Server is busy", app.applicationContext)
                 }
             } else {
                 showToast(
@@ -281,6 +398,24 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
             }
         }
     }
+    fun getQuizQuestionsForInstructorOverView(quizId:String ,courseId: String, token: String) {
+        viewModelScope.launch {
+            if (isInternetAvailable(app.applicationContext)) {
+                try {
+                    val result = repo.getQuizQuestionsForInstructorOverView(quizId,courseId, token)
+                    QuizQuestionsOverViewStatus.value = result
+
+                } catch (e: Exception) {
+                    showToast("Server is busy, try again", app.applicationContext)
+                }
+            } else {
+                showToast(
+                    "No Internet connection to complete the operation",
+                    app.applicationContext
+                )
+            }
+        }
+    }
     fun studentAnswerTheQuiz(courseId: String,quizId:String, token: String,request: AnswerQuizRequest) {
         viewModelScope.launch {
             if (isInternetAvailable(app.applicationContext)) {
@@ -305,6 +440,24 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
                 try {
                     val result = repo.getQuizMarksForTheStudent(courseId,quizId,userId ,token)
                     studentGetQuizMarksStatus.value = result
+
+                } catch (e: Exception) {
+                    showToast("Server is busy, try again", app.applicationContext)
+                }
+            } else {
+                showToast(
+                    "No Internet connection to complete the operation",
+                    app.applicationContext
+                )
+            }
+        }
+    }
+    fun getQuizMarksForInstructor(courseId: String,quizId:String, token: String) {
+        viewModelScope.launch {
+            if (isInternetAvailable(app.applicationContext)) {
+                try {
+                    val result = repo.getQuizMarksForInstructor(courseId,quizId,token)
+                    studentGetQuizMarksStatusInstructorPerspective.value = result
 
                 } catch (e: Exception) {
                     showToast("Server is busy, try again", app.applicationContext)
