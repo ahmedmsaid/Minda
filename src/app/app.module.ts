@@ -43,6 +43,8 @@ import { AnsAssignmentDegComponent } from './ans-assignment-deg/ans-assignment-d
 import { AssigndetailsComponent } from './assigndetails/assigndetails.component';
 import { AssigninfoComponent } from './assigninfo/assigninfo.component';
 import { ForgetpassDocComponent } from './forgetpass-doc/forgetpass-doc.component';
+import { AdminControllerComponent } from './admin-controller/admin-controller.component';
+import { AdminService } from './Admin.Service';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -75,7 +77,7 @@ const routes: Routes = [
   { path: 'profcourses/Overviewcoursesprof/:id/assignment/:aid/deg',component:AnsAssignmentDegComponent},
   { path: 'profcourses/Overviewcoursesprof/:id/assignment/:aid/deataills',component:AssigndetailsComponent},
   { path: 'courses/overviewcourses/:id/assignment/:aid/deatails',component:AssigninfoComponent},
-
+  { path :'AdminController',component:AdminControllerComponent}
 ];
 
 @NgModule({
@@ -115,7 +117,8 @@ const routes: Routes = [
     AnsAssignmentDegComponent,
     AssigndetailsComponent,
     AssigninfoComponent,
-    ForgetpassDocComponent
+    ForgetpassDocComponent,
+    AdminControllerComponent
   ],
   imports: [
     BrowserModule,
@@ -129,6 +132,7 @@ const routes: Routes = [
     AuthService,
     CourseService,
     UserService,
+    AdminService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,140 @@
+<div class="container">
+    <aside>
+        <div class="top">
+          <div class="logo">
+            <img src="../../assets/img/logo (1).png" />
+            <h2 >Min<span class="danger">da</span></h2>
+          </div>
+          <div class="close" id="close-btn">
+            <span class="material-icons-sharp">close</span>
+          </div>
+        </div>
+        <div class="sidebar">
+          <a (click)="getuser()">
+            <h3>Get User</h3>
+          </a>
+          <a (click)="getcourses()">
+            <h3>Get Courses</h3>
+          </a>
+          <a (click)="putcode()">
+            <h3>Put special code</h3>
+          </a>
+          <a (click)="getcode()">
+            <h3>Get special code</h3>
+          </a>
+          <!-- <a (click)="enroll()">
+            <h3>Enroll User In Course</h3>
+          </a> -->
+          <a></a>
+        </div>
+      </aside>
+      <main>
+        <div [hidden]="!homeVisible" class="main">
+            <div class="right">
+                <p class="infohome">Faculty of Computers and information<br>Menoufia University</p>
+                <p class="minda">Minda</p>
+                <p class="info2">E-Learning platform that helps students and professors</p>
+                <p class="info3">“Learning never exhausts the mind.”<br> ― Leonardo da Vinci</p>
+            </div>
+        </div>
+        <div class="users" [hidden]="!userVisible">
+          <h2 style="margin: 20px;">All User Details</h2>
+          <table class="my-table">
+            <thead>
+                <td class="images">image</td>
+                <td>Full Name</td>
+                <td>Email</td>
+                <td>Id</td>
+                <td>User Type</td>
+                <td>Since</td>
+                <td>delete</td>
+             </thead>
+            <tr *ngFor="let row of Users">
+                <td class="user">
+                    <img *ngIf="row.profileimg.url!==' '" [src]="row.profileimg.url" alt="profile">
+                    <img *ngIf="row.profileimg.url===' '" src="../../assets/img/pic-1.jpg" alt="image">
+                </td>
+                <td>{{row.firstName}}  {{row.lastName}} </td>
+                <td>{{row.email}}</td>
+                <td>{{row._id}}</td>
+                <td>
+                    <div *ngIf="row.isAdmin">administrator</div>
+                    <div *ngIf="!row.isAdmin">user</div>
+                </td>
+                <td>{{row.createdAt | date }} </td>
+                <td><i (click)="onDeleteuser(row._id)" class="fa fa-trash-o cicon"></i></td>
+            </tr>
+        </table><br>
+        </div>
+        <div class="users" [hidden]="!courseVisible">
+            <h2 style="margin: 20px;">Courses Details</h2>
+            <table class="my-table">
+                <thead>
+                    <td>Course Title</td>
+                    <td>duration</td>
+                    <td>averageRating</td>
+                    <td>Enroll</td>
+                    <td>Details</td>
+                 </thead>
+                <tr *ngFor="let course of courses">
+                    <td> {{course.courseName}}</td>
+                    <td>{{course.duration }}</td>
+                    <td>{{course.averageRating}} </td>
+                    <td><i (click)="onCourseClick(course._id)" class="fa fa-plus-square-o"></i></td>
+                    <td><i (click)="onCourseDetailsClick(course._id)" class="fa fa-vcard-o"></i></td>
+                </tr>
+            </table><br>
+        </div>
+        <div class="users" [hidden]="!putcodeVisible"><br />
+            <input (click)="onSubmit()" type="submit" class="put" value="Put Special Code" /><br />
+            <div *ngIf="responseMessage" class="code">Code IS :- {{ responseMessage }}</div>
+        </div>
+        <div class="users" [hidden]="!getcodeVisible">
+            <h2 style="margin: 20px;">Get Special code</h2>
+            <table class="my-table">
+              <thead>
+                  <td>id</td>
+                  <td>Doc Email</td>
+                  <td>Admin Email</td>
+                  <td>code</td>
+               </thead>
+              <tr *ngFor="let row of codes">
+                <td>{{row._id}}</td>
+                <td>{{row.emailDoc}}</td>
+                <td>{{row.emailadmin}}</td>
+                <td>{{row.code}}</td>
+              </tr>
+          </table><br>
+        </div>
+        <div class="users" [hidden]="!enrollVisible">
+            <h2 style="margin: 20px;">Enroll</h2>
+            <form #enrollform="ngForm" (ngSubmit)="onSubmitenroll(enrollform)">
+                <input class="inp" ngModel name="email" id="email" placeholder="Enter email" />
+                <input type="submit" class="add" value="Enroll" /><br />
+                <span id="correct" class="text-danger"></span>
+            </form>
+            <div *ngIf="responseenroll" class="code">{{ responseenroll }}</div>
+        </div>
+        <div class="users" [hidden]="!userCourseVisible">
+            <h2 style="margin: 20px;">User Details For This Course</h2>
+            <table class="my-table">
+              <thead>
+                  <td class="images">image</td>
+                  <td>Full Name</td>
+                  <td>Email</td>
+                  <td>Id</td>
+               </thead>
+              <tr *ngFor="let row of userIncourse">
+                  <td class="user">
+                      <img *ngIf="row.profileimg.url!==' '" [src]="row.profileimg.url" alt="profile">
+                      <img *ngIf="row.profileimg.url===' '" src="../../assets/img/pic-1.jpg" alt="image">
+                  </td>
+                  <td>{{row.firstName}}  {{row.lastName}} </td>
+                  <td>{{row.email}}</td>
+                  <td>{{row._id}}</td>
+              </tr>
+          </table><br>
+          </div>
+      </main>
+    </div>
+

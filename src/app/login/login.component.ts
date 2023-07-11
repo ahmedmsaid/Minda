@@ -13,7 +13,7 @@ export class LoginComponent {
     @Input() form: FormGroup;
     loginInvalid = false
     public token: any;
-
+    // isAdmin:boolean=false
     constructor(private fb:FormBuilder, private authService: AuthService, private router: Router) {
           this.form = this.fb.group({
           email: ['', Validators.required],
@@ -34,16 +34,7 @@ export class LoginComponent {
         let email = loginForm.value.email
         let password = loginForm.value.password
 
-        this.login(email, password)
-
-    // this.http.post('your-api-url', formData).subscribe(
-    //   response => {
-    //     console.log(response);
-    //   },
-    //   error => {
-    //     console.error(error);
-    //   }
-    // );                   
+        this.login(email, password)                 
   }
 
 
@@ -56,7 +47,11 @@ export class LoginComponent {
             this.token = jwtDecode(res)
             console.log("User is logged in");
             console.log(this.token.id)
-            this.router.navigate(['/courses']);
+            if(this.token.isAdmin){
+              this.router.navigate(['/AdminController']);
+            }else{
+              this.router.navigate(['/courses']);
+            }
           }
       })
     }
