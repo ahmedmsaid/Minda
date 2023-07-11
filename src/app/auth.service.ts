@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core"
-import { Observable, catchError, of, tap } from "rxjs";
+import { Observable, catchError, of, tap, throwError } from "rxjs";
 import { IUser } from "./user.model";
 import { IProf } from "./prof.model";
 import { LoginComponent } from "./login/login.component";
@@ -13,6 +13,7 @@ export class AuthService {
     currentProf: any
     userToken: any
     profToken: any
+    token: any
     private api = "https://e-learning1.onrender.com/api/";
 
     constructor(private http: HttpClient) {}
@@ -66,7 +67,17 @@ export class AuthService {
         }
 
         return this.http.post(this.api + 'user/signup', newUser, options)
-        .pipe(catchError(this.handleError<IUser>('signup')))
+        .pipe(
+            catchError(error => {
+              console.error('Error in addCourse', error);
+              let errorMessage = 'An error occurred while submitting the quiz.';
+              if (error.error && error.error.message) {
+                errorMessage = error.error.message;
+              }
+              console.log('Error caught', errorMessage); // Log the error message
+              return throwError(errorMessage);
+            })
+          )
     }
 
     signUpProf(prof: IProf) {
@@ -81,7 +92,17 @@ export class AuthService {
         }
 
         return this.http.post(this.api + 'doctor/signup', newProf, options)
-        .pipe(catchError(this.handleError<IProf>('signup')))
+        .pipe(
+            catchError(error => {
+              console.error('Error in addCourse', error);
+              let errorMessage = 'An error occurred while submitting the quiz.';
+              if (error.error && error.error.message) {
+                errorMessage = error.error.message;
+              }
+              console.log('Error caught', errorMessage); // Log the error message
+              return throwError(errorMessage);
+            })
+          )
     }
 
     private handleError<T> (operation = 'operation', result?: T) {

@@ -51,6 +51,7 @@
                     </div> -->
                 </div>
                 <span id="checked" class="text-danger"></span><br><br>
+                <span *ngIf="errorMessage" class="text-danger">{{ errorMessage }}</span><br>
                 <input type="submit" class="Save" value="Save Personal Info" /><br />
             </form>
         </div>

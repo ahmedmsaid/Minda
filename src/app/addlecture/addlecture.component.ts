@@ -15,6 +15,7 @@ export class AddlectureComponent {
   cId:any
   token:any
   info:any
+  errorMessage: string = ''
   constructor(private router: Router, private route: ActivatedRoute, private courseService: CourseService, private auth: AuthService) { 
     this.token = this.auth.getProfToken()
     this.info = jwtDecode(this.token)
@@ -37,5 +38,11 @@ export class AddlectureComponent {
   addLec1(formValue: any, cId: string,id: string ) {
     this.courseService.addLec1(formValue,cId ,id).subscribe(() => {
     this.router.navigate(['/Overviewcoursesprof',this.cId])
-  });}
+  },(error: any) => {
+    console.error('Error in addCourse', error);
+    // Set the error message
+    this.errorMessage = error;
+    console.log(this.errorMessage)
+  }
+  );}
 }

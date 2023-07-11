@@ -44,6 +44,7 @@ export class LectureComponent {
   video: any;
   showAddVideos: boolean = false;
   selectedVideoFile: any;
+  errorMessage: string = ''
   constructor(private courseService: CourseService, private auth: AuthService, private route: ActivatedRoute) {
     this.token = this.auth.getProfToken()
   }
@@ -95,7 +96,14 @@ uploadVideo() {
   // );
 }
 addvid(formValue: any, id: string ) {
-  this.courseService.uploadVideo(formValue,id).subscribe();
+  this.courseService.uploadVideo(formValue,id).subscribe(() => {
+
+  }, (error: any) => {
+    console.error('Error in addCourse', error);
+    // Set the error message
+    this.errorMessage = error;
+    console.log(this.errorMessage)
+  });
   // this.router.navigate(['/Overviewcoursesprof',this.cId])
 }
 

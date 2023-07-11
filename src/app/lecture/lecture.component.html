@@ -21,6 +21,7 @@
             <label style="margin-left: 20px;" for="videoFile">Upload Video:</label><br>
             <input type="file" id="videoFile" (change)="onVideoSelected($event)"><br>
             <button class="upload" (click)="uploadVideo()">Upload</button><br>
+            <span *ngIf="errorMessage" class="text-danger">{{ errorMessage }}</span><br>
           </div>
     </div>
 </div>

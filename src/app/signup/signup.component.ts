@@ -12,7 +12,7 @@ import { AuthService } from '../auth.service';
 })
 export class SignupComponent {
   user!: IUser
-  
+  errorMessage: string = ''
   constructor(private router: Router, private auth: AuthService) { }
 
     onSubmit(signupForm: NgForm) {
@@ -39,6 +39,12 @@ export class SignupComponent {
   signup(user: IUser) {
     this.auth.signUpUser(user).subscribe(() => {
       this.router.navigate(['/login'])
-    });
+    }, (error: any) => {
+      console.error('Error in addCourse', error);
+      // Set the error message
+      this.errorMessage = error;
+      console.log(this.errorMessage)
+    }
+    );
   }
 }

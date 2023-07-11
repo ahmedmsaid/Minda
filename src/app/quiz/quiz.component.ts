@@ -30,6 +30,8 @@ export class QuizComponent {
 
   // A flag to indicate if the quiz is over
   finished = false;
+  invalid: boolean = false
+  errorMessage: string = ''
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -79,12 +81,19 @@ export class QuizComponent {
         }
     }
   }
-  postQuizData(formValue: any,id: string,qId: string,  token: string) {
-    let returnanswer={
-      answers:formValue
+  postQuizData(formValue: any, id: string, qId: string, token: string) {
+    let returnanswer = {
+      answers: formValue
     }
-    this.courseService.postQuizUser(returnanswer,id, qId, token).subscribe(() => {
+    this.courseService.postQuizUser(returnanswer, id, qId, token).subscribe(() => {
       this.router.navigate([`courses/overviewcourses/${this.courseId}/quiz/${this.quizId}/result`])
+    }, (error: any) => {
+      this.errorMessage = error;
     });
   }
+}
+
+interface ApiResponse {
+  status: string
+  message: string
 }

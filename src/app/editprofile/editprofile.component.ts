@@ -40,6 +40,7 @@ export class EditprofileComponent {
   id:any
   selectedimgFile:any
   img:any
+  errorMessage: string = ''
   constructor(private router: Router, private route: ActivatedRoute, private userServiuce: UserService, private auth: AuthService) { 
   }
    ngOnInit(){
@@ -75,8 +76,15 @@ export class EditprofileComponent {
         
   }
   update(formValue: any, id: string,token:string ) {
-    this.userServiuce.userUpdate(formValue,id ,token).subscribe(() => {});
-    this.router.navigate(['/profile'])
+    this.userServiuce.userUpdate(formValue,id ,token).subscribe(() => {
+      this.router.navigate(['/profile'])
+    }, (error: any) => {
+      console.error('Error in addCourse', error);
+      // Set the error message
+      this.errorMessage = error;
+      console.log(this.errorMessage)
+    }
+    )
   }
   uploadimg() {
       const formData = new FormData();
@@ -84,7 +92,13 @@ export class EditprofileComponent {
       this.addimg(formData,this.info.id,this.token)
     }
   addimg(formValue: any, id: string ,token:string) {
-      this.userServiuce.uploadimg(formValue,id,token).subscribe();
+      this.userServiuce.uploadimg(formValue,id,token).subscribe(() => {
+      }, (error: any) => {
+        console.error('Error in addCourse', error);
+        // Set the error message
+        this.errorMessage = error;
+        console.log(this.errorMessage)
+      });
       // this.router.navigate(['/Overviewcoursesprof',this.cId])
     } 
     deleteimg() {

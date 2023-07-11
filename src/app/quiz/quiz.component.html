@@ -18,6 +18,7 @@
           <hr>
         </div><br>
         <span id="Correct" class="text-danger"></span><br>
+        <span *ngIf="errorMessage" class="text-danger">{{ errorMessage }}</span><br>
         <button type="submit">Submit Quiz</button>
       </form>
     </div>

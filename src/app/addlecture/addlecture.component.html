@@ -10,6 +10,7 @@
             </div>
             <span id="checked" class="text-danger"></span><br><br>
             <input type="submit" class="Next" value="Add" /><br /><br /><br />
+            <span *ngIf="errorMessage" class="text-danger">{{ errorMessage }}</span><br>
         </form>
     </div>
 </div>

@@ -72,14 +72,12 @@
                 <thead>
                     <td>Course Title</td>
                     <td>duration</td>
-                    <td>averageRating</td>
                     <td>Enroll</td>
                     <td>Details</td>
                  </thead>
                 <tr *ngFor="let course of courses">
                     <td> {{course.courseName}}</td>
                     <td>{{course.duration }}</td>
-                    <td>{{course.averageRating}} </td>
                     <td><i (click)="onCourseClick(course._id)" class="fa fa-plus-square-o"></i></td>
                     <td><i (click)="onCourseDetailsClick(course._id)" class="fa fa-vcard-o"></i></td>
                 </tr>

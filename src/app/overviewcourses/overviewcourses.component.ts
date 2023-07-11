@@ -101,10 +101,10 @@ onSubmitcomment(addCommentForm: NgForm,pid:string) {
   const commentvalue = {
     content: addCommentForm.value.comment,
   };
-  if (addCommentForm.value.content ==='' ) {
-    const correctSpan = document.getElementById('checked');
+  if (addCommentForm.value.comment ==='' ) {
+    const correctSpan = document.getElementById('error');
     if (correctSpan !== null) {
-      correctSpan.innerText = 'All Fileds Are Required';
+      correctSpan.innerText = 'content is Required';
     }
   }else{
     this.comment(commentvalue,this.cId,pid)

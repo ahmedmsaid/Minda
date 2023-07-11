@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, of } from 'rxjs';
+import { Observable, catchError, of, throwError } from 'rxjs';
 import { AuthService } from './auth.service';
 import { ICourse } from './course.model';
 
@@ -46,14 +46,35 @@ export class UserService {
     this.checkUserToken();
     let options = { headers: new HttpHeaders({ 'x-auth-token': token })}
     return this.http.put<any[]>(this.api + this.fpath +'/'+ userId,formValue, options)/*this.update +'/'+*/
-    .pipe(catchError(this.handleError<any[]>('profile', [])))
+    .pipe(
+      catchError(error => {
+        console.error('Error in addCourse', error);
+        let errorMessage = 'An error occurred while submitting the quiz.';
+        if (error.error && error.error.message) {
+          errorMessage = error.error.message;
+        }
+        console.log('Error caught', errorMessage); // Log the error message
+        return throwError(errorMessage);
+      })
+    )
   }
   uploadimg(formValue: any,userId: any, token: string){
     this.checkUserToken();
     let options = { headers: new HttpHeaders({ 'x-auth-token': token })}
       return this.http.put(this.api + this.fpath+'/'+ this.update +'/'+userId , formValue, options)
-      .pipe(catchError(this.handleError<any>('upload')))
+      .pipe(
+        catchError(error => {
+          console.error('Error in addCourse', error);
+          let errorMessage = 'An error occurred while submitting the quiz.';
+          if (error.error && error.error.message) {
+            errorMessage = error.error.message;
+          }
+          console.log('Error caught', errorMessage); // Log the error message
+          return throwError(errorMessage);
+        })
+      )
   }
+  
   deleteimg(id: string , token: string){
     let options = { headers: new HttpHeaders({ 'x-auth-token': token })}
     return this.http.delete(this.api + this.fpath + '/' +id +this.delete, options)

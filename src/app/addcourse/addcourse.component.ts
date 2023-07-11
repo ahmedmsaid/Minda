@@ -15,6 +15,7 @@ export class AddcourseComponent {
 
   token: any
   info: any
+  errorMessage: string = ''
 
   constructor(private router: Router, private courseService: CourseService, private auth: AuthService) { 
     this.token = this.auth.getProfToken()
@@ -36,8 +37,18 @@ export class AddcourseComponent {
   }
 
   addCourse(formValue: any, id: string) {
-    this.courseService.addCourse(formValue, id).subscribe(() => {
-      this.router.navigate(['/profcourses'])
-    });
+    this.courseService.addCourse(formValue, id).subscribe(
+      () => {
+        // Navigate to the desired page on success
+        this.router.navigate(['/profcourses'])
+      },
+      (error: any) => {
+        console.error('Error in addCourse', error);
+        // Set the error message
+        this.errorMessage = error;
+        console.log(this.errorMessage)
+      }
+    );
   }
-}
+    // this.router.navigate(['/profcourses'])
+  }

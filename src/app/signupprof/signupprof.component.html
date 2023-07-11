@@ -10,8 +10,9 @@
                 <input ngModel name="profcode" id="profcode"  placeholder="8-digit-number" /><br /><br />
                 <input ngModel name="password" type="password" id="Password" placeholder="password" /><br /><br />
                 <input ngModel name="confirmPassword" type="password" id="cPassword" placeholder="Confirm password" /><br /><br />
+                <span *ngIf="errorMessage" class="text-danger">{{ errorMessage }}</span><br>
+                <span id="checked"  class="text-danger"></span><br>
             </div><br />
-            <span id="checked"  class="text-danger"></span><br>
             <input type="submit" class="signup" value="Sign Up" /><br />
             <p class="acc">Do you have an account? <a routerLink="/loginprof"> Log In </a></p>
         </form>

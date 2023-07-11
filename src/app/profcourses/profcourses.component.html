@@ -12,7 +12,6 @@
                   <p class="name"><i class="fa fa-book" style="color: rgb(59, 76, 76);"></i> {{ course.courseName }}</p>
                   <p class="description">{{ course.description }}</p>
                   <p class="icon"><i class="fa fa-clock-o"></i> {{ course.duration }} 
-                    <i class="fa fa-signal space"></i> {{ course.averageRating }}&nbsp;
                     <i (click)="onCourseDeleteClick(course._id)" class="fa fa-trash-o" ></i>&nbsp;&nbsp;
                     <i (click)="onCourseEditClick(course._id)" class="fa fa-edit" ></i>
                   </p>

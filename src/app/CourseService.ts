@@ -1,6 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, of } from 'rxjs';
+import { Observable, catchError, of, throwError } from 'rxjs';
 import { AuthService } from './auth.service';
 import { ICourse } from './course.model';
 
@@ -63,16 +63,35 @@ export class CourseService {
     return this.http.get<any[]>(this.api + 'course/doctor/couseInfo/' + id, options)
     .pipe(catchError(this.handleError<any[]>('getCourses', [])))
   }
-  addCourse(formValue: any, id: string){
+  addCourse(formValue: any, id: string): any{
     let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getProfToken() })}
-      return this.http.post(this.api + 'course/' + id, formValue, options)
-      .pipe(catchError(this.handleError<any>('addCourse')))
+      return this.http.post(this.api + 'course/' + id, formValue, options).pipe(
+        catchError(error => {
+          console.error('Error in addCourse', error);
+          let errorMessage = 'An error occurred while submitting the quiz.';
+          if (error.error && error.error.message) {
+            errorMessage = error.error.message;
+          }
+          console.log('Error caught', errorMessage); // Log the error message
+          return throwError(errorMessage);
+        })
+      )
   } 
 
   addLec1(formValue: any,cId: string, id: string ){
     let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getProfToken() })}
       return this.http.post(this.api + 'lecture/' + cId + '/' + id, formValue, options)
-      .pipe(catchError(this.handleError<any>('addCourse')))
+      .pipe(
+        catchError(error => {
+          console.error('Error in addCourse', error);
+          let errorMessage = 'An error occurred while submitting the quiz.';
+          if (error.error && error.error.message) {
+            errorMessage = error.error.message;
+          }
+          console.log('Error caught', errorMessage); // Log the error message
+          return throwError(errorMessage);
+        })
+      )
   } 
   getLec(lId: string, cId: string  ): any{
     let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getProfToken() })}
@@ -106,11 +125,20 @@ export class CourseService {
       return this.http.get(this.api + 'quiz/courses/' + cId+'/quizzes/'+ qId +'/user/'+ +uId, options)
       .pipe(catchError(this.handleError<any>('getresult')))
   }
-  postQuizUser(formValue: any,cId: string , qId: string,  token: string ): any{
-    let options = { headers: new HttpHeaders({ 'x-auth-token': token})}
-      return this.http.post(this.api + 'quiz/courses/'+ cId +'/quizzes/' + qId +'/submit',formValue, options)
-      .pipe(catchError(this.handleError<any>('getQuiz')))
+  postQuizUser(formValue: any, cId: string, qId: string, token: string): any {
+    let options = { headers: new HttpHeaders({ 'x-auth-token': token })}
+    return this.http.post(this.api + 'quiz/courses/' + cId + '/quizzes/' + qId + '/submit', formValue, options)
+      .pipe(
+        catchError(error => {
+          let errorMessage = 'An error occurred while submitting the quiz.';
+          if (error.error && error.error.message) {
+            errorMessage = 'Error Ocurred';
+          }
+          return throwError(errorMessage);
+        })
+      );
   }
+  
   getDetail(cId: string ,qId: string,  token: string ): any{
     let options = { headers: new HttpHeaders({ 'x-auth-token': token})}
       return this.http.get(this.api + 'quiz/courseId/' + cId+'/quizId/'+ qId , options)
@@ -140,7 +168,17 @@ export class CourseService {
   uploadVideo(formValue: any,lId: string){
     let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getProfToken() })}
       return this.http.put(this.api + 'lecture/lec/'+lId+'/videos' , formValue, options)
-      .pipe(catchError(this.handleError<any>('upload')))
+      .pipe(
+        catchError(error => {
+          console.error('Error in addCourse', error);
+          let errorMessage = 'An error occurred while submitting the quiz.';
+          if (error.error && error.error.message) {
+            errorMessage = error.error.message;
+          }
+          console.log('Error caught', errorMessage); // Log the error message
+          return throwError(errorMessage);
+        })
+      )
   } 
   updateCourse(formValue: any,cId: string){
     let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getProfToken() })}

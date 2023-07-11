@@ -8,6 +8,7 @@
                 <input ngModel name="description" id="description" placeholder="course description" /><br /><br />
             </div>
             <span id="checked" class="text-danger"></span><br><br />
+            <span *ngIf="errorMessage" class="text-danger">{{ errorMessage }}</span><br>
             <input type="submit" class="Next" value="Next" /><br /><br /><br />
         </form>
     </div>
