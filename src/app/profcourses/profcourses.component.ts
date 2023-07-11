@@ -13,7 +13,7 @@ import { tap } from 'rxjs';
 export class ProfcoursesComponent {
   public courses!: Course[]
 
-  token = this.auth.getProfToken()
+  token = this.auth.getToken()
   data: any
   id: any
 
@@ -40,11 +40,13 @@ export class ProfcoursesComponent {
   onCourseClick(id: number) {
     this.router.navigate(['/Overviewcoursesprof', id]);
   }
+
   onCourseDeleteClick(id: number) {
-    
-    this.courseService.deleteCourse(id).subscribe(()=>{this.router.navigate(['/profcourses'])})
-    
+    this.courseService.deleteCourse(id).subscribe(()=>{
+      window.location.reload();
+    })
   }
+
   onCourseEditClick(Cid: number) {
     // this.courseService.updateCourse(Cid).subscribe(()=>{})
     this.router.navigate([`profcourses/${Cid}/edit/`]);

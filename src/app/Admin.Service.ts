@@ -15,8 +15,8 @@ export class AdminService {
   fpath: any;
 
   constructor(private http: HttpClient, private auth: AuthService) {
-    this.userToken = this.auth.getUserToken()
-    this.profToken = this.auth.getProfToken()
+    this.userToken = this.auth.getToken()
+    this.profToken = this.auth.getToken()
    }
 
    putcode(userId: any, token: any): Observable<HttpResponse<any>> {
@@ -27,32 +27,32 @@ export class AdminService {
       );
   }
   getusers(): Observable<any[]> {
-    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getUserToken() })}
+    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getToken() })}
     return this.http.get<any[]>(this.api + 'user/', options)
     .pipe(catchError(this.handleError<any[]>('getusers', [])))
   }
   deleteuser(id: string){
-    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getUserToken() })}
+    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getToken() })}
     return this.http.delete(this.api + 'user/specficUser/' + id , options)
       .pipe(catchError(this.handleError<any>('delete')))
   } 
   getcodes(): Observable<any[]> {
-    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getUserToken() })}
+    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getToken() })}
     return this.http.get<any[]>(this.api + 'specialCode/specialCode', options)
     .pipe(catchError(this.handleError<any[]>('getcodes', [])))
   }
   getcourses(): Observable<any[]> {
-    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getUserToken() })}
+    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getToken() })}
     return this.http.get<any[]>(this.api + 'course/admin/getCourses', options)
     .pipe(catchError(this.handleError<any[]>('getcorses', [])))
   }
   enroll(formValue: any,cId: string){
-    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getUserToken() })}
+    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getToken() })}
       return this.http.put(this.api + 'course/'+cId+'/enroll' , formValue, options)
       .pipe(catchError(this.handleError<any>('enroll')))
   } 
   getusersforDetail(Id:string): Observable<any[]> {
-    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getUserToken() })}
+    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getToken() })}
     return this.http.get<any[]>(this.api + 'course/'+Id+'/getusersEnrolled', options)
     .pipe(catchError(this.handleError<any[]>('getusers', [])))
   }

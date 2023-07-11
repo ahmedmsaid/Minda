@@ -18,7 +18,7 @@ export class AddcourseComponent {
   errorMessage: string = ''
 
   constructor(private router: Router, private courseService: CourseService, private auth: AuthService) { 
-    this.token = this.auth.getProfToken()
+    this.token = this.auth.getToken()
     this.info = jwtDecode(this.token)
   }
   onSubmit(addcourseForm: NgForm) {

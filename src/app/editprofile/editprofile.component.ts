@@ -113,10 +113,10 @@ export class EditprofileComponent {
       this.profile = data
   })}
   checkUserToken() {
-    if (this.auth.getUserToken()) {
-      this.token=this.auth.getUserToken()
+    if (this.auth.getToken()) {
+      this.token=this.auth.getToken()
     } else {
-      this.token=this.auth.getProfToken()
+      this.token=this.auth.getToken()
     }}
     onFileSelected(event:any) {
       this.selectedimgFile = event.target.files[0];

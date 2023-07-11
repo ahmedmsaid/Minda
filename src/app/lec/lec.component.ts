@@ -43,7 +43,7 @@ export class LecComponent {
   video:any
   showAddVideos: boolean = false;
   constructor(private courseService: CourseService, private auth: AuthService, private route: ActivatedRoute) {
-    this.token = this.auth.getUserToken()
+    this.token = this.auth.getToken()
   }
 
   ngOnInit(){

@@ -32,7 +32,7 @@ export class OverviewcoursesComponent implements OnInit {
   showDelete: boolean = true;
   showimgpost:boolean=false;
   showimgcomment:boolean=false;
-  token = this.auth.getUserToken()
+  token = this.auth.getToken()
   constructor(private router: Router, private route: ActivatedRoute, private userServiuce: UserService,private courseService: CourseService, private auth: AuthService) { 
     this.info=jwtDecode(this.token);
   }
@@ -111,12 +111,15 @@ onSubmitcomment(addCommentForm: NgForm,pid:string) {
   }
 }
 post(formValue: any, id: string ) {
-  this.courseService.addPost(formValue,id).subscribe();
-  this.router.navigate(['/Overviewcoursesprof',id])
+  this.courseService.addPost(formValue,id).subscribe(()=> {
+    window.location.reload();
+  });
+
 }
 comment(formValue: any, cid: string,pid:string ) {
-  this.courseService.addComment(formValue,cid,pid).subscribe();
-  this.router.navigate(['/Overviewcoursesprof',cid])
+  this.courseService.addComment(formValue,cid,pid).subscribe(()=> {
+    window.location.reload();
+  });
 }
   start(Cid: string,Lid: string) {
     this.router.navigate([`courses/overviewcourses/${Cid}/lec/${Lid}`]);

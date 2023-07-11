@@ -46,7 +46,7 @@ export class LectureComponent {
   selectedVideoFile: any;
   errorMessage: string = ''
   constructor(private courseService: CourseService, private auth: AuthService, private route: ActivatedRoute) {
-    this.token = this.auth.getProfToken()
+    this.token = this.auth.getToken()
   }
 
   ngOnInit(){

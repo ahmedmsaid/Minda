@@ -14,7 +14,7 @@ import jwtDecode from 'jwt-decode';
 
 export class CoursesComponent {
   courses!: any
-  token = this.auth.getUserToken()
+  token = this.auth.getToken()
   data: any
   id: any
   constructor(private router: Router, private courseService: CourseService, private auth: AuthService) { }

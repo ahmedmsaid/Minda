@@ -24,15 +24,28 @@ export class AuthService {
 
         return this.http.post(this.api +  'auth/userlogin', loginInfo, options)
         .pipe(tap((data: any) => {
-                    this.userToken = data
+                    this.token = data
+                    localStorage.setItem('auth_token', this.token);
                 }))
         .pipe(catchError( err => {
                     return of(false)
                 }))
     }
+    
+    logout() {
+      this.token = null;
+      localStorage.removeItem('auth_token');
+    }
 
-    getUserToken() {
-        return this.userToken
+    // getToken() {
+    //     return this.userToken
+    // }
+
+    getToken() {
+      if (!this.token) {
+        this.token = localStorage.getItem('auth_token');
+      }
+      return this.token;
     }
 
     getUserId() {
@@ -45,16 +58,17 @@ export class AuthService {
 
         return this.http.post(this.api +  'auth/doctorlogin', loginInfo, options)
         .pipe(tap( (data: any) => {
-                    this.profToken = data
+                    this.token = data
+                    localStorage.setItem('auth_token', this.token);
                 }))
         .pipe(catchError( err => {
                     return of(false)
                 }))
     }
 
-    getProfToken(){
-        return this.profToken
-    }
+    // getToken(){
+    //     return this.profToken
+    // }
 
     signUpUser(user: IUser) {
         let options = { headers: new HttpHeaders({ 'Content-Type': 'application/json'})}

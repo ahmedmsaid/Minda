@@ -32,8 +32,8 @@ export class UserService {
   update:any
   delete:any
   constructor(private http: HttpClient, private auth: AuthService) {
-    this.userToken = this.auth.getUserToken()
-    this.profToken = this.auth.getProfToken()
+    this.userToken = this.auth.getToken()
+    this.profToken = this.auth.getToken()
    }
 
   getInfo(userId: any, token: string): Observable<any[]> {
@@ -107,7 +107,7 @@ export class UserService {
   }
 
   checkUserToken() {
-    if (this.auth.getUserToken()) {
+    if (this.auth.getToken()) {
       this.path='userProfile'
       this.fpath='user'
       this.update='updateProfile'

@@ -20,7 +20,7 @@ export class DetaillsComponent {
   quizMark:any
   constructor(private router: Router, private route: ActivatedRoute, private CourseService: CourseService, private auth: AuthService) {}
   ngOnInit(){
-    this.token=this.auth.getProfToken()
+    this.token=this.auth.getToken()
     this.info=jwtDecode(this.token)
     this.id = this.info.id
     this.courseId = this.route.snapshot.paramMap.get('id')!;

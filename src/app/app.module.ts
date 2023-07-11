@@ -25,7 +25,7 @@ import { OverviewcoursesComponent } from './overviewcourses/overviewcourses.comp
 import { OverviewcoursesprofComponent } from './overviewcoursesprof/overviewcoursesprof.component';
 import { LectureComponent } from './lecture/lecture.component';
 import { HomeComponent } from './home/home.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { CourseService } from './CourseService';
 import { LecComponent } from './lec/lec.component';
@@ -45,6 +45,7 @@ import { AssigninfoComponent } from './assigninfo/assigninfo.component';
 import { ForgetpassDocComponent } from './forgetpass-doc/forgetpass-doc.component';
 import { AdminControllerComponent } from './admin-controller/admin-controller.component';
 import { AdminService } from './Admin.Service';
+import { AuthInterceptor } from './auth.interceptor';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -132,6 +133,7 @@ const routes: Routes = [
     AuthService,
     CourseService,
     UserService,
+      { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     AdminService
   ],
   bootstrap: [AppComponent]

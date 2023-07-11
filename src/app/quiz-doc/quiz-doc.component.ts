@@ -22,7 +22,7 @@ export class QuizDocComponent {
   constructor(private router: Router, private route: ActivatedRoute,private courseService:CourseService, private userServiuce: UserService, private auth: AuthService) { 
   }
    ngOnInit(){
-    this.token=this.auth.getProfToken()
+    this.token=this.auth.getToken()
     this.info=jwtDecode(this.token)
     this.id = this.info.id
     this.courseId = this.route.snapshot.paramMap.get('id')!;

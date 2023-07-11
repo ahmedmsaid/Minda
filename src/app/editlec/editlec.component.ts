@@ -17,7 +17,7 @@ export class EditlecComponent {
   info:any
   lecId:any
   constructor(private router: Router, private route: ActivatedRoute, private courseService: CourseService, private auth: AuthService) { 
-    this.token = this.auth.getProfToken()
+    this.token = this.auth.getToken()
     this.info = jwtDecode(this.token)
     this.cId=this.route.snapshot.paramMap.get('id')!;
     this.lecId=this.route.snapshot.paramMap.get('Lid')!;

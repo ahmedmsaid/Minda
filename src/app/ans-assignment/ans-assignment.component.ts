@@ -18,7 +18,7 @@ export class AnsAssignmentComponent {
   info:any
   selectedFile:any
   constructor(private router: Router, private route: ActivatedRoute, private courseService: CourseService, private auth: AuthService) { 
-    this.token = this.auth.getProfToken()
+    this.token = this.auth.getToken()
     this.info = jwtDecode(this.token)
     this.cId=this.route.snapshot.paramMap.get('id')!;
     this.aId=this.route.snapshot.paramMap.get('aid')!;

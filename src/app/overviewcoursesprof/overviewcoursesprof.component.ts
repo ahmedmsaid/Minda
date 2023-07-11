@@ -33,7 +33,7 @@ interface Course {
 export class OverviewcoursesprofComponent implements OnInit {
   courses!: Course
   CoursesComponent: any;
-  token = this.auth.getProfToken()
+  token = this.auth.getToken()
   info: any
   id: any
   assignments:any
@@ -106,10 +106,14 @@ export class OverviewcoursesprofComponent implements OnInit {
   }
 
   deleteLec(Lid: string,Cid: string){
-    this.courseService.deleteLec(Lid,Cid).subscribe(()=>{})
+    this.courseService.deleteLec(Lid,Cid).subscribe(()=>{
+      window.location.reload();
+    })
   }
   deleteQuizz(Qid: string){
-    this.courseService.deleteQuiz(Qid).subscribe(()=>{})
+    this.courseService.deleteQuiz(Qid).subscribe(()=>{
+      window.location.reload();
+    })
   }
   Content() {}
   Description(){}

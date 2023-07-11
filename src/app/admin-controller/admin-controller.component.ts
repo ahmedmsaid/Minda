@@ -12,7 +12,7 @@ import { AdminService } from '../Admin.Service';
   styleUrls: ['./admin-controller.component.scss']
 })
 export class AdminControllerComponent {
-  token=this.auth.getUserToken()
+  token=this.auth.getToken()
   info:any
   Users:any
   userIncourse:any
