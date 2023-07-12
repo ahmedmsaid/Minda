@@ -84,7 +84,7 @@ export class AuthService {
         .pipe(
             catchError(error => {
               console.error('Error in addCourse', error);
-              let errorMessage = 'An error occurred while submitting the quiz.';
+              let errorMessage = 'An error occurred.';
               if (error.error && error.error.message) {
                 errorMessage = error.error.message;
               }
@@ -109,7 +109,7 @@ export class AuthService {
         .pipe(
             catchError(error => {
               console.error('Error in addCourse', error);
-              let errorMessage = 'An error occurred while submitting the quiz.';
+              let errorMessage = 'An error occurred';
               if (error.error && error.error.message) {
                 errorMessage = error.error.message;
               }

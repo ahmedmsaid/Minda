@@ -13,6 +13,9 @@ import { AuthService } from '../auth.service';
 export class SignupComponent {
   user!: IUser
   errorMessage: string = ''
+  emailRegex = new RegExp("[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}");
+  passwordRegex = new RegExp("^(?=.[A-Za-z])(?=.\\d)[A-Za-z\\d]{5,}$");
+
   constructor(private router: Router, private auth: AuthService) { }
 
     onSubmit(signupForm: NgForm) {
@@ -30,20 +33,51 @@ export class SignupComponent {
           if (correctSpan !== null) {
             correctSpan.innerText = 'All Fileds Are Required';
           }
-          
-        }else{
-            this.signup(this.user);
+      }else{
+        const firstName = signupForm.value.firstName;
+        const lastName = signupForm.value.lastName;
+        const firstNameWords = firstName.split(" ");
+        const lastNameWords = lastName.split(" ");
+        if (firstNameWords.length >= 2 && lastNameWords.length >= 2) {
+          if (this.emailRegex.test(signupForm.value.email)) {
+            if (this.passwordRegex.test(signupForm.value.password)) {
+              if(signupForm.value.confirmPassword == signupForm.value.password){
+                this.signup(this.user);
+              }else{
+                const correctSpan = document.getElementById('checked');
+                if (correctSpan !== null) {
+                    correctSpan.innerText = 'Password Is Not Confirm';
+                }
+              }
+            } else {
+              const correctSpan = document.getElementById('checked');
+              if (correctSpan !== null) {
+                  correctSpan.innerText = 'Password Must Contain Numbers And Characters';
+              }
+            }
+          } else {
+            const correctSpan = document.getElementById('checked');
+            if (correctSpan !== null) {
+                correctSpan.innerText = 'Email IS Invalid';
+            }
           }
-  }
+        } else {
+          const correctSpan = document.getElementById('checked');
+            if (correctSpan !== null) {
+                correctSpan.innerText = 'First and/or last name do not have at least two words';
+            }
+          }
+        }
+      }
 
   signup(user: IUser) {
     this.auth.signUpUser(user).subscribe(() => {
       this.router.navigate(['/login'])
     }, (error: any) => {
-      console.error('Error in addCourse', error);
-      // Set the error message
-      this.errorMessage = error;
-      console.log(this.errorMessage)
+      const correctSpan = document.getElementById('checked');
+      if (correctSpan !== null) {
+          correctSpan.innerText = error;
+      }
     }
     );
   }
