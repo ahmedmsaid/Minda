@@ -5,15 +5,17 @@
     </a>
     <div class="nav">
         <a routerLink="/">Home</a>
-        <a routerLink="/courses">Courses</a>
-        <a routerLink="/contact">Contact</a>
-    </div>
-    <div class="icons">
-        <a href="#" class="user-icon" routerLink="/profile">
-            <i class="fa fa-user-circle-o" style="font-size:36px"></i>
+        <!-- <div *ngIf="token" class="div">
+            <a *ngIf="userToken" routerLink="/courses">Courses</a>
+            <a *ngIf="!userToken" routerLink="/profcourses"> courses</a>
+         </div> -->
+    </div> <!--*ngIf="token"-->
+     <div  class="icons"> 
+        <a class="user-icon" routerLink="/profile">
+            <i class="fa fa-user-circle-o" style="font-size:36px;color: #E3654B;"></i>
         </a>
-        <a href="#" class="notification-icon">
-            <i class="fa fa-chain-broken" style="font-size:36px" (click)="logout()"></i>
+        <a class="notification-icon">
+            <i class="fa fa-chain-broken" style="font-size:36px;color: #E3654B;" (click)="logout()"></i>
         </a>
     </div>
   </nav>

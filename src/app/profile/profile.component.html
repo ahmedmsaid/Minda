@@ -5,7 +5,7 @@
         <img [src]="profile.profileimg.url" alt="image">
         <p class="stuname" > {{ profile.firstName }} </p>
         
-        <a class="edit" routerLink="/editprofile"> Edit Profile</a>
+        <a class="edit" (click)="edit()"> Edit Profile</a>
         
     </div> 
     <div class="data">
@@ -15,11 +15,10 @@
             <i>phone</i>&nbsp;
             <p>bio</p>
         </div>
-    <!-- <br><br> -->
     <div class="content">
         <p class="Courses">Enrolled Courses</p>
         <div class="flex">
-            <div class="cont"  *ngFor="let course of profile.enrolledCourses">
+            <div class="cont"  *ngFor="let course of profile.enrolledCourses" (click)="onCourseClick(course._id)">
                 <div class="info">
                   <p class="name"><i class="fa fa-book" style="color: rgb(59, 76, 76);"></i> {{ course.courseName }}</p>
                   <p class="description">{{ course.description }}</p>
@@ -29,29 +28,4 @@
             </div>
         </div>
     </div>
-    <!-- <div class="content">
-        <p class="Courses">Completed Courses</p>
-        <div class="flex">
-            <div class="cont"  *ngFor="let course of info[0].coursecompleted">
-                <div class="info">
-                  <p class="name"><i class="fa fa-book" style="color: rgb(59, 76, 76);"></i> {{ course.name }}</p>
-                  <p class="description">{{ course.description }}</p>
-                  <p class="icon"><i class="fa fa-clock-o"></i> {{ course.time }} 
-                    <i class="fa fa-signal space"></i> {{ course.level }}
-                  </p>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- <div class="content">
-        <p class="Courses">Badget</p>
-        <div class="flex">
-            <div class="cont"  *ngFor="let badget of info[0].badgets">
-                <div class="info">
-                  <p class="name">{{ badget.title }}</p>
-                  <p class="description">{{ badget.image }}</p>
-                </div>
-            </div>
-        </div>
-    </div> -->
 </div>

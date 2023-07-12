@@ -14,6 +14,7 @@ export class ForgetpassDocComponent {
   uid:any
   info:any
   gettoken:any
+  errorMessage:any
   constructor(private router: Router, private userServiuce: UserService) { }
   onSubmit(forgetpassForm: NgForm) {
     const formData = {
@@ -29,8 +30,15 @@ export class ForgetpassDocComponent {
       }
   }
   forget(formValue: any) {
-    this.userServiuce.forgetProf(formValue).subscribe();
-    this.showElement = !this.showElement;
+    this.userServiuce.forgetProf(formValue).subscribe(
+      () => {
+      this.showElement = !this.showElement;}
+      , (error: any) => {
+      console.error('Error in addCourse', error);
+      this.errorMessage = error;
+      console.log(this.errorMessage)
+    });
+    
   }
   ontokenSubmit(tokenForm: NgForm) {
     const tokenData = {
@@ -47,9 +55,17 @@ export class ForgetpassDocComponent {
       }
   }
   token(formValue: any) {
-    this.userServiuce.tokenProf(formValue).subscribe();
-    this.Element = !this.Element;
-    this.showElement = !this.showElement;
+    this.userServiuce.tokenProf(formValue).subscribe(
+      () => {
+      this.Element = !this.Element;
+      this.showElement = !this.showElement;}
+      , (error: any) => {
+      console.error('Error in addCourse', error);
+      // Set the error message
+      this.errorMessage = error;
+      console.log(this.errorMessage)
+    });
+    
   }
   onresetSubmit(resetpassForm: NgForm) {
     const Data = {
@@ -66,8 +82,16 @@ export class ForgetpassDocComponent {
       }
   }
   reset(formValue: any) {
-    this.userServiuce.resetProf(formValue).subscribe();
-    this.router.navigate(['/loginprof']);
+    this.userServiuce.resetProf(formValue).subscribe(
+      () => {
+      this.router.navigate(['/loginprof']);
+    }, (error: any) => {
+      console.error('Error in addCourse', error);
+      // Set the error message
+      this.errorMessage = error;
+      console.log(this.errorMessage)
+    });
+    
 
   }
 }

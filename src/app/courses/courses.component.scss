@@ -1,14 +1,13 @@
 .container{
     display: flex;
     height: max-content;
-    position: absolute;
     width: 100%;
     background: #F1F1F1;
-    margin-top: -7px;
-    margin-left: -7px;
+    margin-top: 2px;
 }
 a{
     text-decoration: none;
+    cursor: pointer;
 }
 .content{
     width: 100%;
@@ -34,7 +33,7 @@ a{
 }
 .info{
     height: max-content;
-    width: 366px;
+    width: 406px;
     margin-left: 48px;
     margin-top: 40px;
     margin-bottom: 40px;
@@ -52,6 +51,7 @@ a{
     font-size: 24px;
     line-height: 38px;
     color: #000000;
+    cursor: pointer;
     margin-left: 20px;
 }
 .description{
@@ -65,10 +65,11 @@ a{
     color: #4B4B4B;
     margin-top: -5px;
     margin-right: 5px;
+    cursor: pointer;
     overflow: overlay;
 }
 .description::-webkit-scrollbar{
-    width: 3px;
+    width: 4px;
     height: .5rem;
 }
 .description::-webkit-scrollbar-track{
@@ -90,9 +91,6 @@ a{
     margin-left: 20px;
     width: 60%;
     margin-top: -7px;
-}
-.space{
-    margin-left: 60px;
 }
 
 @media screen and (max-width: 430px){

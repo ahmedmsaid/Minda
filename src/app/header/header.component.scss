@@ -28,13 +28,23 @@ nav{
     font-size: 22px;
     line-height: 25px;
     color: #000000;
+    position: relative;
+    z-index: 100;
   }
-
+  a:hover{
+    color: #E3654B;
+    letter-spacing: 4px;
+    font-size: 20px;
+    opacity: 1;
+    transition: 0.7s;
+}
   .icons {
     display: flex;
     align-items: center;
   }
-  
+  i:hover,img:hover {
+    transform: scale(1.5);
+  }
   .icon-black {
     color: #000;
     font-size: 1.2rem;

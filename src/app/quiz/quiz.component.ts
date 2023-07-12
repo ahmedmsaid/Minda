@@ -64,12 +64,6 @@ export class QuizComponent {
   }
   onSubmit(quizform: NgForm) {
     let allQuestionsAnswered = true;
-    // for (let i = 0; i < this.selected.length; i++) {
-    //   if (this.selected[i] === -1) {
-    //     allQuestionsAnswered = false;
-    //     break;
-    //   }
-    // }
     if (allQuestionsAnswered) {
       this.postQuizData(this.answers, this.courseId,this.quizId,this.token);
       console.log(this.answers);
@@ -81,19 +75,14 @@ export class QuizComponent {
         }
     }
   }
-  postQuizData(formValue: any, id: string, qId: string, token: string) {
-    let returnanswer = {
-      answers: formValue
+  postQuizData(formValue: any,id: string,qId: string,  token: string) {
+    let returnanswer={
+      answers:formValue
     }
-    this.courseService.postQuizUser(returnanswer, id, qId, token).subscribe(() => {
+    this.courseService.postQuizUser(returnanswer,id, qId, token).subscribe(() => {
       this.router.navigate([`courses/overviewcourses/${this.courseId}/quiz/${this.quizId}/result`])
     }, (error: any) => {
       this.errorMessage = error;
     });
   }
-}
-
-interface ApiResponse {
-  status: string
-  message: string
 }

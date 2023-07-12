@@ -95,8 +95,7 @@ export class OverviewcoursesprofComponent implements OnInit {
     this.router.navigate([`profcourses/Overviewcoursesprof/${Cid}/assignment/${aid}/deataills`]);//profcourses/Overviewcoursesprof/:id/assignment/:aid/deataills
   }
   onAssignmentDeleteClick(Qid: string) {
-    console.log(Qid)
-    this.deleteQuizz(Qid)
+    this.deleteASsignments(Qid)
   }
   onLecDeleteClick(Cid: string,Lid: string) {
     this.deleteLec(Lid,Cid)
@@ -115,7 +114,10 @@ export class OverviewcoursesprofComponent implements OnInit {
       window.location.reload();
     })
   }
+  deleteASsignments(Qid: string){
+    this.courseService.deleteAssignment(Qid).subscribe(()=>{
+      window.location.reload();
+    })
+  }
   Content() {}
-  Description(){}
-  Discussion(){}
 }

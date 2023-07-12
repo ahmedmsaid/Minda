@@ -3,8 +3,7 @@
     height: max-content;
     width: 100%;
     background: #F1F1F1;
-    margin-top: -7px;
-    margin-left: -7px;
+    margin-top: 2px;
 }
 .content{
     width: 100%;
@@ -33,7 +32,7 @@
 }
 .info{
     height: max-content;
-    width: 366px;
+    width: 406px;
     margin-left: 48px;
     margin-top: 40px;
     margin-bottom: 40px;
@@ -47,11 +46,12 @@
 .info .name{
     font-family: 'Yu Gothic';
     font-style: normal;
-    font-weight: 400;
-    font-size: 24px;
+    font-weight: 370;
+    font-size: 22px;
     line-height: 38px;
     color: #000000;
     margin-left: 20px;
+    cursor: pointer;
 }
 .description{
     height: 60px;
@@ -65,9 +65,13 @@
     margin-top: -5px;
     margin-right: 5px;
     overflow: overlay;
+    cursor: pointer;
+}
+i{
+    cursor: pointer;
 }
 .description::-webkit-scrollbar{
-    width: 3px;
+    width: 4px;
     height: .5rem;
 }
 .description::-webkit-scrollbar-track{
@@ -87,11 +91,10 @@
     color: #000000;
     align-items: center;
     margin-left: 20px;
-    width: 60%;
     margin-top: -7px;
 }
 .space{
-    margin-left: 60px;
+    margin-left: 60%;
 }
 
 @media screen and (max-width: 430px){
@@ -141,8 +144,4 @@
     border-radius: 5px;
     color: #FFFFFF;
     cursor: pointer;
-}
-
-.space{
-    margin-left: 60px;
 }

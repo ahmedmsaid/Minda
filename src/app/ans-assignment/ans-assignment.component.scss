@@ -20,6 +20,11 @@
     color: #FFFFFF;
 }
 
+.content{
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+}
 .quiz{
     font-family: 'Tw Cen MT';
     font-style: normal;
@@ -45,14 +50,12 @@
 }
 
 .inp{
-    // box-sizing: border-box;
     margin: 15px;
     width: 38.7%;
     height: 77px;
     background: #D8D8D8;
     border-bottom: 2px solid #898787;
     border-radius: 8px;
-    // border: none;
     font-family: "Tw Cen MT";
     font-style: italic;
     font-weight: 400;
@@ -61,54 +64,10 @@
     color: #898787;
     padding-left: 10px;
 }
-.answer{
-    margin-left: 100px;
-}
-input[type=radio] {
-    appearance: none;
-    cursor: pointer;
-}
-input[type=radio] {
-    border: 7px solid #b1b1b1;
-    border-radius: 50%;
-}
-input[type=radio]:checked::before {
-    content: "";
-    display: block;
-    width: 10px;
-    height: 10px;
-    background-color: #418EBA;
-    border-radius: 50%;
-    margin: auto;
-}
-.Selection{
-    font-family: "Tw Cen MT";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 32px;
-    line-height: 39px;
-    color: #E3654B;
-    margin-left: 125px;
-    margin-bottom: 50px;
-}
 .line{
     border: 2px solid #333333;
     transform: rotate(-0.07deg);
     margin-top: 20px;
-}
-.question{
-    font-family: 'Tw Cen MT';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 36px;
-    line-height: 39px;
-    margin-left: 35%;
-    color: #E3654B;
-
-
-}
-#q ,#Correct{
-    width: 80.5%;
 }
 .add{
     width: 217px;
@@ -126,7 +85,9 @@ input[type=radio]:checked::before {
     cursor: pointer;
     float: right;
 }
-
+a{
+    cursor: pointer;
+}
 @media screen and (max-width: 830px) {
     .aside{
         display: none;

@@ -40,7 +40,6 @@
 }
 .stuname{
     position: absolute;
-    width: 100%;
     margin-left: 354px;
     margin-top: -60px;
     height: 52px;
@@ -97,7 +96,7 @@
 }
 .info{
     height: max-content;
-    width: 366px;
+    width: 406px;
     margin-left: 48px;
     margin-top: 40px;
     margin-bottom: 40px;
@@ -109,13 +108,13 @@
     margin-top: -10px;
 }
 .info .name{
-    height: 38px;
     font-family: 'Yu Gothic';
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 24px;
     line-height: 38px;
     color: #000000;
+    cursor: pointer;
     margin-left: 20px;
 }
 .description{

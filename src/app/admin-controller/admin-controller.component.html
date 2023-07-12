@@ -2,7 +2,7 @@
     <aside>
         <div class="top">
           <div class="logo">
-            <img src="../../assets/img/logo (1).png" />
+            <!-- <img src="../../assets/img/logo (1).png" /> -->
             <h2 >Min<span class="danger">da</span></h2>
           </div>
           <div class="close" id="close-btn">
@@ -22,9 +22,6 @@
           <a (click)="getcode()">
             <h3>Get special code</h3>
           </a>
-          <!-- <a (click)="enroll()">
-            <h3>Enroll User In Course</h3>
-          </a> -->
           <a></a>
         </div>
       </aside>
@@ -44,7 +41,6 @@
                 <td class="images">image</td>
                 <td>Full Name</td>
                 <td>Email</td>
-                <td>Id</td>
                 <td>User Type</td>
                 <td>Since</td>
                 <td>delete</td>
@@ -56,7 +52,6 @@
                 </td>
                 <td>{{row.firstName}}  {{row.lastName}} </td>
                 <td>{{row.email}}</td>
-                <td>{{row._id}}</td>
                 <td>
                     <div *ngIf="row.isAdmin">administrator</div>
                     <div *ngIf="!row.isAdmin">user</div>
@@ -83,9 +78,13 @@
                 </tr>
             </table><br>
         </div>
-        <div class="users" [hidden]="!putcodeVisible"><br />
-            <input (click)="onSubmit()" type="submit" class="put" value="Put Special Code" /><br />
-            <div *ngIf="responseMessage" class="code">Code IS :- {{ responseMessage }}</div>
+        <div class="users" [hidden]="!putcodeVisible">
+          <h2 style="margin: 20px;">MAke Code</h2>
+          <div class="right">
+            <p class="info">Admin Can Make Code Fpr Allowing Doctor To SignUp</p>
+            <p class="info3"><em (click)="onSubmit()">Click To Make Code!</em>
+              <br> ― <em *ngIf="responseMessage"> {{ responseMessage }}</em></p>
+          </div>
         </div>
         <div class="users" [hidden]="!getcodeVisible">
             <h2 style="margin: 20px;">Get Special code</h2>

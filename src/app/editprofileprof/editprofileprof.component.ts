@@ -6,11 +6,11 @@ import { UserService } from '../user.service';
 import { AuthService } from '../auth.service';
 
 @Component({
-  selector: 'app-editprofile',
-  templateUrl: './editprofile.component.html',
-  styleUrls: ['./editprofile.component.scss']
+  selector: 'app-editprofileprof',
+  templateUrl: './editprofileprof.component.html',
+  styleUrls: ['./editprofileprof.component.scss']
 })
-export class EditprofileComponent {
+export class EditprofileprofComponent {
   profile:any
   token:any
   info:any
@@ -18,15 +18,13 @@ export class EditprofileComponent {
   selectedimgFile:any
   img:any
   errorMessage: string = ''
-  upload:boolean=false
-  deleteelement:boolean=true
   constructor(private router: Router, private route: ActivatedRoute, private userServiuce: UserService, private auth: AuthService) { 
   }
    ngOnInit(){
     this.token=this.auth.getToken()
     this.info=jwtDecode(this.token)
     this.id = this.info.id
-    this.getProfile(this.info.id)
+    this.getProfile(this.id)
   }
     onSubmit(editprofileForm: NgForm) {
       const formData = {
@@ -47,11 +45,10 @@ export class EditprofileComponent {
         
   }
   update(formValue: any, id: string ) {
-    this.userServiuce.userUpdate(formValue,id).subscribe(() => {
+    this.userServiuce.userUpdateprof(formValue,id).subscribe(() => {
       this.router.navigate(['/profile'])
     }, (error: any) => {
       console.error('Error in addCourse', error);
-      // Set the error message
       this.errorMessage = error;
       console.log(this.errorMessage)
     }
@@ -63,24 +60,20 @@ export class EditprofileComponent {
       this.addimg(formData,this.info.id)
     }
   addimg(formValue: any, id: string ) {
-      this.userServiuce.uploadimg(formValue,id).subscribe(() => {
+      this.userServiuce.uploadimgprof(formValue,id).subscribe(() => {
       }, (error: any) => {
         console.error('Error in addCourse', error);
         // Set the error message
         this.errorMessage = error;
         console.log(this.errorMessage)
       });
+      // this.router.navigate(['/Overviewcoursesprof',this.cId])
     } 
     deleteimg() {
       this.brushimg(this.info.id)
-      this.upload=true
-      this.deleteelement=false
     }
     brushimg(id: string){
-      this.userServiuce.deleteimg(id).subscribe(()=>{})
-    }
-    onFileSelected(event:any) {
-      this.selectedimgFile = event.target.files[0];
+      this.userServiuce.deleteimgprof(id).subscribe(()=>{})
     }
     getProfile(id: string) {
       this.userServiuce.getInfo(id).subscribe(
@@ -101,6 +94,9 @@ export class EditprofileComponent {
           console.error('Error getting profile information:', error);
         }
       );
+    }
+    onFileSelected(event:any) {
+      this.selectedimgFile = event.target.files[0];
     }
     
 }

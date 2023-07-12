@@ -57,6 +57,6 @@ export class AssigninfoComponent {
   }
   makeAssignment(formValue: any, cId: string, aId: string) {
     this.CourseService.answerAssignment(formValue,cId,aId).subscribe(() => {
-    });this.router.navigate(['/Overviewcoursesprof',this.courseId])
+    });this.router.navigate(['/overviewcourses',this.courseId])
   }
 }

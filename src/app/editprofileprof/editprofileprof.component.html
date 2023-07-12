@@ -2,7 +2,7 @@
     <div class="prof">
         <div class="img">
             <ng-container *ngIf="profile.profileimg === null || !profile.profileimg.url || (profile.profileimg && !profile.profileimg.url)">
-                <label for="videoFile">Upload img:</label><br>
+                <label for="videoFile">Upload Video:</label><br>
                 <input type="file" id="file" (change)="onFileSelected($event)"><br>
                 <button class="upload" (click)="uploadimg()">Upload</button><br>
               </ng-container>

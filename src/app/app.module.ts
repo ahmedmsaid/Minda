@@ -46,6 +46,7 @@ import { ForgetpassDocComponent } from './forgetpass-doc/forgetpass-doc.componen
 import { AdminControllerComponent } from './admin-controller/admin-controller.component';
 import { AdminService } from './Admin.Service';
 import { AuthInterceptor } from './auth.interceptor';
+import { EditprofileprofComponent } from './editprofileprof/editprofileprof.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -56,6 +57,7 @@ const routes: Routes = [
   { path: 'loginprof', component: LoginprofComponent },
   { path: 'Signupprof', component: SignupprofComponent },
   { path: 'editprofile', component: EditprofileComponent },
+  { path: 'editprofileprof', component: EditprofileprofComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'courses/overviewcourses/:id/quiz/:Qid/result', component: ProfileDocComponent },
   { path: 'overviewcourses/:id', component: OverviewcoursesComponent },
@@ -119,7 +121,8 @@ const routes: Routes = [
     AssigndetailsComponent,
     AssigninfoComponent,
     ForgetpassDocComponent,
-    AdminControllerComponent
+    AdminControllerComponent,
+    EditprofileprofComponent
   ],
   imports: [
     BrowserModule,

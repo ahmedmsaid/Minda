@@ -7,13 +7,14 @@
             <input (click)="add()" type="submit" class="add" value="Add Courses" />
         </div>
         <div class="flex">
-            <div class="cont" *ngFor="let course of courses" (click)="onCourseClick(course._id)">
+            <div class="cont" *ngFor="let course of courses">
                 <div class="info">
-                  <p class="name"><i class="fa fa-book" style="color: rgb(59, 76, 76);"></i> {{ course.courseName }}</p>
-                  <p class="description">{{ course.description }}</p>
-                  <p class="icon"><i class="fa fa-clock-o"></i> {{ course.duration }} 
-                    <i (click)="onCourseDeleteClick(course._id)" class="fa fa-trash-o" ></i>&nbsp;&nbsp;
-                    <i (click)="onCourseEditClick(course._id)" class="fa fa-edit" ></i>
+                  <p class="name" (click)="onCourseClick(course._id)"><i class="fa fa-book" style="color: rgb(59, 76, 76);"></i> {{ course.courseName }}</p>
+                  <p class="description" (click)="onCourseClick(course._id)">{{ course.description }}</p>
+                  <p class="icon">
+                    <i class="fa fa-clock-o"></i> {{ course.duration }} <span class="space"></span>
+                    <i (click)="onCourseEditClick(course._id)" class="fa fa-edit" ></i>&nbsp;&nbsp;
+                    <i (click)="onCourseDeleteClick(course._id)" class="fa fa-trash-o" ></i>
                   </p>
                 </div>
             </div>

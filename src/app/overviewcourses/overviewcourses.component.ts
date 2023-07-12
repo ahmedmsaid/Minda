@@ -40,7 +40,7 @@ export class OverviewcoursesComponent implements OnInit {
     var id = this.route.snapshot.paramMap.get('id')!;
     this.cId=this.route.snapshot.paramMap.get('id')!;
     this.getInfo(id)
-    this.getProfile(this.info.id,this.token)
+    this.getProfile(this.info.id)
     this.iconpost()
     this.iconcomment()
   }
@@ -61,8 +61,8 @@ export class OverviewcoursesComponent implements OnInit {
     .subscribe((data: any)=>{
       this.assign = data
   })}
-  getProfile(id: string,token:string){
-    this.userServiuce.getInfo(id,token)
+  getProfile(id: string){
+    this.userServiuce.getInfo(id)
   .subscribe((data: any)=>{
       this.profile = data.firstName
   })}
@@ -148,9 +148,13 @@ comment(formValue: any, cid: string,pid:string ) {
     this.deletecomment(id,pid,cid)
   }
   deletepost(cid: string,pid: string){
-    this.courseService.deletePost(cid,pid).subscribe(()=>{})
+    this.courseService.deletePost(cid,pid).subscribe(()=>{
+      window.location.reload();
+    })
   }
   deletecomment(id:string,Lid: string,Cid: string){
-    this.courseService.deleteComment(id,Lid,Cid).subscribe(()=>{})
+    this.courseService.deleteComment(id,Lid,Cid).subscribe(()=>{
+      window.location.reload();
+    })
   }
 }

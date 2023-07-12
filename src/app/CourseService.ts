@@ -160,6 +160,11 @@ export class CourseService {
     return this.http.delete(this.api + 'quiz/quizzes/' + id , options)
       .pipe(catchError(this.handleError<any>('delete')))
   } 
+  deleteAssignment(id: string ){
+    let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getToken() })}
+    return this.http.delete(this.api + 'assignment/assignments/' + id , options)
+      .pipe(catchError(this.handleError<any>('delete')))
+  } 
   deleteCourse(id: number ){
     let options = { headers: new HttpHeaders({ 'x-auth-token': this.auth.getToken() })}
     return this.http.delete(this.api + 'course/' +id, options)

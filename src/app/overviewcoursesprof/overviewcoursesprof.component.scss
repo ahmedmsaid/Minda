@@ -12,7 +12,6 @@
     display: flex;
     flex-direction: column;
     height: 452px;
-    // width: 98%;
     padding-left: 30px;
     background: linear-gradient(359.7deg, rgba(35, 31, 32, 0.82) 45.72%, rgba(217, 217, 217, 0) 99.86%),url(../../assets/img/img.jpg);
     mix-blend-mode: multiply;
@@ -39,7 +38,6 @@
     background-image: linear-gradient(to bottom, #677E98 0%, #E3654B 100%);
 }
 .title{
-    // width: 858px;
     font-family: 'Tw Cen MT';
     font-style: normal;
     font-weight: 400;
@@ -177,8 +175,6 @@ button{
     cursor: pointer;
 }
 .quizz{
-    // background: linear-gradient(180deg, rgba(27, 26, 28, 0.16) 0%, rgba(27, 26, 28, 0.1264) 100%);
-    // border: 1px solid #E3654B;
     border-radius: 5px;
     color: #E3654B;
     cursor: pointer;
@@ -217,6 +213,10 @@ button{
   .my-table td {
     border-bottom: 1px solid #333333;
     padding: 0.5rem;
+    cursor: pointer;
+  }
+  button,i{
+    cursor: pointer;
   }
   .btn{
     display: flex;
