@@ -63,6 +63,9 @@
         <action
             android:id="@+id/action_courseInfoFragment_to_quizOverviewFragment"
             app:destination="@id/quizOverviewFragment" />
+        <action
+            android:id="@+id/action_courseInfoFragment_to_assignmentInfoFragment"
+            app:destination="@id/assignmentInfoFragment" />
     </fragment>
     <fragment
         android:id="@+id/addQuizFragment"
@@ -112,6 +115,14 @@
         tools:layout="@layout/fragment_quiz_overview">
         <action
             android:id="@+id/action_quizOverviewFragment_to_instructorHomeFragment"
+            app:destination="@id/instructorHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/assignmentInfoFragment"
+        android:name="com.example.minda.ui.assignment_info.AssignmentInfoFragment"
+        android:label="AssignmentInfoFragment" >
+        <action
+            android:id="@+id/action_assignmentInfoFragment_to_instructorHomeFragment"
             app:destination="@id/instructorHomeFragment" />
     </fragment>
 </navigation>

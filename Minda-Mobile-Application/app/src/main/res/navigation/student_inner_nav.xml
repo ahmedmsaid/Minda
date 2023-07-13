@@ -43,6 +43,9 @@
         <argument
             android:name="courseDesc"
             app:argType="string" />
+        <action
+            android:id="@+id/action_courseInfoFragmentForStudent_to_discussionFragment"
+            app:destination="@id/discussionFragment" />
     </fragment>
     <fragment
         android:id="@+id/lectureInfoFragment"
@@ -68,5 +71,38 @@
             app:destination="@id/studentHomeFragment"
             app:popUpTo="@id/takingQuizFragment"
             app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/discussionFragment"
+        android:name="com.example.minda.ui.discussion.DiscussionFragment"
+        android:label="DiscussionFragment" >
+        <action
+            android:id="@+id/action_discussionFragment_to_postDetailsFragment"
+            app:destination="@id/postDetailsFragment" />
+        <action
+            android:id="@+id/action_discussionFragment_to_makePostFragment"
+            app:destination="@id/makePostFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/postDetailsFragment"
+        android:name="com.example.minda.ui.discussion.PostDetailsFragment"
+        android:label="PostDetailsFragment" >
+        <action
+            android:id="@+id/action_postDetailsFragment_to_discussionFragment"
+            app:destination="@id/discussionFragment" />
+        <action
+            android:id="@+id/action_postDetailsFragment_self"
+            app:destination="@id/postDetailsFragment"
+            app:popUpTo="@id/discussionFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/makePostFragment"
+        android:name="com.example.minda.ui.discussion.MakePostFragment"
+        android:label="MakePostFragment" >
+        <action
+            android:id="@+id/action_makePostFragment_to_discussionFragment"
+            app:destination="@id/discussionFragment"
+            app:popUpTo="@id/discussionFragment" />
     </fragment>
 </navigation>

@@ -1,18 +1,13 @@
 package com.example.minda.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
-import androidx.core.view.marginBottom
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.minda.databinding.QuizQuestionItemBinding
 import com.example.minda.pojo.student.content.Question
-import com.example.minda.pojo.student.content.QuizQuestionsResponse
-import com.example.minda.utile.showToast
-import com.example.minda.viewmodel.SharedViewModel
 
 class StudentTakingQuizAdapter:
     ListAdapter<Question, StudentTakingQuizAdapter.ViewHolder>(ItemDiff()) {

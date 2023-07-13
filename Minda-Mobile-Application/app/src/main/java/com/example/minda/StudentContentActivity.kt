@@ -33,9 +33,9 @@ class StudentContentActivity : AppCompatActivity() {
                             .navigate(R.id.action_studentProfileFragment_to_studentHomeFragment)
                     }
                 }
-                R.id.notification -> {
-                    Toast.makeText(this,"Student Notification",Toast.LENGTH_SHORT).show()
-                }
+//                R.id.notification -> {
+//                    Toast.makeText(this,"Student Notification",Toast.LENGTH_SHORT).show()
+//                }
                 R.id.profile -> {
                     if (page == "Home"){
                         binding.fragmentContainerView2

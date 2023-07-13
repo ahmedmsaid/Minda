@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav"
     app:startDestination="@id/gettingStartFragment">
 
@@ -24,6 +25,9 @@
         <action
             android:id="@+id/action_accountTypeFragment_to_studentLoginFragment"
             app:destination="@id/studentLoginFragment" />
+        <action
+            android:id="@+id/action_accountTypeFragment_to_adminLoginFragment"
+            app:destination="@id/adminLoginFragment" />
     </fragment>
     <fragment
         android:id="@+id/instructorLoginFragment"
@@ -85,5 +89,56 @@
         <action
             android:id="@+id/action_resetPasswordFragment_to_instructorLoginFragment"
             app:destination="@id/instructorLoginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminLoginFragment"
+        android:name="com.example.minda.ui.admin.login.AdminLoginFragment"
+        android:label="AdminLoginFragment" >
+        <action
+            android:id="@+id/action_adminLoginFragment_to_adminHomeFragment"
+            app:destination="@id/adminHomeFragment"
+            app:popUpTo="@id/adminLoginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminHomeFragment"
+        android:name="com.example.minda.ui.admin.home.AdminHomeFragment"
+        android:label="AdminHomeFragment" >
+        <action
+            android:id="@+id/action_adminHomeFragment_to_enrollUsersFragment"
+            app:destination="@id/enrollUsersFragment" />
+        <action
+            android:id="@+id/action_adminHomeFragment_to_deleteUserFragment"
+            app:destination="@id/deleteUserFragment" />
+        <action
+            android:id="@+id/action_adminHomeFragment_to_codesFragment"
+            app:destination="@id/codesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/enrollUsersFragment"
+        android:name="com.example.minda.ui.admin.enroll_users.EnrollUsersFragment"
+        android:label="EnrollUsersFragment" >
+        <action
+            android:id="@+id/action_enrollUsersFragment_to_adminHomeFragment"
+            app:destination="@id/adminHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/deleteUserFragment"
+        android:name="com.example.minda.ui.admin.delete.DeleteUserFragment"
+        android:label="DeleteUserFragment" >
+        <action
+            android:id="@+id/action_deleteUserFragment_to_adminHomeFragment"
+            app:destination="@id/adminHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/codesFragment"
+        android:name="com.example.minda.ui.admin.generated_codes.CodesFragment"
+        android:label="CodesFragment" >
+        <action
+            android:id="@+id/action_codesFragment_self"
+            app:destination="@id/codesFragment" />
+        <action
+            android:id="@+id/action_codesFragment_to_adminHomeFragment"
+            app:destination="@id/adminHomeFragment" />
     </fragment>
 </navigation>

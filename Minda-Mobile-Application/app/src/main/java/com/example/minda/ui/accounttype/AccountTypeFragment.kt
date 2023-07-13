@@ -52,6 +52,9 @@ class AccountTypeFragment : Fragment() {
             }
         }
 
+        binding.loginAsAdmin.setOnClickListener {
+            findNavController().navigate(R.id.action_accountTypeFragment_to_adminLoginFragment)
+        }
 
         return binding.root
     }

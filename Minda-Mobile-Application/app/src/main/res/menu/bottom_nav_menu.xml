@@ -14,16 +14,16 @@
         app:cnb_textColor="@color/white"
         tools:ignore="HardcodedText" />
 
-    <item
-        android:id="@+id/notification"
-        android:enabled="true"
-        android:icon="@drawable/notification_icon"
-        android:title="Notification"
-        app:cnb_backgroundColor="@color/primary_dark_orange"
-        app:cnb_iconColor="@color/white"
-        app:cnb_iconTintMode="src_in"
-        app:cnb_textColor="@color/white"
-        tools:ignore="HardcodedText" />
+<!--    <item-->
+<!--        android:id="@+id/notification"-->
+<!--        android:enabled="true"-->
+<!--        android:icon="@drawable/notification_icon"-->
+<!--        android:title="Notification"-->
+<!--        app:cnb_backgroundColor="@color/primary_dark_orange"-->
+<!--        app:cnb_iconColor="@color/white"-->
+<!--        app:cnb_iconTintMode="src_in"-->
+<!--        app:cnb_textColor="@color/white"-->
+<!--        tools:ignore="HardcodedText" />-->
 
     <item
         android:id="@+id/profile"

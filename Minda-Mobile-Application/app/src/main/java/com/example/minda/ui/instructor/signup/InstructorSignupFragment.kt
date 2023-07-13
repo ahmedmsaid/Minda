@@ -12,9 +12,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.minda.R
 import com.example.minda.databinding.FragmentInstructorSignupBinding
 import com.example.minda.pojo.instructor.auth.InstructorRegisterRequest
-import com.example.minda.utile.isValidEmail
-import com.example.minda.utile.isValidPassword
-import com.example.minda.utile.showToast
+import com.example.minda.util.isValidEmail
+import com.example.minda.util.isValidPassword
+import com.example.minda.util.showToast
 import com.example.minda.viewmodel.SharedViewModel
 import com.example.minda.viewmodel.SharedViewModelFactory
 

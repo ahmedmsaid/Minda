@@ -70,4 +70,8 @@ dependencies {
 
     //jwt
     implementation 'com.auth0.android:jwtdecode:2.0.2'
+
+
+//    implementation('com.toptoche.searchablespinner:searchablespinnerlibrary:1.3.1')
+
 }

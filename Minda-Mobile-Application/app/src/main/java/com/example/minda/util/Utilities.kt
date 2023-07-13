@@ -1,4 +1,4 @@
-package com.example.minda.utile
+package com.example.minda.util
 
 import android.content.Context
 import android.net.ConnectivityManager

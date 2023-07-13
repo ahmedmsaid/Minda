@@ -15,7 +15,7 @@ import com.example.minda.databinding.FragmentAddQuizDetailBinding
 import com.example.minda.pojo.instructor.content.quiz.post.Choose
 import com.example.minda.pojo.instructor.content.quiz.post.PostQuizRequest
 import com.example.minda.pojo.instructor.content.quiz.post.Question
-import com.example.minda.utile.showToast
+import com.example.minda.util.showToast
 import com.example.minda.viewmodel.SharedViewModel
 import com.example.minda.viewmodel.SharedViewModelFactory
 import com.ismaeldivita.chipnavigation.ChipNavigationBar

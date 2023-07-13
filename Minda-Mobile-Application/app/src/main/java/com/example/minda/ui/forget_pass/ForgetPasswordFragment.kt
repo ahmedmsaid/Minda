@@ -14,7 +14,7 @@ import com.example.minda.R
 import com.example.minda.databinding.FragmentForgetPasswordBinding
 import com.example.minda.pojo.password.EmailForResetPasswordRequest
 import com.example.minda.pojo.password.VerifyCodeRequest
-import com.example.minda.utile.showToast
+import com.example.minda.util.showToast
 import com.example.minda.viewmodel.SharedViewModel
 import com.example.minda.viewmodel.SharedViewModelFactory
 

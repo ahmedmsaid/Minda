@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="5dp"
+            android:padding="16dp"
+            android:background="@color/white"
+            tools:context=".ui.admin.login.AdminLoginFragment">
+
+            <ImageView
+                android:id="@+id/imageView333"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_170sdp"
+                android:contentDescription="Instructor logo"
+                android:src="@drawable/admin"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="HardcodedText" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardView2222"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:elevation="10dp"
+                android:orientation="vertical"
+                app:cardCornerRadius="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView333">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="@dimen/_10sdp">
+
+                    <TextView
+                        android:id="@+id/textView333"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/carter_one"
+                        android:text="sign in"
+                        android:textAllCaps="true"
+                        android:textColor="#29353B"
+                        android:textSize="@dimen/_14ssp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="HardcodedText" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/adminEmailForLogin"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:fontFamily="@font/roboto"
+                        android:hint="Email"
+                        android:minHeight="@dimen/_40sdp"
+                        android:textColorHint="@color/primary_dark_orange"
+                        app:boxStrokeColor="@color/primary_dark_orange"
+                        app:boxStrokeWidth="2dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView333"
+                        tools:ignore="HardcodedText">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableEnd="@drawable/ic_round_email"
+                            android:inputType="textEmailAddress"
+                            android:textColor="@color/black" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/adminPasswordForLogin"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:fontFamily="@font/roboto"
+                        android:hint="Password"
+                        android:minHeight="@dimen/_40sdp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/primary_dark_orange"
+                        app:boxStrokeColor="@color/primary_dark_orange"
+                        app:boxStrokeWidth="2dp"
+                        android:textSize="@dimen/_14ssp"
+                        app:layout_constraintEnd_toEndOf="@+id/adminEmailForLogin"
+                        app:layout_constraintStart_toStartOf="@+id/adminEmailForLogin"
+                        app:layout_constraintTop_toBottomOf="@+id/adminEmailForLogin"
+                        app:passwordToggleEnabled="true"
+                        app:passwordToggleTint="@color/primary_dark_orange"
+                        tools:ignore="HardcodedText">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPassword"
+
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:id="@+id/adminForgetPassword"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:fontFamily="@font/roboto"
+                        android:gravity="end"
+                        android:text="Forget Password?"
+                        android:textColor="#29353B"
+                        android:textSize="@dimen/_14ssp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="@+id/adminPasswordForLogin"
+                        app:layout_constraintStart_toStartOf="@+id/adminPasswordForLogin"
+                        app:layout_constraintTop_toBottomOf="@+id/adminPasswordForLogin"
+                        tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+                    <Button
+                        android:id="@+id/adminLoginBtn"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_5sdp"
+                        android:background="@drawable/login_btn_background"
+                        android:fontFamily="@font/roboto"
+                        android:paddingTop="@dimen/_10sdp"
+                        android:paddingBottom="@dimen/_10sdp"
+                        android:text="Login"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_14ssp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/adminForgetPassword"
+                        app:layout_constraintStart_toStartOf="@+id/adminForgetPassword"
+                        app:layout_constraintTop_toBottomOf="@+id/adminForgetPassword"
+                        tools:ignore="HardcodedText" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>

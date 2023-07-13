@@ -95,16 +95,8 @@ class LectureInfoFragment : Fragment() {
             }
         }
 
-        binding.showLecSlideBtn.setOnClickListener {
-            binding.showLecSlideBtn.setBackgroundColor(ContextCompat.getColor(cntx, R.color.veryDarkGray))
-            binding.showLecVideoBtn.setBackgroundColor(ContextCompat.getColor(cntx, R.color.primary_dark_orange))
-            binding.lecVideoItem.visibility = View.GONE
-            binding.lecTitleUnderVideo.visibility = View.GONE
-        }
-
         binding.showLecVideoBtn.setOnClickListener {
             binding.showLecVideoBtn.setBackgroundColor(ContextCompat.getColor(cntx, R.color.veryDarkGray))
-            binding.showLecSlideBtn.setBackgroundColor(ContextCompat.getColor(cntx, R.color.primary_dark_orange))
             binding.lecVideoItem.visibility = View.VISIBLE
             binding.lecTitleUnderVideo.visibility = View.VISIBLE
         }

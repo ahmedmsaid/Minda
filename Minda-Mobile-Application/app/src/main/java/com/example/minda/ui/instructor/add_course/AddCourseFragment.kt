@@ -14,11 +14,10 @@ import androidx.navigation.fragment.findNavController
 import com.example.minda.R
 import com.example.minda.databinding.FragmentAddCourseBinding
 import com.example.minda.pojo.instructor.content.CreateCourseRequest
-import com.example.minda.utile.getIdOfLoggedInPerson
-import com.example.minda.utile.showToast
+import com.example.minda.util.getIdOfLoggedInPerson
+import com.example.minda.util.showToast
 import com.example.minda.viewmodel.SharedViewModel
 import com.example.minda.viewmodel.SharedViewModelFactory
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
 
 class AddCourseFragment : Fragment() {
@@ -30,7 +29,7 @@ class AddCourseFragment : Fragment() {
         ViewModelProvider(this, SharedViewModelFactory(application))[SharedViewModel::class.java]
     }
 
-    private lateinit var createdCourseId:String
+
     private lateinit var createdCourseName:String
     private lateinit var createdCourseDescription:String
 

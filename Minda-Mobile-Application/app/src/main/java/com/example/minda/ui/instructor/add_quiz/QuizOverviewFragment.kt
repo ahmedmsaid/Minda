@@ -16,10 +16,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.minda.R
 import com.example.minda.adapter.GradesAdapter
 import com.example.minda.adapter.QuizOverViewAdapter
-import com.example.minda.databinding.FragmentInstructorHomeBinding
 import com.example.minda.databinding.FragmentQuizOverviewBinding
 import com.example.minda.pojo.instructor.content.quiz.grades.QuizResponseData
-import com.example.minda.utile.showToast
+import com.example.minda.util.showToast
 import com.example.minda.viewmodel.SharedViewModel
 import com.example.minda.viewmodel.SharedViewModelFactory
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
@@ -207,7 +206,7 @@ class QuizOverviewFragment : Fragment() {
 
     @SuppressLint("SetTextI18n")
     private fun observeData() {
-        viewModel.QuizQuestionsOverViewStatus.observe(viewLifecycleOwner) { quizResponse ->
+        viewModel.quizQuestionsOverViewStatus.observe(viewLifecycleOwner) { quizResponse ->
             if (quizResponse != null) {
                 binding.overViewLoading.visibility = View.GONE
                 val questionsAdapter = QuizOverViewAdapter()

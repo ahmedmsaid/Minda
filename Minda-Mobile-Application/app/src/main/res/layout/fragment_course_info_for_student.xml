@@ -3,17 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.student.course_info.CourseInfoFragmentForStudent">
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:paddingTop="16dp"
         android:paddingStart="8dp"
         android:paddingEnd="8dp"
         android:paddingBottom="16dp"
-        tools:ignore="HardcodedText"
-        tools:context=".ui.student.course_info.CourseInfoFragmentForStudent">
+        tools:ignore="HardcodedText">
 
         <TextView
             android:id="@+id/courseInfoNameForStudent"
@@ -140,7 +144,7 @@
             android:textColor="@color/primer_dark_gray"
             android:textSize="@dimen/_16ssp"
             android:textStyle="bold"
-            android:visibility="invisible"
+            android:visibility="visible"
             android:layout_marginTop="@dimen/_5sdp"
             app:layout_constraintEnd_toEndOf="@+id/studentQuizzesRecycler"
             app:layout_constraintStart_toStartOf="@+id/studentQuizzesRecycler"
@@ -158,5 +162,45 @@
             app:layout_constraintStart_toStartOf="@+id/textView21ForStudent"
             app:layout_constraintTop_toBottomOf="@+id/textView21ForStudent" />
 
+        <ProgressBar
+            android:id="@+id/loadingAssignmentsIndicatorForStudent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/studentAssignmentsRecycler" />
+
+        <TextView
+            android:id="@+id/assignmentHintForStudent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:visibility="gone"
+            android:text="Loading failed!"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/studentAssignmentsRecycler" />
+
+        <Button
+            android:id="@+id/openDiscussionBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:background="@color/primary_dark_orange"
+            android:text="Open Discussion"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/loadingAssignmentsIndicatorForStudent"
+            tools:ignore="TextContrastCheck" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

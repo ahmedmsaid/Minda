@@ -12,5 +12,8 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <!-- Set the default screen orientation to portrait -->
+        <item name="android:screenOrientation">portrait</item>
+
     </style>
 </resources>

@@ -1,5 +1,6 @@
 package com.example.minda.ui.student.course_info
 
+import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
 import android.os.Bundle
@@ -9,7 +10,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.minda.R
+import com.example.minda.adapter.AssignmentAdapter
 import com.example.minda.adapter.LecturesAdapter
 import com.example.minda.adapter.QuizzesAdapter
 import com.example.minda.databinding.FragmentCourseInfoForStudentBinding
@@ -47,6 +50,7 @@ class CourseInfoFragmentForStudent : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     private fun refreshData() {
         val courseId = requireArguments().getString("courseId")
         val courseName = requireArguments().getString("courseName")
@@ -61,15 +65,23 @@ class CourseInfoFragmentForStudent : Fragment() {
                     courseId,
                     it,
                 )
+
+                viewModel.getAllAssignmentsForStudent(
+                    courseId,
+                    SharedViewModel.currentLoggedInUserId.value.toString(),
+                    it
+                )
             }
         }
+
+
 
 
         viewModel.studentCourseDetailsStatus.observe(viewLifecycleOwner) { courseDetails ->
 
             if (courseDetails != null) {
                 if (courseDetails.lectureId.isNotEmpty()) {
-                    val lecAdapter = LecturesAdapter(this,"student")
+                    val lecAdapter = LecturesAdapter(this, "student")
                     LecturesAdapter.courseId = courseId!!
                     lecAdapter.submitList(courseDetails.lectureId)
                     binding.studentLecturesRecycler.apply {
@@ -84,7 +96,7 @@ class CourseInfoFragmentForStudent : Fragment() {
                 }
 
                 if (courseDetails.quizzes.isNotEmpty()) {
-                    val quizAdapter = QuizzesAdapter(this,"student")
+                    val quizAdapter = QuizzesAdapter(this, "student")
                     QuizzesAdapter.courseId = courseDetails._id
                     quizAdapter.submitList(courseDetails.quizzes)
                     binding.studentQuizzesRecycler.apply {
@@ -106,6 +118,45 @@ class CourseInfoFragmentForStudent : Fragment() {
 
             }
         }
+
+        viewModel.assignmentInfoStatus.observe(viewLifecycleOwner){
+            if (it != null){
+                val allData = it.allAssignments.assignmentsData
+                if (allData.isNotEmpty()){
+                    binding.loadingAssignmentsIndicatorForStudent.visibility  = View.GONE
+                    val assignmentsAdapter = AssignmentAdapter(this,"student")
+                    AssignmentAdapter.courseId = courseId!!
+                    assignmentsAdapter.submitList(allData)
+                    binding.studentAssignmentsRecycler.apply {
+                        adapter = assignmentsAdapter
+                        visibility = View.VISIBLE
+                    }
+                }else{
+                    binding.loadingAssignmentsIndicatorForStudent.visibility  = View.GONE
+                    binding.assignmentHintForStudent.apply {
+                        text = "No assignments for you!"
+                        visibility  = View.VISIBLE
+                    }
+
+                }
+            }else{
+                binding.assignmentHintForStudent.visibility = View.VISIBLE
+            }
+        }
+
+
+
+        binding.openDiscussionBtn.setOnClickListener {
+
+        val bundle = Bundle().apply {
+            putString("courseName",courseName)
+            putString("courseId",courseId)
+        }
+
+            findNavController().navigate(R.id.action_courseInfoFragmentForStudent_to_discussionFragment,bundle)
+        }
+
+
     }
 //    override fun onDestroyView() {
 //        super.onDestroyView()

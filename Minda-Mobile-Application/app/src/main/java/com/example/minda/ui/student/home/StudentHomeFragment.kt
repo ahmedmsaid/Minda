@@ -2,7 +2,6 @@ package com.example.minda.ui.student.home
 
 import android.annotation.SuppressLint
 import android.app.Application
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +13,7 @@ import com.bumptech.glide.Glide
 import com.example.minda.R
 import com.example.minda.adapter.StudentCoursesAdapter
 import com.example.minda.databinding.FragmentStudentHomeBinding
-import com.example.minda.utile.getIdOfLoggedInPerson
+import com.example.minda.util.getIdOfLoggedInPerson
 import com.example.minda.viewmodel.SharedViewModel
 import com.example.minda.viewmodel.SharedViewModelFactory
 import com.ismaeldivita.chipnavigation.ChipNavigationBar

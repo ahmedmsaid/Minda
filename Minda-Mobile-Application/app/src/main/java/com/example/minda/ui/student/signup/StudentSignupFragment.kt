@@ -2,7 +2,6 @@ package com.example.minda.ui.student.signup
 
 import android.app.Application
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,9 +12,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.minda.R
 import com.example.minda.databinding.FragmentStudentSignupBinding
 import com.example.minda.pojo.student.auth.StudentRegisterRequest
-import com.example.minda.utile.isValidEmail
-import com.example.minda.utile.isValidPassword
-import com.example.minda.utile.showToast
+import com.example.minda.util.isValidEmail
+import com.example.minda.util.isValidPassword
+import com.example.minda.util.showToast
 import com.example.minda.viewmodel.SharedViewModel
 import com.example.minda.viewmodel.SharedViewModelFactory
 

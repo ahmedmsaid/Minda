@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.discussion.PostDetailsFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="HardcodedText">
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/primary_dark_orange"
+                android:text="Post details"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:padding="@dimen/_10sdp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_16sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <ImageView
+                android:id="@+id/specificPostUserImage"
+                android:layout_width="@dimen/_50sdp"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:src="@drawable/user_pic_default"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView19"
+                android:importantForAccessibility="no" />
+
+
+            <TextView
+                android:id="@+id/specificPostUsername"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="user name"
+                android:textSize="@dimen/_14ssp"
+                android:background="@color/white"
+                android:textStyle="bold"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                app:layout_constraintBottom_toBottomOf="@+id/specificPostUserImage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/specificPostUserImage"
+                app:layout_constraintTop_toTopOf="@+id/specificPostUserImage" />
+
+            <TextView
+                android:id="@+id/specificPostCreationDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="creation date"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/specificPostUsername"
+                app:layout_constraintStart_toStartOf="@+id/specificPostUsername"
+                app:layout_constraintTop_toBottomOf="@+id/specificPostUsername" />
+
+
+            <TextView
+                android:id="@+id/specificPostContent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:text="context"
+                android:background="@color/white"
+                android:textSize="@dimen/_14sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:textStyle="bold"
+                android:textColor="@color/veryDarkGray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/specificPostUserImage"
+                app:layout_constraintTop_toBottomOf="@+id/specificPostUserImage" />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Post comments"
+                android:textSize="@dimen/_12sdp"
+                android:textStyle="bold"
+                android:padding="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/specificPostContent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/commentsRecycler"
+                android:layout_width="0dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:layout_height="@dimen/_250sdp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@+id/specificPostContent"
+                app:layout_constraintStart_toStartOf="@+id/specificPostContent"
+                app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+            <TextView
+                android:id="@+id/commentsHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hint"
+                android:visibility="gone"
+                android:textSize="@dimen/_14sdp"
+                app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_32sdp"
+                android:layout_marginBottom="@dimen/_32sdp"
+                app:layout_constraintBottom_toTopOf="@+id/textInputLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                android:layout_marginTop="@dimen/_16sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/makeCommentBtn"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/commentsRecycler">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/writeCommentET"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/enroll_ic"
+                    android:drawablePadding="5dp"
+                    android:hint="Write a comment"
+                    android:inputType="textMultiLine"
+                    tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <ImageView
+                android:id="@+id/makeCommentBtn"
+                android:layout_width="@dimen/_32sdp"
+                android:layout_height="@dimen/_32sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:src="@drawable/send_ic"
+                app:layout_constraintBottom_toBottomOf="@+id/textInputLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textInputLayout" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</layout>

@@ -33,9 +33,9 @@ class InstructorContentActivity : AppCompatActivity() {
                     }
                 }
 
-                R.id.notification -> {
-                    Toast.makeText(this, "Instructor Notification", Toast.LENGTH_SHORT).show()
-                }
+//                R.id.notification -> {
+//                    Toast.makeText(this, "Instructor Notification", Toast.LENGTH_SHORT).show()
+//                }
 
                 R.id.profile -> {
                     if (page == "Home") {

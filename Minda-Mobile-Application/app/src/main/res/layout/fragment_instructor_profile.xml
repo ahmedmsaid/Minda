@@ -97,19 +97,6 @@
             app:layout_constraintTop_toBottomOf="@+id/textView9"
             tools:ignore="HardcodedText" />
 
-        <TextView
-            android:id="@+id/instructorChangePictureOption"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_16sdp"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:fontFamily="@font/roboto"
-            android:text="Change Picture"
-            android:textSize="@dimen/_14ssp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/instructorChangePasswordOption"
-            tools:ignore="HardcodedText" />
-
         <Button
             android:id="@+id/instructorLogOutBtn"
             android:layout_width="@dimen/_100sdp"

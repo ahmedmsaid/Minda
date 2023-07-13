@@ -32,18 +32,6 @@
                 android:textSize="@dimen/_14ssp"
                 tools:ignore="ButtonStyle,HardcodedText" />
 
-            <Button
-                android:id="@+id/showLecSlideBtn"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@color/primary_dark_orange"
-                android:padding="16dp"
-                android:text="Slides"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_14ssp"
-                tools:ignore="ButtonStyle,HardcodedText" />
         </LinearLayout>
 
         <ProgressBar
