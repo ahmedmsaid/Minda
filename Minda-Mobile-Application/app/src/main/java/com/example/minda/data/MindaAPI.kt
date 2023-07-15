@@ -295,6 +295,20 @@ interface MindaAPI {
         @Body  content: SendCommentRequest,
     ): Response<ResponseBody>
 
+    @DELETE("post/courses/{course-id}/posts/{post-id}")
+    suspend fun deletePost(
+        @Path("course-id") courseId: String,
+        @Path("post-id") postId: String,
+        @Header("x-auth-token") token: String,
+    ): Response<ResponseBody>
+    @DELETE("comment/courses/{course-id}/posts/{post-id}/comments/{comment-id}")
+    suspend fun deleteComment(
+        @Path("course-id") courseId: String,
+        @Path("post-id") postId: String,
+        @Path("comment-id") commentId: String,
+        @Header("x-auth-token") token: String,
+    ): Response<ResponseBody>
+
 
 
 }

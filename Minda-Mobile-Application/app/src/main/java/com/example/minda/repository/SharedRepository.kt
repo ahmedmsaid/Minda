@@ -459,6 +459,22 @@ class SharedRepository {
         }
         return null
     }
+    suspend fun deletePost(
+        courseId: String,postId: String,token: String): Int? {
+        val response = ApiService.retrofitService.deletePost(courseId,postId,token)
+        if (response.isSuccessful) {
+            return 1
+        }
+        return null
+    }
+    suspend fun deleteComment(
+        courseId: String,postId: String,commentId:String,token: String): Int? {
+        val response = ApiService.retrofitService.deleteComment(courseId,postId,commentId,token)
+        if (response.isSuccessful) {
+            return 1
+        }
+        return null
+    }
 
 //    private fun prepareFilePart(partName: String,fileRealPath: String,fileUri: Uri): MultipartBody.Part {
 //        val file: File = File(fileRealPath)

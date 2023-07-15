@@ -101,7 +101,7 @@ class PostDetailsFragment : Fragment() {
             if (commentsResponse != null) {
                 val comments = commentsResponse.commentsResponse.comments
                 if (comments.isNotEmpty()) {
-                    val commentsAdapter = CommentsAdapter()
+                    val commentsAdapter = CommentsAdapter(this,viewModel)
                     commentsAdapter.submitList(comments)
                     binding.commentsRecycler.apply {
                         adapter = commentsAdapter
@@ -136,6 +136,20 @@ class PostDetailsFragment : Fragment() {
                 findNavController().navigate(R.id.action_postDetailsFragment_self,bundle)
             }else{
                 showToast("Error while commenting, try again", requireContext())
+            }
+        }
+
+        viewModel.deletingCommentStatus.observe(viewLifecycleOwner){
+            if (it!=null){
+                showToast("Comment deleted successfully",requireContext())
+                val bundle = Bundle().apply {
+                    putString("userName",userName)
+                    putString("content",postContent)
+                    putString("date",postDate)
+                    putString("courseId",courseId)
+                    putString("postId",postId)
+                }
+                findNavController().navigate(R.id.action_postDetailsFragment_self,bundle)
             }
         }
     }

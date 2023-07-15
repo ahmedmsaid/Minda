@@ -92,6 +92,8 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
     val allCommentsOnPostStatus = MutableLiveData<AllCommentsOnSpecificCourse?>()
     val sendingCommentStatus = MutableLiveData<CreatedCommentResponse?>()
     val creatingNewPostStatus = MutableLiveData<Int?>()
+    val deletingPostStatus = MutableLiveData<Int?>()
+    val deletingCommentStatus = MutableLiveData<Int?>()
 
     val timerStatus = MutableLiveData<String>()
 
@@ -873,6 +875,49 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
                 try {
                     val result = repo.createNewPost(courseId, token, content)
                     creatingNewPostStatus.value = result
+                } catch (e: Exception) {
+                    showToast("Server is busy, try again", app.applicationContext)
+                }
+            } else {
+                showToast(
+                    "No Internet connection to complete the operation",
+                    app.applicationContext
+                )
+            }
+        }
+    }
+    fun deletePost(
+        courseId: String,
+        postId: String,
+        token: String,
+    ) {
+        viewModelScope.launch {
+            if (isInternetAvailable(app.applicationContext)) {
+                try {
+                    val result = repo.deletePost(courseId, postId,token)
+                    deletingPostStatus.value = result
+                } catch (e: Exception) {
+                    showToast("Server is busy, try again", app.applicationContext)
+                }
+            } else {
+                showToast(
+                    "No Internet connection to complete the operation",
+                    app.applicationContext
+                )
+            }
+        }
+    }
+    fun deleteComment(
+        courseId: String,
+        postId: String,
+        commentId: String,
+        token: String,
+    ) {
+        viewModelScope.launch {
+            if (isInternetAvailable(app.applicationContext)) {
+                try {
+                    val result = repo.deleteComment(courseId, postId,commentId,token)
+                    deletingCommentStatus.value = result
                 } catch (e: Exception) {
                     showToast("Server is busy, try again", app.applicationContext)
                 }
