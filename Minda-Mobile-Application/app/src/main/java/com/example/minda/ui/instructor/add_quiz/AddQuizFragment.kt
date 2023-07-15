@@ -65,7 +65,7 @@ class AddQuizFragment : Fragment() {
                     putString("quizName", quizName)
                     putString("questionCount", questionCount)
                     putString("eachQuestionMark", eachQuestionMark)
-                    if (quizTime.isBlank()) putString("quizTime","00:00")
+                    if (quizTime.isBlank()) putString("quizTime","00:00")else putString("quizTime",quizTime)
                 }
 
                 findNavController().navigate(

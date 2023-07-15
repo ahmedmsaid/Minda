@@ -225,10 +225,10 @@ class SharedRepository {
         id: String,
         token: String,
         request: PostQuizRequest
-    ): PostingQuizResponse? {
+    ): Int? {
         val response = ApiService.retrofitService.createNewQuizByInstructor(id, token, request)
         if (response.isSuccessful) {
-            return response.body()
+            return 1
         }
         return null
     }

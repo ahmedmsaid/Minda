@@ -231,16 +231,21 @@ class AddQuizDetailFragment : Fragment() {
             )
 
             Log.d("7egzz", "refreshData: $quizRequest")
+            showToast(quizTime,requireContext())
         }
 
         viewModel.instructorCreateQuizStatus.observe(viewLifecycleOwner) { quizCreated ->
-            if (quizCreated != null) {
+            if (quizCreated ==1) {
                 showToast(
-                    "${quizCreated.quizname} has been created successfully!",
+                    "Quiz has been created successfully!",
                     requireContext()
                 )
-
                 findNavController().navigate(R.id.action_addQuizDetailFragment_to_instructorHomeFragment)
+            }else{
+                showToast(
+                    "Quiz creation failed!",
+                    requireContext()
+                )
             }
         }
     }

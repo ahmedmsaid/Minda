@@ -160,7 +160,7 @@ interface MindaAPI {
         @Path("course-id") id: String,
         @Header("x-auth-token") token: String,
         @Body request: PostQuizRequest
-    ): Response<PostingQuizResponse>
+    ): Response<ResponseBody>
 
     @Multipart
     @POST("assignment/courses/{course-id/assignments")
