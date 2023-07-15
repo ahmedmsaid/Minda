@@ -155,7 +155,7 @@ interface MindaAPI {
         @Body request: CreateCourseRequest
     ): Response<CreatedCourseResponse>
 
-    @POST("quiz/courses/{course-id}/quizze")
+    @POST("quiz/courses/{course-id}/quizzes")
     suspend fun createNewQuizByInstructor(
         @Path("course-id") id: String,
         @Header("x-auth-token") token: String,

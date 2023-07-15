@@ -35,3 +35,4 @@ fun getIdOfLoggedInPerson(token: String): String? {
     val jwt = JWT(token)
     return jwt.getClaim("id").asString()
 }
+

@@ -13,7 +13,6 @@
             android:id="@+id/materialCardView7"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_80sdp"
             android:elevation="5dp"
             app:cardCornerRadius="10dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -60,7 +59,7 @@
                     android:id="@+id/quizQuestionNumberEt"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_12sdp"
                     android:background="@drawable/search_field_background"
                     android:hint="Q. count"
                     android:inputType="number"
@@ -74,21 +73,133 @@
                     android:id="@+id/eachQuestionMarkEt"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_12sdp"
                     android:background="@drawable/search_field_background"
                     android:hint="Q. mark"
                     android:inputType="number"
                     android:padding="12dp"
                     android:layout_marginBottom="@dimen/_10sdp"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/quizQuestionNumberEt"
                     app:layout_constraintStart_toStartOf="@+id/quizQuestionNumberEt"
                     app:layout_constraintTop_toBottomOf="@+id/quizQuestionNumberEt"
                     tools:ignore="Autofill" />
 
+                <CheckBox
+                    android:id="@+id/applyTimingCBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:minHeight="48dp"
+                    android:text="Apply timing"
+                    android:textColor="@color/veryDarkGray"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/eachQuestionMarkEt" />
+
+
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/startTimeLayout"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:paddingTop="@dimen/_4sdp"-->
+<!--                    android:visibility="gone"-->
+<!--                    android:paddingBottom="@dimen/_4sdp"-->
+<!--                    app:layout_constraintEnd_toEndOf="@+id/applyTimingCBox"-->
+<!--                    app:layout_constraintStart_toStartOf="@+id/applyTimingCBox"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/applyTimingCBox" >-->
+
+<!--                    <EditText-->
+<!--                        android:id="@+id/startTimeToShowThisQuiz"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:background="@drawable/search_field_background"-->
+<!--                        android:enabled="false"-->
+<!--                        android:hint="Start time"-->
+<!--                        android:layout_weight="3"-->
+<!--                        android:inputType="time"-->
+<!--                        android:padding="12dp"-->
+<!--                        android:visibility="visible"/>-->
+
+<!--                    <Button-->
+<!--                        android:id="@+id/pickStartTimeBtn"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:textAllCaps="false"-->
+<!--                        android:text="Pick"/>-->
+
+<!--                </LinearLayout>-->
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/endTimeLayout"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:paddingTop="@dimen/_4sdp"-->
+<!--                    android:visibility="gone"-->
+<!--                    android:paddingBottom="@dimen/_4sdp"-->
+<!--                    app:layout_constraintEnd_toEndOf="@+id/startTimeLayout"-->
+<!--                    app:layout_constraintStart_toStartOf="@+id/startTimeLayout"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/startTimeLayout" >-->
+
+<!--                    <EditText-->
+<!--                        android:id="@+id/endTimeToShowThisQuiz"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:background="@drawable/search_field_background"-->
+<!--                        android:enabled="false"-->
+<!--                        android:hint="End time"-->
+<!--                        android:layout_weight="3"-->
+<!--                        android:inputType="time"-->
+<!--                        android:padding="12dp"-->
+<!--                        android:visibility="visible"/>-->
+
+<!--                    <Button-->
+<!--                        android:id="@+id/pickEndTimeBtn"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:textAllCaps="false"-->
+<!--                        android:text="Pick"/>-->
+
+<!--                </LinearLayout>-->
+                <LinearLayout
+                    android:id="@+id/quizInnerTimeLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/_4sdp"
+                    android:paddingBottom="@dimen/_4sdp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="@+id/applyTimingCBox"
+                    app:layout_constraintStart_toStartOf="@+id/applyTimingCBox"
+                    app:layout_constraintTop_toBottomOf="@+id/applyTimingCBox">
+
+                    <EditText
+                        android:id="@+id/quizInnerTime"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:background="@drawable/search_field_background"
+                        android:enabled="false"
+                        android:hint="Quiz time"
+                        android:inputType="time"
+                        android:padding="12dp"
+                        android:visibility="visible" />
+
+                    <Button
+                        android:id="@+id/pickQuizTimeBtn"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Pick"
+                        android:textAllCaps="false" />
+
+                </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
         </com.google.android.material.card.MaterialCardView>
 
 

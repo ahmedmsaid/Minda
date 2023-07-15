@@ -93,6 +93,12 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
     val sendingCommentStatus = MutableLiveData<CreatedCommentResponse?>()
     val creatingNewPostStatus = MutableLiveData<Int?>()
 
+    val timerStatus = MutableLiveData<String>()
+
+
+    init {
+        timerStatus.value = ""
+    }
 
     fun loginForStudent(request: LoginRequest) {
         viewModelScope.launch {
@@ -856,6 +862,7 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
             }
         }
     }
+
     fun createNewPost(
         courseId: String,
         token: String,
@@ -877,4 +884,17 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
             }
         }
     }
+
+    fun updateTimer(time: Long) {
+        val seconds = (time / 1000) % 60
+        val minutes = (time / (1000 * 60)) % 60
+        val hours = (time / (1000 * 60 * 60)) % 24
+        val realTime = String.format("%02d:%02d:%02d", hours, minutes, seconds)
+        timerStatus.value = realTime
+        if (time == 0L){
+            timerStatus.value = "Time is up!"
+        }
+    }
+
+
 }

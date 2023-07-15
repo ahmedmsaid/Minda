@@ -56,18 +56,13 @@ class AddQuizDetailFragment : Fragment() {
         val quizName = requireArguments().getString("quizName")
         val questionCount = requireArguments().getString("questionCount")
         val eachQuestionMark = requireArguments().getString("eachQuestionMark")
+        val quizTime = requireArguments().getString("quizTime")
 
         val listOfQuestion = mutableListOf<Question>()
 
-        var flag = 1
+
 
         binding.nextQuizQuestionBtn.setOnClickListener {
-
-            if (flag == questionCount!!.toInt()) {
-                binding.nextQuizQuestionBtn.visibility = View.INVISIBLE
-                binding.finishPreparingQuizBtn.visibility = View.VISIBLE
-            }
-
 
             val title = binding.quizQuestionEt.text.toString()
             val c1 = binding.quizFirstChoiceEt.text.toString()
@@ -82,19 +77,23 @@ class AddQuizDetailFragment : Fragment() {
 
             val listOfChoices = mutableListOf<Choose>()
 
+
             if (binding.selectedRightChoiceGroup.checkedRadioButtonId == -1) {
                 showToast("You must specify the correct answer choice", requireContext())
             } else {
-
                 if (c1.isNotEmpty() && c2.isNotEmpty() && (c3.isEmpty() && c4.isEmpty())) {
                     when (binding.selectedRightChoiceGroup.checkedRadioButtonId) {
                         R.id.firstChoiceRadioBtn -> {
                             choice1.isCorrect = true
                             listOfChoices.add(choice1)
                             listOfChoices.add(choice2)
-                            val question = Question(choose = listOfChoices, mark = eachQuestionMark!!.toInt(), title = title)
+                            val question = Question(
+                                choose = listOfChoices,
+                                mark = eachQuestionMark!!.toInt(),
+                                title = title
+                            )
                             listOfQuestion.add(question)
-                            flag++
+
                             clearInput()
                         }
 
@@ -102,9 +101,13 @@ class AddQuizDetailFragment : Fragment() {
                             choice2.isCorrect = true
                             listOfChoices.add(choice1)
                             listOfChoices.add(choice2)
-                            val question = Question(choose = listOfChoices, mark = eachQuestionMark!!.toInt(), title = title)
+                            val question = Question(
+                                choose = listOfChoices,
+                                mark = eachQuestionMark!!.toInt(),
+                                title = title
+                            )
                             listOfQuestion.add(question)
-                            flag++
+
                             clearInput()
                         }
 
@@ -124,9 +127,13 @@ class AddQuizDetailFragment : Fragment() {
                             listOfChoices.add(choice1)
                             listOfChoices.add(choice2)
                             listOfChoices.add(choice3)
-                            val question = Question(choose = listOfChoices, mark = eachQuestionMark!!.toInt(), title = title)
+                            val question = Question(
+                                choose = listOfChoices,
+                                mark = eachQuestionMark!!.toInt(),
+                                title = title
+                            )
                             listOfQuestion.add(question)
-                            flag++
+
                             clearInput()
                         }
 
@@ -135,9 +142,13 @@ class AddQuizDetailFragment : Fragment() {
                             listOfChoices.add(choice1)
                             listOfChoices.add(choice2)
                             listOfChoices.add(choice3)
-                            val question = Question(choose = listOfChoices, mark = eachQuestionMark!!.toInt(), title = title)
+                            val question = Question(
+                                choose = listOfChoices,
+                                mark = eachQuestionMark!!.toInt(),
+                                title = title
+                            )
                             listOfQuestion.add(question)
-                            flag++
+
                             clearInput()
                         }
 
@@ -146,9 +157,13 @@ class AddQuizDetailFragment : Fragment() {
                             listOfChoices.add(choice1)
                             listOfChoices.add(choice2)
                             listOfChoices.add(choice3)
-                            val question = Question(choose = listOfChoices, mark = eachQuestionMark!!.toInt(), title = title)
+                            val question = Question(
+                                choose = listOfChoices,
+                                mark = eachQuestionMark!!.toInt(),
+                                title = title
+                            )
                             listOfQuestion.add(question)
-                            flag++
+
                             clearInput()
                         }
 
@@ -159,7 +174,6 @@ class AddQuizDetailFragment : Fragment() {
                             )
                         }
                     }
-
 
 
                 } else if (c1.isNotEmpty() && c2.isNotEmpty() && c3.isNotEmpty() && c4.isNotEmpty()) {
@@ -186,19 +200,30 @@ class AddQuizDetailFragment : Fragment() {
                     listOfChoices.add(choice2)
                     listOfChoices.add(choice3)
                     listOfChoices.add(choice4)
-                    val question = Question(choose = listOfChoices, mark = eachQuestionMark!!.toInt(), title = title)
+                    val question = Question(
+                        choose = listOfChoices,
+                        mark = eachQuestionMark!!.toInt(),
+                        title = title
+                    )
                     listOfQuestion.add(question)
-                    flag++
                     clearInput()
                 } else {
                     showToast("require two choices at least", requireContext())
+                }
+                if (listOfQuestion.size == questionCount!!.toInt()){
+                    binding.nextQuizQuestionBtn.visibility = View.GONE
+                    binding.finishPreparingQuizBtn.visibility = View.VISIBLE
                 }
             }
         }
 
 
         binding.finishPreparingQuizBtn.setOnClickListener {
-            val quizRequest = PostQuizRequest(questions = listOfQuestion, quizname = quizName!!)
+            val quizRequest = PostQuizRequest(
+                questions = listOfQuestion,
+                quizname = quizName!!,
+                duration = quizTime!!
+            )
             viewModel.createNewQuizByInstructor(
                 courseId!!,
                 SharedViewModel.currentLoggedInUserToken.value.toString(),

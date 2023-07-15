@@ -3,6 +3,7 @@ package com.example.minda.ui.student.quiz
 import android.annotation.SuppressLint
 import android.app.Application
 import android.os.Bundle
+import android.os.CountDownTimer
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.RadioButton
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.minda.R
 import com.example.minda.adapter.StudentTakingQuizAdapter
 import com.example.minda.databinding.FragmentTakingQuizBinding
@@ -18,12 +20,16 @@ import com.example.minda.util.showToast
 import com.example.minda.viewmodel.SharedViewModel
 import com.example.minda.viewmodel.SharedViewModelFactory
 import com.ismaeldivita.chipnavigation.ChipNavigationBar
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 
 class TakingQuizFragment : Fragment() {
 
     private lateinit var binding: FragmentTakingQuizBinding
     private lateinit var bottomNavigationBar: ChipNavigationBar
+    private lateinit var countDownTimer: CountDownTimer
 
     private val viewModel: SharedViewModel by lazy {
         val application = requireActivity().application as Application
@@ -43,12 +49,20 @@ class TakingQuizFragment : Fragment() {
 
         refreshData()
 
-
         return binding.root
     }
 
     @SuppressLint("SetTextI18n")
     private fun refreshData() {
+
+        viewModel.timerStatus.observe(viewLifecycleOwner) {
+            if (it != "") {
+                binding.counterTime.apply {
+                    text = it
+                }
+            }
+        }
+
 
         val quizId = requireArguments().getString("quizId")
         val courseId = requireArguments().getString("courseId")
@@ -63,9 +77,8 @@ class TakingQuizFragment : Fragment() {
         )
 
 
-        viewModel.studentGetQuizMarksStatus.observe(viewLifecycleOwner){studentMarks->
-            if (studentMarks != null){
-
+        viewModel.studentGetQuizMarksStatus.observe(viewLifecycleOwner) { studentMarks ->
+            if (studentMarks != null) {
                 binding.studentQuizGrade.apply {
                     text = "${studentMarks.userData.firstName} " +
                             "${studentMarks.userData.lastName} " +
@@ -77,38 +90,25 @@ class TakingQuizFragment : Fragment() {
                 binding.loadingQuestionsIndicator.visibility = View.GONE
                 binding.canNotAnswer.visibility = View.VISIBLE
                 binding.submitAnswersBtn.isEnabled = false
+                binding.counterContainer.visibility = View.GONE
 
-            }else{
-                showQuestionIfNoPreviousAnswerAndObserveTheRequest(quizId,courseId)
+            } else {
+                showQuestionIfNoPreviousAnswerAndObserveTheRequest(quizId, courseId)
+
             }
         }
 
-
-
-
-
         binding.submitAnswersBtn.setOnClickListener {
-            val selectedOptions = getSelectedOptionsFromAdapter()
-            val selectedAnswers = mutableListOf<Int>()
-
-            for (i in selectedOptions.indices) {
-                selectedAnswers.add(selectedOptions[i].second)
-            }
-            val request = AnswerQuizRequest(selectedAnswers)
-
-            viewModel.studentAnswerTheQuiz(
-                courseId,
-                quizId,
-                SharedViewModel.currentLoggedInUserToken.value.toString(),
-                request
-            )
+            submitTheQuiz(courseId, quizId)
         }
 
     }
 
-
     @SuppressLint("SetTextI18n")
-    private fun showQuestionIfNoPreviousAnswerAndObserveTheRequest(quizId:String, courseId:String){
+    private fun showQuestionIfNoPreviousAnswerAndObserveTheRequest(
+        quizId: String,
+        courseId: String
+    ) {
 
         //sending showing questions request
 
@@ -120,8 +120,28 @@ class TakingQuizFragment : Fragment() {
 
         // observing showing answers
 
+
         viewModel.studentQuizShowQuestionsStatus.observe(viewLifecycleOwner) { quizResponse ->
             if (quizResponse != null) {
+                val timer = convertTimeToMilliseconds(quizResponse.quiz.duration)
+                countDownTimer = object : CountDownTimer(timer, 1000) {
+                    override fun onTick(p0: Long) {
+                        viewModel.updateTimer(p0)
+                    }
+
+                    override fun onFinish() {
+                        viewModel.updateTimer(0)
+                        submitTheQuiz(courseId, quizId)
+                    }
+                }
+
+                if (timer == 0L) {
+                    binding.counterContainer.visibility = View.GONE
+                } else {
+                    countDownTimer.start()
+                }
+
+
                 val quizQuestionsAdapter = StudentTakingQuizAdapter()
                 if (quizResponse.quiz.questions.isNotEmpty()) {
                     quizQuestionsAdapter.submitList(quizResponse.quiz.questions)
@@ -135,18 +155,29 @@ class TakingQuizFragment : Fragment() {
                 }
             } else {
                 binding.loadingQuestionsIndicator.visibility = View.GONE
+                binding.counterContainer.visibility = View.GONE
             }
         }
 
-
-
-      // observing sending answers response
+        // observing sending answers response
         viewModel.studentQuizAnsweringStatus.observe(viewLifecycleOwner) { status ->
 
             if (status != null) {
+                binding.counterContainer.visibility = View.GONE
                 binding.studentQuizGrade.apply {
                     text = "Your score is $status"
                     visibility = View.VISIBLE
+
+                    object :CountDownTimer(3000,1000){
+                        override fun onTick(p0: Long) {
+                            //do nothing
+                        }
+
+                        override fun onFinish() {
+                            findNavController().navigate(R.id.action_takingQuizFragment_to_studentHomeFragment)
+                        }
+
+                    }.start()
                 }
                 showToast(status, requireContext())
             } else {
@@ -155,9 +186,27 @@ class TakingQuizFragment : Fragment() {
         }
     }
 
+    private fun submitTheQuiz(courseId: String, quizId: String) {
+        val selectedOptions = getSelectedOptionsFromAdapter()
+        val selectedAnswers = mutableListOf<Int>()
+
+        for (i in selectedOptions.indices) {
+            selectedAnswers.add(selectedOptions[i].second)
+        }
+        val request = AnswerQuizRequest(selectedAnswers)
+
+        viewModel.studentAnswerTheQuiz(
+            courseId,
+            quizId,
+            SharedViewModel.currentLoggedInUserToken.value.toString(),
+            request
+        )
+    }
+
 
     private fun getSelectedOptionsFromAdapter(): List<Pair<Int, Int>> {
         val selectedOptions = mutableListOf<Pair<Int, Int>>()
+        val unselectedOptions = mutableListOf<Pair<Int, Int>>()
         val adapter = binding.takingQuizRecyclerForStudent.adapter as? StudentTakingQuizAdapter
         adapter?.let {
             for (position in 0 until it.itemCount) {
@@ -171,12 +220,30 @@ class TakingQuizFragment : Fragment() {
                             radioButtonGroup.findViewById<RadioButton>(selectedRadioButtonId)
                         val questionPosition = radioButton.tag as Int
                         selectedOptions.add(Pair(questionPosition, selectedRadioButtonId))
+                    } else {
+                        unselectedOptions.add(Pair(position, -1))
                     }
                 }
             }
         }
-        return selectedOptions
+        return selectedOptions + unselectedOptions
     }
+
+    private fun convertTimeToMilliseconds(timeString: String): Long {
+        val dateFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
+        val calendar = Calendar.getInstance()
+
+        val parsedTime = dateFormat.parse(timeString)
+        parsedTime?.let {
+            calendar.time = it
+        }
+
+        val hoursInMillis = calendar.get(Calendar.HOUR_OF_DAY) * 60 * 60 * 1000
+        val minutesInMillis = calendar.get(Calendar.MINUTE) * 60 * 1000
+
+        return hoursInMillis.toLong() + minutesInMillis.toLong()
+    }
+
 
 //    override fun onDestroyView() {
 //        super.onDestroyView()
