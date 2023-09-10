@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.app.Application
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -168,18 +170,12 @@ class TakingQuizFragment : Fragment() {
                     text = "Your score is $status"
                     visibility = View.VISIBLE
 
-                    object :CountDownTimer(3000,1000){
-                        override fun onTick(p0: Long) {
-                            //do nothing
-                        }
+                    val handler = Handler(Looper.getMainLooper())
+                    handler.postDelayed({
+                        findNavController().navigate(R.id.action_takingQuizFragment_to_studentHomeFragment)
+                    }, 2000)
 
-                        override fun onFinish() {
-                            findNavController().navigate(R.id.action_takingQuizFragment_to_studentHomeFragment)
-                        }
-
-                    }.start()
                 }
-                showToast(status, requireContext())
             } else {
                 showToast("You can take the quiz only for once", requireContext())
             }

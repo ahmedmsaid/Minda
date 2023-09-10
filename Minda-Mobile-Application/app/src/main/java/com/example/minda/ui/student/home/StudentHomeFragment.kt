@@ -75,6 +75,7 @@ class StudentHomeFragment : Fragment() {
                     SharedViewModel.currentLoggedInUserImage.value = studentProfile.profileimg.url
 
                     Glide.with(requireContext())
+                        .asBitmap()
                         .load(studentProfile.profileimg.url)
                         .placeholder(R.drawable.loading)
                         .error(R.drawable.user_pic_default)
